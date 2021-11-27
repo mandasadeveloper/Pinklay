@@ -1,0 +1,306 @@
+<style>
+  @media (max-width: 991px) {
+.one-block-image .caption {
+    margin-top: -100px !important;
+}
+  }
+ 
+@media (max-width: 767px) {
+.one-block-image .caption {
+    color: #fff !important;
+}
+  .caption h4 {
+    font-size: 15px !important;
+    line-height: 20px !important;
+    letter-spacing: 0px !important;
+    margin-bottom: 10px !important;display: none !important;
+}
+  .one-block-image .caption h3 {
+    font-size: 16px !important;
+        margin-bottom: 10px !important;line-height: 24px;
+}
+  .one-block-image a .caption h3 {
+    position: relative;
+    bottom: 0px !important;display: none;
+}
+  .one-block-image a .caption .des {
+   font-size: 12px !important;
+    line-height: 15px !important;display: none;
+        margin-bottom: 2px;
+    font-weight: 600;
+}
+  .one-block-image a .caption .count-down {
+    position: absolute;
+    top: 50% !important;
+    font-size: 12px !important;
+    letter-spacing: 0rem !important;    text-align: right !important;
+}
+}
+  @media (device-width: 768px) {
+.one-block-image .items-block a .caption {
+    top: 100%
+}
+    #section-1539845646676 {
+       margin-bottom: 15px !important;
+}
+  }
+   @media (min-width: 770px) {
+.des {
+    line-height: 35px !important;
+}
+  }
+  @media (min-width: 770px) {
+.des {
+    line-height: 35px !important;
+}
+  }
+  @media (max-width: 760px) {
+.imgfordesktop {
+    display:none;
+}
+  }
+  @media (min-width: 768px) {
+.imgformobile {
+    display:none;
+}
+  }
+  @media (max-width: 760px) {
+.one-block-image .caption {
+    margin-top: 0px !important;
+}
+  
+.one-block-image a .caption .btn {
+    position: absolute;
+    right: 3%;
+    top: 60%;
+    padding: 7px 2px 5px;
+    width: 45%;
+}
+  }
+</style>
+
+<section class="one-block-image" id="section-{{ section.id }}"> 
+  <div class="{% if section.settings.layout == 'full' %}container-full {% else %}container {% endif %}">
+    <div class="row">
+      {% for block in section.blocks %}
+      {% if block.settings.dpl_img %}
+      <figure class="items-block col-12 block_{{block.id}}">
+        <a href="{{ block.settings.link }}" title="">
+
+          {% if block.settings.img != blank %}
+          <img src="{{ block.settings.img | img_url: '100x' }}" alt="{{ block.settings.title  | escape }}"
+               class="lazyload imgfordesktop"
+               data-src="{{ block.settings.img | img_url : '2048x' }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ block.settings.img | img_url : '2048x' }}"
+               data-sizes="auto">
+          <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Deal_of_the_Day_Banner_Mobile_1.jpg?v=1575542757" class="lazyload imgformobile">
+          {% else %}
+          <span class="not_img">1170 x 440px</span>
+          {% endif %}
+          <div class="caption" style="color: {{block.settings.color }}; {% if block.settings.text_alignment == 'right' %}max-width: 63%;right: 0;left: auto;width: 100%;{% elsif block.settings.text_alignment == 'left' %}max-width: 63%;right: auto;left: 0;width: 100%;{% endif %}">
+            {% if block.settings.text != blank %}<h4 style="font-size: {{block.settings.font_size_1}};text-transform: unset;border: none;">{% include 'multilang' with block.settings.text %}</h4> {% endif %}
+            {% if block.settings.title != blank %}<h3 style="font-size: {{block.settings.font_size_2}};">{% include 'multilang' with block.settings.title %}</h3> {% endif %}
+            {% if block.settings.des!= blank %}<div class="des" style="font-size: {{block.settings.font_size_3}};">{% include 'multilang' with block.settings.des %}</div> {% endif %}
+            
+            {% if block.settings.count_down!= blank %}<div class="count-down {{block.id}}" ></div> {% endif %}
+            
+            {% if block.settings.button != blank %}
+            <div class="btn">
+            	{% include 'multilang' with block.settings.button %}
+            </div>
+            {% endif %}
+          </div>
+          
+          <style>
+            @media (max-width:767px) {
+              .one-block-image .block_{{block.id}} .caption .count-down {
+              	color: {{block.settings.color }};
+              }
+            }
+          </style>
+        </a>
+      </figure>
+      {% endif %}
+      {% if block.settings.dpl_count %}
+      {% if block.settings.count_down!= blank %}
+       <script>
+        $(document ).ready(function() {
+          $('.{{block.id}}').countdown('{{ block.settings.count_down }}', function(event) {
+            $(this).html(event.strftime('%DD : %HH : %MM : %SS'));
+        });
+        })
+      </script>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<style>
+  #section-{{ section.id }}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+</style>
+{% schema %}
+  {
+      "name": "One Image block",
+      "max_blocks": 3,
+      "settings": [
+		{
+          "type" : "radio",
+          "id" : "layout",
+          "label" : "Layouts",       
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full",
+              "label": "Full Width"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        }
+		
+      ],
+      "blocks" : [
+        {
+          "type" : "Image",
+          "name" : "Image",
+          "settings":[
+			{
+				"type" : "checkbox",
+				"id" : "dpl_img",
+				"label" : "Display Image",
+				"default" : true
+			},
+            {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Select Image",
+              "info": "( 1170 x 440 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "color",
+              "id": "color",
+              "label" : "Text Color",
+              "default" : "#fff"
+            },
+			{
+				"type" : "text",
+				"id" : "button",
+				"label" : "Button",
+				"default" : "Shop now"
+			},
+            {
+              "type" : "url",
+              "id" : "link",
+              "label" : "Link"
+            },
+			{
+				"type" : "checkbox",
+				"id" : "dpl_count",
+				"label" : "Display Count down",
+				"default" : true
+			},
+			{
+				"type" : "text",
+			    "id" : "count_down",
+				"label" :" Count Down",
+			    "default" : "2020/01/7 0:0:00"
+		    },
+			{
+                "type" : "radio",
+                "id" : "text_alignment",
+                "label" : "Text alignment",
+                "options": [
+                  {
+                    "value": "left",
+                    "label": "Left"
+                  },
+                  {
+                    "value": "right",
+                    "label": "Right"
+                  },
+                  {
+                    "value": "center",
+                    "label": "Center"
+                  }
+                ],
+                "default": "center"
+			}
+          ]
+        }
+      ],
+      "presets": [{
+        "name": "One Image block",
+        "category": "block images",
+	    "blocks": [
+          {
+          	"type": "Image"
+          }
+        ]
+      }]
+  }
+{% endschema %}
+
+
+
+

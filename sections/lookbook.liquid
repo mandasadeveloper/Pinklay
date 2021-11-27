@@ -1,0 +1,646 @@
+<div id="lookbook-{{ section.id }}" class="lookbook">
+  {% if section.settings.display_lb_slideshow %}
+  <div class="lookbook_page">
+    <div class="sl-wrp" data-auto="{% if section.settings.autoplay %}true{% else %}false{% endif %}" data-speed="{{ section.settings.slideshow_speed }}">
+      {% for block in section.blocks %}
+
+      {% if block.type == 'image' %}
+
+      {% if block.settings.dpl_slide_img %}
+      <div class="slider" id="slide-{{ block.id }}" {{ block.shopify_attributes }}> 
+        <div class="lazy-images-contain" >
+          <a href="{{ block.settings.link_button }}" title="{{block.settings.header_silde }}">
+            {% if block.settings.image_slide != blank %}
+
+            {%- assign img_url = block.settings.image_slide | img_url: 'master' -%}
+            {%- assign img_url_mb = block.settings.image_slide_mb | img_url: 'master' -%}
+            <img src="{{img_url}}" alt="{{ block.settings.header_silde | escape }}"
+                 class="images-desktop lazyload"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ img_url.aspect_ratio }}"
+                 data-sizes="auto">
+            {% if block.settings.image_slide_mb != blank %}
+            <img src="{{block.settings.image_slide_mb | img_url: '100x'}}" alt="{{ block.settings.header_silde | escape }}"
+                 class="images-mobile lazyload"
+                 data-src="{{ img_url_mb }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ img_url_mb.aspect_ratio }}"
+                 data-sizes="auto"> 
+            {% else %}
+            <img src="{{block.settings.image_slide | img_url: '100x'}}" alt="{{ block.settings.header_silde | escape }}"
+                 class="images-mobile lazyload"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ img_url.aspect_ratio }}"
+                 data-sizes="auto">
+            {% endif %}
+
+            {% else %}
+            <span class="not_img">1170 x 570Px</span>                  
+            {% endif %}
+          </a>
+          <div class="caption-wrap{% if block.settings.alignment == 'center' %} slide-center{% elsif block.settings.alignment == 'right' %} slide-right {% else %} slide-left{% endif %}">
+            <div class="content">
+              <h2 class="slide-header" style="font-size:{{block.settings.font_size_header}}; color:{{block.settings.color_header}}">
+                {% include 'multilang' with block.settings.header_silde %}
+              </h2>
+
+              <div class="slide-des" style="font-size:{{block.settings.font_size_des}}; color:{{block.settings.color_des}}"> 
+                {% include 'multilang' with block.settings.image_des %}
+              </div>
+
+              <a class="button-slide" href="{{ block.settings.link_button }}"
+                 style="font-size:{{block.settings.font_size_button}}; 
+                        color:{{block.settings.color_button}};
+                        background: {{block.settings.bg_button}};
+                        border:1px solid {{block.settings.border_button}}
+                        ">
+                {% include 'multilang' with block.settings.button_slide %}
+              </a>
+            </div>
+          </div>
+        </div>	
+      </div>
+      {% endif %}
+
+      {% elsif block.type == 'lookbook' %}
+
+      {% if block.settings.dpl_lookboob_slide %}
+      <div class="slider" id="slide-{{ block.id }}" {{ block.shopify_attributes }}> 
+        <div class="lazy-images-contain" >
+
+          {% if block.settings.lb_image_slide != blank %}
+          {%- assign img_url = block.settings.lb_image_slide | img_url: 'master' -%}
+          <img src="{{block.settings.lb_image_slide | img_url: '2000x'}}" alt=""
+               class="lazyload"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-sizes="auto">
+          {% else %}
+          <span class="not_img">1170 x 570Px</span>                  
+          {% endif %}
+
+          {% if block.settings.lb_product_1 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_1 }}%; left:{{ block.settings.left_position_1 }}%;">
+            <span class="glyphicon pr-lb item_1_{{ block.id }}" data-handle="{{ block.settings.lb_product_1 }}">+</span>
+          </div>
+          {% endif %}
+
+          {% if block.settings.lb_product_2 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_2 }}%; left:{{ block.settings.left_position_2 }}%;">
+            <span class="glyphicon pr-lb item_2_{{ block.id }}" data-handle="{{ block.settings.lb_product_2 }}">+</span>
+          </div>
+          {% endif %}
+
+          {% if block.settings.lb_product_3 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_3 }}%; left:{{ block.settings.left_position_3 }}%;">
+            <span class="glyphicon pr-lb item_3_{{ block.id }}" data-handle="{{ block.settings.lb_product_3 }}">+</span>
+          </div>
+          {% endif %}
+
+          {% if block.settings.lb_product_4 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_4 }}%; left:{{ block.settings.left_position_4 }}%;">
+            <span class="glyphicon pr-lb item_4_{{ block.id }}" data-handle="{{ block.settings.lb_product_4 }}" >+</span>
+          </div>
+          {% endif %}
+          <style type="text/css">
+            #slide-{{ block.id }} .item_1_{{ block.id }}{
+              color:{{ block.settings.dots_color_1 }};
+              background: {{ block.settings.dots_bg_color_1 }};
+            }
+            #slide-{{ block.id }} .item_1_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_1 }};
+            }
+            #slide-{{ block.id }} .item_2_{{ block.id }}{
+              color:{{ block.settings.dots_color_2 }};
+              background: {{ block.settings.dots_bg_color_2 }};
+            }
+            #slide-{{ block.id }} .item_2_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_2 }};
+            }
+            #slide-{{ block.id }} .item_3_{{ block.id }}{
+              color:{{ block.settings.dots_color_3 }};
+              background: {{ block.settings.dots_bg_color_3 }};
+            }
+            #slide-{{ block.id }} .item_3_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_3 }};
+            }
+            #slide-{{ block.id }} .item_4_{{ block.id }}{
+              color:{{ block.settings.dots_color_4 }};
+              background: {{ block.settings.dots_bg_color_4 }};
+            }
+            #slide-{{ block.id }} .item_4_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_4 }};
+            }
+          </style>
+        </div>	
+      </div>
+      {% endif %}
+
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if section.settings.display_product_detail_share %}
+  {% include 'share' %}
+  {% endif %}
+
+  {% if section.settings.button != blank %}
+  <p class="bottom">
+    <a href="{{ section.settings.link }}" class="btn">
+      {% include 'multilang' with section.settings.button %}
+    </a>
+  </p>
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Lookbook Default",
+	 "max_blocks": 10,
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Lookbook Slideshow"
+      },
+      
+      {
+        "type": "checkbox",
+        "id": "display_lb_slideshow",
+        "label": "Enable slideshow?",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "autoplay",
+        "label": "Auto-rotate slides",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "slideshow_speed",
+        "label": "Change slides every",
+
+        "options": [
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" }
+        ],
+		  "default": "5000"
+      },	  
+	  {
+          "type": "checkbox",
+          "id": "display_product_detail_share",
+          "label": "Display Product Share?",
+          "default": true
+       },
+	   {
+          "type": "text",
+          "id": "button",
+          "label": "Lookbook Button"
+       },
+       {
+          "type": "url",
+          "id": "link",
+          "label": "Lookbook link"
+       },
+       {
+          "type" : "radio",
+          "id" : "text_position",
+          "label" : "Text position on the mobile",          
+          "options": [
+            {
+              "value": "under_img",
+              "label": "Under the picture"
+            },
+            {
+              "value": "in_img",
+              "label": "In pictures"
+            }
+          ],
+          "default": "in_img"
+        },
+        {
+          "type" : "radio",
+          "id" : "dots_position",
+          "label" : "Dots position",          
+          "options": [
+            {
+              "value": "under_img",
+              "label": "Under the picture"
+            },
+            {
+              "value": "in_img",
+              "label": "In pictures"
+            }
+          ],
+          "default": "under_img"
+        },
+        {
+          "type" : "color",
+          "id" : "bg_color_dots",
+          "label" : "Background color dots",
+          "default" : "#969696"
+        },
+        {
+          "type" : "color",
+          "id" : "bg_color_arrow",
+          "label" : "Border color Arrow",
+          "default" : "#969696"
+        },       
+        {
+          "type" : "text",
+          "id" : "height_img_dk",
+          "label" : "Image slider Height on desktop",
+          "default" : "auto",
+          "info" : "Default auto"
+        },
+        {
+          "type" : "text",
+          "id" : "height_img_mb",
+          "label" : "Image slider Height on Mobile",
+          "default" : "auto",
+          "info" : "Default auto"
+        }
+	],
+
+    "blocks" : [
+      {
+        "type" : "image",
+        "name" : "Image Slide",			
+        "settings":[
+          {
+            "type" : "checkbox",
+            "id" : "dpl_slide_img",
+            "label" : "Enable",
+            "default" : true
+          },
+          {
+            "type" : "image_picker",
+            "id" : "image_slide",
+            "label" : "Select Image",
+            "info" : "Recommended Image: Width x Height (1170 x 570)PX"
+          },
+          {
+            "type" : "image_picker",
+            "id" : "image_slide_mb",
+            "label" : "Select Image mobile",
+            "info" : "Recommended Image: Width x Height (1170 x 570)PX"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Text alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Center"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          },
+          {
+            "type" : "text",
+            "id" : "header_silde",
+            "label" : "Header",
+            "default" : "Soliquem Duscipitor"
+          },
+          {
+            "type" : "text",
+            "id" : "font_size_header",
+            "label" : "Header Font Size ",
+            "default" : "48px"
+          },
+          {
+            "type" : "color",
+            "id" : "color_header",
+            "label" : "Header Color",
+            "default" : "#000"
+          },
+          {
+            "type" : "textarea",
+            "id" : "image_des",
+            "label" : "Image description"
+          },
+          {
+            "type" : "text",
+            "id" : "font_size_des",
+            "label" : "Description Font Size",
+            "default" : "12px"
+          },
+          {
+            "type" : "color",
+            "id" : "color_des",
+            "label" : "Image description Color",
+            "default" : "#000"
+          },
+          {
+            "type" : "text",
+            "id" : "button_slide",
+            "label" : "Button Slideshow",
+            "default" : "Shop Now"
+          },
+          {
+            "type" : "url",
+            "id" : "link_button",
+            "label" : "Link Button"
+          },
+            {
+            "type" : "text",
+            "id" : "font_size_button",
+            "label" : "Font Size Button",
+            "default" : "14px"
+          },
+          {
+            "type" : "color",
+            "id" : "bg_button",
+            "label" : "Background Button",
+            "default" : "#323232"
+          },
+          {
+            "type" : "color",
+            "id" : "border_button",
+            "label" : "Border Button",
+            "default" : "#323232"
+          },
+          {
+            "type" : "color",
+            "id" : "color_button",
+            "label" : "Button Color",
+            "default" : "#fff"
+          }
+        ]
+      },
+
+      {
+        "type": "lookbook",
+        "name": "Lookbook Slide",
+        "settings": [
+          {
+            "type" : "checkbox",
+            "id" : "dpl_lookboob_slide",
+            "label" : "Enable",
+            "default" : true
+          },
+          {
+            "type": "image_picker",
+            "id": "lb_image_slide",
+            "label": "Select Image"
+          },
+          {
+            "type" : "header",
+            "content" : "Product 1"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_1",
+            "label" : "Select Product 1"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_1",
+            "label" : "Top Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_1",
+            "label" : "Left Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_1",
+            "label" : "Color 1",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_1",
+            "label" : "Dots background color 1",
+            "default" : "#323232",
+            "info" : "======================="
+          },
+          {
+            "type" : "header",
+            "content" : "Product 2"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_2",
+            "label" : "Select Product 2"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_2",
+            "label" : "Top Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_2",
+            "label" : "Left Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_2",
+            "label" : "Color 2",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_2",
+            "label" : "Dots background color 2",
+            "default" : "#323232",
+            "info" : "======================="
+          },
+          {
+            "type" : "header",
+            "content" : "Product 3"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_3",
+            "label" : "Select Product 3"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_3",
+            "label" : "Top Position 3",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_3",
+            "label" : "Left Position 3",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_3",
+            "label" : "Color 3",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_3",
+            "label" : "Dots background color 3",
+            "default" : "#323232",
+            "info" : "======================="
+          },
+          {
+            "type" : "header",
+            "content" : "Product 4"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_4",
+            "label" : "Select Product 4"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_4",
+            "label" : "Top Position 4",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_4",
+            "label" : "Left Position 4",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_4",
+            "label" : "Color 4",
+            "default" : "#fff"
+          },
+            {
+            "type" : "color",
+            "id" : "dots_bg_color_4",
+            "label" : "Dots background color 4",
+            "default" : "#323232"
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}
+
+<style>
+  @media (min-width:768px){
+    {% if section.settings.dots_position == 'in_img' %}
+      #lookbook-{{ section.id }} .slick-dots {
+        position: absolute;
+        left: 0;
+        bottom: 3%;
+        margin: 0;
+        width: 100%;
+      }
+    
+      #lookbook-{{ section.id }} .slick-dots li button {
+        border-width:1px;
+        background: {{ section.settings.bg_color_dots }};
+        border-color: {{ section.settings.bg_color_dots }};
+      }
+      
+      #lookbook-{{ section.id }} .slick-dots li.slick-active button {
+        background: transparent;
+      }
+    {% endif %}  
+    
+    #lookbook-{{ section.id }} .slick-arrow {
+      border-color: {{ section.settings.bg_color_arrow }};
+    }
+    
+    #lookbook-{{ section.id }} .slick-arrow svg {
+      fill: {{ section.settings.bg_color_arrow }};
+    }
+  }
+  
+  @media (min-width:1024px){
+    #lookbook-{{ section.id }} .lazy-images-contain img{
+      height: {{ section.settings.height_img_dk }};
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 1023px){
+    #lookbook-{{ section.id }} .lazy-images-contain img {
+      height: {{ section.settings.height_img_mb }};
+      object-fit: cover;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    {% if section.settings.text_position == 'under_img' %}
+      #lookbook-{{ section.id }} .caption-wrap {
+        position: static;
+        transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        text-align: center!important;
+      }
+    
+      #lookbook-{{ section.id }} .caption-wrap .content h2 {
+        color: #000 !important;
+      }
+    
+      #lookbook-{{ section.id }} .caption-wrap .content .slide-des {
+        color: #000 !important;
+      }    
+    {% endif %}
+    
+    {% if section.settings.dots_position == 'in_img' and section.settings.text_position == 'in_img' %}
+    #lookbook-{{ section.id }} .slick-dots {
+      position: absolute;
+      left: 0;
+      bottom: 3%;
+      margin: 0;
+      width: 100%;
+    }
+    
+    #lookbook-{{ section.id }} .slick-dots li button {
+      border-width: 1px;
+      background: {{ section.settings.bg_color_dots }};
+      border-color: {{ section.settings.bg_color_dots }};
+    }
+    
+    #lookbook-{{ section.id }} .slick-arrow {
+      border-color: {{ section.settings.bg_color_arrow }};
+    }
+    
+    #lookbook-{{ section.id }} .slick-arrow svg {
+      fill: {{ section.settings.bg_color_arrow }};
+    }
+
+    #lookbook-{{ section.id }} .slick-dots li.slick-active button {
+      background: transparent;
+    }
+    {% endif %}    
+  }
+</style>

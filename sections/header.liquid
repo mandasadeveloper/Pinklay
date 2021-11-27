@@ -1,0 +1,721 @@
+<style>
+  .top-header {
+    color:{{section.settings.hd_top_color}};
+    background-color:{{section.settings.hd_top_bg}};
+  }
+  
+  .top-header a{
+    color:{{section.settings.hd_top_color}};
+  }
+  
+  .top-redirect-header {
+    color:#000000;
+    background-color:#ffffff;
+    font-weight: 400;
+    text-align: center;
+    padding: 5px 0;
+    border-bottom: 1px solid #e6e6e6;
+
+  }
+  
+  .top-redirect-header a{
+    color:#000000;
+  }
+  
+  .bottom-header{
+    color:{{section.settings.hd_bt_color}};
+    background-color:{{section.settings.hd_bt_bg}};
+  }
+  
+  .bottom-header a, .hd_currency, .hd-multi-cur i, .bottom-header .column-left .header-search .input-group-field{
+    color:{{section.settings.hd_bt_color}};
+  }
+
+  .bottom-header .header-search .input-group-field::-webkit-input-placeholder{ 
+    color: {{section.settings.hd_bt_color}};
+  }
+	
+  .mobile-items svg,  .menu-mobile svg path{
+     fill:{{section.settings.hd_bt_color}};
+  }
+  
+  .bottom-header .header-search .input-group-field::-moz-placeholder{ 
+    color: {{section.settings.hd_bt_color}};
+  }
+
+  .bottom-header .header-search .input-group-field::-ms-input-placeholder { 
+    color: {{section.settings.hd_bt_color}};
+  }
+  
+  .bottom-header .column-left .header-search .input-group-field{
+    border-color:{{section.settings.hd_bt_color}};
+  }
+  
+  .bottom-header .column-left .header-search .btn-search svg, .header .bottom-header .column-right .cartToggle svg{
+    fill:{{section.settings.hd_bt_color}};
+  }
+  
+  .bottom-header .header-search .input-group-field::-moz-placeholder {
+    color: {{section.settings.hd_bt_color}};
+  }
+  
+  .header .bottom-header .column-right .cartToggle .cartCount{
+    color:{{section.settings.hd_cart_color}};
+    background-color:{{section.settings.hd_cart_bg}};
+    border-color:{{section.settings.hd_cart_bg}};
+  }
+  
+  @media (max-width:1024px){
+    .header .logo img{ 
+      height: {{section.settings.min_height_logo}};
+    }
+  }
+
+  @media (min-width:1025px){
+    .header .logo img{ 
+      height: {{section.settings.min_height_logo_dk}};
+    }
+  }
+  
+  @media (min-width: 1025px)
+  {
+    .text.col-5.co1 {
+   /* padding-left: 0px !important;
+    padding-right: 0px !important; */
+    /*left: -70px !important;*/
+}
+    .text.col-5.co2{
+     /* padding-right:0px !important; 
+      padding-left:0px !important;*/
+      /*right: -74px !important;*/
+    }
+     .text.col-2 {
+    border-right: 1px solid white;
+    right: 88px;
+}
+  }
+ 
+  @media (max-width:1024px)
+  {
+    .text.col-2 {
+    border-right: 1px solid white;
+    left: -33px;
+}
+    .deskhead
+    {
+     display:none;
+    }
+  }
+  
+  @media (min-width:1025px)
+  {
+    .mobhead
+    {
+      display:none;
+    }
+  }
+ 
+</style>
+
+<header class="header">
+  {% if section.settings.dpl_hd_top %}
+  {% if section.settings.hd_top_text != blank %}
+  <div class="top-header deskhead" style="    padding-left: 15px;
+    padding-right: 15px;">
+    <div class="container">
+      <div class="row">
+        
+       <div class="text col-6 co1" style="text-align: left; padding: 0px;">
+          
+<span>New Launch: Bela Wooden Tableware</span>
+
+          
+          <!--<a href="/pages/covid_19-a-message-from-pinklay-ceo" title="Learn More">
+            
+<span> Learn More</span>
+
+          </a>-->
+        </div>
+        
+        <div class="text col-6 co2" style="text-align: right; padding: 0px;">
+          <span>Free Shipping On Orders Above INR 2999</span>
+        </div>
+      </div> 
+    </div>
+  </div>
+  {% endif  %}
+  {% endif  %}
+  
+  <!--mobile header start-->
+  
+  <div class="top-header mobhead">
+    
+    <span id="example">New Launch: Bela Wooden Tableware</span>
+    
+  </div>
+  
+ 
+  <div class="top-redirect-header mobhead">
+
+    <a href="https://world.pinklay.com/" ><span>We Ship Worldwide: Visit Our International Store</span></a>
+
+  </div>
+  
+  <!--mobile header end-->
+  
+  <div class="bottom-header">
+    <div class="fx-hd">
+      <div class="container">
+
+        <div class="row">
+
+          <div class="hd-items column-left">
+
+             <div class="menu-mobile mobile-items">
+              <a href="javascript:void(0)" class="menuToggle">
+                {% include 'line_menu' %}
+                {% include 'icon-close' %}
+               
+              </a>          
+            </div>
+
+          <div class="customer-links">
+             <ul>
+                <li>
+
+                  {% if customer %}
+
+                  <a id="customer_logout_link" href="/account/logout" {% if settings.enable_multilang %}data-translate="layout.customer.log_out"{% endif %}>
+                    {{ 'layout.customer.log_out' | t }}
+                  </a>
+
+                  <span class="or" {% if settings.enable_multilang %}data-translate="cart.label.or"{% endif %}>
+                    {{ 'cart.label.or' | t }}
+                  </span>
+
+                  <a href="/account" {% if settings.enable_multilang %}data-translate="customer.account.title"{% endif %}>
+                  {{ 'customer.account.title' | t }}
+                  </a>
+
+                  {% else %}
+
+                  <a id="customer_login_link" href="/account/login" {% if settings.enable_multilang %}data-translate="customer.login.sign_in"{% endif %}>
+                    {{ 'customer.login.sign_in' | t }}
+                  </a>
+
+                  <span class="or" {% if settings.enable_multilang %}data-translate="cart.label.or"{% endif %}>
+                    {{ 'cart.label.or' | t }}
+                  </span>
+
+                  <a id="customer_register_link" href="/account/register" {% if settings.enable_multilang %}data-translate="layout.customer.create_account"{% endif %}>
+                    {{ 'layout.customer.create_account' | t }}
+                  </a>
+
+                  {% endif %}
+
+                </li>                                
+            </ul>
+            
+              <!--new ul start-->
+
+          
+            <style>
+              .dropdown-toggle::after {
+    display: none;
+              }
+              button.btn.dropdown-toggle {
+    background: none;
+    font-size: 12px;            
+}
+              
+              .input-group-btn:not(:last-child)>.btn {
+    margin-right: -20px !important;
+}
+            </style>
+        
+            
+            <!--new ul end-->
+          
+            
+            </div>
+
+            <div class="header-search mobile-items">
+              <a href="javascript:void(0)" class="searchToggle">
+                {% include 'icon_search' %}
+                {% include 'icon-close' %}
+              </a> 
+              <div class="search-form">
+                
+                {% include 'search-bar' %}
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="hd-items column-middle logo123">
+
+            {% if section.settings.brand_type == 'image' %}
+            <a href="/">
+              {% if section.settings.logo != blank %} 
+              <img data-src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   class="lazyload logo-desktop"
+                   itemprop="logo"
+                   src="{{ section.settings.logo | img_url: '2x' }}"
+                   data-src="{{ section.settings.logo | img_url: 'master' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.logo | img_url: 'master' }}"
+                   >
+              {% else %}
+              <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>            
+              {% endif %}
+
+              {% if section.settings.enable_retina %}
+              {% if section.settings.logo_2x != blank %}
+              <img data-src="{{ section.settings.logo_2x | img_url: 'master' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   class="lazyload logo-mobile"
+                   itemprop="logo"
+                   src="{{ section.settings.logo_2x | img_url: '2x' }}"
+                   data-src="{{ section.settings.logo_2x | img_url: 'master' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.logo_2x | img_url: 'master' }}"
+                   >
+              {% else %}
+              {% if section.settings.logo != blank %}
+              <img src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+                   class="lazyload logo-mobile"
+                   itemprop="logo"
+                   data-src="{{ section.settings.logo | img_url: 'master' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.logo | img_url: 'master' }}"
+                   >
+              {% else %}
+              <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>
+              {% endif %}
+              {% endif %}
+              {% endif %}
+            </a>
+            {% elsif section.settings.brand_text != "" %}
+            <h1><a class="logo-title" href="/">{{ section.settings.brand_text }}</a></h1>
+            {% else %}
+            <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>
+            {% endif %}
+
+          </div>
+
+          <div class="hd-items column-right">
+            
+            <!--new location currency convertor start-->
+             {% if settings.enable_multilang == true or settings.enable_multiple_currencies == true %}
+            
+            
+            
+            <!--new currency dropdown code start-->
+            
+           <style>
+              .dropdown-toggle,
+              .dropdown-menu {
+                  width: 140px!important;
+              }
+              
+              .btn-group img {
+                  margin-right: 10px
+              }
+              
+              .dropdown-toggle {
+                  padding-right: 0px
+              }
+              
+              .dropdown-toggle .glyphicon {
+                  margin-left: 20px;
+                  margin-right: -40px
+              }
+              
+              .dropdown-menu>li>a:hover {
+                  background: none!important;
+              }
+              /* $search-blue */
+              
+              .dropdown-header {
+                  background: #fff;
+                  font-size: 14px;
+                  font-weight: 700;
+                  padding: 0px 0px 0px 0px !important;
+                  margin-top: 5px !important;
+                  margin-bottom: 5px;
+                  text-align:center;
+              }
+             
+             @media (max-width:768px)
+             {
+               .btn-group.deskshow {
+                 display: none;
+               }
+             }
+             
+             a.redir {
+               font-weight: normal;
+               color: black;
+             }
+             
+             a.redir:hover {
+               color: #5ac4be;
+               background: none!important;
+             }
+             .selected-country{
+               border-bottom: 1px dotted #000;
+               font-weight: 600;
+             }
+             .li_head{
+                 padding: 5px 15px!important;
+             }
+            </style>
+            
+            <div class="btn-group deskshow" style="margin-right: 12px;">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Country <span><i class="fa fa-angle-down" style="font-size: 15px;"></i></span>
+              </button>
+
+              <ul class="dropdown-menu" style="min-width: 5rem;">
+                
+                <li class="dropdown-header li_head text-left">
+                  <a href="javascript:;" title="" class="selected-country">
+<!--                     <img src="//cdn.shopify.com/s/files/1/0233/2983/3007/t/2/assets/i-currency-4.png?193"> -->
+                    India (INR)</a>
+                </li>
+                
+                <li class="dropdown-header li_head text-left">
+                  <a href="https://world.pinklay.com/" title="" class="redir" >
+                    <!--<img src="//cdn.shopify.com/s/files/1/0233/2983/3007/t/2/assets/i-currency-1.png?193" style="width: 26px;">-->International (USD)</a>
+                </li>
+                
+                
+              </ul>
+            </div>
+            <!--new currency dropdown code end-->
+            
+            
+            <!--html end-->
+            
+            
+            
+            <!--<div class="items hd-multi-cur" style="margin-right: 20px;">
+
+              <button type="button" class="btn">
+                {% if settings.enable_multilang %}
+                <label class="icon-lang">
+                  <img src="" alt="">
+                </label>
+                {% endif %}
+                
+                {% if settings.enable_multiple_currencies %}
+                <label class="hd_currency"></label>
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                {% endif %}
+              </button>
+
+              <div class="hd-option">
+                
+                {% if settings.enable_multilang %}
+                <ul class="lang-switcher">
+                  <h5>{% include 'multilang' with settings.header_lang %}</h5>
+                  <li data-value="1" class="active">
+                    <a href="#" title="{{ settings.lange_1 }}">
+                      <span class="icon"><img src="{{ "i-lang-1.png" | asset_url }}" alt="{{settings.lange_1}}" /></span>
+                      <span class="text">{{ settings.lange_1 }}</span>
+                    </a>
+                  </li>
+                  <li data-value="2">
+                    <a href="#" title="{{ settings.lange_2 }}">
+                      <span class="icon"><img src="{{ "i-lang-2.png" | asset_url }}" alt="{{settings.lange_2}}" /></span>
+                      <span class="text">{{ settings.lange_2 }}</span>
+                    </a>
+                  </li>
+                </ul>  
+                {% endif %}
+                {% include 'new-currency-picker' %}
+              </div>
+            </div>
+            {% endif %} -->
+            <!--new loaction currency convertor end-->
+
+            
+            {% if customer %}
+            
+            		 <a id="customer_login_link" href="/account/" class="cus1">
+                 
+              <span    style="position:relative;top: 2px;left: -10px;">
+               <!--<svg viewBox="0 0 512 512" id="icon-users" width="20px" height="20px">
+                    <path d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148
+                             C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962
+                             c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216
+                             h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40
+                             c59.551,0,108,48.448,108,108S315.551,256,256,256z">
+                    </path>
+                  </svg>-->
+              
+                
+                <i class='fa fa-user'></i>
+                <span class="clin" style="position: relative;bottom: 3px;">  Hi, {{ customer.first_name }}<span>
+              
+              </span> 
+                </a>
+            
+            {% else %}
+            
+             <a id="customer_login_link" href="/account/login" class="cus1">
+                 
+              <span    style="position:relative;top: 2px;left: -10px;">
+               <!--<svg viewBox="0 0 512 512" id="icon-users" width="20px" height="20px">
+                    <path d="M437.02,330.98c-27.883-27.882-61.071-48.523-97.281-61.018C378.521,243.251,404,198.548,404,148
+                             C404,66.393,337.607,0,256,0S108,66.393,108,148c0,50.548,25.479,95.251,64.262,121.962
+                             c-36.21,12.495-69.398,33.136-97.281,61.018C26.629,379.333,0,443.62,0,512h40c0-119.103,96.897-216,216-216s216,96.897,216,216
+                             h40C512,443.62,485.371,379.333,437.02,330.98z M256,256c-59.551,0-108-48.448-108-108S196.449,40,256,40
+                             c59.551,0,108,48.448,108,108S315.551,256,256,256z">
+                    </path>
+                  </svg>-->
+              
+                
+                <i class='fa fa-user'></i>
+              
+              
+              </span> 
+                </a>
+             
+                {% endif %}
+
+            {% if settings.enable_wishlist %}
+           <!-- <div class="wishlist items">
+              <i class="fa fa-heart-o" aria-hidden="true"></i>
+              <a href="/pages/wish-list" {% if settings.enable_multilang %}data-translate="wishlist.general.my_wishlist"{% endif %}>
+                {{ 'wishlist.general.my_wishlist' | t }}
+              </a>
+            </div>-->
+            
+            <a href="/pages/wish-list">
+            <div class="wishlist items">
+              <!--<i class="fa fa-heart-o" aria-hidden="true"></i>-->
+              <i class="fa fa-heart" aria-hidden="true"></i>
+            </div>
+            </a>  
+            
+            {% endif %}
+
+            <div class="top-cart items">             
+              <a href="javascript:void(0)" class="cartToggle" style="z-index : 9999999999999999;">
+               <!-- {% include 'icon_cart' %}--><i class="fa fa-shopping-cart"></i>
+                <!--<span class="first" {% if settings.enable_multilang %}data-translate="cart.general.shopping_cart"{% endif %}>{{ 'cart.general.shopping_cart' | t }}</span>-->
+                <span class="cartCount">{{ cart.item_count }}</span>
+              </a>
+            </div>
+			
+
+                <style>
+                	.mobile-items a i {
+   							font-size: 25px;
+						}
+                </style>
+            <div class="mobile-items">
+             <!-- <a href="javascript:void(0)" class="userToggle">-->
+              <a href="tel:+919987752369">
+              <i class="fa fa-phone"></i>
+
+              <!--  {% include 'icon_user' %} -->
+                {% include 'icon-close' %}
+              </a>
+              <div class="mb-customer">
+                {% if customer %}
+                <ul>
+                  <li>
+                    <a id="customer_logout_link" href="/account/logout" {% if settings.enable_multilang %}data-translate="layout.customer.log_out"{% endif %}>
+                      {{ 'layout.customer.log_out' | t }}
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/account" {% if settings.enable_multilang %}data-translate="customer.account.title"{% endif %}>
+                      {{ 'customer.account.title' | t }}
+                    </a>
+                  </li>
+                  {% if settings.enable_wishlist %}
+                  <li class="wishlist"> 
+                    <a href="/pages/wish-list" {% if settings.enable_multilang %}data-translate="wishlist.general.my_wishlist"{% endif %}>
+                      {{ 'wishlist.general.my_wishlist' | t }}
+                    </a>
+                  </li>
+                  {% endif %}
+                </ul>
+                {% else %}
+                <form accept-charset="UTF-8" action="/account/login" method="post">
+                  <input name="form_type" type="hidden" value="customer_login" />
+                  <input name="utf8" type="hidden" value="✓" />
+                  <h3 {% if settings.enable_multilang %}data-translate="customer.login.login"{% endif %}>{{ 'customer.login.login' | t }}</h3>
+                  <div class="form-group">
+                    <input class="form-control" type="email" value="" name="customer[email]" placeholder="{{ 'customer.login.email' | t }}" >
+                    <input class="form-control" type="password" value="" placeholder="{{ 'customer.login.password' | t }}" name="customer[password]" >
+                  </div>
+                  <div class="action-btn">
+                    <input type="submit" class="btn login" {% if settings.enable_multilang %}data-translate="customer.login.login"{% endif %} value="{{ 'customer.login.login' | t }}">
+                    <a class="forgot-password" href="/account/login#recover" {% if settings.enable_multilang %}data-translate="customer.login.forgot_password"{% endif %}>{{ 'customer.login.forgot_password' | t }}</a>
+                    <a href="/account/register" class="btn register" {% if settings.enable_multilang %}data-translate="customer.login.registers"{% endif %}>{{  'customer.login.registers' | t }}</a>
+                  </div>
+                </form>
+                {% endif %}           
+              </div>
+            </div>
+
+            <div class="mobile-items mobile-cart">
+              <a href="javascript:void(0)" class="cartToggle" style="z-index : 9999999999999999;">
+                {% include 'icon_cart' %}
+                <span class="cartCount">{{ cart.item_count }}</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+	 {% include 'dropdown-cart' %}
+</header>
+{% schema %}
+ {
+    "name": "Header and Logo",
+    "settings": [
+      {
+        "type" : "header",
+        "content" : "Top Header"
+      },
+      {
+        "type" : "checkbox",
+        "id" : "dpl_hd_top",
+        "label" : "Display Top Header",
+        "default" : true
+      },
+      {
+        "type" : "textarea",
+        "id" : "hd_top_text",
+        "label" : "Header Top Text",
+        "default" : "Special Offers: Sale up to 60% Off. Use Code “SALE60”"
+      },
+      {
+        "type" : "text",
+        "id" : "hd_text_link",
+        "label" : "Header Top Link Text",
+        "default" : "Shop Now"
+      },
+      {
+        "type" : "url",
+        "id" : "hd_text_url",
+        "label" : "Header Top Link Text"
+      },
+      {
+        "type" : "color",
+        "id" : "hd_top_bg",
+        "label" : "Background color",
+        "default" : "#fce9e9"
+      },
+      {
+        "type" : "color",
+        "id" : "hd_top_color",
+        "label" : "Text Color",
+        "default" : "#a66260"
+      },
+      {
+        "type" : "header",
+        "content" : "Header bottom"
+      },      
+	  {
+        "type" : "color",
+        "id" : "hd_bt_bg",
+        "label" : "Background color",
+        "default" : "#fff"
+      },
+      {
+        "type" : "color",
+        "id" : "hd_bt_color",
+        "label" : "Text Color",
+        "default" : "#323232"
+      },
+      {
+        "type": "radio",
+        "id": "brand_type",
+        "label": "Use image or text for logo?",
+        "options": [
+          {
+            "value": "text",
+            "label": "Text"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "text"
+      },
+      {
+        "type": "text",
+        "id": "brand_text",
+        "label": "Logo text"
+      },
+      {
+       "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "250px x 80px recommended"
+      },
+      {
+        "type": "text",
+        "id": "min_height_logo_dk",
+        "label": "Min Height of Logo desktop",
+        "default": "39px" 
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_retina",
+        "label": "Use Logo Mobile",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_2x",
+        "label": "Logo Mobile"
+      },
+      {
+        "type": "text",
+        "id": "min_height_logo",
+        "label": "Min Height of Logo Mobile",
+        "default": "30" 
+      },
+      {
+        "type": "paragraph",
+        "content": "Maximum logo dimensions are 500px wide by 200px high.Your uploaded file will be resized to fit within those constraints."
+      },
+	  {
+		"type" : "header",
+		"content" : "Cart"
+	  },
+	  {
+        "type" : "color",
+        "id" : "hd_cart_bg",
+        "label" : "Background Cart count",
+        "default" : "#323232"
+      },
+      {
+        "type" : "color",
+        "id" : "hd_cart_color",
+        "label" : "Cart count text Color",
+        "default" : "#fff"
+      }
+    ]
+  }
+{% endschema %}
+
+{% if settings.enable_multilang %}
+<script>
+  translator.doTranslate(".header");
+</script>
+{% endif %}
+    
+    
+  

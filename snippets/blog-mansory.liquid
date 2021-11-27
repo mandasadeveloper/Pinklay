@@ -1,0 +1,285 @@
+<!--<div class="bg-breadcrumb">
+  <div class="container">
+  	{% include 'breadcrumb' %}
+  </div>
+</div>-->
+<style>
+     @font-face {
+    font-family: "Beauty";
+    src: url(https://cdn.shopify.com/s/files/1/0249/5099/7070/files/BeautyDemo.ttf?v=1586347605) format("truetype");
+}
+
+@media (min-width: 1200px) {
+.container.blogpages {
+    max-width: 1200px;
+}
+}
+ .mainsingleblog .row.innerblock {
+    margin: 0px;
+}
+@media (min-width: 760px) {  
+ .detailssection {
+    height: 100%;
+    position: relative 
+ }
+.innerdetails {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) }
+}
+  .bloghead {margin: 0px 10px;}
+  .bloghead h1 {font-family: Beauty;font-size: 80px; }
+  @media screen and (max-width: 760px) {
+    .bloghead h1 {font-family: Beauty;font-size: 4rem; }}
+  
+ .halo-blog-page .list-blog .wrapper-content .rte.article-excerpt .actions a { 
+  background: transparent;
+    color: #5ac4be;
+    border: none;
+    text-align: left;
+    padding: 0px;
+ }
+  
+</style>
+<div class="halo-blog-page">
+  <div class="container blogpages">
+   <!-- <div class="page-header">
+      {% if current_tags %}    
+      <h1>
+        <a href="{{ blog.url }}">
+          {% include 'multilang' with page_title %}
+        </a>
+        &raquo; {{ current_tags.first }}
+      </h1>
+      {% else %}    
+      <h1>
+        {% include 'multilang' with page_title %}
+      </h1>
+      {% endif %}
+    </div>-->
+    <div class="bloghead">
+    <h1 class="text-center" >
+       <!-- {% include 'multilang' with page_title %} -->
+      <span>pink chatter</span>
+      </h1>
+    </div>
+    <div class="mainsingleblog">
+      <div class="row innerblock">
+        	{%- for article in blog.articles limit: 1 -%}
+            <div class="col-sm-6 text-center">
+              <div class="detailssection">
+                <div class="innerdetails">
+                    <h2>{{ article.title }}</h2>              
+                    <p>{{ article.excerpt | strip_html }}</p>
+                    <a href="{{ article.url }}" aria-label="Read more: {{ article.title }}" class="btn btn-read-more">Read more</a>
+                </div>  
+              </div> 
+        	</div>
+            <div class="col-sm-6 text-center">
+        		<a href="{{ article.url }}">
+                {%- if article.image -%}
+                  {{ article | img_url: '700x700', scale: 2 | img_tag: '' }}
+                {%- endif -%}                
+             </a>
+        	</div>
+           	
+      {%- endfor -%}
+      
+      </div>
+      
+    </div>
+    
+    <style>
+      .tagfilters {
+    border-top: 1px solid #36454f;
+    border-bottom: 1px solid #36454f;    margin: 10px 0px;
+}
+    .tagfilters ul.site-nav {
+    width: 100%;
+    text-align: center;margin-bottom: 0px;
+}
+  .tagfilters .site-nav .item {
+    display: inline-block;
+    text-align: center;
+      }
+     .tagfilters .site-nav li.item a {
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    position: relative;
+        border-bottom: 0;
+    padding: 10px 16.5px;font-size: 13px;color: #36454f;    display: block;
+    line-height: 20px
+}
+      .aboutsection {
+    margin: 5px 0px 20px;
+}
+     .aboutsection .headingblock {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    border-top: 1px solid #36454f;
+    border-bottom: 1px solid #36454f;
+    padding: 10px 0px;
+}
+      .aboutsection .desc p {
+    margin-bottom: 0px;
+    padding: 20px 10px;
+}
+      .blogsubscribe {
+    padding: 20px;
+}
+      form#blognewsletter input[type="email"] {
+    font-size: 12px;
+    border: 1px solid #4b4b4b;
+    border-radius: 0;
+    box-shadow: none !important;
+    z-index: 3;
+    border-radius: 1px 0 0 1px;
+    line-height: 20px;
+    padding: 8px 15px 6px;
+    text-align: center;
+}
+      form#blognewsletter span.input-group-btn input {
+    color: #fff;
+    padding: 6px 15px 6px !important;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    background-color: #999;
+    border: 1px solid #999;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    z-index: 3;
+    line-height: 20px;    
+    border-radius: 0 1px 1px 0;
+}
+
+    </style>
+    
+    <div class="tagfilters">
+      <ul class="site-nav">
+        {% for link in linklists.blog-category.links %}
+        <li class="item"> <a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>  
+    </div>
+
+ <!--   {% if settings.display_sidebar_blog %}
+    <a class="halo-fillter sidebar-label" href="javascript:void(0)">
+      {% include 'icon_filter' %}
+      <span class="sidebar_more" {% if settings.enable_multilang %}data-translate="blogs.sidebar.sidebar_more_blog"{% endif %}>
+        {{ 'blogs.sidebar.sidebar_more_blog' | t }}
+      </span>
+    </a>
+    
+    <div class="close-filter hide">       
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    {% endif %}-->
+    
+    <div class="row flex-direction">
+      {% if settings.display_sidebar_blog %}
+     <!-- <aside class="sidebar blog-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'sidebar-blog' %}
+      </aside>-->
+      {% endif %}
+<!-- {% if settings.display_sidebar_blog %} col-lg-9{% else %} col-lg-12{% endif %} -->
+      <div class="block-row col-main col-12 col-md-12 col-lg-12">       
+        {% section 'blog-mansory' %}
+      </div>
+    </div>
+    <!-- section about block -->
+    <div class="aboutsection">
+    <div class="row innerblock">
+        <div class="col-sm-6">
+          <div class="headingblock"><span>ABOUT PINK CHATTER</span></div>
+          <div class="desc">
+            <p>Welcome to Pink Chatter! Your destination for inspiration, creativity, and all things beautiful. A lifestyle blog with stories that we not just like to tell, but also need to hear. Our hope is you’ll discover or learn something new, feel inspired, or simply entertained. Use our comments section to further the conversation – we’d love to hear from you.</p>
+          </div>
+        </div>
+        <div class="col-sm-6">          
+          <div class="headingblock"><span>REGISTER FOR UPDATES</span></div>  
+          <div class="blogsubscribe">
+          	    <div id="blognewsform" >
+                    <form id="blognewsletter" action="{{ settings.mailing_list_form_action }}" method="get" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+                      <input type="email" value="" {% if settings.enable_multilang %}data-translate="general.newsletter_form.newsletter_text" translate-item="placeholder"{%endif%}  placeholder="{{ 'general.newsletter_form.newsletter_text' | t }}" name="EMAIL" class="input-group-field form-control" aria-label="Email Address" style="border: 1px solid #36454f !important;">
+                      <span class="input-group-btn">
+
+                        <input type="submit" class="btn" value="Subscribe" name="subscribe" {% if settings.enable_multilang %}data-translate="general.newsletter_form.submit"{% endif %}>
+                      </span>
+                    </form>
+                </div>                    
+           		<div class="socialmediasection text-center" style="padding-top:10px;">  
+              <p>Connect, follow, and have a conversation</p>
+                <div class="footer-social">
+                  	<ul class="social-icons">
+                        <li class="facebook">
+                            <a href="https://www.facebook.com/pinklayIndia/" title="Facebook" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="instagram">
+                            <a href="https://www.instagram.com/pinklayindia/" title="Instagram" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="pinterest">
+                            <a href="https://in.pinterest.com/pinklay_india/?autologin=true" title="Pinterest" target="_blank"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="youtube">
+                            <a href="https://www.youtube.com/channel/UCP1gIxDFMQZkAhuRWpj0S0A" title="YouTube" target="_blank"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        </li>
+                	</ul>                  
+                </div>                
+           </div>   
+           </div> 
+        </div>
+    </div>
+    </div>
+    
+    <script>
+
+       jQuery(document).ready( function () {
+        var $form = $('form#blognewsletter');
+
+    if ( $form.length > 0 ) {
+        $('form#blognewsletter input[type="submit"]').bind('click', function ( event ) {
+            if ( event ) event.preventDefault();
+                   registersblogpage($form);
+          	console.log('none');
+        });
+    }
+});
+
+function registersblogpage($form) {
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        cache       : false,
+        dataType    : 'json',
+        contentType: "application/json; charset=utf-8",
+        error       : function(err) { 
+          $('.blogsubscribe #blognewsform #blognewsletter').prepend('<p class="text-center">We were unable to subscribe you. Please try again.</p>');
+           },
+        success : function(data) {
+            if (data.result != "success") {                            
+              $('.blogsubscribe #blognewsform #blognewsletter').html('<p class="text-center" style="color: #ec2b89; font-size: 12px;padding: 10px 0px;margin-bottom: 0px;width: 100%;">Thank you! You are already subscribed.</p>');               
+           		
+            } else {                
+               $('.blogsubscribe #blognewsform #blognewsletter').html('<p class="text-center" style="color: #ec2b89;font-size: 12px;padding: 10px 0px;margin-bottom: 0px;width: 100%;">Thank You! You have successfully subscribed.</p>');
+             
+            }
+          
+        }
+    });
+}
+</script>
+    
+</div>
+

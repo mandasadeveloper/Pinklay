@@ -1,0 +1,131 @@
+<section class="home-best-seller {{section.id}}" data-id="{{section.id}}" id="slideshow-{{section.id}}">
+  <div class="container">
+    {% if section.settings.product_list_title != blank %}
+    <div class="widget-title">
+      <h3>
+        {% include 'multilang' with section.settings.product_list_title %}
+      </h3>
+      <div class="des">
+        {% include 'multilang' with section.settings.des %} 
+        {% if section.settings.view_all != blank %}
+        <a class="view_all" href="{{ section.settings.link_view_all }}" title="{{section.settings.view_all}}">
+          {% include 'multilang' with section.settings.view_all %}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+    
+    <div class="widget-product">
+      <ul class="nav nav-tabs">
+        {% for block in section.blocks %}
+        <li>
+          <a href="#tab-product-{{ block.id }}" data-href="/collections/{{ block.settings.collection }}?view=json" class="{% if forloop.first %}tab-active active {% endif %}" id="tab-{{ block.id }}" data-id="{{ block.id }}" data-toggle="tab" role="tab" aria-selected="true">
+            {% include 'multilang' with block.settings.title %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="tab-content">
+        {% for block in section.blocks %}
+        <div class="tab-pane {% if forloop.first %}show active {% endif %}" role="tabpanel" data-id="#tab-product-{{block.id}}" id="tab-product-{{ block.id }}" data-row="{{block.settings.collection_results_per_row}}">
+          <div class="product-grids row">
+            <div class="loading col-md-12">Loading...please wait...</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Best Sellers",
+	"max_blocks" : 5,
+    "settings": [
+      {
+        "type": "text",
+        "id": "product_list_title",
+        "label": "Title",
+        "default": "Best Sellers"
+      },
+  	  {
+  		"type" : "textarea",
+  	    "id" : "des",
+  		"label" : "description",
+  	    "default" :"Phasellus lorem malesuada de pulvinar commodo"
+  	  },
+  	  {
+  		"type" : "text",
+  		"id" : "view_all",
+  		"label" : "Text view all",
+  		"default" : "View all"
+  	  },
+  	  {
+  		"type" : "url",
+  		"label" : "Link view all",
+  		"id" : "link_view_all"
+  	  },
+	  {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+      },
+      {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+      }
+	],
+    "blocks" : [
+        {
+            "type" : "ProductTabs",
+            "name" : "Product Tabs",
+            "settings":[
+				{
+					"type" : "text",
+					"id" : "title",
+					"label" : "Title Tabs",
+					"default" : "Men's"
+				},
+        		{
+                    "type" : "collection",
+                    "id" : "collection",
+                    "label" : "Collection to use"
+                }, 
+                {
+                    "type": "range",
+                    "id": "collection_results_per_row",
+                    "label": "Products per row",
+                    "default": 3, 
+                    "min": 3,
+                    "max": 5,
+                    "step": 1
+                }
+			]
+        }
+    ],
+	"presets": [
+      {
+        "name": "Best Sellers",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  #slideshow-{{section.id}}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+</style>

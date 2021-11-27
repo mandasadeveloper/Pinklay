@@ -1,0 +1,846 @@
+<style>
+  @media screen and (min-width: 768px) {
+  .hidedesktop {
+    display: none !important;
+    text-align: center;
+}
+  }
+ @media screen and (max-width: 760px) {
+.hidemob {
+    display: none !important;
+}
+ }
+  
+  @media (min-width:760px)
+  {
+    .row.mob {
+      display:none !important;
+}
+    
+  }
+  
+  @media (max-width:768px)
+  {
+   .newdesk
+    {
+      display:none !important;
+    }
+  }
+
+</style>
+<!-- 
+{% if template contains "product" %} 
+<div class="test">
+<div class="pro-custom-block">
+  <div class="policies" style="padding-left: 10px;">
+    <div class="row">
+      
+            
+      <div class="item col-12 col-sm-6 col-md-6 col-lg-3">
+      	<div class="policy-item">
+          
+          <span class="policy-icon">
+            <i class="fa fa-truck" aria-hidden="true"></i>
+          </span>
+          
+
+          <div class="policy-text">
+            
+<span>Free Shipping Above Rs.1999</span>
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="item col-12 col-sm-6 col-md-6 col-lg-3">
+      	<div class="policy-item">
+          
+          <span class="policy-icon">
+            <i class="fa fa-money" aria-hidden="true"></i>
+          </span>
+          
+
+          <div class="policy-text">
+            
+<span>COD Available</span>
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="item col-12 col-sm-6 col-md-6 col-lg-3">
+      	<div class="policy-item">
+          
+          <span class="policy-icon">
+            <i class="fa fa-repeat" aria-hidden="true"></i>
+          </span>
+          
+
+          <div class="policy-text">
+            
+<span>Hassle-Free Return</span>
+
+          </div>
+        </div>
+      </div>
+      
+      <div class="item col-12 col-sm-6 col-md-6 col-lg-3">
+      	<div class="policy-item">
+          
+          <span class="policy-icon">
+            <i class="fa fa-lock"></i>
+          </span>
+          
+
+          <div class="policy-text">
+            
+<span>Secure Shopping Guarantee</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cart-image">
+    
+  </div>
+</div>
+</div>
+{% endif %} -->
+<footer class="footer footer-default">
+  <div class="footer-top" style="padding-bottom: 0px;">
+    <div class="container">
+      
+      <!--footer newsletter start-->
+      <div class="row mob" style="padding: 0px 0px 22px 0px;">
+        <div class="col-12 col-md-12 col-lg-12 column-footer " style="margin: 0px;">
+          		 {% if section.settings.footer_newsletter_enable %}
+         
+            <div class="footer-newsletter row">
+            
+              <!--{% include 'multilang' with  section.settings.des_newsletter %}-->
+            
+              <style>
+        .fornewsletter form {
+    top: -5px;
+}
+                @media (max-width:768px){.newsletter h3:after{content:"" !important;}
+                .newsletter h3{text-align:center !important}}
+      </style>
+              <div class="newsletter" style="width: 100%; text-align: center;    margin: 0px;">
+                <div class="row">
+                  <div class="col-sm-6">
+                <div class="des" style="display: inline-block;padding: 0px 20px;margin: 0px;line-height: 34px;">
+                  <h3 style="margin: 0px; line-height: 15px;text-decoration: underline;text-align: left;border: none;padding-right: 0px">Sign up for our newsletter</h3>
+                  <span>Be the first to know about our new collections, exclusive offers, and other perks!</span>
+                </div>
+                  </div>
+                  
+                  <div class="col-sm-6">
+                  <div class="block-content fornewsletter" style="display: inline-block;margin-top:10px;">
+                   
+                    <div id="footernewsform" >
+<form id="footernewsletter" action="{{ settings.mailing_list_form_action }}" method="get" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+  <input type="email" value="" {% if settings.enable_multilang %}data-translate="general.newsletter_form.newsletter_text" translate-item="placeholder"{%endif%}  placeholder="{{ 'general.newsletter_form.newsletter_text' | t }}" name="EMAIL" class="input-group-field form-control" aria-label="Email Address" style="border: 1px solid #36454f !important;">
+  <span class="input-group-btn">
+    
+    <input type="submit" class="btn" value="Subscribe" name="subscribe" {% if settings.enable_multilang %}data-translate="general.newsletter_form.submit"{% endif %}>
+  </span>
+</form>
+</div>
+                  </div>
+                  </div>
+                  
+                </div>
+                
+                </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <!--footer newsletter end-->
+      
+      
+      <div class="row">
+        <div class="col-6 col-md-3 col-lg-2 column-footer">
+          
+          <h3>
+            Customer Service
+          </h3>
+          <ul>
+            <li style="padding-bottom:4px;">
+              <dl>
+            	<dt>
+             		 <i class="fa fa-phone-square" aria-hidden="true"></i>
+           		 </dt>
+              	<dd>
+                  {% include 'multilang' with section.settings.ft_phone %}
+                </dd>
+              </dl>
+            </li>
+            <li>
+              <dl>
+            	<dt>
+             	 <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            	</dt>
+              <dd>
+                {% include 'multilang' with section.settings.ft_mail %}
+              </dd>
+              </dl> 
+            </li>
+          </ul>
+       <!--   <dl>
+            <dt>
+              <i class="fa fa-phone-square" aria-hidden="true"></i>
+            </dt>
+            <dd>
+              {% include 'multilang' with section.settings.ft_phone %}
+            </dd>
+          </dl>
+
+          <dl>
+            <dt>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+            </dt>
+            <dd>
+              {% include 'multilang' with section.settings.ft_mail %}
+            </dd>
+          </dl> -->
+          <!--<div class="socialmedia hidemob">
+            
+          {% if section.settings.footer_social_enable %}
+          <div class="footer-social">
+            {% include 'social-media' %}
+          </div>
+          {% endif %}
+          </div>-->
+          <!--newsletter start-->
+     <!--     <div class=" column-footer no-dropdown news1">     
+          {% if section.settings.footer_newsletter_enable %}
+         
+            <div class="footer-newsletter">
+            
+            <div class="des">
+              {% include 'multilang' with  section.settings.des_newsletter %}
+            </div>
+            {% include 'homepage-block-newsletter' %}
+          </div>
+          {% endif %}
+          
+        </div> -->
+          <!--newsletter end-->
+        </div>
+        
+        <div class="col-6 col-md-3 col-lg-2 column-footer">
+          {% if section.settings.footer_title_2 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_2 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_2 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        
+        <div class="col-6 col-md-3 col-lg-2 column-footer">
+          {% if section.settings.footer_title_3 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_3 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_3 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        
+        <!--new newsletter area start-->
+        <div class="col-6 col-md-3 col-lg-2 column-footer">
+         <!-- {% if section.settings.footer_title_4 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_4 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_4 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>vcv
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %} -->
+          
+          <!--footer newsletter start-->
+      <div class="row newdesk" style="padding: 7px 0px 40px 0px;">
+        <div class="col-12 col-md-12 col-lg-12 column-footer " style="margin: 0px;">
+          		 {% if section.settings.footer_newsletter_enable %}
+         
+            <div class="footer-newsletter row">
+            
+          <!--  <div class="des ">
+              {% include 'multilang' with  section.settings.des_newsletter %}
+            </div> -->
+              <style>
+        .fornewsletter form {
+    top: -5px;
+}
+                @media (max-width:768px)
+                {
+                  .newsletter h3:after
+                  {
+                    content:"" !important;
+                  }
+                .newsletter h3
+                  {
+                    text-align:center !important
+                  }
+                  .newsletter 
+                  {
+                   text-align: center !important;
+                  }
+                  
+                  .des {
+    line-height: 23px !important;
+}
+                }
+                
+                .footer .footer-bottom .footer_address p {
+    margin: 0 !important;
+}
+                .footer .footer-top .column-footer {
+    margin-bottom: 0px;
+}
+      </style>
+              <div class="newsletter" style="width: 100%; text-align: left;    margin: 0px;">
+                <div class="row">
+                  <div class="col-sm-12">
+                <div class="des" style="display: inline-block;padding: 0px 0px;margin: 0px;">
+                  <h3 style="margin-bottom: 10px; line-height: 15.5px;text-align: left;border: none;"><span style="position: relative;bottom: 3px;">Sign up for our newsletter</span></h3>
+                  <span>Be the first to know about our new collections, exclusive offers, and other perks!</span>
+                </div>
+                  </div>
+                  </div>
+                  
+                <div class="row">
+                  <div class="col-sm-12">
+                  <div class="block-content fornewsletter" style="display: inline-block;margin-top:10px;">
+                   
+                    <div id="footernewsform" >
+<form id="footernewsletter" action="{{ settings.mailing_list_form_action }}" method="get" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+  <input type="email" value="" {% if settings.enable_multilang %}data-translate="general.newsletter_form.newsletter_text" translate-item="placeholder"{%endif%}  placeholder="{{ 'general.newsletter_form.newsletter_text' | t }}" name="EMAIL" class="input-group-field form-control" aria-label="Email Address" style="border: 1px solid #36454f !important;">
+  <span class="input-group-btn">
+    
+    <input type="submit" class="btn" value="Subscribe" name="subscribe" {% if settings.enable_multilang %}data-translate="general.newsletter_form.submit"{% endif %}>
+  </span>
+</form>
+</div>
+                  </div>
+                  </div>
+                  </div>
+                  
+                </div>
+                
+              <!--social icon start-->
+              <div class="socialmedia hidemob" style="padding-top:10px;">
+                {% if section.settings.footer_social_enable %}
+                <div class="footer-social">
+                  {% include 'social-media' %}
+                </div>
+                {% endif %}
+              </div>
+              <!--social icon end-->
+              
+                </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <!--footer newsletter end-->
+          
+          
+        </div>
+        
+        <!--new newsletter area start-->
+        
+        <!--<div class="col-12 col-md-6 offset-md-3 col-lg-3 offset-lg-0 column-footer no-dropdown news1">     
+          {% if section.settings.footer_newsletter_enable %}
+          <div class="footer-newsletter">
+            <h3>
+              {% include 'multilang' with section.settings.footer_newsletter_text %}
+            </h3>
+            <div class="des">
+              {% include 'multilang' with  section.settings.des_newsletter %}
+            </div>
+            {% include 'homepage-block-newsletter' %}
+          </div>
+          {% endif %}
+          
+          {% if section.settings.footer_social_enable %}
+          <div class="footer-social">
+            {% include 'social-media' %}
+          </div>
+          {% endif %}
+        </div> -->       
+      </div>
+      <div class="row">
+        <div class="col-6 col-md-3 col-lg-2 column-footer hidedesktop" style="margin-bottom:5px;">        
+          {% if section.settings.footer_social_enable %}
+          <div class="footer-social" style="text-align: center;">
+            {% include 'social-media' %}
+          </div>
+          {% endif %}
+        </div>
+      </div><!-- mobile social icon -->
+      
+     
+    </div>
+  
+  
+  {% if section.settings.display_ft_bt %}
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="footer_address column-left col-12 col-md-12 col-lg-7 col-xl-6">
+          {% include'multilang' with section.settings.ft_address %}
+        </div>
+        <div class="footer_address column-right col-12 col-md-12 col-lg-5 col-xl-6">
+          <ul>
+            {% if section.settings.dpl_ico_1 %}
+            <li>
+              <a href="javascript:void(0)">
+                {% include 'payment-visa'%}
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_2 %}
+            <li>
+              <a href="javascript:void(0)">
+                {% include 'payment-amex'%}
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_3 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_4 %}
+            <li>
+              <a href="javascript:void(0)">
+                {% include 'payment-paypal'%}
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_5 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-google-wallet" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_6 %}
+            <li>
+              <a href="javascript:void(0)">
+                {% include 'payment-apple'%}
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_7 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-cc-discover" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_8 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_9 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-cc-diners-club" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_10 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_11 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}
+            
+            {% if section.settings.dpl_ico_12 %}
+            <li>
+              <a href="javascript:void(0)">
+                <i class="fa fa-cc-jcb" aria-hidden="true"></i>
+              </a>
+            </li>
+            {% endif %}            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+		{
+			"type" : "color",
+			"id" : "bg_ft",
+			"label" : "Background Footer",
+			"default" : "#fafafa"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_text",
+			"label" : "Color Text",
+			"default" : "#141414"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_header",
+			"label" : "Color Header",
+			"default" : "#000"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_border",
+			"label" : "Footer Border",
+			"default" : "#e5e5e5"
+		},
+		{
+			"type" : "header",
+			"content" : "Footer Column"
+		},
+        {
+          "type": "image_picker",
+          "id": "footer_logo",
+          "label": "Logo Footer"
+        },
+		{
+        "type": "text",
+        "id": "min_height_logo_ft",
+        "label": "Min Height of Logo",
+        "default": "30px" 
+      	},
+        {
+			"type" : "textarea",
+            "id" : "ft_adr_1",
+            "label" : "Address",
+            "default" : "9087S Divamus Faucibus Str., City name, Loremous, CA 90896, United States"
+		},
+		{
+			"type" : "text",
+			"id" : "ft_phone",
+			"label" : "Phone",
+			"default" : "Call: 1-800-000-8910"
+		},
+		{
+			"type" : "text",
+			"id" : "ft_mail",
+			"label" : "Mail",
+			"default" : "support@halothemes.com"
+		},
+        {
+          "type": "text",
+          "id": "footer_title_2",
+          "label": "Footer 2 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_2",
+          "label": "Footer Column 2"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_3",
+          "label": "Footer 3 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_3",
+          "label": "Footer Column 3"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_4",
+          "label": "Footer 4 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_4",
+          "label": "Footer Column 4"
+        },
+        {
+          "type": "header",
+          "content": "Newsletter"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_newsletter_enable",
+          "label": "Show newsletter signup?",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "footer_newsletter_text",
+          "label": "Footer Newsletter Text"
+        },
+        {
+          "type" : "richtext",
+          "id" : "des_newsletter",
+          "label" : "Description newsletter"
+        },
+		{
+			"type" : "color",
+			"id" : "ft_input",
+			"label" : "Input Button Background",
+			"default" : "#4b4b4b"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_input_br",
+			"label" : "Input Button Border Color",
+			"default" : "#4b4b4b"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_input_text",
+			"label" : "Input Button Text Color",
+			"default" : "#d6d6d6"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_submit",
+			"label" : "Submit Button Background",
+			"default" : "#999"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_submit_text",
+			"label" : "Submit Button Text Color",
+			"default" : "#fff"
+		},
+        {
+          "type": "header",
+          "content": "Social"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_social_enable",
+          "label": "Show social media links?",
+          "default": false
+        },
+        {
+          "type" : "header",
+          "content" : "Footer Bottom"
+        },
+        {
+          "type" : "checkbox",
+          "id" : "display_ft_bt",
+          "label" : "Display Footer Bottom",
+          "default" : true
+        },
+        {
+          "type" : "color",
+          "id" : "bg_ft_bt",
+          "label" : "Background Footer Bottom",
+          "default" : "#272627"
+        },
+        {
+          "type" : "color",
+          "id" : "color_ft_bt",
+          "label" : "Color",
+          "default" : "#ccccc6"
+        },
+        {
+          "type" : "richtext",
+          "id" : "ft_address",
+          "label" : "Footer Address"
+        },
+		{
+           "type" : "header",
+           "content" : "DISPLAY PAYMENT ICONS FOR"
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_1",
+			"label" : "Display Icon Visa",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_2",
+			"label" : "Display Icon Amex",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_3",
+			"label" : "Display Icon Mastercard",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_4",
+			"label" : "Display Icon Paypal",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_5",
+			"label" : "Display Icon Google Wallet",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_6",
+			"label" : "Display Icon Apple pay",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_7",
+			"label" : "Display Icon Discover",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_8",
+			"label" : "Display Icon Credit Card",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_9",
+			"label" : "Display Icon Diners club",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_10",
+			"label" : "Display Icon Credit card alt",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_11",
+			"label" : "Display Icon Stripe",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_12",
+			"label" : "Display Icon JCB",
+			"default" : true
+		}
+	]
+  }
+{% endschema %}
+
+<style>
+  .footer-top .logo-ft img{
+    max-height:{{section.settings.min_height_logo_ft}}
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-btn .btn{
+  	background-color: {{section.settings.ft_submit }};
+    border: 1px solid {{section.settings.ft_submit }};
+    color:{{section.settings.ft_submit_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field{
+    background: {{section.settings.ft_input }};
+    border:1px solid {{section.settings.ft_input_br }};
+    color:{{section.settings.ft_input_text}};
+  }
+  
+  .footer .footer-top .column-footer .newsletter .input-group-field::-webkit-input-placeholder{
+  	color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-moz-placeholder{
+    color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-ms-input-placeholder{
+  color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-moz-placeholder{
+  color:{{section.settings.ft_input_text}};
+  }
+  .footer{
+    background:{{section.settings.bg_ft }};
+    color: {{section.settings.color_ft_text}};
+    border-top: 1px solid #fff;
+  }
+
+  .footer .footer-top .column-footer ul li a{
+    color: {{section.settings.color_ft_bt}};
+  }
+
+  .footer-bottom{
+    background:{{section.settings.bg_ft_bt }};
+    color: {{section.settings.color_ft_bt}};
+    border-top: 1px solid {{section.settings.ft_border}};
+  }
+  .footer-bottom a{
+    color: {{section.settings.color_ft_bt}};
+  }
+  .footer h3{
+    color: {{section.settings.color_ft_header}}
+  }
+  .footer .footer-top .column-footer dl dd a{
+    color: {{section.settings.color_ft_bt}};
+  }
+</style>

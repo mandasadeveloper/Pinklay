@@ -1,0 +1,65 @@
+
+{% if settings.layout_product == 'default' %}
+	{% include 'product-default' %}
+{% elsif settings.layout_product == 'pr_group' %}
+	{% include 'grouped-product-template' %}	
+{% elsif settings.layout_product == 'pr_without_gallery_1' %}
+	{% include 'product-gallery-1-template' %}
+{% elsif settings.layout_product == 'pr_without_gallery_2' %}
+	{% include 'product-gallery-2-template' %}
+{% elsif settings.layout_product == 'vertical_tab_fullwidth' %}	
+	{% include 'porudct-vertical-tab-fullwidth' %}
+{% endif %}
+
+<style>
+  button.slick-arrow {
+    display: none !important;
+}
+</style>
+
+{% if product.tags contains 'test-size-guide' %}
+<style>
+.esc-size-guide--cell, .esc-size-guide--heading {
+    padding: 0px 0px !important;
+    border: 0px solid #ddd !important;
+}
+  
+.esc-size-guide--popup .modal_container .modal_content {
+    padding: 5px !important;
+} 
+  
+.esc-size-guide--popup .modal_container {
+  overflow: hidden !important;
+}  
+  
+</style>
+{% endif %}
+
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>

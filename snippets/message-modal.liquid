@@ -1,0 +1,28 @@
+<div class="loading-modal modal" >
+  <i class="fa fa-circle-o-notch fa-spin"></i>
+</div>
+
+<div class="lookbook-modal">
+  <a href="javascript:void(0)" class="close-modal">{% include 'icon-close' %}</a>
+  <div class="lookbook-content"></div>
+</div>
+
+<div class="ajax-error-modal modal">
+  <div class="modal-inner alert alert-danger">
+    <div class="ajax-error-title" {% if settings.enable_multilang %}data-translate="cart.ajax_cart.error"{% endif %}>{{ 'cart.ajax_cart.error' | t }}</div>
+    <div class="ajax-error-message"></div>
+  </div>
+</div>
+
+<div class="ajax-success-modal modal">
+
+  <div class="overlay"></div>
+  <div class="ajax-container">
+    <a href="javascript:void(0)" class="close-modal">{% include 'icon-close' %}</a>
+    <div class="content">
+      <div class="cart-page"></div>
+      <div class="ajax-load-content"></div>     
+    </div>
+  </div>
+
+</div>

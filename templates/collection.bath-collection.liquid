@@ -1,0 +1,106 @@
+<script>
+  $(document).ready(function() {
+/*$('.widget.sidebar-custom.sidebar_toggle.sidebar-tag').each(function() {
+	if ($(this).next().find('.widget-content ul li').length == 0) {
+			console.log('hhlo');
+      $(this).next().find('widget-header').css('display','none');
+    } else	 {
+	console.log('lk');
+    }
+
+});
+    $('.widget.sidebar-custom.sidebar_toggle.sidebar-tag.size ').each(function() {
+	if ($(this).next().find('.widget-content ul li').length == 0) {
+			console.log('hhlo');
+      $(this).next().find('widget-header').css('display','none');
+    } else	 {
+	console.log('lk');
+    }
+
+}); */
+    if ($('#block-1534303018864 .widget-content ul li').length == 0) {     
+      	$('#block-1534303018864 .widget-header').css('display','none');
+    } 
+    if ($('#block-1534303001685 .widget-content ul li').length == 0) {
+        $('#block-1534303001685 .widget-header').css('display','none');
+    } 
+    
+    });
+
+</script>
+{% if settings.layout_collections_page == "default" %} 
+{% include 'bath-collection-default' %}
+
+{% elsif settings.layout_collections_page == "mansory" %}
+{% include 'collection-mansory' %} 
+
+{% elsif settings.layout_collections_page == "style_banner" %}
+{% include 'collection-style-banner' %}
+
+{% elsif settings.layout_collections_page == "style_right_sidebar" %} 
+{% include 'collection-default' %}
+
+{% elsif settings.layout_collections_page == "style_without" %} 
+{% include 'collection-default' %}
+
+{% elsif settings.layout_collections_page == "full" %} 
+{% include 'collection-default' %}
+
+{% elsif settings.layout_collections_page == "style_express_order" %} 
+{% include 'collection-express-order' %}
+{% endif %}
+
+<style>
+  header.page-header {
+    display: none;
+}
+  div#shopify-section-navigation {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6 !important;
+    top: 0px !important;
+} 
+  ul.product-grid-options-size {
+    display: none;
+}
+  @media (max-width: 767px) {
+.template-collection .reverse-mb {
+  margin-bottom: 10px;
+}
+    
+  }
+  
+  .product-item .product-bottom {
+     min-height: 59px !important;
+}
+  @media(min-width :1025px){
+  .Refinebytool {
+    display: none !important;
+}
+  }
+  @media(max-width :768px)
+  {
+    .reverse-mb {
+    display: none !important;
+}
+  
+  } 
+  
+   .product-item .product-label .label {
+    display: block;
+  }
+    .product-label {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    right: 10px !important;
+    text-align: -webkit-right !important;
+}
+   .product-label.customtags {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    left: 10px !important;
+      right: unset !important;    text-align: -webkit-left !important;
+}
+</style> 
+

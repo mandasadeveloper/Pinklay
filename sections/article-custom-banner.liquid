@@ -1,0 +1,23 @@
+<div class="bannerimageblogs">
+      
+    <img src="{{section.settings.img | img_url:'master'}}" >
+    
+    </div>
+{% schema %}
+  {
+    "name": "Top banner",
+    "settings": [
+	{
+            "type": "image_picker",
+          	"id": "img",
+          	"label": "Image Banner"			
+    }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

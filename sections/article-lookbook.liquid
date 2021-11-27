@@ -1,0 +1,230 @@
+<div class="article-lookbook">
+  {% if section.settings.title != blank %}
+  <div class="widget-title">
+    <h3>
+      {% include 'multilang' with section.settings.title %}
+    </h3>
+  </div>
+  {% endif %}
+  
+  <div class="widget-content row">
+  	{% for block in section.blocks %}
+    <div class="col-6 col-sm-6 col-md-4 col-xl-4">
+      {% if block.settings.dpl_lookboob_slide %}
+      <div class="item" id="lb-item{{ block.id }}"> 
+        <div class="lazy-images-contain" >
+          {% if block.settings.lb_image_slide != blank %}
+          {%- assign img_url = block.settings.lb_image_slide | img_url: '300x' -%}
+          <img src="{{block.settings.lb_image_slide | img_url: '300x'}}" alt=""
+               class="lazyload"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-sizes="auto">
+          {% else %}
+          {% capture current %}{% cycle 2 %}{% endcapture %}
+          {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}                 
+          {% endif %}
+
+          {% if block.settings.lb_product_1 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_1 }}%; left:{{ block.settings.left_position_1 }}%;">
+            <span class="glyphicon pr-lb item_1_{{ block.id }}" data-handle="{{ block.settings.lb_product_1 }}">+</span>
+          </div>
+          {% endif %}
+          
+          {% if block.settings.lb_product_2 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_2 }}%; left:{{ block.settings.left_position_2 }}%;">
+            <span class="glyphicon pr-lb item_2_{{ block.id }}" data-handle="{{ block.settings.lb_product_2 }}">+</span>
+          </div>
+          {% endif %}
+          
+          <style type="text/css">
+            #lb-item{{ block.id }} .item_1_{{ block.id }}{
+              color:{{ block.settings.dots_color_1 }};
+              background: {{ block.settings.dots_bg_color_1 }};
+            }
+            #lb-item{{ block.id }} .item_1_{{ block.id }}:before {
+              color: {{ block.settings.dots_bg_color_1 }};
+            } 
+            #lb-item{{ block.id }} .item_2_{{ block.id }}{
+              color:{{ block.settings.dots_color_2 }};
+              background: {{ block.settings.dots_bg_color_2 }};
+            }
+            #lb-item{{ block.id }} .item_2_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_2 }};
+            }
+            
+          </style>
+        </div>	
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>  
+</div>
+
+{% if section.settings.quote_title != blank or section.settings.quote_title_2 != blank or section.settings.quote_des != blank or section.settings.quote_des_2 != blank %}
+<div class="quote-detail rte">
+  {% if section.settings.quote_title != blank %}
+  <h5>
+  	{% include 'multilang' with section.settings.quote_title %}
+  </h5>
+  {% endif %}
+  
+  {% if section.settings.quote_des != blank %}
+  <blockquote>
+  	{% include 'multilang' with section.settings.quote_des %}
+  </blockquote>
+  {% endif %}
+  
+  {% if section.settings.quote_title_2 != blank %}
+  <h5>
+  	{% include 'multilang' with section.settings.quote_title_2 %}
+  </h5>
+  {% endif %}
+  
+  {% if section.settings.quote_des_2 != blank %}
+  {% if settings.enable_multilang %}
+  <div class="lang1">
+    {{ section.settings.quote_des_2 | split: '|' | first | strip }}
+  </div>
+  <div class="lang2">
+    {{ section.settings.quote_des_2  | split: '|' | last | strip }}
+  </div>
+  {% else %}
+  <div>
+    {{ section.settings.quote_des_2  | split: '|' | first }}
+  </div>
+  {% endif %}
+  {% endif %}
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Article Lookbook",
+    "settings": [      
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "LooBook Gallery"
+      },
+      {
+		"type": "header",
+        "content": "Quote Detail"
+      },
+	  {
+        "type": "text",
+        "id": "quote_title",
+        "label": "Quote Title 1"
+      },
+	  {
+        "type": "textarea",
+        "id": "quote_des",
+        "label": "Quote Description 1"
+      },
+	  {
+        "type": "text",
+        "id": "quote_title_2",
+        "label": "Quote Title 2"
+      },
+	  {
+        "type": "textarea",
+        "id": "quote_des_2",
+        "label": "Quote Description 2"
+      }  	    	  
+	],
+	
+	"blocks" : [
+      {
+        "type": "lookbook",
+        "name": "Article Lookbook",
+        "settings": [
+          {
+            "type" : "checkbox",
+            "id" : "dpl_lookboob_slide",
+            "label" : "Enable",
+            "default" : true
+          },
+          {
+            "type": "image_picker",
+            "id": "lb_image_slide",
+            "label": "Select Image"
+          },
+          {
+            "type" : "header",
+            "content" : "Product 1"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_1",
+            "label" : "Select Product 1"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_1",
+            "label" : "Top Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_1",
+            "label" : "Left Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_1",
+            "label" : "Color 1",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_1",
+            "label" : "Dots background color 1",
+            "default" : "#323232",
+            "info" : "======================="
+          },
+		  {
+            "type" : "header",
+            "content" : "Product 2"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_2",
+            "label" : "Select Product 2"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_2",
+            "label" : "Top Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_2",
+            "label" : "Left Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_2",
+            "label" : "Color 2",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_2",
+            "label" : "Dots background color 2",
+            "default" : "#323232",
+            "info" : "======================="
+          }
+        ]
+      }
+	]
+  }
+{% endschema %}

@@ -1,0 +1,361 @@
+{% if section.settings.display_recently_viewed_products %} 
+<style>
+.recently-viewed-products .bd-full .widget-title h3:before, .widget-title h3:after {
+    background-color: #5ac4be !important;
+    }
+   .recently-viewed-products .widget-title {
+    color: #5ac4be !important;
+         
+    }
+  @media (min-width: 768px ) {
+      .recently-viewed-products .widget-title {
+        margin-bottom: 20px !important;
+      } 
+      
+    }
+ .recently-viewed-products .widget-title h3:before {
+       right: 100%;
+       margin-right: 25px;
+    }
+      
+    .recently-viewed-products .widget-title h3:after{
+      
+      left: 100%;
+      margin-left: 25px;
+      
+    }
+  .recently-viewed-products .widget-title h3 {
+    color: #5ac4be;    
+}
+  .recently-viewed-products .widget-title h3 span::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: #5ac4be;
+    top: 50%;
+    width: 600px;
+    max-width: 183px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 100%;
+    margin-right: 25px;
+}
+  
+   .recently-viewed-products .widget-title h3 span::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: #5ac4be;
+    top: 50%;
+    width: 600px;
+    max-width: 183px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 100%;
+    margin-left: 25px;
+}
+  
+</style>
+</br>
+<!-- <div class="images-two">
+            			<img src="${Shopify.Products.resizeImage(images[1], "large")}" />
+					 </div>-->
+<section class="recently-viewed-products{% if settings.layout_collections_page == 'full' %} bd-full{% endif %}">
+  <div class="{% if section.settings.layout == 'full' or settings.layout_product == 'vertical_tab_fullwidth' or product.template_suffix == "vertical-tab-fullwidth"  %}bd-full{% endif %}">
+    <div class="container">
+      {% if section.settings.recently_viewed_products_title != '' %}
+      <div class="widget-title">   
+        <h3>
+          {% include 'multilang' with section.settings.recently_viewed_products_title %}
+        </h3>
+      </div>
+      {% endif %}
+
+      <div class="products-grid row five-items" id="recently-viewed-products-grid"></div>
+    </div>
+  </div>
+</section>
+
+{% if settings.enable_multilang %}
+  <script>
+    function splitTitle(title) {
+      if (title.indexOf("|") < 0) 
+        return title;
+        var titleArr = title.split("|")[0];
+        return titleArr;
+    }
+
+    function splitTitle2(title) {
+      if (title.indexOf("|") < 0) 
+        return title;
+      	var titleArr = title.split("|")[1];
+      	return titleArr;
+    }
+  </script>
+{% else %}
+  <script>
+    function splitTitle(title) {
+      if (title.indexOf("|") < 0) 
+        return title;
+      	var titleArr = title.split("|")[0];
+      	return titleArr;
+    }
+  </script>
+{% endif %}
+
+  {% raw %}
+  <script id="recently-viewed-product-grid-template" type="text/x-jquery-tmpl">
+  {% endraw %}
+
+  <div class="grid-item col-6 col-md-4 col-lg-3">
+    {% if settings.box_shadow_pro_grid %}
+    <div class="outner-boxshadow"></div>
+    {% endif %}
+    <div class="inner product-item {% raw %}{{if !available}} sold-out {{/if}}{{if compare_at_price_min > price_min}}on-sale{{/if}}" id="product-${id}">
+    	<div class="inner-top">
+			<div class="product-top">
+            	<div class="product-image">
+    				<a href="${url}" class="product-grid-image">
+                      <img src="${Shopify.Products.resizeImage(featured_image, "large")}" alt="${featured_image.alt}"/>
+                    
+    				</a>                    
+
+    				{% endraw %}
+                    {% if settings.enable_quick_view %}
+                    {% raw %}
+                    <div class="quickview-button">
+                      <a href="javascript:void(0)" id="${handle}">
+                        <span {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.quick_view"{% endif %}>
+                        	{{ 'products.product.quick_view' | t }}{% raw %}
+    					</span>                        
+    				  </a>
+                    </div>
+                    {% endraw %}
+                    {% endif %}
+                    {% raw %}
+
+                   <div class="action"> 
+                      <form action="/cart/add" method="post" class="variants" data-id="product-actions-${id}" enctype="multipart/form-data" data-vendor="${vendor}">    
+                          {{if !available}}
+                              <button class="btn add-to-cart-btn" type="submit" disabled="disabled" {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.unavailable"{% endif %}>
+                                  {{ 'products.product.unavailable' | t }}{% raw %}
+                              </button>
+                          {{else variants.length > 1 }}
+                              <a class="btn" href='${url}' title='${title}' {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.select_options"{% endif %}>
+                              {{ 'products.product.select_options' | t }}{% raw %}
+                              </a>
+                          {{else}}
+                            <input type="hidden" name="id" value="${variants[0].id}" />      
+                            <button class="btn add-to-cart-btn" type="submit" {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %}>
+                            {{ 'products.product.add_to_cart' | t }}{% raw %}
+                            </button>
+                          {{/if}}
+                      </form>
+                  </div>
+                  
+                    
+    			</div>
+                
+                <div class="product-label">
+                
+                  {{if compare_at_price_min > price_min}} 
+                    <strong class="label label-sale">
+                      <span {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.sale"{% endif %}>
+                          {{ 'products.product.sale' | t }}{% raw %}
+                      </span>
+    				</strong>
+                    </br>
+                  {{/if}}
+                  
+                  {{if !available}}
+                    <strong class="label sold-out">
+                      <span {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>
+                      	{{ 'products.product.sold_out' | t }}{% raw %}
+                      </span>
+                    </strong>
+                    </br>
+                  {{/if}}
+                  
+                  ${( tagNew = false ),''}
+					{{if tags}}
+                      {{each tags}} 
+                          {{if $value =="new" || $value =="New"}}
+                              ${( tagNew = true ),''}
+                          {{/if}}
+                       {{/each}}
+                   {{/if}}
+                   
+                   {{if tagNew}}
+                    <strong class="label label-new">
+                      <span {% endraw %}{% if settings.enable_multilang %}data-translate="products.product.new"{% endif %}>
+                      	{{ 'products.product.new' | t }}{% raw %}
+                      </span>
+                    </strong>
+                  {{/if}}
+                 
+                </div>
+
+                
+    		</div>
+            
+            <div class="product-bottom">
+            
+                 {% endraw %}
+                <div class="addwishlist">
+                  <a class="wishlist-btn" href="#" data-product-handle="${handle}" data-id="${id}">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+                  <span class="wishlist_text"{% if settings.enable_multilang %}data-translate="wishlist.general.add_to_wishlist"{% endif %}>
+    				{{ 'wishlist.general.add_to_wishlist' | t }}
+    		      </span>
+                  </a>
+                </div>
+                 {% raw %}
+                 
+            	{% endraw %}
+         
+            	{% if settings.show_vendor %}
+            	<div class="product-vendor">${vendor}</div>
+                {% endif %}	
+                {% raw %}
+                
+                <a class="product-title" href="${url}">
+                
+                {% endraw %}
+                {% if settings.enable_multilang %}
+                {% raw %}
+
+                <span class="lang1">${splitTitle(title)}</span>
+                <span class="lang2">${splitTitle2(title)}</span> 
+
+                {% endraw %}
+                {% else %}
+                {% raw %}
+                <span>${splitTitle(title)}</span>
+                
+                {% endraw %}
+                {% endif %}
+                {% raw %}
+                
+                </a>
+                
+                <div class="price-box">
+    				{{if compare_at_price_min > price_min}} 
+                      <p class="sale">
+                        <span class="old-price">
+                        	{{html Shopify.formatMoney(compare_at_price_min, window.money_format)}}
+    					</span>
+                        
+                        <span class="special-price">
+                        	{{if price_varies}}
+                            {% endraw %}{% include 'varies_from' %}{% raw %}
+                        	{{/if}}
+                            {{html Shopify.formatMoney(price_min, window.money_format)}}
+    					</span>
+                      </p>
+                      
+                    {{else}}
+                    
+                    <div class="regular-product">
+                    {{if price_varies}}                           
+                    	<div class="group-prices">
+                        	<span class="price-min">
+                            	{{html Shopify.formatMoney(price_min, window.money_format)}}
+                    		</span>
+                            <span class="padding">-</span>
+                            <span class="price-max">
+                            	{{html Shopify.formatMoney(price_max, window.money_format)}}	
+                    		</span>
+    					</div>
+
+					{{else}}
+
+						<span>
+                            {{html Shopify.formatMoney(price_min, window.money_format)}}
+                    	</span>
+                          
+                    {{/if}}
+                    </div>
+                    {{/if}}
+    			</div>
+    		</div>
+            
+      </div>
+    </div>
+  </div>
+
+</script>
+{% endraw %}
+
+
+
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Recently Viewed Products",
+	"class": "recently-viewed-products-bg",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display_recently_viewed_products",
+        "label": "Display Recently Viewed Products?",
+        "default": true
+      },
+      {
+        "type" : "radio",
+        "id" : "layout",
+        "label" : "Layouts",       
+        "options": [
+          {
+            "value": "default",
+            "label": "Default"
+          },
+          {
+            "value": "full",
+            "label": "Full Width"
+          }
+        ],
+          "default": "default"
+      },
+      {
+        "type": "text",
+        "id": "recently_viewed_products_title",
+        "label": "Title of recently viewed products",
+        "default": "Recently Viewed Products"
+      },
+      {
+        "type": "text",
+        "id": "number_of_recently_viewed_products",
+        "label": "Number of recently viewed products",
+        "default": "8"
+      }, 
+      {
+        "type": "select",
+        "id": "collection_results_per_row",
+        "label": "Products per row",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          }
+        ],
+        "default": "4"
+      }
+      
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,410 @@
+<!--<section class="two-block-image" id="section-{{ section.id }}">
+  <div class="{% if section.settings.layout == 'full' %}container-full {% else %}container {% endif %}">
+    <div class="row">
+      {% for block in section.blocks %}
+      <figure class="items-block col block_{{block.id}}">
+        <a href="{{ block.settings.link }}" title="{{ block.settings.title }}">
+
+          {% if block.settings.img != blank %}
+          <img src="{{ block.settings.img | img_url: '100x' }}" alt="{{ block.settings.title  | escape }}"
+               class="lazyload"
+               data-src="{{ block.settings.img | img_url : '1024x' }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ block.settings.img | img_url : '1024x' }}"
+               data-sizes="auto">
+          {% else %}
+          <span class="not_img">570 x 370px</span>
+          {% endif %}
+          <div class="caption" style="color:{{block.settings.color }};">
+            {% if block.settings.text != blank %}<h4 style="font-size: {{block.settings.font_size_1}};">{% include 'multilang' with block.settings.text %}</h4> {% endif %}
+            {% if block.settings.title != blank %}<h3  {% if block.settings.text == blank %}Class="has-hover"{% endif %} style="font-size: {{block.settings.font_size_2}};">{% include 'multilang' with block.settings.title %}</h3> {% endif %}
+            {% if block.settings.des!= blank %}<div class="des" style="font-size: {{block.settings.font_size_3}};">{% include 'multilang' with block.settings.des %}</div> {% endif %}
+          </div>
+        </a>
+      </figure>
+      
+      {% if block.settings.text == blank %}      
+      <style>
+        #section-{{ section.id }} .has-hover span:before{
+          background:{{block.settings.color }};
+        }
+      </style>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+  
+  @media (max-width:991px){    
+    {% if section.blocks.size == 3 %}  
+    .two-block-image .items-block {
+      -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+    
+    #section-{{ section.id }} .items-block:not(:first-of-type) {
+      -webkit-flex: 0 0 50%;
+      -ms-flex: 0 0 50%;
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+    {% endif %}
+  }  
+</style>
+{% schema %}
+  {
+      "name": "Two & Three Images block",
+      "max_blocks": 3,
+      "settings": [
+		{
+          "type" : "radio",
+          "id" : "layout",
+          "label" : "Layouts",       
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full",
+              "label": "Full Width"
+            }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        }
+		
+      ],
+      "blocks" : [
+        {
+          "type" : "Image",
+          "name" : "Image",
+          "settings":[
+            {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Select Image",
+              "info": "( 570 x 370 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "url",
+              "id" : "link",
+              "label" : "Link"
+            },
+            {
+              "type" : "color",
+              "id": "color",
+              "label" : "Text Color",
+              "default" : "#fff"
+            }
+          ]
+        }
+      ],
+      "presets": [{
+        "name": "Two & Three Images block",
+        "category": "block images",
+        "blocks": [
+          {
+          	"type": "Image"
+          },
+          {
+          	"type": "Image"
+          },        
+          {
+          	"type": "Image"
+          }
+        ]
+      }]
+  }
+{% endschema %}
+-->
+
+
+<!--<section class="five-block-image">
+  <div class="container">
+    <div class="row">
+      
+      <div class="column-left col-md-6  slick-initialized slick-slider">
+
+        
+        <div aria-live="polite" class="slick-list draggable"><div class="slick-track" style="opacity: 1; transform: translate3d(0px, 0px, 0px);" role="listbox">
+          <figure class="img-itm slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide10" style="">
+          <a href="" title="" tabindex="0">            
+            
+            <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Kids-Organic-Cotton-Baby-Infant-Girl-Boy-Clothing-Dress.jpg?1140" alt="" class="lazyautosizes lazyloaded" data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Kids-Organic-Cotton-Baby-Infant-Girl-Boy-Clothing-Dress.jpg?1140" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Kids-Organic-Cotton-Baby-Infant-Girl-Boy-Clothing-Dress.jpg?1140" data-sizes="auto" sizes="570px">
+            
+            <figcaption>              
+              
+<span class="lang1"></span>
+
+            
+            </figcaption>            
+          </a>
+        </figure></div></div>
+        
+
+        
+
+        
+
+      </div>
+      
+
+      
+      <div class="column-right col-md-6 ">
+        <div class="row">
+          
+          <figure class="img-itm col-12">
+            <a href="" title="">            
+              
+              <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Made-Natural-Organic-Soaps-Shampoo.jpg?1140" alt="" class="lazyautosizes lazyloaded" data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Made-Natural-Organic-Soaps-Shampoo.jpg?1140" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Made-Natural-Organic-Soaps-Shampoo.jpg?1140" data-sizes="auto" style="width:100%;height:270px;">
+              
+              <figcaption>              
+                
+<span class="lang1"></span>
+
+            
+              </figcaption>            
+            </a>
+          </figure>
+          
+
+          
+          <figure class="img-itm col-12">
+            <a href="" title="">            
+              
+              <img src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Cotton-Cushion-Covers_1024x.jpg?v=1561545667" alt="" class="lazyautosizes lazyloaded" data-src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Cotton-Cushion-Covers_1024x.jpg?v=1561545667" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Cotton-Cushion-Covers_1024x.jpg?v=1561545667" data-sizes="auto" style="width:100%;height:270px;">
+              
+              <figcaption>              
+                
+<span class="lang1"></span>
+
+            
+              </figcaption>            
+            </a>
+          </figure>
+          
+
+          
+         <figure class="img-itm col-6">
+            <a href="" title="Jewelry">            
+              
+              <img src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Waffle-Cotton-Bath-Linen-Hand-Face-Towel_1024x.jpg?v=1561545687" alt="Jewelry" class="lazyautosizes lazyloaded" data-src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Waffle-Cotton-Bath-Linen-Hand-Face-Towel_1024x.jpg?v=1561545687" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Waffle-Cotton-Bath-Linen-Hand-Face-Towel_1024x.jpg?v=1561545687" data-sizes="auto" sizes="270px">
+              
+              <figcaption>              
+                
+<span class="lang1">Jewelry</span>
+
+            
+              </figcaption>            
+            </a>
+          </figure>
+          
+
+          
+          <figure class="img-itm col-6">
+            <a href="" title="">            
+              
+              <img src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Waffle-Cotton-Bath-Robes_1024x.jpg?v=1561545708" alt="" class="lazyautosizes lazyloaded" data-src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Waffle-Cotton-Bath-Robes_1024x.jpg?v=1561545708" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Hand-Block-Print-Waffle-Cotton-Bath-Robes_1024x.jpg?v=1561545708" data-sizes="auto" sizes="270px">
+              
+              <figcaption>              
+                
+<span class="lang1"></span>
+
+            
+              </figcaption>            
+            </a>
+          </figure>
+          
+        </div>
+      </div>
+      
+      
+    </div>
+  </div>
+</section>-->
+
+
+<!-- five block img section-->
+<style>
+  span.s1 {
+    position: relative;
+    right: 50px;
+    top: 24px;
+    font-size: 30px;
+}
+   span.s2 {
+    position: relative;
+    right: 65px;
+    top: 27px;
+    font-size: 42px
+}
+  
+  span.s6 {
+    font-size: 85px;
+    position: relative;
+    top: 66px;
+    right: 119px;
+  }
+  @media (max-width:768px)
+  {
+  span.s6 {
+    font-size: 85px;
+    position: relative;
+    top: 66px !important;
+    right: -30px !important;
+}
+  }
+  
+</style>
+<section class="five-block-image">
+  <div class="container">
+    <div class="row">
+
+      <div class="column-left col-md-6  slick-initialized slick-slider">
+
+
+        <div aria-live="polite" class="slick-list draggable">
+          <div class="slick-track" style="opacity: 1; width: 100%; transform: translate3d(0px, 0px, 0px);" role="listbox">
+          <figure class="img-itm slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="-1" role="option" aria-describedby="slick-slide00" style="width: 100%;">
+          <a href="/collections/dine-in-style-signature-collection" title="">            
+        <div class="p1">
+              <img data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Dine_in_Style.jpg?v=1634607267" alt="Wooden Tableware Ceramic Artisanal Handmade - Pinklay" class="lazyload lazyautosizes zoom"  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Throws.jpg?v=1597654019" data-sizes="auto" sizes="270px">
+              </div>
+              <figcaption>              
+
+              <!--<span>Women's</span>
+              <span class="s6">Clothing</span>-->
+
+            </figcaption>            
+          </a>
+          </figure></div></div>
+
+      </div>
+
+      <div class="column-right col-md-6 ">
+        <div class="row">
+
+          <figure class="img-itm col-6">
+            <a href="/collections/kurtas" title="" tabindex="0">            
+            <div class="p1">
+            <img data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Exquisite_Kurtas.jpg?v=1634607267" alt="Women Kurta Kurti Set Cotton Festive Diwali - Pinklay" class="lazyload lazyautosizes zoom" data-sizes="auto" sizes="570px">
+            </div>
+            <figcaption>              
+
+                <!--<span>Rugs</span>-->
+
+              </figcaption>            
+            </a>
+          </figure>
+
+          <figure class="img-itm col-6">
+            <a href="/collections/bottoms" title="" tabindex="0">            
+            <div class="p1">
+            <img data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Beautiful_Bottoms.jpg?v=1634607267" alt="Women Palazzo Pants Lantern Sharara - Pinklay" class="lazyload lazyautosizes zoom" data-sizes="auto" sizes="570px">
+            </div>
+            <figcaption>              
+
+                <!--<span>Curtains</span>
+                <span class="s1">(Boys)</span>-->
+
+              </figcaption>            
+            </a>
+          </figure>
+
+          <figure class="img-itm col-6">
+            <a href="/collections/bestsellers-womenswear" title="">            
+             <div class="p1">
+              <img data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Classics.jpg?v=1634607267" alt="Women Clothing Dresses Indian Wear Cotton - Pinklay" class="lazyload lazyautosizes zoom"  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Ottomans_71c81db2-09d2-4c27-aff8-6ca3304d975d.jpg?v=1597654019" data-sizes="auto" sizes="270px">
+              </div>
+              <figcaption>              
+
+                <!--<span>Cushions</span>-->
+
+              </figcaption>            
+            </a>
+          </figure>
+
+          <figure class="img-itm col-6">
+            <a href="/collections/home-best-of-the-season" title="">            
+                <div class="p1">    
+              <img data-src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Beautiful_Bedrooms.jpg?v=1634631464" alt="Quilts Dohars Bed Covers Bed Sheets Cushion Covers - Pinklay" class="lazyload lazyautosizes zoom"  data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="//cdn.shopify.com/s/files/1/0249/5099/7070/files/Boys.jpg?v=1597654020" data-sizes="auto" sizes="270px">
+              </div>
+              <figcaption>              
+
+                <!--<span>Table Linen</span>-->
+
+              </figcaption>            
+            </a>
+          </figure>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- five block img section end-->

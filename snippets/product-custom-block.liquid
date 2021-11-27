@@ -1,0 +1,117 @@
+{% if section.settings.display_product_custom_block %}
+<div class="pro-custom-block">
+  <div class="policies">
+    <div class="row">
+      {% if product.template_suffix == "vertical-tab-fullwidth" %}      
+      	{%- assign column_size = 'col-12 col-sm-6 col-md-12 col-xl-6' -%}
+      
+      {% elsif section.settings.show_tab == 'vertical' %}
+        {% if settings.display_sidebar_product %}
+      		{%- assign column_size = 'col-12 col-sm-6 col-md-12' -%}
+        {% else %}
+          	{%- assign column_size = 'col-12 col-sm-6 col-md-12 col-lg-6' -%}
+        {% endif %}   
+      
+      {% elsif section.settings.show_tab == 'horizontal' %}
+      
+      	{% if settings.display_sidebar_product %}
+      		{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-6' -%}
+        {% else %}
+          	{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-3' -%}
+        {% endif %} 
+      
+      {% elsif section.settings.show_tab == 'horizontal_center' and section.settings.style_moreview == 'horizontal' %}
+      
+      	{% if settings.display_sidebar_product %}
+      		{%- assign column_size = 'col-12 col-sm-6 col-md-12' -%}
+        {% else %}
+          	{%- assign column_size = 'col-12 col-sm-6 col-md-12 col-lg-6' -%}
+        {% endif %}  
+      
+      {% elsif section.settings.show_tab == 'horizontal_center' and section.settings.style_moreview == 'vertical' %}
+      
+      	{% if settings.display_sidebar_product %}
+      		{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-6' -%}
+        {% else %}
+          	{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-3' -%}
+        {% endif %} 
+      
+      {% elsif section.settings.show_tab == 'horizontal_center' and section.settings.style_moreview == 'vertical_right' %}
+      
+      	{% if settings.display_sidebar_product %}
+      		{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-6' -%}
+        {% else %}
+          	{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-3' -%}
+        {% endif %} 
+      
+      {% else %}
+             
+      	{%- assign column_size = 'col-12 col-sm-6 col-md-6 col-lg-3' -%}
+            	
+      {% endif %}
+            
+      <div class="item {{ column_size }}">
+      	<div class="policy-item">
+          {% if section.settings.icon_1 != blank %}
+          <span class="policy-icon">
+            {{ section.settings.icon_1 }}
+          </span>
+          {% endif %}
+
+          <div class="policy-text">
+            {% include 'multilang' with section.settings.policy_text_1 %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="item {{ column_size }}">
+      	<div class="policy-item">
+          {% if section.settings.icon_2 != blank %}
+          <span class="policy-icon">
+            {{ section.settings.icon_2 }}
+          </span>
+          {% endif %}
+
+          <div class="policy-text">
+            {% include 'multilang' with section.settings.policy_text_2 %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="item {{ column_size }}">
+      	<div class="policy-item">
+          {% if section.settings.icon_3 != blank %}
+          <span class="policy-icon">
+            {{ section.settings.icon_3 }}
+          </span>
+          {% endif %}
+
+          <div class="policy-text">
+            {% include 'multilang' with section.settings.policy_text_3 %}
+          </div>
+        </div>
+      </div>
+      
+      <div class="item {{ column_size }}">
+      	<div class="policy-item">
+          {% if section.settings.icon_4 != blank %}
+          <span class="policy-icon">
+            {{ section.settings.icon_4 }}
+          </span>
+          {% endif %}
+
+          <div class="policy-text">
+            {% include 'multilang' with section.settings.policy_text_4 %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="cart-image">
+    {% if settings.img_trust != blank %}
+    <img src="{{ settings.img_trust | img_url: '800x'  }}" >
+    {% endif %}
+  </div>
+</div>
+{% endif %}

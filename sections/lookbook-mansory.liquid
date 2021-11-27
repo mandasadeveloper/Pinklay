@@ -1,0 +1,216 @@
+<div id="lookbook-{{ section.id }}" class="lookbook-mansory lookbook">
+  <div class="row lookbook_page">
+    {% for block in section.blocks %}
+    <div class="lb-mansory-item col-12 col-sm-6 col-lg-4{% if section.settings.lookbook_results_per_row == "2" %} col-xl-6{% elsif section.settings.lookbook_results_per_row == "3"%} col-xl-4{% elsif section.settings.lookbook_results_per_row == "4"%} col-xl-3{% else %} col-xl{% endif%}">
+      {% if block.settings.dpl_lookboob_slide %}
+      <div class="item" id="lb-item{{ block.id }}"> 
+        <div class="lazy-images-contain" >
+          {% if block.settings.lb_image_slide != blank %}
+          {%- assign img_url = block.settings.lb_image_slide | img_url: '600x' -%}
+          <img src="{{block.settings.lb_image_slide | img_url: '600x'}}" alt=""
+               class="lazyload"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-sizes="auto">
+          {% else %}
+          {% capture current %}{% cycle 2 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}                 
+          {% endif %}
+
+          {% if block.settings.lb_product_1 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_1 }}%; left:{{ block.settings.left_position_1 }}%;">
+            <span class="glyphicon pr-lb item_1_{{ block.id }}" data-handle="{{ block.settings.lb_product_1 }}">+</span>
+          </div>
+          {% endif %}
+          
+          {% if block.settings.lb_product_2 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_2 }}%; left:{{ block.settings.left_position_2 }}%;">
+            <span class="glyphicon pr-lb item_2_{{ block.id }}" data-handle="{{ block.settings.lb_product_2 }}">+</span>
+          </div>
+          {% endif %}
+          
+          <style type="text/css">
+            #lb-item{{ block.id }} .item_1_{{ block.id }}{
+              color:{{ block.settings.dots_color_1 }};
+              background: {{ block.settings.dots_bg_color_1 }};
+            }
+            #lb-item{{ block.id }} .item_1_{{ block.id }}:before {
+              color: {{ block.settings.dots_bg_color_1 }};
+            } 
+            #lb-item{{ block.id }} .item_2_{{ block.id }}{
+              color:{{ block.settings.dots_color_2 }};
+              background: {{ block.settings.dots_bg_color_2 }};
+            }
+            #lb-item{{ block.id }} .item_2_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_2 }};
+            }
+            
+          </style>
+          
+        </div>	
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="col-12 col-sm-6 col-lg-4{% if section.settings.lookbook_results_per_row == "2" %} col-xl-6{% elsif section.settings.lookbook_results_per_row == "3"%} col-xl-4{% elsif section.settings.lookbook_results_per_row == "4"%} col-xl-3{% else %} col-xl{% endif%} my-sizer-element"></div>
+  </div>
+
+  <div class="bottom">
+    {% if section.settings.button != blank %}
+    <a href="{{ section.settings.link }}" class="btn">
+      {% include 'multilang' with section.settings.button %}
+    </a>
+    {% endif %}
+
+    {% if section.settings.display_product_detail_share %}
+    {% include 'share' %}
+    {% endif %}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Lookbook Mansory",
+    "settings": [
+	  {
+        "type": "header",
+        "content": "Lookbook Mansory"
+      },
+      {
+        "type": "select",
+        "id": "lookbook_results_per_row",
+        "label": "Products per row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },	
+	  {
+          "type": "checkbox",
+          "id": "display_product_detail_share",
+          "label": "Display Product Share?",
+          "default": true
+       },
+	   {
+          "type": "text",
+          "id": "button",
+          "label": "Lookbook Button"
+       },
+       {
+          "type": "url",
+          "id": "link",
+          "label": "Lookbook link"
+       }       
+	],
+
+    "blocks" : [
+      {
+        "type": "lookbook",
+        "name": "Lookbook Slide",
+        "settings": [
+          {
+            "type" : "checkbox",
+            "id" : "dpl_lookboob_slide",
+            "label" : "Enable",
+            "default" : true
+          },
+          {
+            "type": "image_picker",
+            "id": "lb_image_slide",
+            "label": "Select Image"
+          },
+          {
+            "type" : "header",
+            "content" : "Product 1"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_1",
+            "label" : "Select Product 1"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_1",
+            "label" : "Top Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_1",
+            "label" : "Left Position 1",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_1",
+            "label" : "Color 1",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_1",
+            "label" : "Dots background color 1",
+            "default" : "#323232",
+            "info" : "======================="
+          },
+		  {
+            "type" : "header",
+            "content" : "Product 2"
+          },
+          {
+            "type" : "product",
+            "id" : "lb_product_2",
+            "label" : "Select Product 2"
+          },
+          {
+            "type" : "text",
+            "id" : "top_position_2",
+            "label" : "Top Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "text",
+            "id" : "left_position_2",
+            "label" : "Left Position 2",
+            "default" : "10",
+            "info" : "Unit %" 
+          },
+          {
+            "type" : "color",
+            "id" : "dots_color_2",
+            "label" : "Color 2",
+            "default" : "#fff"
+          },
+          {
+            "type" : "color",
+            "id" : "dots_bg_color_2",
+            "label" : "Dots background color 2",
+            "default" : "#323232",
+            "info" : "======================="
+          }
+          
+        ]
+      }
+	]
+  }
+{% endschema %}

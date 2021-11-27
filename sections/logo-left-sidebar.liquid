@@ -1,0 +1,103 @@
+<div class="logo-left-sidebar">
+  {% if section.settings.brand_type == 'image' %}
+  <a href="/">
+    {% if section.settings.logo != blank %} 
+    <img src="{{ section.settings.logo | img_url: '150x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+         class="lazyload logo-desktop"
+         itemprop="logo"
+         data-src="{{ section.settings.logo | img_url: 'master' }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ section.settings.logo | img_url: 'master' }}"
+         data-sizes="auto">
+    {% else %}
+    <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>            
+    {% endif %}
+
+    {% if section.settings.enable_retina %}
+    {% if section.settings.logo_2x != blank %}
+    <img src="{{ section.settings.logo_2x | img_url: '150x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+         class="lazyload logo-mobile"
+         itemprop="logo"
+         data-src="{{ section.settings.logo_2x | img_url: 'master' }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ section.settings.logo_2x | img_url: 'master' }}"
+         data-sizes="auto">
+    {% else %}
+    {% if section.settings.logo != blank %}
+    <img src="{{ section.settings.logo | img_url: '100x' }}" alt="{{ section.settings.logo.alt | default: shop.name }}"
+         class="lazyload logo-mobile"
+         itemprop="logo"
+         data-src="{{ section.settings.logo | img_url: 'master' }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ section.settings.logo | img_url: 'master' }}"
+         data-sizes="auto">
+    {% else %}
+    <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+  </a>
+  {% elsif section.settings.brand_text != "" %}
+  <h1><a class="logo-title" href="/">{{ section.settings.brand_text }}</a></h1>
+  {% else %}
+  <h1><a class="logo-title" href="/">{{shop.name}}</a></h1>
+  {% endif %}
+
+</div>
+
+{% schema %}
+  {
+    "name": "Logo",
+    "settings": [ 
+	
+	{
+        "type" : "header",
+        "content" : "Logo"
+      },      
+      {
+        "type": "radio",
+        "id": "brand_type",
+        "label": "Use image or text for logo?",
+        "options": [
+          {
+            "value": "text",
+            "label": "Text"
+          },
+          {
+            "value": "image",
+            "label": "Image"
+          }
+        ],
+        "default": "text"
+      },
+      {
+        "type": "text",
+        "id": "brand_text",
+        "label": "Logo text"
+      },
+      {
+       "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image",
+        "info": "250px x 80px recommended"
+      },
+      {
+        "type": "text",
+        "id": "min_height_logo_dk",
+        "label": "Max Height of Logo desktop",
+        "default": "39px" 
+      },
+      
+      {
+        "type": "paragraph",
+        "content": "Maximum logo dimensions are 500px wide by 200px high.Your uploaded file will be resized to fit within those constraints."
+      }
+	
+	]
+}
+{% endschema %}
+<style>
+  .logo-left-sidebar img{
+    max-height:{{section.settings.min_height_logo_dk}}
+  }
+</style>

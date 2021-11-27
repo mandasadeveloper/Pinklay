@@ -1,0 +1,372 @@
+{% if section.settings.display_categories %}
+<style>
+.widget-categories .widget-header {
+    border-top: 1px solid #36454f;
+    border-bottom: 1px solid #36454f;
+}
+.widget-categories .widget-header h4 {
+  display: block;
+  text-align : center;text-transform: capitalize;
+}
+  .widget-categories .widget-content ul li a {
+    text-decoration: underline !important;
+}
+</style>
+<div class="widget-categories">
+  <div class="widget-header">
+    <h4>
+      Recent Posts
+    </h4>
+  </div>
+ 
+  {%- assign blog_linklist = section.settings.blog_linklist -%}
+
+  {% if linklists[blog_linklist].links.size > 0 %}
+    <div class="widget-content">
+      <ul>
+        {% for article in blog.articles limit: 6 %}
+        <li><a href="{{ article.url}}">{{ article.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>
+<div class="widget-categories">
+  <div class="widget-header">
+    <h4 >
+      {% include 'multilang' with section.settings.title_categories %}
+    </h4>
+  </div>
+ 
+  {%- assign blog_linklist = section.settings.blog_linklist -%}
+
+  {% if linklists[blog_linklist].links.size > 0 %}
+    <div class="widget-content">
+      <ul>
+        {% for link in linklists[blog_linklist].links %}
+        <li><a href="{{ link.url}}">{% include 'multilang' with link.title %}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if section.settings.sidebar_recent_art %}
+  {% include 'widget_article' %}
+{% endif %}
+
+{% if section.settings.enable_pr %}
+<div class="sidebar-product">
+  <div class="widget-header">
+    <h4>
+      {% include 'multilang' with section.settings.title_pr %}
+    </h4>
+  </div>
+
+  <div class="widget-content">
+    {% for product in collections[section.settings.collection].products limit:section.settings.limit %}
+
+    {% assign on_sale = false %}
+    {% if product.compare_at_price_min > product.price_min %}
+    {% assign on_sale = true %}
+    {% endif %}
+
+    {% assign sold_out = true %}
+    {% if product.available  %}
+    {% assign sold_out = false %}
+    {% endif %}
+
+    {% assign label_new = "new" %}
+    {% assign tags = product.tags | split: ',' %}
+
+    <div class="product-item">
+      <div class="product-top">
+        <div class="product-image">
+          <a href="{{ product.url | within: collection }}">
+            <img src="{{ product.featured_image.src | product_img_url: '100x' }}" alt="{{ product.featured_image.alt | escape }}"             
+                 data-src="{{ product.featured_image.src | product_img_url: '200x' }}"
+                 class="lazyload"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                 data-sizes="auto">
+          </a>
+          
+          {% if on_sale or sold_out or label_new %}
+          <div class="product-label">
+            {% for t in tags %}
+            {% assign tag = t | strip %}
+            {% assign tag_value = tag | handleize %}
+            {% if tag contains label_new %}
+            <strong class="label label-new" {% if settings.enable_multilang %}data-translate="products.product.new"{% endif %} >{{ 'products.product.new' | t }}</strong>
+            {% endif %}
+            {% endfor %}
+
+            {% if on_sale %}
+            <strong class="label label-sale">
+              -{{ product.compare_at_price_min | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_min | money_without_currency | times: 100 | replace: '.0', ''}}%
+            </strong>
+            {% endif %}
+
+            {% if sold_out %}
+            <strong class="sold-out label" {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>{{ 'products.product.sold_out' | t }}</strong>
+            {% endif %}
+          </div>
+          {% endif %}
+        </div>      
+      </div>
+
+      <div class="product-bottom">
+        {% if settings.show_vendor %}
+        <div class="product-vendor">
+          {{ product.vendor | link_to_vendor  }}
+        </div>
+        {% endif %}
+
+        <a class="product-title" href="{{ product.url | within: collection }}">
+          {% include 'multilang' with product.title   %}
+        </a>
+
+        <div class="price-box">
+          {% if on_sale %}
+          <p class="sale">
+            <span class="old-price">{{ product.compare_at_price_min | money }}</span>
+            <span class="special-price">{% if product.price_varies %}{% include 'varies_from' %}{% endif %}{{ product.price_min | money }}</span>
+          </p>
+          {% else %}
+          <div class="regular-product">
+            {% if product.price_varies %} 
+            <div class="group-prices">
+              <span class="price-min">
+                {{ product.price_min | money }}
+              </span>
+              <span class="padding">-</span>
+              <span class="price-max">
+                {{ product.price_max | money }}
+              </span>
+            </div>
+
+            {% else %}
+
+            <span>
+              {{ product.price_min | money }}
+            </span>
+
+            {% endif %}
+
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %} 
+  </div>
+</div>
+{% endif %}
+
+{% if section.settings.enable_banner %}
+<div class="sidebar-banner">
+  <div class="widget-content">
+    {% if section.settings.image_1 != blank %}
+    <div class="banner-first banner-item">
+      <a href="{{ section.settings.link_1 }}">
+        <img src="{{ section.settings.image_1  | img_url: '100x' }}" alt=""             
+             data-src="{{ section.settings.image_1  | img_url: '600x' }}"
+             class="lazyload"
+             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="{{  section.settings.image_1.aspect_ratio }}"
+             data-sizes="auto">
+      </a>
+    </div>
+    {% endif %}
+
+    {% if section.settings.image_2 != blank %}
+    <div class="banner-last banner-item">
+      <a href="{{ section.settings.link_2 }}">
+        <img src="{{ section.settings.image_2  | img_url: '100x' }}" alt=""             
+             data-src="{{ section.settings.image_2  | img_url: '600x' }}"
+             class="lazyload"
+             data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+             data-aspectratio="{{  section.settings.image_2.aspect_ratio }}"
+             data-sizes="auto">
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% if section.settings.enable_custom %}
+<div class="sidebar-custom-html">
+  <div class="widget-header">
+    <h4>
+      {% include 'multilang' with section.settings.title_custom %}
+    </h4>
+  </div>
+
+  <div class="widget-content">
+    {% if settings.enable_multilang %}
+    <div class="lang1">
+      {{ section.settings.quote | split: '|' | first | strip }}
+    </div>
+    <div class="lang2">
+      {{ section.settings.quote | split: '|' | last | strip }}
+    </div>
+    {% else %}
+    <div>
+      {{ section.settings.quote | split: '|' | first }}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% if section.settings.sidebar_tag %}
+  <div class="widget widget-tags">
+    {% if blog.all_tags.size > 0 %}
+    <div class="widget-header">
+      <h4>
+        <span {% if settings.enable_multilang %}data-translate="blogs.article.tags"{% endif %}>
+          {{ 'blogs.article.tags' | t }}
+        </span>
+      </h4>
+    </div>
+    <div class="widget-content">
+      <ul>
+      {% for tag in blog.all_tags %}
+        {% if current_tags contains tag %}
+          <li class="active">
+            {{ tag | link_to_remove_tag: tag }}
+          </li>
+        {% else %}
+          <li>
+            {{ tag | link_to_tag: tag }}
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+
+{% schema %}
+  {
+    "name": "Blog Sidebar",
+    "settings": [      
+      {
+        "type": "checkbox",
+        "id": "sidebar_recent_art",
+        "label": "Show Block Recent Article",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "sidebar_tag",
+        "label": "Show Block Tag",
+        "default": true
+      },
+	  {
+		"type" : "header",
+		"content" : "Categories"
+	  },
+      {
+        "type" : "checkbox",
+        "id" : "display_categories",
+        "label" : "Display Categories",
+        "default" : true
+      },
+      {
+        "type" : "text",
+        "id" : "title_categories",
+        "label" : "Title Categories",
+        "default" : "Categories"
+      },
+      {
+        "type": "link_list",
+        "id": "blog_linklist",
+        "label": "Select Categories"
+      },
+	  {
+		"type" : "header",
+		"content" : "Product"
+	  },
+      {
+        "type": "checkbox",
+        "id": "enable_pr",
+        "label": "Display Product",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_pr",
+        "label": "Title",
+		"default" : "Featured Products"
+      },
+      {
+        "id": "collection",
+        "type": "collection",
+        "label": "Select Collection"
+      },
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Number of products to show",
+        "default": "4"
+      },
+	  {
+		"type" : "header",
+		"content" : "Banner"
+	  },
+      {
+        "type": "checkbox",
+        "id": "enable_banner",
+        "label": "Display Banner",
+        "default": true
+      },
+      {
+        "type": "image_picker",
+        "id": "image_1",
+        "label": "Banner 1"
+      },
+      {
+        "type": "url",
+        "id": "link_1",
+        "label": "Banner Link 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_2",
+        "label": "Banner 2"
+      },
+      {
+        "type": "url",
+        "id": "link_2",
+        "label": "Banner Link 2"
+      },
+	  {
+		"type" : "header",
+		"content" : "Custom Block"
+	  },
+      {
+        "type": "checkbox",
+        "id": "enable_custom",
+        "label": "Display Custom Block",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title_custom",
+        "label": "Heading",
+        "default": "Custom CMS Block"
+      },
+      {
+        "type": "textarea",
+        "id": "quote",
+        "label": "Text",
+        "default": "Add customer reviews and testimonials to showcase your store’s happy customers."
+      }
+    ]
+  }
+{% endschema %}

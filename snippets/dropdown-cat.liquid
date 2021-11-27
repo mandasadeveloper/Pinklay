@@ -1,0 +1,21 @@
+<ul class="dropdown-cat">
+  {% for link_child_item in linklists[link_child].links %}
+  <li {% if linklists[link_child_item.handle] != empty %}class="dropdown"{% endif %}>
+    <a href="{{ link_child_item.url }}"{% if collection.handle == link_child_item.handle %}class="active"{% endif %}>
+      {% include 'multilang' with link_child_item.title %}
+    </a>
+    {% if linklists[link_child_item.handle] != empty %}
+    <span class="caret"><i class="fa fa-angle-down"></i></span>
+    <ul class="submenu_second">
+      {% for n in linklists[link_child_item.handle].links %}
+      <li {% if linklists[n.handle] != empty %}class="dropdown"{% endif %}>
+        <a href="{{ link_child_item.url }}"{% if collection.handle == link_child_item.handle %}class="active"{% endif %}>
+          {% include 'multilang' with n.title %}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>

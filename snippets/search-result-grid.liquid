@@ -1,0 +1,161 @@
+{% assign on_sale = false %}
+{% if product.compare_at_price_min > product.price_min %}
+  {% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available  %}
+  {% assign sold_out = false %}
+{% endif %}
+
+{% assign productIndex = forloop.index | minus:1 %}
+{% assign delayTime = settings.time_lazy_load | times : productIndex %}
+
+<div class="inner product-item {% if sold_out %}sold-out{% endif %}{% if on_sale %} on-sale{% endif %}" id="product-{{ product.id }}">
+  <div class="inner-top">
+    <div class="product-top">
+      <div class="product-image {% if product.images.size > 1 and settings.image_swap %} image-swap{% endif %}">
+        <a href="{{ product.url | within: collection }}" class="product-grid-image" title="{{ product.featured_image.alt | escape }}" data-handle="/collections/{{collection.handle}}?view=related">
+          {%- assign img_pr = product.featured_image.src | product_img_url: '800x' -%}
+          {%- assign img_0 = product.images[0].src | product_img_url: '800x' -%}
+          {%- assign img_1 = product.images[1].src | product_img_url: '800x' -%}
+
+          {% if product.images.size > 1 and settings.image_swap %}
+          <img src="{{ product.images[0].src | product_img_url: '300x' }}" alt="{{ product.images[0].alt | escape }}"
+               class="images-one lazyload"
+               data-src="{{ img_0 }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+               data-sizes="auto">
+
+          <div class="images-two">
+            <img src="{{ product.images[1].src | product_img_url: '300x'}}" alt="{{ product.images[1].alt | escape }}"
+                 class="lazyload"
+                 data-src="{{ img_1 }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+                 data-sizes="auto">
+
+          </div>	
+          {% else %}
+          <img src="{{ product.featured_image.src | product_img_url: '300x' }}" alt="{{ product.featured_image.alt | escape }}"             
+               data-src="{{ img_pr }}"
+               class="lazyload"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+               data-sizes="auto">
+
+          {% endif %}
+        </a>
+
+        {% if settings.enable_quick_view %}
+        <div class="quickview-button">
+          <a href="javascript:void(0)" id="{{ product.handle }}" title="{{ 'products.product.quick_view' | t }}" {% if settings.enable_multilang %}data-translate="products.product.quick_view" translate-item="title"{% endif %}>
+            <span {% if settings.enable_multilang %}data-translate="products.product.quick_view"{% endif %}>
+              {{ 'products.product.quick_view' | t }}
+            </span>
+          </a>
+        </div>
+        {% endif %}
+
+        <div class="action" id="product-actions-{{ product.id }}">
+          {% include 'items-size' %}
+          {% assign variantCount = product.variants | size %}
+          <form action="/cart/add" method="post" class="variants" enctype="multipart/form-data">    
+            {% if sold_out %}
+            <input class="btn add-to-cart-btn" type="submit" value="{{ 'products.product.unavailable' | t }}" disabled="disabled" {% if settings.enable_multilang %}data-translate="products.product.unavailable"{% endif %}/>
+            {% else %}
+            {% if variantCount > 1 %}
+            <input class="btn" type="button" onclick="window.location.href='{{product.url}}'" value="{{ 'products.product.select_options' | t }}" {% if settings.enable_multilang %}data-translate="products.product.select_options"{% endif %}/>
+            {% else %}
+            <input type="hidden" name="id" value="{{ product.variants[0].id }}" />      
+            <input class="btn add-to-cart-btn" type="submit" value="{{ 'products.product.add_to_cart' | t }}" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %}/>
+            {% endif %}
+            {% endif %}
+          </form>      
+        </div>
+
+      </div>
+
+      {% if on_sale or sold_out or label_new %}
+      <div class="product-label">
+        {% for t in tags %}
+        {% assign tag = t | strip %}
+        {% assign tag_value = tag | handleize %}
+        {% if tag contains label_new %}
+        <strong class="label label-new" {% if settings.enable_multilang %}data-translate="products.product.new"{% endif %} >{{ 'products.product.new' | t }}</strong>
+        {% endif %}
+        {% endfor %}
+
+        {% if on_sale %}
+        <strong class="label label-sale">
+          -{{ product.compare_at_price_min | minus: product.price | times: 100.0 | divided_by: product.compare_at_price_min | money_without_currency | times: 100 | replace: '.0', ''}}%
+        </strong>
+        {% endif %}
+
+        {% if sold_out %}
+        <strong class="sold-out label" {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>{{ 'products.product.sold_out' | t }}</strong>
+        {% endif %}
+
+      </div>
+      {% endif %}
+    </div>
+    
+    <div class="product-bottom">
+      {% include 'wishlist-product' %}
+
+      {% if settings.show_vendor %}
+      <div class="product-vendor">
+        {{ product.vendor | link_to_vendor  }}
+      </div>
+      {% endif %}
+
+      <a class="product-title" href="{{ product.url | within: collection }}">
+        {% include 'multilang' with product.title   %}
+      </a>
+
+      <div class="price-box">
+        {% if on_sale %}
+        <p class="sale">
+          <span class="old-price">
+            {{ product.compare_at_price_min | money }}
+          </span>
+          <span class="special-price">
+            {% if product.price_varies %}
+            {% include 'varies_from' %}
+            {% endif %}
+            {{ product.price_min | money }}
+          </span>
+        </p>
+        
+        {% else %}
+        
+        <div class="regular-product">
+          {% if product.price_varies %} 
+          <div class="group-prices">
+            <span class="price-min">
+              {{ product.price_min | money }}
+            </span>
+            <span class="padding">-</span>
+            <span class="price-max">
+              {{ product.price_max | money }}
+            </span>
+          </div>
+          
+          {% else %}
+          
+          <span>
+            {{ product.price_min | money }}
+          </span>
+          
+          {% endif %}
+                   
+        </div>        
+        {% endif %}
+      </div>
+      {% if settings.display_item_swatch %}
+      {% include 'item-swatch' %}
+      {% endif %}
+    </div>
+  </div>
+</div>

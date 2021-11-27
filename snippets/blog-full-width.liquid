@@ -1,0 +1,52 @@
+<div class="bg-breadcrumb">
+  <div class="container">
+  	{% include 'breadcrumb' %}
+  </div>
+</div>
+
+<div class="halo-blog-page">
+  <div class="container">
+    <div class="page-header">
+      {% if current_tags %}    
+      <h1>
+        <a href="{{ blog.url }}">
+          {% include 'multilang' with page_title %}
+        </a>
+        &raquo; {{ current_tags.first }}
+      </h1>
+      {% else %}    
+      <h1>
+        {% include 'multilang' with page_title %}
+      </h1>
+      {% endif %}
+    </div>
+
+    {% if settings.display_sidebar_blog %}
+    <a class="halo-fillter sidebar-label" href="javascript:void(0)">
+      {% include 'icon_filter' %}
+      <span class="sidebar_more" {% if settings.enable_multilang %}data-translate="blogs.sidebar.sidebar_more_blog"{% endif %}>
+        {{ 'blogs.sidebar.sidebar_more_blog' | t }}
+      </span>
+    </a>
+    
+    <div class="close-filter hide">       
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    {% endif %}
+    
+    <div class="row flex-direction">
+      {% if settings.display_sidebar_blog %}
+      <aside class="sidebar blog-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'sidebar-blog' %}
+      </aside>
+      {% endif %}
+
+      <div class="block-row col-main col-12 col-md-12{% if settings.display_sidebar_blog %} col-lg-9{% else %} col-lg-12{% endif %}">        
+        {% section 'blog-full-width' %}
+      </div>
+    </div>
+  </div>
+</div>
+

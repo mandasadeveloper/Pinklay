@@ -1,0 +1,156 @@
+{% if section.settings.show_product_list_home_page %}
+<section class="best-sell-product" id="slideshow-{{section.id}}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <div class="widget-title">
+      <h3>
+        {% include 'multilang' with section.settings.title %}
+      </h3>
+      <div class="des">
+        {% include 'multilang' with section.settings.des %} 
+        
+        <a class="view_all" href="{{ section.settings.link_view_all }}" title="{{section.settings.view_all}}">
+          {% include 'multilang' with section.settings.view_all %}
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="widget-product">
+      <div class="products-grid row" data-row="{{ section.settings.collection_results_per_row1 }}">
+        {% if section.settings.collection_results_per_row1 != blank and section.settings.collection_results_per_row1 != '5' %}
+        {% assign product_grid = 12 | divided_by: section.settings.collection_results_per_row1 %}
+        {% assign columns = true %}
+        {% endif %}
+		
+        {%- assign collection = collections[section.settings.product_list_collection] -%}
+        {% for product in collection.products limit:section.settings.product_list_limit_all %}
+        <div class="grid-item col-6 col-md-4 col-lg-3">
+          {% include 'product-grid-item' %}
+        </div>
+
+        {% else %}
+        {% for product in (1..section.settings.product_list_limit_all) %}
+        <div class="grid-item col-xs-6 col-sm-4 {% if product_grid == 3 %}col-md-3{% endif %} {% if columns %}col-lg-{{product_grid}}{% else %}col{% endif %}">
+          <div class="grid-view-item no-product">
+            <a href="#" class="grid-view-item__link">
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="product-title">
+                <span>Your product's name</span>
+              </div>
+            </a>
+            <div class="price-box">
+              <span> $250.00 </span>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endif %} 
+{% schema %}
+  {
+    "name": "Best Sellers Items",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_product_list_home_page",
+        "label": "Enable",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Best Sellers Items"
+      },
+  	  {
+  		"type" : "textarea",
+  	    "id" : "des",
+  		"label" : "description",
+  	    "default" :"Phasellus lorem malesuada de pulvinar commodo"
+  	  },
+      {
+        "type": "collection",
+        "id": "product_list_collection",
+        "label": "Collection to use"
+      },
+      {
+        "type": "range",
+        "id": "product_list_limit_all",
+        "label": "Number of new products to show",
+        "min": 3,
+        "max": 50,
+        "step": 1,
+        "default": 16
+      },
+      {
+        "type": "select",
+        "id": "collection_results_per_row1",
+        "label": "Products per row",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          }
+        ],
+        "default": "5"
+      },
+  	  {
+  		"type" : "text",
+  		"id" : "view_all",
+  		"label" : "Text view all",
+  		"default" : "View all"
+  	  },
+  	  {
+  		"type" : "url",
+  		"label" : "Link view all",
+  		"id" : "link_view_all"
+  	  },
+	  {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+      },
+      {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+      }
+	]
+  }
+{% endschema %}
+<style>
+  #slideshow-{{section.id}}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+</style>
+

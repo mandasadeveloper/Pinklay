@@ -1,0 +1,69 @@
+{% if collection == empty %}
+	{% capture collection_title %}Your collection's name{% endcapture %}
+{% else %}
+	{% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+{% endif %}
+
+{% if collection.image %}
+	{% assign no_collection_image = false %}
+	{% assign collection_image = collection.image %}
+{% elsif collection.products.first and collection.products.first.images != empty %}
+	{% assign collection_image = collection.products.first.featured_image %}
+{% else %} 
+	{% assign collection_image = blank %}
+{% endif %}
+
+<div class="grid-item col-12 col-sm-6 col-md-6 col-lg-4{% if section.settings.list_collection_results_per_row == "2" %} col-xl-6{% elsif section.settings.list_collection_results_per_row == "3"%} col-xl-4{% elsif section.settings.list_collection_results_per_row == "4"%} col-xl-3{% else %} col-xl{% endif%}">
+  <div class="collection-images">
+    <a href="{{ collection.url }}" title="{{ collection_title }}">
+      {% unless collection_image == blank %}
+        {% if collection.image %}
+          {{ collection.image.src | collection_img_url: 'large' | img_tag: collection_title }}
+        {% else %}
+          {{ collection.products.first.featured_image | product_img_url: 'large' | img_tag: collection_title }}
+        {% endif %}
+      
+      {% else %}
+      
+        {% if collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}
+          {% if collection.image %}
+              {{ collection.image.src | collection_img_url: 'large' | img_tag: collection_title }}
+          {% else %}
+          	{{ collection.products.first.featured_image | product_img_url: 'large' | img_tag: collection_title }}
+          {% endif %}
+      	{% endif %}
+      {% endunless %}
+    </a>
+    
+    <h3 class="collections-title">
+      {% if collection.title != blank %}
+        <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" {% if settings.enable_multilang %}data-translate="collections.general.link_title|title:{{collection_title}}" translate-item="title"{% endif %}>
+          {% include 'multilang' with collection.title %}
+        </a>
+      {% else %}
+      <a href="{{ collection.url }}">
+        {{ collection_title }}
+      </a>
+      {% endif %}
+    </h3>
+  </div>
+
+  <div class="collections-infor">
+  	<div class="products-count" {% if settings.enable_multilang %}data-translate="collections.general.items_with_count|count:{{collection.all_products_count}}"{% endif %}>
+      {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+    </div>
+    
+    {% if collection.description  != blank %}
+      <div class="collections-description">
+        {{ collection.description | strip_html | truncatewords: 20 }}
+      </div>
+    {% endif  %}
+    
+    <a  href="{{ collection.url }}" class="btn collections-btn" {% if settings.enable_multilang %}data-translate="collections.general.shop_the_collection"{% endif %}>
+      {{ 'collections.general.shop_the_collection' | t }}
+    </a>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<style>
+  section.related-products1 {
+    margin: 20px 0px;
+}
+  .related-products1 .products-grid2 .slick-arrow {
+    width: 55px;
+    height: 55px;
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none !important;
+    position: absolute;
+    top: 36%;
+    left: -48px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-box-pack: flex-start;
+    -moz-box-pack: flex-start;
+    -ms-flex-pack: flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-transform: translateY(-80%);
+    -ms-transform: translateY(-80%);
+    transform: translateY(-80%);
+  }
+  .related-products1 .products-grid2 .slick-next {
+    right: 3% !important;
+}
+  .related-products1 .products-grid2 .slick-next {
+    left: auto;
+    right: -48px;
+}
+  .related-products1 .products-grid2 .slick-arrow svg {
+    width: 25px;
+    height: 25px;
+    padding-right: 2px;
+    margin: auto;
+}
+  .related-products1 .products-grid2 .slick-arrow svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: #505050;
+}
+  .related-products1 .products-grid2 .slick-next svg {
+    padding-left: 2px;
+    padding-right: 0;
+}
+  @media (max-width: 767px) {
+.related-products1 .products-grid2 .slick-dots {
+    margin-top: 6px;
+    margin-bottom: 25px;
+}
+  }
+  .related-products1 .products-grid2 .slick-dots {
+    padding: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+  .related-products1 .products-grid2 .slick-dots li {
+    list-style: none;
+    margin: 5px;
+    display: inline-block;
+}
+  .related-products1 .products-grid2 .slick-dots li button {
+    width: 8px;
+    height: 8px;
+    font-size: 0;
+    background: #c4c4c4;
+    border: 1px solid #c4c4c4;
+    border-radius: 100%;
+    line-height: normal;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
+  .related-products1 .products-grid2 .slick-dots li.slick-active button {
+    background: #fff;
+}
+</style>
+{% assign number_of_related_products = section.settings.number_of_related_products | plus:1 %}
+{% if collection == null or collection.handle == 'frontpage' or collection.handle == 'all' %}
+{% assign found_a_collection = false %}
+{% for c in product.collections %}
+  {% if found_a_collection == false and c.handle != 'frontpage' and c.handle != 'all' and c.all_products_count > 1 %}
+    {% assign found_a_collection = true %}
+    {% assign collection = c %}
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+
+  {% assign collection = collections['new-arrivals'] %}
+
+{% if collection and collection.products_count > 1 %}
+
+<section class="related-products1 {% if settings.display_sidebar_product == false %} s{% endif %}">  
+  {% if section.settings.related_products_title != '' %}
+  <div class="widget-title">
+    <h3>New Arrivals</h3>
+   <!-- <div class="des">
+      {% include 'multilang' with section.settings.des %} 
+    </div>-->
+  </div> 
+ 
+  {% endif %}
+    
+  <div class="products-grid2 row"{% if template.suffix == "grouped" or settings.layout_body == "full"  or template.suffix == "gallery-1" or template.suffix == "gallery-2" or settings.display_sidebar_product == false %} data-row="4"{% else %} data-row="4"{% endif %}>
+  {% assign current_product = product %}
+  {% assign current_product_found = false %}
+  {% for product in collection.products limit: number_of_related_products %}
+    {% if product.handle == current_product.handle %}
+       {% assign current_product_found = true %}
+    {% else %}
+       {% unless current_product_found == false and forloop.last %}
+          <div class="{% if settings.product_image_border %}grid-item-border{% endif %} grid-item col-xs-6 col-lg-3">
+          {% include 'product-grid-item' %}
+          </div>
+       {% endunless %}
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<script>
+  $(document).ready(function(){
+    var gridSlider = $('.related-products1 .products-grid2');
+    
+    gridSlider.slick({
+        slidesToShow: gridSlider.data('row'),
+        slidesToScroll: gridSlider.data('row'),
+        nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 17 33" xml:space="preserve"><title>svg-arrow-next</title><g id="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="_x38_e584754-6657-46f1-a9d8-2cfd6623b552"><g><polygon points="14.9,14.5 0,0 0,3.7 11.1,14.5 13.2,16.5 11.1,18.5 0,29.3 0,33 14.9,18.5 17,16.5 "/></g></g></g></svg></button>',
+        prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 33"><title>svg-arrow-prev</title><g id="7f9a1925-e8c7-4614-8787-3c6095a9f6e1" data-name="Layer 2"><g id="c9b7920a-81fa-4bfe-ad13-4da717c6854b" data-name="Layer 1"><g id="c2d982ff-0cf6-4220-b365-47f30d708fea" data-name="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="f51d455e-6b9c-4c4e-96db-a5004582beda" data-name="8e584754-6657-46f1-a9d8-2cfd6623b552"><polygon points="0 16.5 2.1 18.5 17 33 17 29.3 5.9 18.5 3.8 16.5 5.9 14.5 17 3.7 17 0 2.1 14.5 0 16.5"/></g></g></g></g></svg></button>',       
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              dots: true,
+              arrows: false
+            }
+          }
+        ]
+    });
+  });
+</script>

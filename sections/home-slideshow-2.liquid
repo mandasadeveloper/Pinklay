@@ -1,0 +1,848 @@
+<section class="home-slideshow slideshow-layout-2"  id="slideshow-{{section.id}}">
+  <div class ="slideshow {% if section.settings.layout == 'default' %}container{% endif %}">
+      <div class="sl-wrp col-8 col-md-8 col-12" data-auto="{% if section.settings.autoplay %}true{% else %}false{% endif %}" data-speed="{{ section.settings.slideshow_speed }}">
+      {% for block in section.blocks %}
+      
+        {% if block.type == 'image' %}
+      
+          {% if block.settings.dpl_slide_img %}
+            <div class="slider" id="slide-{{ block.id }}" {{ block.shopify_attributes }}> 
+              <div class="lazy-images-contain" >
+                <a href="{{ block.settings.link_button }}" title="{{block.settings.header_silde }}">
+                  {% if block.settings.image_slide != blank %}
+
+                  {%- assign img_url = block.settings.image_slide | img_url: 'master' -%}
+                  {%- assign img_url_mb = block.settings.image_slide_mb | img_url: 'master' -%}
+                  <img src="{{img_url}}" alt="{{ block.settings.header_silde | escape }}"
+                       class="images-desktop lazyload"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ img_url.aspect_ratio }}"
+                       data-sizes="auto">
+                  {% if block.settings.image_slide_mb != blank %}
+                  <img src="{{block.settings.image_slide_mb | img_url: '100x'}}" alt="{{ block.settings.header_silde | escape }}"
+                       class="images-mobile lazyload"
+                       data-src="{{ img_url_mb }}"
+                       data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ img_url_mb.aspect_ratio }}"
+                       data-sizes="auto"> 
+                  {% else %}
+                  <img src="{{block.settings.image_slide | img_url: '100x'}}" alt="{{ block.settings.header_silde | escape }}"
+                       class="images-mobile lazyload"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ img_url.aspect_ratio }}"
+                       data-sizes="auto">
+                  {% endif %}
+
+                  {% else %}
+                  <span class="not_img">800 x 600Px</span>                  
+                  {% endif %}
+                </a>
+                <div class="container caption-wrap{% if block.settings.alignment == 'center' %} slide-center{% elsif block.settings.alignment == 'right' %} slide-right {% else %} slide-left{% endif %}">
+                  <div class="content">
+                   {% if block.settings.header_silde != blank %}
+                    <h2 class="slide-header" style="font-size:{{block.settings.font_size_header}}; color:{{block.settings.color_header}}">
+                      {% include 'multilang' with block.settings.header_silde %}
+                    </h2>
+                    {% endif %}
+                    
+					{% if block.settings.image_des != blank %}
+                    <div class="slide-des" style="font-size:{{block.settings.font_size_des}}; color:{{block.settings.color_des}}"> 
+                      {% include 'multilang' with block.settings.image_des %}
+                    </div>
+                    {% endif %}
+                    {% if block.settings.button_slide != blank %}
+                    <a class="button-slide" href="{{ block.settings.link_button }}"
+                       style="font-size:{{block.settings.font_size_button}}; 
+                              color:{{block.settings.color_button}};
+                              background: {{block.settings.bg_button}};
+                              border:1px solid {{block.settings.border_button}}
+                              ">
+                      {% include 'multilang' with block.settings.button_slide %}
+                    </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>	
+            </div>
+          {% endif %}
+      
+      	{% elsif block.type == 'lookbook' %}
+
+        {% if block.settings.dpl_lookboob_slide %}
+        <div class="slider" id="slide-{{ block.id }}" {{ block.shopify_attributes }}> 
+          <div class="lazy-images-contain" >
+            
+            {% if block.settings.lb_image_slide != blank %}
+            {%- assign img_url = block.settings.lb_image_slide | img_url: 'master' -%}
+            <img src="{{block.settings.lb_image_slide | img_url: '2000x'}}" alt=""
+                 class="lazyload"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-sizes="auto">
+            {% else %}
+            <span class="not_img">1880 x 690Px</span>                  
+            {% endif %}
+            
+            {% if block.settings.lb_product_1 != blank %}
+            <div class="lookbook-item" style="top:{{ block.settings.top_position_1 }}%; left:{{ block.settings.left_position_1 }}%;">
+             <span class="glyphicon pr-lb item_1_{{ block.id }}" data-handle="{{ block.settings.lb_product_1 }}">+</span>
+            </div>
+            {% endif %}
+            
+            {% if block.settings.lb_product_2 != blank %}
+            <div class="lookbook-item" style="top:{{ block.settings.top_position_2 }}%; left:{{ block.settings.left_position_2 }}%;">
+             <span class="glyphicon pr-lb item_2_{{ block.id }}" data-handle="{{ block.settings.lb_product_2 }}">+</span>
+            </div>
+            {% endif %}
+            
+            {% if block.settings.lb_product_3 != blank %}
+            <div class="lookbook-item" style="top:{{ block.settings.top_position_3 }}%; left:{{ block.settings.left_position_3 }}%;">
+             <span class="glyphicon pr-lb item_3_{{ block.id }}" data-handle="{{ block.settings.lb_product_3 }}">+</span>
+            </div>
+            {% endif %}
+            
+            {% if block.settings.lb_product_4 != blank %}
+            <div class="lookbook-item" style="top:{{ block.settings.top_position_4 }}%; left:{{ block.settings.left_position_4 }}%;">
+             <span class="glyphicon pr-lb item_4_{{ block.id }}" data-handle="{{ block.settings.lb_product_4 }}" >+</span>
+            </div>
+            {% endif %}
+            <style type="text/css">
+              #slide-{{ block.id }} .item_1_{{ block.id }}{
+                color:{{ block.settings.dots_color_1 }};
+                background: {{ block.settings.dots_bg_color_1 }};
+              }
+              #slide-{{ block.id }} .item_1_{{ block.id }}:before{
+                 color: {{ block.settings.dots_bg_color_1 }};
+              }
+              #slide-{{ block.id }} .item_2_{{ block.id }}{
+                color:{{ block.settings.dots_color_2 }};
+                background: {{ block.settings.dots_bg_color_2 }};
+              }
+              #slide-{{ block.id }} .item_2_{{ block.id }}:before{
+                 color: {{ block.settings.dots_bg_color_2 }};
+              }
+              #slide-{{ block.id }} .item_3_{{ block.id }}{
+                color:{{ block.settings.dots_color_3 }};
+                background: {{ block.settings.dots_bg_color_3 }};
+              }
+              #slide-{{ block.id }} .item_3_{{ block.id }}:before{
+                 color: {{ block.settings.dots_bg_color_3 }};
+              }
+              #slide-{{ block.id }} .item_4_{{ block.id }}{
+                color:{{ block.settings.dots_color_4 }};
+                background: {{ block.settings.dots_bg_color_4 }};
+              }
+              #slide-{{ block.id }} .item_4_{{ block.id }}:before{
+                 color: {{ block.settings.dots_bg_color_4 }};
+              }
+            </style>
+          </div>	
+        </div>
+        {% endif %}
+      
+        {% endif %}
+      {% endfor %}
+    </div>
+      <div class="br-wrp col-md-4 col-12">
+        <div class="row">
+          <div class="column-top col-md-12 col-6">
+            {% if section.settings.banner_img_1 != blank %}
+            <figure class="br-itm">
+              <a href="{{ section.settings.link }}" title="{{ section.settings.text }}">
+                <img src="{{ section.settings.banner_img_1 | img_url: '100x' }}" alt="{{ section.settings.text  | escape }}"
+                     class="lazyload"
+                     data-src="{{ section.settings.banner_img_1 | img_url : '1024x' }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ section.settings.banner_img_1 | img_url : '1024x' }}"
+                     data-sizes="auto">
+              </a>
+            </figure>
+            <div class="caption">
+              {% if section.settings.text != blank %}
+              <h4 style="color:{{section.settings.color }};font-size:{{section.settings.font_size_title}};">
+                {% include 'multilang' with section.settings.text %}
+              </h4> 
+              {% endif %}
+            </div>
+            {% else %}
+            <span class="not_img">370 x 300px</span>
+            {% endif %}
+          </div>
+          <div class="column-bottom col-md-12 col-6">
+            {% if section.settings.banner_img_2 != blank %}
+            <figure class="br-itm">
+              <a href="{{ section.settings.link_2 }}" title="{{ section.settings.text_2 }}">
+                <img src="{{ section.settings.banner_img_2 | img_url: '100x' }}" alt="{{ section.settings.text_2  | escape }}"
+                     class="lazyload"
+                     data-src="{{ section.settings.banner_img_2 | img_url : '1024x' }}"
+                     data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                     data-aspectratio="{{ section.settings.banner_img_2 | img_url : '1024x' }}"
+                     data-sizes="auto">
+              </a>
+            </figure>
+            <div class="caption">
+              {% if section.settings.text_2 != blank %}
+              <h4 style="color:{{section.settings.color_2 }};font-size:{{section.settings.font_size_title}};">
+                {% include 'multilang' with section.settings.text_2 %}
+              </h4> 
+              {% endif %}
+            </div>
+            {% else %}
+            <span class="not_img">370 x 300px</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Slideshow Style 2",
+    "max_blocks": 10,
+    "settings": [
+		{
+          "type" : "radio",
+          "id" : "layout",
+          "label" : "Layouts",       
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full",
+              "label": "Full Width"
+            }
+          ],
+          "default": "default"
+        },
+        {
+            "type": "checkbox",
+            "id": "autoplay",
+            "label": "Auto-rotate slides",
+            "default": true
+        },
+	    {
+          "type": "select",
+          "id": "slideshow_speed",
+          "label": "Change slides every",
+
+          "options": [
+            { "value": "5000", "label": "5 seconds" },
+            { "value": "6000", "label": "6 seconds" },
+            { "value": "7000", "label": "7 seconds" },
+            { "value": "8000", "label": "8 seconds" },
+            { "value": "9000", "label": "9 seconds" },
+            { "value": "10000", "label": "10 seconds" }
+          ],
+          "default": "5000"
+        },
+		{
+			"type" : "radio",
+			"id" : "text_position",
+			"label" : "Text position on the mobile",          
+			"options": [
+              {
+                "value": "under_img",
+                "label": "Under the picture"
+              },
+              {
+                "value": "in_img",
+                "label": "In pictures"
+              }
+            ],
+            "default": "in_img"
+		},
+		{
+			"type" : "radio",
+			"id" : "dots_position",
+			"label" : "Dots position",          
+			"options": [
+              {
+                "value": "under_img",
+                "label": "Under the picture"
+              },
+              {
+                "value": "in_img",
+                "label": "In pictures"
+              }
+            ],
+            "default": "under_img"
+		},
+		{
+			"type" : "color",
+			"id" : "bg_color_dots",
+			"label" : "Background color dots",
+			"default" : "#969696"
+	    },
+		{
+			"type" : "color",
+			"id" : "bg_color_arrow",
+			"label" : "Border color Arrow",
+			"default" : "#969696"
+	    },
+        {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        },
+		{
+			"type" : "text",
+			"id" : "height_img_dk",
+			"label" : "Image slider Height on desktop",
+			"default" : "auto",
+			"info" : "Default auto"
+	    },
+		{
+			"type" : "text",
+			"id" : "height_img_mb",
+			"label" : "Image slider Height on Mobile",
+			"default" : "auto",
+			"info" : "Default auto"
+	    },
+		{
+          "type" : "header",
+          "content" : "Banner Slideshow"
+      	},
+		{
+          "type" : "image_picker",
+          "id" : "banner_img_1",
+          "label" : "Banner # 1",
+          "info": "( 370 x 300 )Px"
+        },
+        {
+          "type" : "text",
+          "id" : "text",
+          "label" : "Title",
+          "default" : "Nor Dapibus"
+        },
+        {
+          "type" : "text",
+          "id" : "font_size_title",
+          "label" : "Font Size Title",
+          "default" : "24px"
+        },
+        {
+          "type" : "color",
+          "id" : "color",
+          "label" : "Color Title",
+          "default" : "#ffffff"
+        },
+		{
+          "type" : "url",
+          "id" : "link",
+          "label" : "Link"
+        },
+		{
+          "type" : "image_picker",
+          "id" : "banner_img_2",
+          "label" : "Banner # 2",
+          "info": "( 370 x 300 )Px"
+        },
+        {
+          "type" : "text",
+          "id" : "text_2",
+          "label" : "Title",
+          "default" : "Nor Dapibus"
+        },
+        {
+          "type" : "text",
+          "id" : "font_size_title_2",
+          "label" : "Font Size Title",
+          "default" : "24px"
+        },
+        {
+          "type" : "color",
+          "id" : "color_2",
+          "label" : "Color Title",
+          "default" : "#ffffff"
+        },
+		{
+          "type" : "url",
+          "id" : "link_2",
+          "label" : "Link"
+        }
+     ],
+	"blocks" : [
+		{
+			"type" : "image",
+			"name" : "Image Slide",			
+			"settings":[
+				{
+					"type" : "checkbox",
+					"id" : "dpl_slide_img",
+					"label" : "Enable",
+					"default" : true
+				},
+				{
+					"type" : "image_picker",
+					"id" : "image_slide",
+					"label" : "Select Image",
+					"info" : "Recommended Image: Width x Height (1880 x 400)PX"
+				},
+				{
+					"type" : "image_picker",
+					"id" : "image_slide_mb",
+					"label" : "Select Image mobile",
+					"info" : "Recommended Image: Width x Height (1770 x 690)PX"
+				},
+				{
+					"type": "select",
+					"id": "alignment",
+					"label": "Text alignment",
+					"default": "left",
+					"options": [
+						{
+							"value": "left",
+							"label": "Left"
+						},
+					    {
+							"value": "center",
+							"label": "Center"
+					    },
+					    {
+							"value": "right",
+							"label": "Right"
+					    }
+					]
+				},
+				{
+					"type" : "text",
+					"id" : "header_silde",
+					"label" : "Header",
+					"default" : "Soliquem Duscipitor"
+				},
+				{
+					"type" : "text",
+					"id" : "font_size_header",
+					"label" : "Header Font Size ",
+					"default" : "48px"
+				},
+				{
+					"type" : "color",
+					"id" : "color_header",
+					"label" : "Header Color",
+					"default" : "#000"
+				},
+				{
+					"type" : "textarea",
+					"id" : "image_des",
+					"label" : "Image description"
+				},
+				{
+					"type" : "text",
+					"id" : "font_size_des",
+					"label" : "Description Font Size",
+					"default" : "12px"
+				},
+				{
+					"type" : "color",
+					"id" : "color_des",
+					"label" : "Image description Color",
+					"default" : "#000"
+				},
+				{
+					"type" : "text",
+					"id" : "button_slide",
+					"label" : "Button Slideshow",
+					"default" : "Shop Now"
+				},
+				{
+					"type" : "url",
+					"id" : "link_button",
+					"label" : "Link Button"
+				},
+				{
+					"type" : "text",
+					"id" : "font_size_button",
+					"label" : "Font Size Button",
+					"default" : "14px"
+				},
+				{
+					"type" : "color",
+					"id" : "bg_button",
+					"label" : "Background Button",
+					"default" : "#323232"
+				},
+				{
+					"type" : "color",
+					"id" : "border_button",
+					"label" : "Border Button",
+					"default" : "#323232"
+				},
+				{
+					"type" : "color",
+					"id" : "color_button",
+					"label" : "Button Color",
+					"default" : "#fff"
+				}
+							
+			]
+		},
+        {
+        "type": "lookbook",
+        "name": "Lookbook Slide",
+        "settings": [
+		  {
+			"type" : "checkbox",
+			"id" : "dpl_lookboob_slide",
+			"label" : "Enable",
+			"default" : true
+		  },
+          {
+            "type": "image_picker",
+            "id": "lb_image_slide",
+			"label": "Select Image"
+          },
+		  {
+			"type" : "header",
+			"content" : "Product 1"
+		  },
+		  {
+			"type" : "product",
+			"id" : "lb_product_1",
+			"label" : "Select Product 1"
+		  },
+		  {
+			"type" : "text",
+			"id" : "top_position_1",
+			"label" : "Top Position 1",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "text",
+			"id" : "left_position_1",
+			"label" : "Left Position 1",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_color_1",
+			"label" : "Color 1",
+			"default" : "#fff"
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_bg_color_1",
+			"label" : "Dots background color 1",
+			"default" : "#323232",
+			"info" : "======================="
+		  },
+		  {
+			"type" : "header",
+			"content" : "Product 2"
+		  },
+		  {
+			"type" : "product",
+			"id" : "lb_product_2",
+			"label" : "Select Product 2"
+		  },
+		  {
+			"type" : "text",
+			"id" : "top_position_2",
+			"label" : "Top Position 2",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "text",
+			"id" : "left_position_2",
+			"label" : "Left Position 2",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_color_2",
+			"label" : "Color 2",
+			"default" : "#fff"
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_bg_color_2",
+			"label" : "Dots background color 2",
+			"default" : "#323232",
+			"info" : "======================="
+		  },
+		  {
+			"type" : "header",
+			"content" : "Product 3"
+		  },
+		  {
+			"type" : "product",
+			"id" : "lb_product_3",
+			"label" : "Select Product 3"
+		  },
+		  {
+			"type" : "text",
+			"id" : "top_position_3",
+			"label" : "Top Position 3",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "text",
+			"id" : "left_position_3",
+			"label" : "Left Position 3",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_color_3",
+			"label" : "Color 3",
+			"default" : "#fff"
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_bg_color_3",
+			"label" : "Dots background color 3",
+			"default" : "#323232",
+			"info" : "======================="
+		  },
+		  {
+			"type" : "header",
+			"content" : "Product 4"
+		  },
+		  {
+			"type" : "product",
+			"id" : "lb_product_4",
+			"label" : "Select Product 4"
+		  },
+		  {
+			"type" : "text",
+			"id" : "top_position_4",
+			"label" : "Top Position 4",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "text",
+			"id" : "left_position_4",
+			"label" : "Left Position 4",
+			"default" : "10",
+			"info" : "Unit %" 
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_color_4",
+			"label" : "Color 4",
+			"default" : "#fff"
+		  },
+		  {
+			"type" : "color",
+			"id" : "dots_bg_color_4",
+			"label" : "Dots background color 4",
+			"default" : "#323232"
+		  }
+		]
+	   }
+	],
+	"presets": [{
+      "name": "Slideshow Style 2",
+      "category": "Slideshow",
+      "blocks": [
+        {
+          "type": "image"
+        }
+      ]
+    }]
+  }
+{% endschema %}
+
+
+<style>
+  #slideshow-{{section.id}} .slideshow:after{
+  	content: "";
+    display: block;
+    clear: both;
+  }
+  @media (min-width:1200px){
+    #slideshow-{{section.id}} .sl-wrp{
+      max-width: -moz-calc(100% - 370px);
+      max-width: -webkit-calc(100% - 370px);
+      max-width: calc(100% - 370px);
+      -ms-flex: 0 0 calc(100% - 370px);
+      flex: 0 0 calc(100% - 370px);
+    }
+    #slideshow-{{section.id}} .br-wrp{
+      -ms-flex: 0 0 370px;
+      flex: 0 0 370px;
+      max-width: 370px;
+    }
+  }
+
+  @media (min-width:768px){
+    #slideshow-{{section.id}} .br-wrp{
+    	float:left;
+    }
+    #slideshow-{{section.id}} .sl-wrp{
+    	float:right;
+    }
+    {% if section.settings.dots_position == 'in_img' %}
+      #slideshow-{{section.id}} .slick-dots {
+        position: absolute;
+        left: 0;
+        bottom: 3%;
+        margin: 0;
+        width: 100%;
+      }
+      #slideshow-{{section.id}} .slick-dots li button{
+        border-width:1px;
+        background: {{ section.settings.bg_color_dots }};
+        border-color: {{ section.settings.bg_color_dots }};
+      }
+      #slideshow-{{section.id}} .slick-arrow{
+        border-color: {{ section.settings.bg_color_arrow }};
+      }
+      #slideshow-{{section.id}} .slick-arrow svg{
+        fill: {{ section.settings.bg_color_arrow }};
+      }
+
+      #slideshow-{{section.id}} .slick-dots li.slick-active button{
+        background: transparent;
+      }
+    {% endif %}   
+  }
+  
+  @media (min-width:1025px){
+    #slideshow-{{section.id}} .lazy-images-contain img{
+      height: {{ section.settings.height_img_dk }};
+      object-fit: cover;
+    }
+  }
+
+  @media (max-width: 1024px){
+    #slideshow-{{section.id}} .lazy-images-contain img{
+      height: {{ section.settings.height_img_mb }};
+      object-fit: cover;
+    }
+    #slideshow-{{section.id}} .sl-wrp{
+    	margin-bottom:20px;
+    }
+    .home-slideshow.slideshow-layout-2 .br-wrp .row{
+    	margin: 0 -10px;
+    }
+    #slideshow-{{section.id}} .br-wrp .column-bottom,
+    #slideshow-{{section.id}} .br-wrp .column-top{
+    	padding: 0 10px;
+    }
+  }
+  
+  @media (max-width: 767px){
+
+    {% if section.settings.text_position == 'under_img' %}
+      #slideshow-{{section.id}} .caption-wrap{
+        position: static;
+        transform: none;
+        -webkit-transform: none;
+        -ms-transform: none;
+        text-align:center!important;
+      }
+    
+      #slideshow-{{section.id}} .caption-wrap:after {
+        display: block;
+        content: "";
+        visibility: hidden;
+        clear: both;
+      }
+    
+      #slideshow-{{section.id}} .caption-wrap .content h2{
+        color: #000 !important;
+      }
+      #slideshow-{{section.id}} .caption-wrap .content .slide-des{
+        color: #000 !important;
+        display: block;
+      }
+    
+    #slideshow-{{section.id}} .caption-wrap.slide-center .button-slide {
+      color: #fff !important;
+      background-color: #323232!important;
+      border-color: #323232!important;
+    }
+    
+    {% else %}
+      #slideshow-{{section.id}} .caption-wrap .content .button-slide{
+        max-width: max-content;
+        height: 36px;
+        line-height: 36px;
+        width: auto;
+        padding: 0 40px;
+      }
+    {% endif %}
+    
+    {% if section.settings.dots_position == 'in_img' and section.settings.text_position == 'in_img' %}
+    #slideshow-{{section.id}} .slick-dots {
+      position: absolute;
+      left: 0;
+      bottom: 3%;
+      margin: 0;
+      width: 100%;
+    }
+    #slideshow-{{section.id}} .slick-dots li button{
+      border-width:1px;
+      background: {{ section.settings.bg_color_dots }};
+      border-color: {{ section.settings.bg_color_dots }};
+    }
+    #slideshow-{{section.id}} .slick-arrow{
+      border-color: {{ section.settings.bg_color_arrow }};
+    }
+    #slideshow-{{section.id}} .slick-arrow svg{
+      fill: {{ section.settings.bg_color_arrow }};
+    }
+
+    #slideshow-{{section.id}} .slick-dots li.slick-active button{
+      background: transparent;
+    }
+    {% endif %}
+    
+  }
+
+  {% if section.settings.layout == 'default' %}
+  
+  
+    #slideshow-{{section.id}} .caption-wrap {
+      max-width: 650px;
+    }
+  
+    #slideshow-{{section.id}} .caption-wrap .slide-des {
+      max-width: 410px;
+    }
+  
+    #slideshow-{{section.id}} .slick-prev {
+      left:5%;
+    }
+  
+    #slideshow-{{section.id}} .slick-next{
+      right:5%;
+    }
+  {% endif %}
+  
+  #slideshow-{{section.id}} .sl-wrp > .slider:not(:first-child){
+    display:none;
+  }
+  
+  #slideshow-{{section.id}}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+  
+</style>

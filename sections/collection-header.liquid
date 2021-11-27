@@ -1,0 +1,189 @@
+<div class="cat-content">
+  <div class="cat-img lazyload">
+    {% if section.settings.dpl_img_cls %}
+    
+    {% if section.settings.display_image_cls == 'image_category' %}
+    {% if section.settings.img_cat != blank %}
+    <img src="{{ section.settings.img_cat | img_url :"master"}}" alt="{{ collection.title | split: '|' | first }}" />
+    {% endif %}
+    {% else %}
+    {% if collection.image != blank  %}
+    <img src="{{ collection.image | img_url :"master"}}" alt="{{ collection.title | split: '|' | first }}" />
+    {% endif %}
+    {% endif %}
+    {% endif %}
+    
+    <div class="wrapper">
+      <header class="page-header">
+        <h1 style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %}">
+          {% include 'multilang' with collection.title  %}
+        </h1>
+      </header>
+      {% if section.settings.show_des_cls  %}
+        {% if collection.description  != blank %}
+        <div class="cat-des {% if section.settings.dpl_img_cls %}des-desktop{% endif %}" style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %}">
+          <span>{{ collection.description | strip_html | truncatewords: 11 }}</span>
+        </div>
+        {% endif %}
+      {% endif  %}
+    </div>
+  </div>
+  {% if section.settings.dpl_img_cls %}
+  {% if section.settings.show_des_cls %}
+    {% if collection.description  != blank  %}
+    <div class="cat-des des-mobile"style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %}">
+      <span>{{ collection.description | strip_html }}</span>
+    </div>
+    {% endif %}
+  {% endif %}
+  {% endif %}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Collection Header",
+    "settings": [
+      {
+		"type" : "checkbox",
+		"id" : "dpl_img_cls",
+		"label" : "Display Image",
+		"default" : true
+	  },
+      {
+        "type" : "radio",
+        "id" : "display_image_cls",
+        "label" : "Show Image",       
+        "options": [
+          {
+            "value": "image_category",
+            "label": "Show Image Category"
+          },
+          {
+            "value": "show_collection_image",
+            "label": "Show Collection Image"
+          }
+        ],
+      	"default": "image_category"
+      },
+      {
+        "type": "image_picker",
+        "id": "img_cat",
+        "label": "Image Category"
+      },
+	  {
+		"type" : "text",
+		"id" : "height_img",
+		"label" : "Image height",
+		"default" : "270px"
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_des_cls",
+        "label": "Show description",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text alignment",
+        "default": "left",
+        "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+         ]
+      },
+	  {
+		"type" : "color",
+		"id" : "color_header",
+		"label" : "Color header",
+		"default" : "#323232"
+	  },
+	  {
+		"type" : "color",
+		"id" : "color_des",
+		"label" : "Color Description",
+		"default" : "#323232"
+	  }
+	]
+  }
+{% endschema %}
+
+<style>
+  {% if section.settings.dpl_img_cls %}
+  .template-collection .wrapper{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 0 20px;
+  }
+  
+  {% endif %}
+  
+  .template-collection .cat-content .cat-img{
+    {% if section.settings.alignment == 'left' %}
+    align-items: flex-start;
+    -ms-flex-align: flex-start;
+    -webkit-align-items: flex-start;
+
+    {% elsif section.settings.alignment == 'right' %}
+
+    align-items: flex-end;
+    -ms-flex-align: flex-end;
+    -webkit-align-items: flex-end;
+
+    {% endif %}
+  }
+  
+  .template-collection .cat-content .cat-img img{
+    max-height: {{ section.settings.height_img }};
+    object-fit: cover;
+    width:100%;
+  }
+
+  {% if section.settings.dpl_img_cls == false %}
+  .template-collection .page-header, .template-collection .cat-des{
+    padding:0;
+  }
+  .template-collection .cat-content{
+    margin-top:25px;
+  }
+  {% endif %}
+  {% if section.settings.alignment == 'center' %}
+  .template-collection .page-header h1{
+    text-align: center;
+   
+  }
+  .template-collection .cat-des{
+    max-width: 440px; 
+    text-align: center;
+    line-height: 24px;
+    margin-left:auto;
+    margin-right:auto;
+    
+  }
+  {% endif %}
+  
+   .template-collection .cat-des{
+    color: {{ section.settings.color_des }};
+  }
+
+  .template-collection .page-header h1{
+    color: {{ section.settings.color_header }};
+  }
+
+</style>

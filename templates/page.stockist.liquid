@@ -1,0 +1,278 @@
+<div class="container mains_blocks">
+  <header class="page-header">
+    <h1>
+      {% include 'multilang' with  page.title %}
+    </h1>
+  </header>
+
+  {% comment %}
+  Regular page content goes here.
+  {% endcomment %}
+
+  <div class="page-content">
+  {% form 'contact' %}
+
+      {% comment %}
+      Successful message
+      {% endcomment %}
+      
+      <div class="row" style="padding: 0px 20px 0px 20px;"> 
+     
+        <!--form start-->
+        <!--<div class="col-md-7 col-lg-8">-->
+        <div class="col-sm-6">
+          <div id="contactFormWrapper">
+           
+            <div class="contact-des">
+              <span>Interested in representing our brand and carrying our products in your area? From small to large boutiques to online marketplaces, we cater to all. Please complete the form below and our team will connect with you. We look forward to having you onboard with us!</span>
+              
+            </div>
+            <div class="contact-content">
+              <h4 class="static-page-h3"><span>STOCKIST APPLICATION FORM</span></h4>
+              <h5><span>Your Details:</span></h5>
+              <div class="form-group">
+              	<label for="contactFormName">
+                  <span>
+                  Name
+                  </span>
+                  <em>*</em>
+                </label>
+              	<input class="form-control f1" type="text" id="contactFormName" name="contact[name]" autocapitalize="words" required>
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormEmail">
+                  <span>
+                   Email
+                  </span>
+                  <em>*</em>
+                </label>
+              	<input class="form-control f1" type="email" name="contact[email]" id="contactFormEmail" autocorrect="off" autocapitalize="off" required>
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormPhone">
+                  <span>
+                    Phone
+                  </span>
+                  <em>*</em>
+                </label>
+              	<input class="form-control f1" type="tel" name="contact[phone]" id="contactFormPhone" pattern="[0-9]*" required>
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormCity">
+                  <span>
+                    City
+                  </span>
+                  <em>*</em>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormCity" name="contact[city]" autocapitalize="words" required>
+
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormCountry">
+                  <span>
+                    Country
+                  </span>
+                  <em>*</em>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormCountry" name="contact[country]" autocapitalize="words" required>
+              </div>
+              
+              <h5><span>Your Company:</span></h5>
+              
+              <div class="form-group">
+              	<label for="contactFormBrand">
+                  <span>
+                    Brand
+                  </span>
+                  <em>*</em>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormBrand" name="contact[brand]" autocapitalize="words" required>
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormWebsite">
+                  <span>
+                    Website
+                  </span>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormWebsite" name="contact[website]" autocapitalize="words">
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormInstagram">
+                  <span>
+                    Instagram
+                  </span>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormInstagram" name="contact[Instagram]" autocapitalize="words">
+              </div>
+              
+              <div class="form-group">
+              	<label for="contactFormFacebook">
+                  <span>
+                    Facebook
+                  </span>
+                </label>
+                <input class="form-control f1" type="text" id="contactFormFacebook" name="contact[facebook]" autocapitalize="words">
+              </div>
+              <div class="form-group">
+              	<label>
+                  <span>
+                    Channel:
+                  </span>
+                </label>
+                <div class="checkbox-head">
+                <input class="" type="radio" id="contactFormRetailStore" name="contact[Channel]" value="Retail Store" required>
+                <label for="contactFormRetailStore">Retail Store</label>
+                </div>
+                
+                <div class="checkbox-head">
+                <input class="" type="radio" id="contactFormECommerce" name="contact[Channel]" value="E-Commerce" required>
+                <label for="contactFormECommerce">E-Commerce</label>
+                </div>
+                
+                <div class="checkbox-head">
+                  <input class="" type="radio" id="contactFormBoth" name="contact[Channel]" value="Retail Store & E-Commerce" required>
+                  <label for="contactFormBoth">Both</label>
+                </div>
+              </div>
+              <div class="form-group">
+              	<label>
+                  <span>
+                    Interest Areas (Select all that apply):
+                  </span>
+                </label>
+                <div class="checkbox-head">
+                <input class="" type="checkbox" id="contactFormWomenClothing" name="contact[Women Clothing]" value="Interested">
+                <label for="contactFormWomenClothing">Women Clothing</label>
+                </div>
+                
+                <div class="checkbox-head">
+                <input class="" type="checkbox" id="contactFormKidsClothing" name="contact[Kids Clothing]" value="Interested">
+                <label for="contactFormKidsClothing">Kids Clothing</label>
+                </div>
+                <div class="checkbox-head">
+                  <input class="" type="checkbox" id="contactFormHomeFurnishings" name="contact[Home Furnishings]" value="Interested">
+                  <label for="contactFormHomeFurnishings">Home Furnishings</label>
+                </div>
+                <div class="checkbox-head">
+                  <input class="" type="checkbox" id="contactFormFurniture" name="contact[Furniture]" value="Interested">
+                  <label for="contactFormFurniture">Furniture</label>
+                </div>
+              </div>
+              <div class="form-group">
+              	<label for="contactFormNote">
+                  <span>Note</span>
+                </label>
+              	<textarea class="form-control f1" rows="3" name="contact[Note]" id="contactFormNote" placeholder=""></textarea>
+              </div>
+              {% if form.posted_successfully? %}
+              <p class="note form-success">
+               Thank you for your interest. We shall get back to you shortly.
+              </p>
+              {% endif %}
+
+              {{ form.errors | default_errors }}
+              <div class="text-center">
+                <input type="submit" class="btn" {% if settings.enable_multilang %}data-translate="contact.form.submit_contact"{%endif%} value="{{ 'contact.form.submit_contact' | t }}">
+              </div>
+              
+              
+            </div>
+            
+
+          </div>
+        </div>
+        
+        <!--form end-->
+        
+  
+        
+        
+        
+      </div>
+    {% endform %}
+  </div>
+</div>
+
+<style>
+  
+@media screen and ( min-width: 700px) {
+  .mains_blocks {
+    max-width: 100% !important;
+    margin: auto;
+  }
+}
+  .mains_blocks .row {
+    margin: 20px 0px;
+  }
+  .mains_blocks .col-sm-6 {
+    margin: auto;
+  }
+  .text_block {
+    font-size: 17px;
+    line-height: 25px;
+    color:#777777;
+  }
+  .mains_blocks a:hover{
+    color: #5ac4be;
+    text-decoration: none;
+  }
+  .mains_blocks a{
+    color:black;
+  }
+
+  .full_text {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .mains_blocks .img_block {
+    text-align: center;
+  }
+  .page-header{
+    text-align: center;
+    margin-top: 30px;
+  }
+  .checkbox-head{
+    margin-bottom:6px;
+  }
+  .checkbox-head label{
+    display: inline-block!important;
+    margin-left: 5px;
+    margin-bottom: 0!important;
+  }
+  .checkbox-head input{
+    vertical-align:middle;
+  }
+  input:not([type=checkbox]){
+      -webkit-appearance: auto!important;
+  }
+  #contactFormWrapper .form-success{
+    margin-bottom: 10px;
+    color: #ec048a;
+  }
+  #contactFormWrapper .btn {
+    width: 100%;
+    -moz-border-radius: 1px;
+    -webkit-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 600;
+    padding: 8px 15px 7px;
+    max-width: 244px;
+    background: #5ac4be;
+    color: #fff;
+    border: 1px solid #5ac4be;
+    fill: #ffffff;
+    margin-top: 5px;
+    cursor:pointer;
+}
+</style>

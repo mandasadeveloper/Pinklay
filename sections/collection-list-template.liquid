@@ -1,0 +1,53 @@
+
+<div class="collections-content-product">
+{% if section.settings.collection_results_per_page != blank %}
+  {% assign product_per_page = section.settings.collection_results_per_page %}
+{% else %}
+  {% assign product_per_page = 12 %}
+{% endif %}
+
+    
+  {% paginate collection.products by product_per_page %}
+  {% include 'toolbar-list' %}
+
+  <div class="product-collection product-list row">
+    {% if collection.products_count > 0 %}    
+    {% for product in collection.products %}
+    
+    <div class="grid-item col-12">
+      {% include 'product-list-item' %}
+    </div>
+    
+    {% endfor %}
+
+    {% else %}
+    <p class="text-center" {% if settings.enable_multilang %}data-translate="collections.general.no_matches"{% endif %}>{{ 'collections.general.no_matches' | t }}</p>
+    {% endif %}
+  </div>
+  
+  {% if paginate.pages > 1 %}
+  <div class="padding">
+    {% include 'pagination-page' %}
+  </div>
+  {% endif %}
+  {% endpaginate %}    
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection List pages",
+    "settings": [
+      {
+        "type": "range",
+        "id": "collection_results_per_page",
+        "label": "Products per page",
+        "min": 1, 
+        "max": 50,
+        "step": 1,
+        "default": 12
+      }
+    ]
+  }
+{% endschema %}
+

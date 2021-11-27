@@ -1,0 +1,293 @@
+<div id="quickview-template" style="display:none">
+  <div class="overlay"></div>
+  
+  <div class="content">
+    <div class="row">
+      <div class="col-lg-6 col-xl-5 product-img-box">
+        <div class="quickview-featured-image product-photo-container slider-for"></div>
+        <div class="product-label"></div>
+        <a class="view-detail" title="{{ settings.quickview_view_detail }}">
+          {% include 'multilang' with settings.quickview_view_detail  %}
+        </a>
+      </div>
+      
+      <div class="col-lg-6 col-xl-7 product-shop">
+        <div class="product-item">
+          <header class="product-title">
+            <h2 itemprop="name">
+              <a></a>
+            </h2>
+          </header>
+          
+          <div class="group-prices">
+            <span class="price-min"></span>
+            <span class="padding">-</span>
+            <span class="price-max"></span>
+          </div>
+
+          {% if settings.display_quickview_availability or settings.display_quickview_product_type or settings.display_quickview_vendor %}
+          <div class="product-infor">
+            {% if settings.display_quickview_availability %}
+            <div class="product-inventory">
+              {% if settings.quickview_text_availability != blank %}
+                {% if settings.enable_multilang %}
+                <label class="lang1">
+                  {{ settings.quickview_text_availability | split: '|' | first }}
+                </label>
+                <label class="lang2">
+                  {{ settings.quickview_text_availability | split: '|' | last }}
+                </label>
+                {% else %}
+                <label>
+                  {{ settings.quickview_text_availability | split: '|' | first }}
+                </label>
+                {% endif %}
+              {% endif %}
+
+              <span></span>
+            </div>
+            {% endif %}
+            
+            {% if settings.display_quickview_product_type %}
+            <div class="product-type">
+              {% if settings.quickview_text_product_type != blank %}
+                {% if settings.enable_multilang %}
+                <label class="lang1">
+                  {{ settings.quickview_text_product_type | split: '|' | first }}
+                </label>
+                <label class="lang2">
+                  {{ settings.quickview_text_product_type | split: '|' | last }}
+                </label>
+                {% else %}
+                <label>
+                  {{ settings.quickview_text_product_type | split: '|' | first }}
+                </label>              
+                {% endif %}
+              {% endif %}
+
+              <span></span>
+            </div>
+            {% endif %}
+            
+            {% if settings.display_quickview_vendor %}
+            <div class="vendor-product">
+              {% if settings.quickview_text_vendor != blank %}
+                {% if settings.enable_multilang %}
+                <label class="lang1">
+                  {{ settings.quickview_text_vendor | split: '|' | first }}
+                </label>
+                <label class="lang2">
+                  {{ settings.quickview_text_vendor | split: '|' | last }}
+                </label>
+                {% else %}
+                <label>
+                  {{ settings.quickview_text_vendor | split: '|' | first }}
+                </label>
+                {% endif %}
+              {% endif %}
+
+              <span>{{ product.vendor }}</span>
+            </div>
+            {% endif %}                        
+          </div>
+          {% endif %}
+
+          <div class="countdown" style="display: none;">
+            {% include 'multilang' with settings.quickview_text_countdown %}
+            <div class="quickview-clock"></div>
+          </div>
+
+          {% if settings.display_quickview_short_desc %}
+          <p class="short-description"></p>
+          {% endif %}
+
+          <form action="/cart/add" method="post" class="variants" data-handle="/collections/{{collection.handle}}?view=related">
+            <select name='id' style="display:none"></select>
+
+            <div class="prices">
+              <span class="compare-price"></span>
+              <span class="price"></span>
+            </div>
+
+            <label for="quantity" {% if settings.enable_multilang %}data-translate="cart.label.quantity"{%endif%}>
+              {{ 'cart.label.quantity' | t }}: 
+            </label>
+            
+            <div class="extra qty-group item">
+              <a href="javascript:void(0)" class="dec button"></a>
+              <input type="text" class="quantity" name="quantity" value="1">
+              <a href="javascript:void(0)" class="inc button"></a>
+            </div>
+
+            {% if settings.display_quickview_subtotal %}
+            <div class="total-price">
+              <label {% if settings.enable_multilang %}data-translate="cart.general.subtotal"{%endif%}>
+                {{ 'cart.general.subtotal' | t }}:
+              </label>
+              <span class="total-money"></span>
+            </div>
+            {% endif %}
+
+            <button type="button" class="btn add-to-cart-btn" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %}>
+              {{ 'products.product.add_to_cart' | t }}
+            </button>
+            
+            {% if settings.enable_wishlist %}
+            <div class="addwishlist"></div>
+            {% endif %} 
+          </form>  
+        </div>
+      </div>
+    </div>
+    
+    <a href="javascript:void(0)" class="close-window close" title="{{ 'cart.ajax_cart.close' | t }}">
+      {% include 'icon-close' %}
+    </a>
+  </div>
+</div>
+
+<script>
+  var selectCallbackQuickview = function(variant, selector) {
+    var productItem = $('.quick-view .product-item'),
+        btnAddToCart = productItem.find('.add-to-cart-btn'),
+        productPrice = productItem.find('.price'),
+        comparePrice = productItem.find('.compare-price'),
+        totalPrice = productItem.find('.total-price .total-money');
+    
+    var priceSaveElm = $('.quick-view').find('.product-img-box .product-label .label-sale');
+
+    if(variant) {
+      if(variant.available) {
+        btnAddToCart.removeClass('disabled').removeAttr('disabled').text(window.inventory_text.add_to_cart);
+      }
+      else {
+        btnAddToCart.addClass('disabled').attr('disabled', 'disabled').text(window.inventory_text.sold_out);
+      };
+
+      // -----    Price
+      productPrice.html(Shopify.formatMoney(variant.price, "{{ shop.money_format }}"));
+
+      if(variant.compare_at_price > variant.price) {
+         comparePrice
+                     .html(Shopify.formatMoney(variant.compare_at_price, "{{ shop.money_format }}"))
+                     .show();
+        productPrice.addClass('on-sale');
+      
+      var roundqv = Math.round((1- ( variant.price/variant.compare_at_price))*100);
+      priceSaveElm.html('-'+roundqv+"%");
+      priceSaveElm.show();
+
+      }
+      else {
+        comparePrice.hide();
+        productPrice.removeClass('on-sale');
+        priceSaveElm.hide();
+      };
+
+      // ------  Color Swatch
+      if(window.use_color_swatch) {
+        var form = $('#' + selector.domIdPrefix).closest('form');
+
+        for (var i = 0, length = variant.options.length; i < length; i++) {
+          var radioButton = form.find('.swatch[data-option-index="' + i + '"] :radio[value="' + variant.options[i] +'"]');
+
+          if (radioButton.size()) {
+            radioButton.get(0).checked = true;
+          }
+        }
+      };
+
+      // ------   variant inventory
+      if(window.display_quickview_availability) {
+        var inventoryInfo = productItem.find('.product-inventory span');
+
+        if (variant.available) {
+          if (variant.inventory_management != null) {
+            inventoryInfo.text(window.inventory_text.in_stock);
+          }
+          else {
+            inventoryInfo.text(window.inventory_text.many_in_stock);
+          }
+        }
+        else {
+          inventoryInfo.text(window.inventory_text.out_of_stock);
+        }
+      };
+
+
+      // ----   price calculation
+      var regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;
+      var unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);
+
+      if (!unitPriceTextMatch) {
+        regex = /([0-9]+[.|,][0-9]+)/g;
+        unitPriceTextMatch = jQuery('.quick-view .price').text().match(regex);     
+      }
+
+      if (unitPriceTextMatch) {
+        var unitPriceText = unitPriceTextMatch[0];     
+        var unitPrice = unitPriceText.replace(/[.|,]/g,'');
+        var quantity = parseInt(jQuery('.quick-view input[name=quantity]').val());
+        var totalPrice = unitPrice * quantity;
+
+        var totalPriceText = Shopify.formatMoney(totalPrice, window.money_format);
+        regex = /([0-9]+[.|,][0-9]+[.|,][0-9]+)/g;     
+        if (!totalPriceText.match(regex)) {
+          regex = /([0-9]+[.|,][0-9]+)/g;
+        } 
+        totalPriceText = totalPriceText.match(regex)[0];
+
+        var regInput = new RegExp(unitPriceText, "g"); 
+        var totalPriceHtml = $('.quick-view .price').html().replace(regInput ,totalPriceText);
+        
+        $('.quick-view .total-price .total-money').html(totalPriceHtml);
+      };
+
+      // ------  Currency
+      if(window.show_multiple_currencies) {
+        Currency.convertAll(window.shop_currency, $('#currencies .active').attr('data-currency'), 'span.money', 'money_format');
+      };
+
+      // -----    variant image      
+      if (variant && variant.featured_image) {
+        var originalImage = $('.quick-view .quickview-featured-image img');
+        var newImage = variant.featured_image;
+        var element = originalImage[0];
+
+        var Slide = $('.quick-view .quickview-featured-image');
+        var photoProductElm = Slide.find('img');
+
+        Shopify.Image.switchImage(newImage, element, function (newImageSizedSrc, newImage, element) {
+          var newImageSplitVariant = newImageSizedSrc.replace(/\?(.*)/,"");
+
+          photoProductElm.each(function() {
+            var imgSrc = $(this).attr('src');
+
+            if (imgSrc == newImageSplitVariant) {
+              var item = $(this).closest('.thumb');
+              var idSlickDots = item.attr('aria-describedby');
+              var slickDotsItem = item.closest('.slick-list').siblings('.slick-dots').children();
+
+              slickDotsItem.each(function() {
+                var id= $(this).attr('id');
+
+                if(id == idSlickDots) {
+                  var index = $(this).index();
+
+                  Slide.slick('slickGoTo', index);
+
+                  return false;
+                };
+              })
+            }
+          });
+        });
+      }
+    
+    }
+
+    else {
+      addToCart.text(window.inventory_text.unavailable).addClass('disabled').attr('disabled', 'disabled');
+    };
+  }
+</script>

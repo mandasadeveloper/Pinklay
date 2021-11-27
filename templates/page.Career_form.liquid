@@ -1,0 +1,93 @@
+<div class="container">
+  <header class="page-header">
+    <h1>
+     
+    </h1>
+  </header>
+  
+  <style>
+  p.job-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: #777777;
+}
+
+p.job-location {
+    margin-bottom: 0.5rem;
+    font-size: 19px;  
+    color: #777777;
+}
+  .form_container [type=file] + label{
+  vertical-align: middle;
+  position: relative;
+  top: -10px;
+}
+  </style>
+  
+  {% assign pageurl = request.path %}
+  {%- assign Querys = pageurl | split:'/' | last -%}  
+  
+ <div class="rte">  
+  {% if Querys == 'graphic-designer-job-opportunity' %}
+  <p class="job-title">Graphic Designer</p>
+  {% endif %}
+  
+  {% if Querys == 'channel-product-associate-job-opportunity' %}
+  <p class="job-title">Customer Service Specialist</p>
+  {% endif %}
+  
+  {% if Querys == 'order-processing-executive-job-opportunity' %}
+  <p class="job-title">Web Operations Executive</p>
+  {% endif %}
+  
+  {% if Querys == 'accounts-executive-job-opportunity' %}
+  <p class="job-title">Creative Content Writer</p>
+  {% endif %}
+
+  {% if Querys == 'ecommerce-executive-job-opportunity' %}
+  <p class="job-title">E-Commerce Operations Executive</p>
+  {% endif %}
+     
+  {% if Querys == 'warehouse-manager-job-opportunity' %}
+  <p class="job-title">Warehouse Manager</p>
+  {% endif %} 
+   
+   
+  <p class="job-location"> Type: Part-Time/Full-Time | Location: Mumbai/Remote</p>
+  </div>
+  
+  <div class="rte">  
+    <div style="margin: 0 auto;" class="pxFormGenerator" id="dcZzY3eq4J_Zx1Q9hRCg5g"></div>
+  </div>
+  <script>
+  
+    $(document).ready(function() {
+      setTimeout(function() {
+  	 var jobtitle = $('p.job-title').html();
+      var querys = "{{Querys}}" ;
+      
+      //$('div#dcZzY3eq4J_Zx1Q9hRCg5g iframe#frame_dcZzY3eq4J_Zx1Q9hRCg5g div#wizard-validation-form form#formGeneratorForm input#form_input_15').val('+jobtitle+');
+          
+         /* if (querys === 'graphics') {
+            console.log(jobtitle);
+            $('form#formGeneratorForm input#form_input_15').val(jobtitle);
+            $('form#formGeneratorForm select[id="form_input_0"] option[value="Graphic Designer"]').attr("selected","selected");
+          }
+      
+     	 if (querys === 'customercare') {
+           console.log(jobtitle);
+           $('form#formGeneratorForm input#form_input_15').val(jobtitle);
+           $('form#formGeneratorForm select[id="form_input_0"] option[value="Customer Care Executive"]').attr("selected","selected");
+          }
+      
+      	 if (querys === 'productsexecutive') {
+           console.log(jobtitle);
+           $('form#formGeneratorForm input#form_input_15').val(jobtitle);
+           $('form#formGeneratorForm select[id="form_input_0"] option[value="Product Executive – Marketplaces"]').attr("selected","selected");
+          }*/
+      }, 5000);
+    });
+  
+  </script>
+</div>
+

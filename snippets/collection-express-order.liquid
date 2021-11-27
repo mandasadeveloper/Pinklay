@@ -1,0 +1,33 @@
+<div class="halo-container">
+  <div class="container">
+    
+    <div class="reverse-mb">
+      {% section 'collection-header' %}
+
+      {% include 'breadcrumb' %}
+    </div>
+
+    <div class="row collection-container collection-express-order">
+
+      {% if settings.display_sidebar_cat_page %}
+      <aside class="sidebar collection-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'sidebar-filter' %}
+      </aside>
+      {% endif %}
+
+      <div class="block-row col-main collection-template-order col-12 col-md-12{% if settings.display_sidebar_cat_page %} col-lg-9{% else %} col-lg-12{% endif %}">             
+        {% section 'collection-express-order' %}         
+      </div>
+
+    </div>
+
+    {% if settings.display_sidebar_cat_page %}
+    <div class="close-filter hide">
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    {% endif %}
+
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="article-product">
+ {% if article.metafields.custom_fields["product"] != blank %}
+  {% if section.settings.title != blank %}
+  <div class="widget-title hide_w">
+    <h3>
+      {% include 'multilang' with section.settings.title %}
+    </h3>
+  </div>
+  {% endif %}
+ {% endif %}
+  <div class="widget-content row">
+      {% if article.metafields.custom_fields["product"] != blank %}
+        {% for item in article.metafields.custom_fields["product"] %}
+            {% assign product = all_products[item.product] %}
+            <div class="col-6 col-sm-6 col-md-4 grid-item">
+              {% include 'product-grid-item' %}
+            </div>
+        {% endfor %}
+      {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Article Widget Product",
+    "settings": [      
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Current Top Sellers"
+      }
+      	    	  
+	]
+  }
+{% endschema %}

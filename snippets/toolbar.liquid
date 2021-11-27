@@ -1,0 +1,167 @@
+<style>
+  @media (max-width:768px)
+  {
+    h1.head11 {
+    font-size: 14px !important;
+}
+    .toolbar {
+   /* border-top: 1px solid #e6e6e6; */
+    border-bottom: 1px solid #e6e6e6;
+    padding-top: 8px;
+    padding-bottom: 8px;
+      
+}
+  .toolbar_fixed a.halo-fillter span {
+   font-size:13px;
+      font-weight: 500;
+    color: #000000;
+}
+    .toolbar_fixed .Refinebytool {
+    width: 100%
+      display:block;
+      padding: 2px 0px;
+    border: 1px solid #dcdcdc;
+    /* text-align: center; */
+    align-items: center;
+    vertical-align: middle;
+}
+   .toolbar_fixed a.halo-fillter {
+    font-size: 14px;
+    display: inline-flex;
+    text-align: center;
+    width: 100%;
+    top: 5px !important;
+}
+    .toolbar_fixed.toolbar_fix_section{
+      height: 55px;
+    position: sticky;
+    z-index: 999;
+/*     left: 0; */
+    width: 100%;
+      margin: auto;
+    background: #fff;
+    top: 50px;
+    max-width: 100%;
+/*     box-shadow: 0 0 0 1px rgb(0 0 0 / 6%), 0 1px 2px 0 rgb(0 0 0 / 10%); */
+    }
+    
+    .toolbar.toolbar_fixed .filter-sortby .btn span{
+    font-size:13px;
+      font-weight: 500;
+    color: #000000;
+    }
+    .toolbar.toolbar_fixed {
+    width: 100%;
+    display: flex;
+}
+    .toolbar.toolbar_fixed header {
+    width: 50%;
+    display: block;
+    float: left;
+}
+    .filter-sortby.btn-group {
+    display: block;
+    width: 50%;
+    float: left;
+}
+    .toolbar .filter-sortby .btn {
+ min-width: 100%;
+    width: 100% !important;
+    display: block;
+      max-width: 100% !important;
+      text-align: center;
+    
+}
+    .filter_dd_btn {
+    width: 100%;
+    display: block;
+    float: left;
+}
+  }
+  
+  @media (min-width: 1025px) {
+.grid-item .inner-top .product-title {
+    padding-right: 27px;
+}
+  }
+  @media screen and (min-width: 1000px) {
+  a.halo-fillter {
+    position: relative;
+    top: 10px;
+    left: -35px;
+}
+  }
+  @media screen and (max-width: 999px) {
+  a.halo-fillter {
+    position: relative;
+    top: 10px;    
+    margin-bottom: 10px;
+}
+  }
+</style>
+<div class="toolbar toolbar_fixed" style="margin-bottom: 25px;">
+  
+  <header class="" style="border-bottom: none;color:#323232">
+    <h1 class="desktop_title head11" style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %} font-size: 20px;
+                              font-weight: 600;
+                              margin-bottom: 0;
+                              text-transform: capitalize; color : #5AC4BE;">
+      {% include 'multilang' with collection.title  %}
+    </h1>
+  <div class="Refinebytool">
+  {% if settings.layout_collections_page == "style_right_sidebar" %}
+  <a class="halo-fillter" href="javascript:void(0)">
+    <span {% if settings.enable_multilang %}data-translate="collections.toolbar.refine"{% endif %}>{{ 'collections.toolbar.refine' | t }}</span>
+  </a>
+  {% else %}
+  
+  {% unless settings.display_sidebar_cat_page == false %}
+  <a class="halo-fillter" href="javascript:void(0)">
+    <span {% if settings.enable_multilang %}data-translate="collections.toolbar.refine"{% endif %}>{{ 'collections.toolbar.refine' | t }}</span>
+  </a>
+  {% endunless %}
+  
+  {% endif %}
+    </div> 
+    </header>
+  
+  <div class="view-mode">
+    <label data-translate="collections.toolbar.view_as">{{ 'collections.toolbar.view_as' | t}}</label>
+    <a href="javascript:void(0)" class="view-one{% if section.settings.collection_results_per_row == '1' %} active{% endif %}"></a>
+    <a href="javascript:void(0)" class="view-two{% if section.settings.collection_results_per_row == '2' %} active{% endif %}"></a>
+    <a href="javascript:void(0)" class="view-three{% if section.settings.collection_results_per_row == '3' %} active{% endif %}"></a>
+    <a href="javascript:void(0)" class="view-four{% if section.settings.collection_results_per_row == '4' %} active{% endif %}"></a>
+    <a href="javascript:void(0)" class="view-five{% if section.settings.collection_results_per_row == '5' %} active{% endif %}"></a>
+  </div>
+
+  <div class="filter-sortby btn-group">
+    <div class="filter_dd_btn">
+    <label for="sort-by" {% if settings.enable_multilang %}data-translate="collections.sorting.title"{% endif %}>
+      {{ 'collections.sorting.title' | t }}
+    </label> 
+    <button class="btn btn-2" data-toggle="dropdown">
+      <span class="label-text">Sort by</span>
+<!--       <i class="fa fa-angle-down"></i> -->
+    </button>
+
+   <ul class="dropdown-menu" role="menu">
+      <li><span data-href="manual" {% if settings.enable_multilang %}data-translate="collections.sorting.featured"{% endif %}><!--{{ 'collections.sorting.featured' | t }}-->Popular</span></li>
+      <li><span data-href="price-ascending" {% if settings.enable_multilang %}data-translate="collections.sorting.price_ascending"{% endif %}>{{ 'collections.sorting.price_ascending' | t }}</span></li>
+      <li><span data-href="price-descending" {% if settings.enable_multilang %}data-translate="collections.sorting.price_descending"{% endif %}>{{ 'collections.sorting.price_descending' | t }}</span></li>
+      <!--<li><span data-href="title-ascending" {% if settings.enable_multilang %}data-translate="collections.sorting.az"{% endif %}>{{ 'collections.sorting.az' | t }}</span></li>-->
+      <!--<li><span data-href="title-descending" {% if settings.enable_multilang %}data-translate="collections.sorting.za"{% endif %}>{{ 'collections.sorting.za' | t }}</span></li>-->
+     <!-- <li><span data-href="created-ascending" {% if settings.enable_multilang %}data-translate="collections.sorting.date_ascending"{% endif %}>{{ 'collections.sorting.date_ascending' | t }}</span></li>-->
+      <li class="active"><span data-href="created-descending" {% if settings.enable_multilang %}data-translate="collections.sorting.date_descending"{% endif %}>{{ 'collections.sorting.date_descending' | t }}</span></li>
+      <!--<li><span data-href="best-selling" {% if settings.enable_multilang %}data-translate="collections.sorting.best_selling"{% endif %}>{{ 'collections.sorting.best_selling' | t }}</span></li>-->
+    </ul>
+    </div></div>
+
+</div>
+<div class="mob_title">
+<h1 class="head11" style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %} font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0;
+    text-transform: capitalize; color : #5AC4BE;">
+      {% include 'multilang' with collection.title  %}
+    </h1>
+</div>

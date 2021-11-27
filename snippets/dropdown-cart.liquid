@@ -1,0 +1,185 @@
+<style>
+.wrapper-top-cart {
+    top: 0px !important;
+}
+</style>
+<div class="wrapper-top-cart" >
+  <h2 class="header-cart">
+    <span data-translate="cart.general.shopping_cart">
+      {{ 'cart.general.shopping_cart' | t }}
+    </span>
+
+    <a class="close-cart" title="Close" href="javascript:void(0)">
+      Close
+      {% include 'icon-close' %}
+    </a>
+
+  </h2>
+  <div class="dropdown-cart"> 
+    <div class="no-items">
+      <div class="alert alert-warning">{{ 'cart.general.empty' | t }}</div>
+      <div class="text-continue">
+        <a class="btn" href="javascript:void(0)" {% if settings.enable_multilang %}data-translate="cart.ajax_cart.continue_shopping"{% endif %}>
+          {{ 'cart.ajax_cart.continue_shopping' | t }}
+        </a>
+      </div>
+    </div>
+    <div class="has-items">
+      <ol class="mini-products-list">  
+        {% for item in cart.items %}
+
+        <li class="item" id="cart-item-{{item.id}}" data-gift="{{ item.product.gift_card? }}">
+          <a href="{{item.url}}" class="product-image">
+            <img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}">
+          </a>
+          <div class="product-details">
+            <a href="javascript:void(0)" title="{{ 'cart.general.remove' | t }}" class="btn-remove">{% include 'icon-close' %}</a>
+            <p class="product-name">
+              <a href="{{item.url}}">
+                {% include 'multilang' with item.product.title %} - {{ item.variant.title }}
+              </a>
+            </p>
+            <div class="pro_properties" style="display:none;">
+            {% for property in item.properties %}
+              {% if property.first == "Recipient E-mail" or property.first == "Delivery Date" %}
+ 			   <div> {{property.first}} : {{ property.last }}</div>
+              {% endif %}
+  			{% endfor %}
+            </div>
+            {% for property in item.properties %}
+              {% if property.first == "Recipient E-mail" %}
+               <input type="hidden" name="attributes[Gift-Card]" value="True" />
+              {% endif %}
+            {% endfor %}
+            
+            <div class="option" style="display:none;">
+              {% if item.product.variants.size != 0 %}
+              {% unless item.variant.title contains 'Default' %}
+              <small>{{ item.variant.title }}</small>
+              {% endunless %}
+              {% endif %}
+            </div>
+            <div class="cart-collateral"><span class="price">{{item.quantity}} x {{item.price | money}}</span></div>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+      <div class="shopping_cart_footer">
+        <div class="summary">                
+          <p class="total">
+            <span class="label"><span {% if settings.enable_multilang %}data-translate="cart.label.total"{% endif %}><!--{{ 'cart.label.total' | t }}--></span>:</span>
+            <span class="sp1">Subtotal</span><span class="price">{{cart.total_price | money}}</span> 
+          </p>         
+        </div>
+        <!-- -->
+        <style>
+          .progress.freeshipping {
+             height: 25px;
+    width: 100%;
+    margin: 10px 0;
+    width: calc(100% - 36px);
+    position: relative;
+    background-color: #5ac4be;
+    color: #fff;
+            overflow: inherit;
+           border-radius: unset; 
+            text-align: center;
+           }
+          
+   div.progress-bar.progress-bar-info {  
+     position: absolute;
+    width: 0;
+     height: 100%;
+     left:0;
+    background-color: #ec048a;
+    -webkit-transition: width .1s ease;
+    -moz-transition: width .1s ease;
+    transition: width .1s ease;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 0, rgba(255, 255, 255, .15) 25%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0) 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, rgba(255, 255, 255, 0) 75%, rgba(255, 255, 255, 0) 100%);
+    -webkit-background-size: 30px 30px;
+    -webkit-transition: width .6s ease;
+    -o-transition: width .6s ease;
+    transition: width .6s ease;
+    animation: progress 5s linear infinite;
+    -moz-animation: progress 5s linear infinite;
+    -webkit-animation: progress 5s linear infinite;
+    -ms-animation: progress 5s linear infinite;
+    -o-animation: progress 5s linear infinite;
+   }
+    .progress.freeshipping div.shipping_msg_text {    
+         position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 5px;
+        z-index: 10;
+        color: #fff;
+        font-size: 8px;
+        line-height: 25px;
+          }
+          .progress.freeshipping div.shipping_msg_text {    
+         position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 2px;
+        z-index: 10;
+        color: #fff;
+        font-size: 8px;
+        line-height: 25px;
+          }
+  .progress.freeshipping .shipping_icon {
+            height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    background-color: #5ac4be;
+    position: absolute;
+    right: -40px;
+    top: -12px;
+    -webkit-transition: background-color .1s ease;
+    -moz-transition: background-color .1s ease;
+    transition: background-color .1s ease;
+          }
+     .progress.freeshipping .shipping_icon:before {
+            position: relative;
+    color: #fff;
+    font-size: 25px;
+        top: 12px;
+    left: 0px;
+    content: "\f0d1";
+    font-family: FontAwesome;
+          }
+          @media screen and (min-width: 736px) {
+          .shipping_msg_text {
+              font-size: 9px !important;
+          }
+          }
+         .shipping_icon.ship_congrats {
+    background-color: #ec048a !important;
+} 
+        </style>
+   <div class="progress freeshipping">
+  <div id="freeshippingbar" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{cart.total_price | divided_by: 100}}"
+  aria-valuemin="0" aria-valuemax="2999" style="width:{{cart.total_price | divided_by: 10000}}%">
+  </div>
+      <div class="shipping_msg_text"></div>   
+     <div class="shipping_icon"></div> <!-- <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Free_Shipping_Icon.png?9348"> -->
+</div>
+       
+        <!-- -->
+        <div class="actions">
+
+          <button class="btn" onclick="window.location='/checkout'" {% if settings.enable_multilang %}data-translate="cart.general.checkout"{% endif %}>
+            {{ 'cart.general.checkout' | t }}
+          </button>  
+
+          <a class="btn" href="/cart" {% if settings.enable_multilang %}data-translate="cart.general.view_cart"{% endif %}>
+            <span data-translate="cart.label.or">
+              {{ 'cart.label.or' | t }}
+              {{ 'cart.general.view_cart' | t }}
+            </span>
+          </a>
+
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>

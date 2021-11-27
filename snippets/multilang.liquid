@@ -1,0 +1,23 @@
+{% if settings.enable_multilang %}
+<span class="lang1 for_icon">
+  {{ multilang | split: '|' | first | strip }}
+  {% assign mlt_title = multilang | split: '|' | first | strip | downcase | handle  %}
+  {% if c_new_item contains mlt_title %}
+  <label class="icon_new_cst">
+   {{section.settings.lb_new}}
+  </label>
+  {% endif %}
+</span>
+<span class="lang2">{{ multilang | split: '|' | last | strip }}</span>
+{% else %}
+<span class="for_icon">
+  {{ multilang | split: '|' | first }}
+  
+  {% assign mlt_title = multilang | split: '|' | first | strip | downcase | handle  %}
+  {% if c_new_item contains mlt_title %}
+  <label class="icon_new_cst">
+    {{section.settings.lb_new}}
+  </label>
+  {% endif %}
+</span>
+{% endif %}

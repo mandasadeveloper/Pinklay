@@ -1,0 +1,92 @@
+{% comment %}
+
+  This snippet renders a custom widget based on the current 'paginate' context,
+  defined in { % paginate XXXX by 5 % } tags wrapping the content.
+  The example below breaks the pagination down so you can setup your own styles and behavior if you wish.
+
+  Basic Pagination Usage:
+    <div class="pagination">
+      {{ paginate | default_pagination }}
+    </div>
+
+  Replace Text:
+    <div class="pagination">
+      {{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
+    </div>
+
+  More information:
+   - index#pagination
+   - http://docs.shopify.com/themes/liquid-variables/paginate
+
+{% endcomment %}
+<style>
+  .padding .infinite-scrolling a {
+  border:none;
+    background:transparent;
+    color: #36454f;
+  }
+  
+  .padding .infinite-scrolling a:hover {
+    border:none;
+    background:transparent;
+    color: #36454f;
+}
+</style>
+{% if settings.collection_infinite_scrolling %}
+  {% if paginate.next %}    
+    <div class="infinite-scrolling">
+      <a href="{{ paginate.next.url }}" {% if settings.enable_multilang %}data-translate="collections.general.show_more"{% endif %}>
+        <!--{{ 'collections.general.show_more' | t}}-->
+       <svg width="100%" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ellipsis"><!--circle(cx="16",cy="50",r="10")--><circle cx="84" cy="50" r="0.47341" fill="#ea2b8c"><animate attributeName="r" values="10;0;0;0;0" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate><animate attributeName="cx" values="84;84;84;84;84" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate></circle><circle cx="82.3904" cy="50" r="10" fill="#59c4be"><animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="-0.5s"></animate><animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="-0.5s"></animate></circle><circle cx="48.3904" cy="50" r="10" fill="#ea2b8c"><animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="-0.25s"></animate><animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="-0.25s"></animate></circle><circle cx="16" cy="50" r="9.52659" fill="#59c4be"><animate attributeName="r" values="0;10;10;10;0" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate><animate attributeName="cx" values="16;16;50;84;84" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate></circle><circle cx="16" cy="50" r="0" fill="#ea2b8c"><animate attributeName="r" values="0;0;10;10;10" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate><animate attributeName="cx" values="16;16;16;50;84" keyTimes="0;0.25;0.5;0.75;1" keySplines="0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1;0 0.5 0.5 1" calcMode="spline" dur="1s" repeatCount="indefinite" begin="0s"></animate></circle></svg>
+      </a>
+      <a href="javascript:void(0)" class="disabled" style="display:none" {% if settings.enable_multilang %}data-translate="collections.general.no_more_product"{% endif %}>
+        <!--{{ 'collections.general.no_more_product' | t}}-->
+       
+      </a>  
+    </div>
+  {% endif %}
+
+{% else %}
+
+<div class="toolbar-bottom">
+  <p class="page-total">
+    <span {% if settings.enable_multilang %}data-translate="collections.toolbar.showing"{% endif %}>{{ 'collections.toolbar.showing' | t }}</span>: 
+    {{ paginate.current_offset | plus: 1 }} -
+    {% if paginate.next %}
+      {{ paginate.current_offset | plus: paginate.page_size }}
+    {% else %}
+      {{ paginate.items }}
+    {% endif %}
+    <span {% if settings.enable_multilang %}data-translate="collections.toolbar.of"{% endif %}>{{ 'collections.toolbar.of' | t }}</span>
+    {{ paginate.items }}
+  </p>
+
+  <ul class="pagination-page">
+    {% if paginate.previous %}
+    <li class="text"><a href="{{ paginate.previous.url }}" title="{{ 'collections.toolbar.previous' | t }}"  {% if settings.enable_multilang %}data-translate="collections.toolbar.previous" translate-item="title"{% endif %}><span {% if settings.enable_multilang %}data-translate="collections.toolbar.previous"{% endif %}>{{ 'collections.toolbar.previous' | t }}</span></a></li>
+    {% else %}
+    <li class="disabled"><span {% if settings.enable_multilang %}data-translate="collections.toolbar.previous"{% endif %}>{{ 'collections.toolbar.previous' | t }}</span></li>
+    {% endif %}
+
+    {% for part in paginate.parts %}
+      {% if part.is_link %}
+      <li>
+        <a href="{{ part.url }}">{{ part.title }}</a>
+      </li>
+      {% else %}
+        {% if part.title == paginate.current_page %}
+        <li class="active"><span>{{ part.title }}</span></li>
+        {% else %}
+        <li><span>{{ part.title }}</span></li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% if paginate.next %}
+    <li class="text"><a href="{{ paginate.next.url }}" title="{{ 'collections.toolbar.next' | t }}"  {% if settings.enable_multilang %}data-translate="collections.toolbar.next" translate-item="title"{% endif %}><span {% if settings.enable_multilang %}data-translate="collections.toolbar.next"{% endif %}>{{ 'collections.toolbar.next' | t }}</span></a></li>
+    {% else %}
+    <li class="disabled"><span {% if settings.enable_multilang %}data-translate="collections.toolbar.next"{% endif %}>{{ 'collections.toolbar.next' | t }}</span></li>
+    {% endif %}
+  </ul>
+</div>
+{% endif %}

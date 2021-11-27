@@ -1,0 +1,163 @@
+<style>
+  .giftcard-section {
+    padding: 30px 0 10px 0;
+  }
+  .giftcard-section .giftcard-wrapper {
+    width: 100%;
+  }
+  
+  .giftcard-section .giftcard-wrapper .text-wrapper {
+    text-align: center;
+  }
+  .press-news-block {
+    text-align: left;
+  }
+  .press-news-block {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .press-news-block .press-block {
+    padding: 0 30px;
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 33%;
+  }
+  .press-news-block .press-block .block-box .block-box-wrap {
+    display: block;
+  }
+  .press-news-block .press-block .block-box .block-box-wrap .press-title {
+    color: #36454f;
+    transition-duration:0.2s;
+  }
+  .press-title:hover{
+    color: #5ac4be!important; 
+  }
+
+  @media screen and (max-width: 767px){
+    .giftcard-section .giftcard-wrapper .text-wrapper {
+      padding: 0 20px;
+    }
+    .giftcard-section .giftcard-wrapper .text-wrapper .giftcard-desc {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1024px){
+   .press-news-block .press-block {
+      width: 50%;
+      padding: 0 10px;
+      margin: 0 -2px 35px;
+    }
+  }
+  @media screen and (max-width: 576px){
+   .press-news-block .press-block {
+      width: 100%;
+    }
+  }
+  .img_blur {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  .blog_image{
+    margin-bottom:10px;
+  }
+  .press_details{
+   text-align:left;
+  }
+  .press_desc,.press_date{
+    margin-bottom:20px!important;
+  }
+  .blog_urls{
+    color: #ec048a;
+  }
+  .blog_urls a{
+  color: #ec048a;
+  }
+  .text-wrapper .title{
+    padding: 0 30px;
+    color:#ec428c;
+  }
+  .text-wrapper{
+   margin-top:20px;
+  }
+  @media screen and (max-width: 1024px){
+  .text-wrapper .title{
+    padding: 0 10px;
+  }
+  }
+</style>
+    <div class="text-wrapper">
+      <h4 class="title">IN THE PRESS</h4>
+    </div>
+    <div class="press-news-block">
+        {% for block in section.blocks %}
+            <div class="press-block">
+              <div class="block-box">
+                <div tabindex="0" title="{{block.settings.blog_title}}" class="block-box-wrap">
+                  <div class="img blog_image">
+                    <a href="{{block.settings.blog_url}}" target="_blank"><img src="{{ block.settings.blog_image | img_url: '1024x' }}" class="img_blur"></a>              
+                  </div>
+                  <div class="press_details">
+                    <a href="{{block.settings.blog_url}}" target="_blank"><h6 class="press-title">{{block.settings.blog_title}}</h6></a>
+                    <p class="press_date">{{block.settings.blog_cums}}</p>
+                    <div class="press_desc">{{block.settings.blog_description}}</div>
+                    {% if block.settings.blog_url and block.settings.blog_pdf_url %}
+                    <div class="blog_urls"><a href="{{block.settings.blog_url}}" target="_blank">READ MORE</a> | <a href="{{block.settings.blog_pdf_url}}" target="_blank">DOWNLOAD PDF</a></div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+        {% endfor %}
+    
+    </div>
+{% schema %}
+  {
+    "name": "In the Press",
+    "settings": [
+    ],
+    "blocks" : [
+	  {
+		"type" : "press",
+		"name" : "Press",
+		"settings" : [		
+          {
+            "type":"image_picker",
+            "id":"blog_image",
+            "label":"Select blog image"
+          },
+          {
+            "type":"text",
+            "id":"blog_title",
+            "label":"Blog title",
+            "default": "MONSOON BLOOMS"
+          },
+          {
+            "type":"text",
+            "id":"blog_cums",
+            "label":"Blog date and news paper",
+            "default": "10 MARCH 2021 | NEW INDIAN EXPRESS"
+          },
+          {
+            "type":"textarea",
+            "id":"blog_description",
+            "label":"Blog description",
+            "default":"Mumbai-based label, Pinklay – known for its emphasis on Indian handcrafts has carved a niche for itself ever since it launched…"
+          },
+          {
+            "type":"text",
+            "id":"blog_url",
+            "label":"Blog url",
+            "default": "#"
+          },
+          {
+            "type":"text",
+            "id":"blog_pdf_url",
+            "label":"Blog pdf url",
+            "default": "#"
+          }
+		]
+	  }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,49 @@
+<style>
+
+  .sw-instagram-container .sw-instagram-header-title p span::after {
+    left: 100%;
+    margin-left: 27px;
+}
+.sw-instagram-container .sw-instagram-header-title p span::before, .sw-instagram-container .sw-instagram-header-title p span::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: #323232;
+    top: 50%;
+    width: 600px;
+    max-width: 183px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+  .sw-instagram-container .sw-instagram-header-title p span::before {
+    right: 100%;
+    margin-right: 26px;
+}
+  .sw-instagram-container .sw-instagram-header-title p span:before, .sw-instagram-container .sw-instagram-header-title p span:after {
+     background-color: #5ac4be; 
+}
+  .sw-instagram-container .sw-instagram-header-title p span {
+    color: #5ac4be;
+        font-weight: 600;
+    font-size:20px !important;
+}
+  .sw-instagram-container .sw-instagram-header-title p{
+  font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 20px;
+    font-size: 20px;
+    
+    position: relative;
+    display: inline-block;
+  }
+  .sw-instagram-header-title p{margin-bottom:0rem;}
+  .sw-instagram-container .sw-instagram-header-title{margin-bottom:0rem !important;}
+  
+  @media screen and (max-width: 767px){
+    .sw-instagram-container .sw-instagram-header-title p span{
+     font-size: 16px!important;
+    }
+  }
+</style>

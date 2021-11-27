@@ -1,0 +1,60 @@
+    {% if template contains 'collection' or template contains 'product'  %}
+    {% unless template contains 'list-collection' %}
+    {% section 'recently-viewed-products' %}
+
+    {% endunless %}
+    {% endif %}
+    
+    {% if template contains 'collection' or template contains 'product'  %}
+    {% unless template contains 'list-collection' %}
+    <style>
+    @media screen and ( max-width:700px) {
+     div#OptiZendatas {
+       display: none;
+     }
+    }
+    </style>
+    <div class="col_lower_main" id="OptiZendatas" style="width:100%;border-top: 1px solid #e6e6e6;padding-top: 25px;"><div class="inner_lower_main" style="max-width:1170px;margin:0 auto;">{{ collection.metafields.collectionlower.lowerdata }}</div></div>
+    {% endunless %}
+    {% endif %}
+       
+    {% if template contains 'index' %}  
+    {% section 'homepage-instagram' %}
+    <section class="custom-block" style="padding: 10px 0px;" id="aboutcustblock">        
+      <div class="container">
+        <div class="row">
+          <div class="block-item col">
+            <a href="" title="">
+              <span><h3 style="text-align:left;font-size:15px;font-weight:600;">PINKLAY: EXPLORE ALL THINGS BEAUTIFUL</h3><p></p><p style="text-align:left;line-height:24px;margin-bottom: 0px;">Pinklay is an Indian home decor brand that caters to the house proud in all of us. Our designs are rooted in colour that is contemporary, tasteful, and authentic, and crafted to convey stories inspired from natural elements, diverse crafts, and cultures. We work across a variety of art forms – such as hand block print, kantha, dabu, bagru, ajrakh, kalamkari, ikat, embroidery, patchwork, metal etching, wood carving, and hand painting – often fusing traditional and modern design ideas in unexpected ways. Our collections push design boundaries and offer a wide range of stylish home décor, accents, furnishings, and accessories for your bedroom, living, dining, kitchen, and outdoors – and festive occasions, weddings, and gifts. Each Pinklay product aspires to be a conversation starter, determined to create memories. Shop online for quilts, bed covers, dohars, bedsheets, duvet covers, bath towels, travel cases, throws, rugs, furniture, cushions, curtains, table cloths, table mats, table runners, ceramics, wooden tableware, baby and kids bedding, kids décor, kidswear, plush toys, alphabet cushions, home decor, women's clothing, dresses, festive and ethnic wear, bath robes, and more.</p></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>  
+    {% endif %}
+    
+	{% section 'home-product-notification' %}
+    
+    {% if settings.layout_footer == 'default' %}
+    	{% section 'footer' %}
+    {% elsif settings.layout_footer == 'footer_1' %} 
+		{% section 'footer_ella_v' %}
+    {% elsif settings.layout_footer == 'footer_4' %}
+		{% section 'footer_parallax' %} 
+    {% elsif settings.layout_footer == 'footer_2' %}
+		{% section 'footer_2' %}
+    {% elsif settings.layout_footer == 'footer_3' %}
+		{% section 'footer_3' %}
+    {% endif %}
+        
+    {% if settings.enable_quick_view %}
+    <div class="quick-view"></div>
+    {% include 'quick-view-template' %}
+    {% endif %}
+
+    <div id="back-top" style="display: none;top: 77% !important;right: 2%;">
+      <a class="nav_up" href="#top" title="Back to top">
+        <!--<i class="fa fa-angle-up" aria-hidden="true"></i>-->
+        <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/MovetoTopkite.png?3138" alt="Move to Top - Pinklay">
+      </a>
+    </div> 

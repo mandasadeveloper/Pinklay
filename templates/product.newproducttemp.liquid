@@ -1,0 +1,19 @@
+
+{% if settings.layout_product == 'default' %}
+	{% include 'product-default' %}
+{% elsif settings.layout_product == 'pr_group' %}
+	{% include 'newproducttemp-group' %}	
+{% elsif settings.layout_product == 'pr_without_gallery_1' %}
+	{% include 'product-gallery-1-template' %}
+{% elsif settings.layout_product == 'pr_without_gallery_2' %}
+	{% include 'product-gallery-2-template' %}
+{% elsif settings.layout_product == 'vertical_tab_fullwidth' %}	
+	{% include 'porudct-vertical-tab-fullwidth' %}
+{% endif %}
+
+<style>
+  button.slick-arrow {
+    display: none !important;
+}
+</style>
+      

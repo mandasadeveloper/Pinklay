@@ -1,0 +1,467 @@
+{% comment %}
+
+  This template will be automatically generated for you if the file doesn't exist,
+  but where's the fun in having no control? Define your layout below.
+
+  The 'layout settings.customer_layout' line is inserted at the top of every customer account template.
+  Your theme's settings determine to use the 'default' or 'theme' customer templates.
+  More info:
+    - http://www.tetchi.ca/shopify-theme-from-scratch-part-11/
+
+  Template note:
+    - All IDs on this template are required to make the form(s) submit properly
+
+  For all available customer liquid tags:
+    - http://docs.shopify.com/themes/liquid-variables/customer
+
+{% endcomment %}
+
+{% layout settings.customer_layout %}
+
+<style>
+  div#shopify-section-navigation {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6 !important;
+    top: 0px !important;
+} 
+  div#v-pills-tab {
+    background: #fafafa;
+        padding: 10px;
+}
+  .nav-pills .nav-link.active {
+    color: #36454f;
+    background-color: transparent;
+        text-decoration: underline !important;
+}
+  h4.loguser {
+    color: #5ac4be;    
+  }
+   .nav-pills .nav-link {
+    padding-left: 0px;
+    color: #36454f;
+    font-weight: 600;
+}
+  .tab-content>.grid>.tab-pane {
+    display: none;
+}
+  .tohide {
+    display: none;
+  }
+  .show {
+    display: block!important;
+}
+</style>
+<style>
+  section.related-products1 {
+    margin: 20px 0px;
+}
+  .related-products1 .products-grid2 .slick-arrow {
+    width: 55px;
+    height: 55px;
+    background: transparent;
+    border: 1px solid transparent;
+    outline: none !important;
+    position: absolute;
+    top: 36%;
+    left: -48px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-box-pack: flex-start;
+    -moz-box-pack: flex-start;
+    -ms-flex-pack: flex-start;
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+    -webkit-transform: translateY(-80%);
+    -ms-transform: translateY(-80%);
+    transform: translateY(-80%);
+  }
+  .related-products1 .products-grid2 .slick-next {
+    right: 3% !important;
+}
+  .related-products1 .products-grid2 .slick-next {
+    left: auto;
+    right: -48px;
+}
+  .related-products1 .products-grid2 .slick-arrow svg {
+    width: 25px;
+    height: 25px;
+    padding-right: 2px;
+    margin: auto;
+}
+  .related-products1 .products-grid2 .slick-arrow svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    fill: #505050;
+}
+  .related-products1 .products-grid2 .slick-next svg {
+    padding-left: 2px;
+    padding-right: 0;
+}
+  @media (max-width: 767px) {
+.related-products1 .products-grid2 .slick-dots {
+    margin-top: 6px;
+    margin-bottom: 25px;
+}
+  }
+  .related-products1 .products-grid2 .slick-dots {
+    padding: 0;
+    margin-top: 10px;
+    text-align: center;
+}
+  .related-products1 .products-grid2 .slick-dots li {
+    list-style: none;
+    margin: 5px;
+    display: inline-block;
+}
+  .related-products1 .products-grid2 .slick-dots li button {
+    width: 8px;
+    height: 8px;
+    font-size: 0;
+    background: #c4c4c4;
+    border: 1px solid #c4c4c4;
+    border-radius: 100%;
+    line-height: normal;
+    padding: 0;
+    outline: none;
+    cursor: pointer;
+}
+  .related-products1 .products-grid2 .slick-dots li.slick-active button {
+    background: #fff;
+}
+  .imagepro {
+    display: inline-block;
+  }
+  .detailspro {
+    display: inline-block;vertical-align: top;width: 70%;padding: 5px;
+  }
+  .detailspro a {
+    color: #000;    text-decoration: underline !important;
+  }
+  a.btn.buyitagain {
+    text-decoration: none !important;
+    max-width: 120px !important;
+    padding: 8px 0px 7px!important;
+    text-transform: none !important;
+   
+    font-size: 11px !important;
+  }
+  a.sidebtns {
+    text-transform: none !important; 
+  }
+  @media screen and ( max-width: 760px) {
+  a.sidebtns {
+    max-width: 100% !important;
+  }
+    a.btn.buyitagain {
+       width: auto !important;
+    letter-spacing: 0 !important;
+       padding: 8px 5px 7px!important;
+    }
+  }
+</style>
+<!--<header class="page-header">
+  <div class="container">
+    <h1 {% if settings.enable_multilang %}data-translate="customer.account.title"{%endif%}>
+      {{ 'customer.account.title' | t }}
+    </h1>
+  </div>
+</header>-->
+
+<div class="container-fluid" style="margin-top: 34px;">
+  <div class="row">
+    <div class="col-sm-2"> 
+    	<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <h4 class="loguser">Hi, {{ customer.first_name }} !</h4>
+       <a class="nav-link active" id="v-pills-order-tab" data-toggle="pill" href="#v-pills-order" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fa fa-angle-double-right"></i> Your Orders</a>
+      <a class="nav-link" id="v-pills-wish-tab" data-toggle="pill" href="#v-pills-wish" role="tab" aria-controls="v-pills-wish" aria-selected="false"><i class="fa fa-angle-double-right"></i> Your Wishlist</a>
+      <!--<a class="nav-link" id="v-pills-Rewards-tab" data-toggle="pill" href="#v-pills-Rewards" role="tab" aria-controls="v-pills-Rewards" aria-selected="false"><i class="fa fa-angle-double-right"></i> Your Rewards</a> -->
+      <a class="nav-link" id="v-pills-profile-tab"  href="/account/addresses" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fa fa-angle-double-right"></i> Your Profile</a>
+       <a class="nav-link" id="v-pills-settings-tab" href="/account/logout" role="tab" aria-controls="v-pills-settings" aria-selected="false"><i class="fa fa-angle-double-right"></i> Sign Out</a>    
+    </div>
+    </div> <!-- col-sm-2 -->
+    <div class="col-sm-10"> 
+      <div class="tab-content" id="v-pills-tabContent">
+ 		 <div class="grid">
+           <div class="tab-pane fade show active" id="v-pills-order" role="tabpanel" aria-labelledby="v-pills-order-tab">
+          		 <div class="grid-item order-detail">
+          <h4 class="title" {% if settings.enable_multilang %}data-translate="customer.orders.title"{%endif%} style="color: #5ac4be;font-size: 20px;text-transform: none;">
+            <!--{{ 'customer.orders.title' | t }} --> Your Orders
+          </h4>
+
+      {% if customer.orders.size != 0 %}
+      <div style="/*overflow-x:auto;*/">
+       <!-- <table class="full">
+          <thead>
+            <tr>
+              <th {% if settings.enable_multilang %}data-translate="customer.orders.order_number"{%endif%}>
+                {{ 'customer.orders.order_number' | t }} 
+              </th>
+              <th {% if settings.enable_multilang %}data-translate="customer.orders.date"{%endif%}>
+                {{ 'customer.orders.date' | t }}
+              </th>
+              <th {% if settings.enable_multilang %}data-translate="customer.orders.payment_status"{%endif%}>
+                {{ 'customer.orders.payment_status' | t }}
+              </th>
+              <th {% if settings.enable_multilang %}data-translate="customer.orders.fulfillment_status"{%endif%}>
+                {{ 'customer.orders.fulfillment_status' | t }}
+              </th>
+              <th {% if settings.enable_multilang %}data-translate="customer.orders.total"{%endif%}>
+                {{ 'customer.orders.total' | t }}
+              </th>
+            </tr>
+          </thead>
+          <tbody>-->
+            {% for order in customer.orders %}
+            <div class="row" style="border:1px solid #e6e6e6;margin:0px; margin-bottom: 10px;">
+            	<div class="col-sm-12" style="padding: 5px 15px;    border-bottom:1px solid #e6e6e6;">
+                  <span style="font-size:14px;"><b>Status:{% if order.cancelled %} Cancelled- {{order.cancel_reason_label}} {% else %}  {{order.fulfillment_status_label}} {% endif %} </b></span>
+              	</div>
+              <div class="col-sm-12" style="padding: 5px 15px;    border-bottom: 1px solid #e6e6e6;">                 
+                <div style="float:left"><span>Order placed <br>{{ order.created_at | date: format: 'month_day_year' }}</span></div>
+                  <div style="float:right"><span>Order No: {{order.name}} <br> Order Total:  {{ order.total_price | money }} </span></div>
+              	</div> 
+              <div class="col-sm-12" style="padding: 15px; "> 
+                
+               	{% for line_item in order.line_items %}
+                	<div class="row" style="margin-bottom: 10px;">                     
+                			 
+                      <div class="col-sm-9">
+                        	<p class="imagepro">{{ line_item.image | img_url: '100x100' | img_tag }}</p>
+                        <p class="detailspro" >{{ line_item.title | link_to: line_item.product.url }}<br>Quantity: {{ line_item.quantity }} <br> Price: {{ line_item.price | money }} <br>
+                          <a class="btn buyitagain" href="{{line_item.product.url}}">Buy it Again</a> 
+                          <a class="btn buyitagain" href="{{ line_item.fulfillment.tracking_url }}">Track your order</a></p>
+                      
+                      </div>   
+                      <div class="col-sm-3">
+                        {% if forloop.index  == 1 %}
+                        <p style="margin: 0px;"> <a class="btn sidebtns" href="{{order.customer_url}}">View order</a>	</p>                        
+                     	{% endif %}
+                      </div>
+                      
+                	</div>
+                {% endfor %}
+              	</div>  
+            </div>
+        
+            {% endfor %}
+       <!--   </tbody>
+        </table> -->
+      </div>
+      {% else %}
+      <p class="note" {% if settings.enable_multilang %}data-translate="customer.orders.none"{%endif%}>
+        {{ 'customer.orders.none' | t }}
+      </p>
+      {% endif %}
+    </div>
+		   </div> <!-- end order tab -->
+           <div class="tab-pane fade" id="v-pills-wish" role="tabpanel" aria-labelledby="v-pills-wish-tab">
+             <style>
+                .wishlist-content .product-vendor{
+                  display:none !important;
+                }
+                .wishlist-page .wishlist-content .grid-item .price-box {
+                  text-transform: none;
+                }
+              </style>
+			<div class="wishlist-page {% if section.settings.layout == 'full'%}bd-full{% endif %} page-wishlist">
+				  <div class="container">                   
+                  <div style="padding: 20px 0 10px;border-bottom: 1px solid #eee;margin-bottom:10px; "> <h4 class="title"> YOUR WISHLIST OF ALL THINGS BEAUTIFUL  </h4> </div>
+                  <div class="wishlist-header">
+                    <div class="row">
+                      <div class="col-md-2 item">
+                        <span data-translate="wishlist.general.product_image"><!--{{ 'wishlist.general.product_image' | t }}-->IMAGE</span>
+                      </div>
+                      <div class="col-md-4 item">
+                        <span data-translate="wishlist.general.product_name">{{ 'wishlist.general.product_name' | t }}</span>
+                      </div> 
+                      <div class="col-md-2 item text-center">
+                        <span data-translate="wishlist.general.unit_price"> {{ 'wishlist.general.unit_price' | t }}</span>
+                      </div>
+                      <div class="col-md-3 item text-center" data-translate="wishlist.general.add_to_wishlist">
+                        <span data-translate="wishlist.general.add_to_wishlist"><!--{{ 'wishlist.general.add_to_wishlist' | t }}-->ADD TO CART</span>
+                      </div>
+                      <div class="col-md-1 item text-right">
+                        <span data-translate="cart.general.remove">{{ 'cart.general.remove' | t }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="wishlist-content">
+                  </div>
+                  <div class="wishlist-footer">
+                    <p>
+                      <!--<a href="https://api.whatsapp.com/send?text=https://pink-lay.myshopify.com/pages/wish-list" target="_blank" style="color:#646464;">
+                        <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 38px;"></i>
+                        Share my wish list via WhatsApp
+                      </a>-->
+
+                   <a class="share" href="mailto:?subject={{ subject }}&amp;body={{ body | remove: ' ' | replace: '"',"'" | strip_newlines}}" {% if settings.enable_multilang %}data-translate="wishlist.general.share_wishlist"{% endif %}>
+                      <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 34px;"></i>
+                      {{ 'wishlist.general.share_wishlist' | t }}
+                    </a>
+                    </p> 
+                    <ul id="pagin">
+                    </ul>
+                    
+                    
+                  </div>
+                    
+                    
+                </div>
+			</div>	
+             
+           </div> <!-- end wish list tab -->
+           
+                      
+   			<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">	
+           <div class="grid-item acc-detail">
+              <h4 class="title" {% if settings.enable_multilang %}data-translate="customer.account.details"{%endif%}>
+                {{ 'customer.account.details' | t }}
+              </h4>
+
+              <h5 class="acc-name">{{ customer.name }}</h5>
+
+              {% if customer.default_address != nil %}
+              <p class="addr">
+                <span class="cus-addr">
+                  {{ customer.default_address.address1 }}
+                </span>
+
+                {% if customer.default_address.address2 != "" %}
+                <span class="cus-addr">
+                  {{ customer.default_address.address2 }}
+                </span>
+                {% endif %}
+
+                {% if customer.default_address.city != "" %}
+                <span class="cus-addr">
+                  {{ customer.default_address.city }}
+                </span>
+                {% endif %}
+
+                {% if customer.default_address.province_code != "" %}
+                <span class="cus-addr">
+                  {{ customer.default_address.province_code | upcase }}
+                </span>
+                {% endif %}
+
+                {% if customer.default_address.zip != "" %}
+                <span class="cus-addr addr-zip">
+                  {{ customer.default_address.zip | upcase }}
+                </span>
+                {% endif %}
+
+                {% if customer.default_address.country != "" %}
+                <span class="cus-addr">
+                  {{ customer.default_address.country }}
+                </span>
+                {% endif %}
+
+                {% if customer.default_address.phone != "" %}
+                <span class="cus-addr">
+                  {{ customer.default_address.phone }}
+                </span>
+                {% endif %}
+              </p>
+              {% endif %}
+
+              <div class="action-btn">
+                <a class="btn" href="/account/addresses" >
+                  <span {% if settings.enable_multilang %}data-translate="customer.account.view_addresses"{%endif%}>
+                    {{ 'customer.account.view_addresses' | t }}
+                  </span>
+                  <span>
+                    ({{ customer.addresses_count }})
+                  </span>
+                </a>
+              </div>
+    		</div> <!-- grid-item acc-detail  /account/addresses-->
+              
+           
+             
+        </div><!-- end address tab--> 
+ 	 	
+        </div> <!-- grid section -->
+      </div> <!-- end tab content-->
+      <div><b style="color:#646464">Need more help? Call us at +91-9987752369 or email : care@pinklay.com</b></div>
+    </div> <!--  col-sm-10 --> 
+  </div>  
+  
+ <section>
+    {% assign collection = collections['new-arrivals'] %}
+{% if collection and collection.products_count > 1 %}
+
+<section class="related-products1 {% if settings.display_sidebar_product == false %} s{% endif %}">  
+  {% if section.settings.related_products_title != '' %}
+  <div class="widget-title">
+    <h3>New Arrivals</h3>   
+  </div> 
+ 
+  {% endif %}
+<div class="products-grid2 row"{% if template.suffix == "grouped" or settings.layout_body == "full"  or template.suffix == "gallery-1" or template.suffix == "gallery-2" or settings.display_sidebar_product == false %} data-row="4"{% else %} data-row="4"{% endif %}>
+  {% assign current_product = product %}
+  {% assign current_product_found = false %}
+  {% for product in collection.products limit: number_of_related_products %}
+    {% if product.handle == current_product.handle %}
+       {% assign current_product_found = true %}
+    {% else %}
+       {% unless current_product_found == false and forloop.last %}
+          <div class="{% if settings.product_image_border %}grid-item-border{% endif %} grid-item col-xs-6 col-lg-3">
+          {% include 'product-grid-item' %}
+          </div>
+       {% endunless %}
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
+{% endif %}
+   </section>
+ 
+</div>
+
+<script>
+  $(document).ready(function(){
+    var gridSlider = $('.related-products1 .products-grid2');
+    
+    gridSlider.slick({
+        slidesToShow: gridSlider.data('row'),
+        slidesToScroll: gridSlider.data('row'),
+        nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 17 33" xml:space="preserve"><title>svg-arrow-next</title><g id="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="_x38_e584754-6657-46f1-a9d8-2cfd6623b552"><g><polygon points="14.9,14.5 0,0 0,3.7 11.1,14.5 13.2,16.5 11.1,18.5 0,29.3 0,33 14.9,18.5 17,16.5 "/></g></g></g></svg></button>',
+        prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 33"><title>svg-arrow-prev</title><g id="7f9a1925-e8c7-4614-8787-3c6095a9f6e1" data-name="Layer 2"><g id="c9b7920a-81fa-4bfe-ad13-4da717c6854b" data-name="Layer 1"><g id="c2d982ff-0cf6-4220-b365-47f30d708fea" data-name="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="f51d455e-6b9c-4c4e-96db-a5004582beda" data-name="8e584754-6657-46f1-a9d8-2cfd6623b552"><polygon points="0 16.5 2.1 18.5 17 33 17 29.3 5.9 18.5 3.8 16.5 5.9 14.5 17 3.7 17 0 2.1 14.5 0 16.5"/></g></g></g></g></svg></button>',       
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 3
+            }
+          },
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 2,
+              dots: true,
+              arrows: false
+            }
+          }
+        ]
+    });
+  });
+</script>
+
+{% render 'spurit_loyaltypoints_customers-account-snippet' %}

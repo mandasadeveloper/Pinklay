@@ -1,0 +1,167 @@
+<style>
+  .collections-title {
+  	font-size: {{ section.settings.list_collection_title_size }}px;
+    color: {{ section.settings.list_collection_title_color }};
+  }
+  
+  .collections-title a {
+  	color: {{ section.settings.list_collection_title_color }};
+  }
+  
+  .products-count {
+  	color: {{ section.settings.products_count_color }};
+  }
+  
+  .products-count span {
+  	border-bottom-color: {{ section.settings.products_count_color | color_modify: 'alpha', 0.8 }};
+  }
+</style>
+
+
+{% include 'breadcrumb' %}
+
+{%- assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+
+{% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+
+<div class="list-collections list-collections-2 row">
+	{% if section.settings.display_type == 'all' %}  
+  		{% case section.settings.sort %}
+          {% when 'products_high' or 'products_low' %}
+            {% assign collections = collections | sort: 'all_products_count' %}
+          {% when 'date' or 'date_reversed' %}
+            {% assign collections = collections | sort: 'published_at' %}
+        {% endcase %}
+  
+  		{% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}  
+          {% for collection in collections %} 
+  			{% include 'list-collections-item-2' %}  
+          {% endfor %}  
+  
+		{% else %}  
+          {% for collection in collections reversed %}
+            {% include 'list-collections-item-2' %}   
+          {% endfor %} 
+  
+      {% endif %}
+  
+	{% else %}
+		{% for block in section.blocks %}
+			{% assign collection = collections[block.settings.collection] %}
+  
+			{% include 'list-collections-item-2' %}
+		{% endfor %} 
+	{% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "List Collection Pages",
+    "settings": [
+	    {
+          "type": "text",
+          "id": "list_collection_title_size",
+          "label": "Collection Title Font Size",
+          "default": "24"
+        },	    
+		{
+          "type": "color",
+          "id": "list_collection_title_color",
+          "label": "Collection Title Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "products_count_color",
+          "label": "Products Count Color",
+          "default": "#fff"
+        },
+        
+        {
+          "type": "paragraph",
+          "content": "All of your collections are listed by default. To customize your list, choose 'Selected' and add collections."
+        },
+        {
+          "type": "radio",
+          "id": "display_type",
+          "label": "Select collections to show",
+          "default": "all",
+          "options": [
+            {
+              "value": "all",
+              "label": "All"
+            },
+            {
+              "value": "selected",
+              "label": "Selected"
+            }
+          ]
+        },
+	    {
+          "type": "select",
+          "id": "sort",
+          "label": "Sort collections by:",
+          "info": "Sorting only applies when 'All' is selected",
+          "default": "alphabetical",
+
+          "options": [
+            {
+              "value": "products_high",
+              "label": "Product count, high to low"
+            },
+            {
+              "value": "products_low",
+              "label": "Product count, low to high"
+            },
+            {
+              "value": "alphabetical",
+              "label": "Alphabetically, A-Z"
+            },
+            {
+              "value": "alphabetical_reversed",
+              "label": "Alphabetically, Z-A"
+            },
+            {
+              "value": "date",
+              "label": "Date, old to new"
+            },
+            {
+              "value": "date_reversed",
+              "label": "Date, new to old"
+            }
+          ]
+       }	   	  
+	],
+
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection",
+      "settings": [
+		{
+          "type": "select",
+          "id": "size_image",
+          "label": "Collections size Image",
+          "default": "normal",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }         
+          ]
+        },
+        {
+          "label": "Collection",
+          "id": "collection",
+          "type": "collection"
+        }
+      ]
+    }
+  ]
+  }
+{% endschema %}
+

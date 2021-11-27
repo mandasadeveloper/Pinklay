@@ -1,0 +1,121 @@
+<script>
+  $(document).ready(function() {
+/*$('.widget.sidebar-custom.sidebar_toggle.sidebar-tag').each(function() {
+	if ($(this).next().find('.widget-content ul li').length == 0) {
+			console.log('hhlo');
+      $(this).next().find('widget-header').css('display','none');
+    } else	 {
+	console.log('lk');
+    }
+
+});
+    $('.widget.sidebar-custom.sidebar_toggle.sidebar-tag.size ').each(function() {
+	if ($(this).next().find('.widget-content ul li').length == 0) {
+			console.log('hhlo');
+      $(this).next().find('widget-header').css('display','none');
+    } else	 {
+	console.log('lk');
+    }
+
+}); */
+    if ($('#block-1534303018864 .widget-content ul li').length == 0) {     
+      	$('#block-1534303018864 .widget-header').css('display','none');
+    } 
+    if ($('#block-1534303001685 .widget-content ul li').length == 0) {
+        $('#block-1534303001685 .widget-header').css('display','none');
+    } 
+    
+    });
+
+</script>
+
+
+
+ 
+{% include 'collection-default' %}
+
+
+
+<style>
+  .padding .infinite-scrolling {
+    text-align: center;
+    margin-bottom: 25px;
+}
+  header.page-header {
+    display: none;
+}
+  div#shopify-section-navigation {
+    border-bottom: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6 !important;
+    top: 0px !important;
+} 
+  ul.product-grid-options-size {
+    display: none;
+}
+  @media (max-width: 767px) {
+.template-collection .reverse-mb {
+  margin-bottom: 10px;
+}
+    
+  }
+  
+  .product-item .product-bottom {
+     min-height: 59px !important;
+}
+  @media(min-width :1025px){
+  .Refinebytool {
+    display: none !important;
+}
+  }
+  @media(max-width :768px)
+  {
+ /*   .reverse-mb {
+    display: none !important;
+} */
+    .repbred {
+    display: none !important;
+}
+  
+  }
+  .cat-des.des-mobile {
+    text-align:center !important;
+  }
+  @media(min-width :769px)
+  {.cat-des.des-mobile {
+    font-size: 18px;
+  }}
+  
+   .product-item .product-label .label {
+    display: block;
+  }
+    .product-label {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    right: 10px !important;
+    text-align: -webkit-right !important;
+}
+   .product-label.customtags {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    left: 10px !important;
+      right: unset !important;    text-align: -webkit-left !important;
+}
+  .cat-des {
+    display: none !important;
+} 
+      .cat-des.des-mobile {
+    display: block !important;
+}
+  .template-collection .cat-content .cat-img img{
+  max-height: 100% !important
+  }
+  div#shopify-section-collection-header {
+    width: 100%;
+}
+  
+    
+</style> 
+<!--
+<div class="col_lower_main" style="width:100%"><div class="inner_lower_main" style="max-width:1170px;margin:0 auto;">{{ collection.metafields.collectionlower.lowerdata }}</div></div>-->

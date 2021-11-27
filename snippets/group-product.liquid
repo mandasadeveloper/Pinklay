@@ -1,0 +1,217 @@
+{% for block in section.blocks %}
+{% if block.type == 'group_product' %}
+
+{%- assign product_main = all_products[block.settings.main_pr] -%}
+{%- assign sub_product_1 = all_products[block.settings.sub_pr_1] -%}
+{%- assign sub_product_2 = all_products[block.settings.sub_pr_2] -%}
+{%- assign sub_product_3 = all_products[block.settings.sub_pr_3] -%}
+
+{% if product.handle == product_main.handle %}
+
+<div class="group_content">
+
+  {% if sub_product_1 != blank %}
+  <div class="group_product">
+
+    <div class="group-left">
+      <div class="group-img">
+        <a href="{{ sub_product_1.url | within: collection }}" title="{{ sub_product_1.title }}">
+          <img src="{{ sub_product_1.featured_image.src  | product_img_url: '100x' }}" alt="">
+        </a>
+      </div>
+      <div class="group-caption">
+        <div class="group-vendor">{{ sub_product_1.vendor | link_to_vendor  }}</div>
+        <a class="group-title" title="{{ sub_product_1.title }}" href="{{ sub_product_1.url | within: collection }}">
+          {% include 'multilang' with sub_product_1.title %}
+        </a>
+      </div>
+
+      {% if sub_product_1.available == false %}
+      <div class="product-label">
+        <strong class="sold-out label" {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>{{ 'products.product.sold_out' | t }}</strong>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="group-right">
+      <div class="price-box">
+        {% if sub_product_1.compare_at_price_min > sub_product_1.price_min %}
+        <p class="sale">
+          <span class="old-price">{{ sub_product_1.compare_at_price_min | money }}</span>
+          <span class="special-price">{% if sub_product_1.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_1.price_min | money }}</span>
+        </p>
+        {% else %}
+        <div class="regular-product">
+          <span class="group-price">{% if sub_product_1.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_1.price_min | money }}</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="group_option">
+        {% if sub_product_1.available %} 
+        <select>
+          {% for variant in sub_product_1.variants %}
+          <option data-price="{{ variant.price }}" {% unless variant.available %}class="sold-out" disabled{% endunless %} value="{{ variant.id }}" {% if variant.image != null %}data-img="{{ variant.image.src | product_img_url: '200x' }}"{% endif %}>
+            {{ variant.title }}
+          </option>
+          {% endfor %}
+        </select>
+        {% endif %}
+
+        {% if sub_product_1.available %}
+        <div class="extra group-qty-first">
+          <a href="javascript:void(0)" class="group_dec dec_first button"></a>
+          
+          <input type="hidden" name="id" value="{{ sub_product_1.variants[0].id  }}" />  
+          
+          <input class="group_number number_first" name="quantity" value="0" min="0" data-id="{{ sub_product_1.variants[0].id }}">
+          <a href="javascript:void(0)" class="group_inc inc_first button"></a>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+  {% endif %}
+
+  {% if sub_product_2 != blank %}
+  <div class="group_product">
+
+    <div class="group-left">
+      <div class="group-img">
+        <a href="{{ sub_product_2.url | within: collection }}" title="{{ sub_product_2.title }}">
+          <img src="{{ sub_product_2.featured_image.src  | product_img_url: '100x' }}" alt="">
+        </a>
+      </div>
+      <div class="group-caption">
+        <div class="group-vendor">{{ sub_product_2.vendor | link_to_vendor  }}</div>
+        <a class="group-title" title="{{ sub_product_2.title }}" href="{{ sub_product_2.url | within: collection }}">
+          {% include 'multilang' with sub_product_2.title %}
+        </a>
+      </div>
+
+      {% if sub_product_2.available == false %}
+      <div class="product-label">
+        <strong class="sold-out label" {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>{{ 'products.product.sold_out' | t }}</strong>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="group-right">
+      <div class="price-box">
+        {% if sub_product_2.compare_at_price_min > sub_product_2.price_min %}
+        <p class="sale">
+          <span class="old-price">{{ sub_product_2.compare_at_price_min | money }}</span>
+          <span class="special-price group-price">{% if sub_product_2.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_2.price_min | money }}</span>
+        </p>
+        {% else %}
+        <div class="regular-product">
+          <span class='group-price'>{% if sub_product_2.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_2.price_min | money }}</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="group_option">
+        {% if sub_product_2.available %} 
+        <select>
+          {% for variant in sub_product_2.variants %}
+          <option data-price="{{ variant.price }}" {% unless variant.available %}class="sold-out" disabled{% endunless %} value="{{ variant.id }}" {% if variant.image != null %}data-img="{{ variant.image.src | product_img_url: '200x' }}"{% endif %}>
+            {{ variant.title }}
+          </option>
+          {% endfor %}
+        </select>
+        {% endif %}
+
+        {% if sub_product_2.available %} 
+        <div class="extra group-qty-second">
+          <a href="javascript:void(0)" class="group_dec dec_second button"></a>
+          <input type="hidden" name="id" value="{{ sub_product_2.variants[0].id  }}" />  
+          <input class="group_number number_second" name="quantity" value="0" min="0" data-id="{{ sub_product_2.variants[0].id }}">
+          <a href="javascript:void(0)" class="group_inc inc_second button"></a>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+  {% endif %}
+
+  {% if sub_product_3 != blank %}
+  <div class="group_product">
+
+    <div class="group-left">
+      <div class="group-img">
+        <a href="{{ sub_product_3.url | within: collection }}" title="{{ sub_product_3.title }}">
+          <img src="{{ sub_product_3.featured_image.src  | product_img_url: '100x' }}" alt="">
+        </a>
+      </div>
+      <div class="group-caption">
+        <div class="group-vendor">{{ sub_product_3.vendor | link_to_vendor  }}</div>
+        <a class="group-title" title="{{ sub_product_3.title }}" href="{{ sub_product_3.url | within: collection }}">
+          {% include 'multilang' with sub_product_3.title %}
+        </a>
+      </div>
+
+      {% if sub_product_3.available == false %}
+      <div class="product-label">
+        <strong class="sold-out label" {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %}>{{ 'products.product.sold_out' | t }}</strong>
+      </div>
+      {% endif %}
+
+    </div>
+
+    <div class="group-right">
+      <div class="price-box">
+        {% if sub_product_3.compare_at_price_min > sub_product_3.price_min %}
+        <p class="sale">
+          <span class="old-price">{{ sub_product_3.compare_at_price_min | money }}</span>
+          <span class="special-price group-price">{% if sub_product_3.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_3.price_min | money }}</span>
+        </p>
+        {% else %}
+        <div class="regular-product">
+          <span class="group-price">{% if sub_product_3.price_varies %}{% include 'varies_from' %}{% endif %}{{ sub_product_3.price_min | money }}</span>
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="group_option">
+
+        {% if sub_product_3.available %} 
+        <select>
+          {% for variant in sub_product_3.variants %}
+          <option data-price="{{ variant.price }}" {% unless variant.available %}class="sold-out" disabled{% endunless %} value="{{ variant.id }}" {% if variant.image != null %}data-img="{{ variant.image.src | product_img_url: '200x' }}"{% endif %}>
+            {{ variant.title }}
+          </option>
+          {% endfor %}
+        </select>
+        {% endif %}
+        
+        {% if sub_product_3.available %}
+        <div class="extra group-qty-third">
+          <a href="javascript:void(0)" class="group_dec dec_third button"></a>
+          
+          <input type="hidden" name="id" value="{{ sub_product_3.variants[0].id }}" />  
+          
+          <input class="group_number number_third" name="quantity" value="0" min="0" data-id="{{ sub_product_3.variants[0].id }}">
+          <a href="javascript:void(0)" class="group_inc inc_third button"></a>
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+  {% endif %}
+
+</div>
+
+{% endif %}
+{% endif %}
+{% endfor %}

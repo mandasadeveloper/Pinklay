@@ -1,0 +1,59 @@
+{% if section.settings.dpl_lookboob_slide %}
+
+<div class="product-lookbook grouped-lb">
+  <div class="widget-title">
+    <h3>
+      <span class="lang1">{{section.settings.section_title}}</span>
+    </h3>
+  </div>
+  <div class="item" id="lb-item"> 
+    <div class="lazy-images-contain image_fullwidth" >
+      {% if section.settings.lb_image_slide != blank %}
+      {%- assign img_url = section.settings.lb_image_slide | img_url: '1024x' -%}
+      <img src="{{section.settings.lb_image_slide | img_url: '1024x'}}" alt=""
+           class="lazyload"
+           data-src="{{ img_url }}"
+           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+           data-sizes="auto">
+      {% else %}
+      {% capture current %}{% cycle 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}                 
+      {% endif %}
+
+      {% if section.settings.lb_product_1 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_1 }}%; left:{{ section.settings.left_position_1 }}%;">
+        <span class="glyphicon pr-lb item_1" data-handle="{{ section.settings.lb_product_1 }}">+</span>
+      </div>
+      {% endif %}
+
+      {% if section.settings.lb_product_2 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_2 }}%; left:{{ section.settings.left_position_2 }}%;">
+        <span class="glyphicon pr-lb item_2" data-handle="{{ section.settings.lb_product_2 }}">+</span>
+      </div>
+      {% endif %}
+
+      <style type="text/css">
+        #lb-item .item_1{
+          color:{{ section.settings.dots_color_1 }};
+          background: {{ section.settings.dots_bg_color_1 }};
+        }
+        #lb-item .item_1:before {
+          color: {{ section.settings.dots_bg_color_1 }};
+        } 
+        #lb-item .item_2{
+          color:{{ section.settings.dots_color_2 }};
+          background: {{ section.settings.dots_bg_color_2 }};
+        }
+        #lb-item .item_2:before{
+          color: {{ section.settings.dots_bg_color_2 }};
+        }
+        .image_fullwidth img{
+          object-fit: contain !important;
+          width: 100% !important;
+          border-radius:0px!important;
+        }
+      </style>
+    </div>	
+  </div>
+</div>
+{% endif %}

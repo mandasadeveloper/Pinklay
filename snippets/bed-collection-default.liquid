@@ -1,0 +1,78 @@
+<style>
+  .toolbar .halo-fillter {
+    display: inline-flex;
+  }
+  
+  @media (max-width: 359px)
+    {
+.toolbar .halo-fillter span {
+    display: block;
+}
+    }
+  
+     
+</style>
+
+<div class="halo-container {% if settings.layout_collections_page == 'full' %} bd-full{% endif %}">
+  <div class="container">
+    <div class ="reverse-mb">
+      {% section 'collection-header' %}
+
+     <!-- {% include 'breadcrumb' %} -->
+      
+      <div class="repbred" style="margin-bottom: 15px;padding: 8px 0;"></div>
+      
+    </div>
+    
+
+    <div class="row collection-container{% if settings.layout_collections_page == 'style_without' %} collection-style-without{% endif %}{% if settings.layout_collections_page == "style_right_sidebar" %} collection-right-sidebar{% endif %}">
+      {% if settings.layout_collections_page == "style_right_sidebar" %}
+      
+      <aside class="sidebar collection-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'bed-sidebar-filter' %}
+      </aside>
+      
+      {% else %}
+      
+      {% unless settings.display_sidebar_cat_page == false %}
+      <aside class="sidebar collection-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'bed-sidebar-filter' %}
+      </aside>
+      {% endunless %}
+      
+      {% endif %}
+
+      <div class="block-row col-main col-12 col-md-12{% if settings.layout_collections_page == "style_right_sidebar" %} col-lg-9{% else %}{% if settings.display_sidebar_cat_page == false or settings.layout_collections_page == 'style_without' %} col-lg-12 {% else %} col-lg-9{% endif %}{% endif %}">
+        {% section 'collection-template' %}         
+      </div>
+
+    </div>
+    <!--collection description start-->
+    <section style="border-top: 1px solid #e6e6e6;">
+    <div class="cat-des {% if section.settings.dpl_img_cls %}des-desktop{% endif %}" style="{% if section.settings.alignment == 'left' %}text-align:left; {% elsif section.settings.alignment == 'right' %}text-align:right; {% endif %}">
+      {{ collection.description }}
+    </div>
+    </section>
+    <!--collection description end-->
+    {% if settings.layout_collections_page == "style_right_sidebar" %}
+    
+    <div class="close-filter hide">
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    
+    {% else %}
+    
+    {% unless settings.display_sidebar_cat_page == false %}
+    <div class="close-filter hide">
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    {% endunless %}
+    
+    {% endif %}
+  </div>
+</div>
+

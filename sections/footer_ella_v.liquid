@@ -1,0 +1,469 @@
+<footer class="footer footer-ella-version">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer">
+          {% if section.settings.footer_title_2 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_2 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_2 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        
+        <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer">
+          {% if section.settings.footer_title_3 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_3 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_3 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        
+        <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer">
+          {% if section.settings.footer_title_4 != blank %}
+          <h3>
+            {% include 'multilang' with section.settings.footer_title_4 %}
+          </h3>
+          {% endif %}
+          
+          {%- assign footer_linklist = section.settings.footer_linklist_4 -%}
+          {% if linklists[footer_linklist].links.size > 0 %}
+          <ul>
+            {% for link in linklists[footer_linklist].links %}
+            <li>
+              <a href="{{ link.url}}">
+                {% include 'multilang' with link.title %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}       
+        </div>
+        
+        <div class="col-12 col-md-8 col-lg-4 col-xl-4 offset-xl-2 column-footer no-dropdown">     
+          {% if section.settings.footer_newsletter_enable %}
+          <div class="footer-newsletter">
+            <h3>
+              {% include 'multilang' with section.settings.footer_newsletter_text %}
+            </h3>
+            <div class="des">
+              {% include 'multilang' with  section.settings.des_newsletter %}
+            </div>
+            {% include 'homepage-block-newsletter' %}
+          </div>
+          {% endif %}
+          
+          {% if section.settings.footer_social_enable %}
+          <div class="footer-social">
+            {% include 'social-media' %}
+          </div>
+          {% endif %}
+        </div>        
+      </div>
+    </div>
+  </div>
+  
+  {% if section.settings.display_ft_bt %}
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="footer_address column-left col-12 col-lg-7 col-xl-6">
+            {% include'multilang' with section.settings.ft_address %}
+          </div>
+          
+          <div class="footer_address column-right col-12 col-lg-5 col-xl-6">
+            <ul>
+              {% if section.settings.dpl_ico_1 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-visa'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_2 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-amex'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_3 %}
+              <li>
+                <a href="javascript:void(0)">
+                   <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_4 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-paypal'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_5 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-google-wallet" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_6 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-apple'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_7 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-discover" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_8 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_9 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-diners-club" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_10 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_11 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_12 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-jcb" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer 4",
+    "settings": [
+		{
+			"type" : "color",
+			"id" : "bg_ft",
+			"label" : "Background Footer",
+			"default" : "#323232"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_text",
+			"label" : "Color Text",
+			"default" : "#E0E0E0"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_header",
+			"label" : "Color Header",
+			"default" : "#fff"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_border",
+			"label" : "Footer Border with Opacity 15%",
+			"default" : "#fff"
+		},
+		{
+			"type" : "header",
+			"content" : "Footer Column"
+		},        
+        {
+          "type": "text",
+          "id": "footer_title_2",
+          "label": "Footer 1 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_2",
+          "label": "Footer Column 1"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_3",
+          "label": "Footer 2 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_3",
+          "label": "Footer Column 2"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_4",
+          "label": "Footer 3 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_4",
+          "label": "Footer Column 3"
+        },
+        {
+          "type": "header",
+          "content": "Newsletter"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_newsletter_enable",
+          "label": "Show newsletter signup?",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "footer_newsletter_text",
+          "label": "Footer Newsletter Text"
+        },
+        {
+          "type" : "richtext",
+          "id" : "des_newsletter",
+          "label" : "Description newsletter"
+        },
+		{
+			"type" : "color",
+			"id" : "ft_input",
+			"label" : "Input Button Background",
+			"default" : "#4b4b4b"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_input_br",
+			"label" : "Input Button Border Color",
+			"default" : "#4b4b4b"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_input_text",
+			"label" : "Input Button Text Color",
+			"default" : "#d6d6d6"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_submit",
+			"label" : "Submit Button Background",
+			"default" : "#999"
+		},
+		{
+			"type" : "color",
+			"id" : "ft_submit_text",
+			"label" : "Submit Button Text Color",
+			"default" : "#fff"
+		},
+        {
+          "type": "header",
+          "content": "Social"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_social_enable",
+          "label": "Show social media links?",
+          "default": false
+        },
+        {
+          "type" : "header",
+          "content" : "Footer Bottom"
+        },
+        {
+          "type" : "checkbox",
+          "id" : "display_ft_bt",
+          "label" : "Display Footer Bottom",
+          "default" : true
+        },
+        
+        {
+          "type" : "richtext",
+          "id" : "ft_address",
+          "label" : "Footer Address"
+        },
+		{
+           "type" : "header",
+           "content" : "DISPLAY PAYMENT ICONS FOR"
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_1",
+			"label" : "Display Icon Visa",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_2",
+			"label" : "Display Icon Amex",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_3",
+			"label" : "Display Icon Mastercard",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_4",
+			"label" : "Display Icon Paypal",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_5",
+			"label" : "Display Icon Google Wallet",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_6",
+			"label" : "Display Icon Apple pay",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_7",
+			"label" : "Display Icon Discover",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_8",
+			"label" : "Display Icon Credit Card",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_9",
+			"label" : "Display Icon Diners club",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_10",
+			"label" : "Display Icon Credit card alt",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_11",
+			"label" : "Display Icon Stripe",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_12",
+			"label" : "Display Icon JCB",
+			"default" : true
+		}
+	]
+  }
+{% endschema %}
+
+<style>
+  .footer .footer-top .column-footer .newsletter .input-group-btn .btn{
+  	background-color: {{section.settings.ft_submit }};
+    border: 1px solid {{section.settings.ft_submit }};
+    color:{{section.settings.ft_submit_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field{
+    background: {{section.settings.ft_input }};
+    border:1px solid {{section.settings.ft_input_br }};
+    color:{{section.settings.ft_input_text}};
+  }
+  
+  .footer .footer-top .column-footer .newsletter .input-group-field::-webkit-input-placeholder{
+  	color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-moz-placeholder{
+    color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-ms-input-placeholder{
+  color:{{section.settings.ft_input_text}};
+  }
+  .footer .footer-top .column-footer .newsletter .input-group-field::-moz-placeholder{
+  color:{{section.settings.ft_input_text}};
+  }
+  
+  .footer{
+    background:{{ section.settings.bg_ft }};
+    color: {{ section.settings.color_ft_text }};
+  }
+
+  .footer .footer-top .column-footer ul li a {
+    color: {{ section.settings.color_ft_text }};
+  }
+  
+  .footer-bottom .footer-content {
+  	border-top: 1px solid {{ section.settings.ft_border | color_modify: 'alpha', 0.15 }};
+  }
+  
+  .footer-bottom a {
+    color: {{ section.settings.color_ft_text }};
+  }
+  .footer h3{
+    color: {{ section.settings.color_ft_header }};
+  }
+</style>

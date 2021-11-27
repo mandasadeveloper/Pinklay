@@ -1,0 +1,31 @@
+<div class="halo-container{% if settings.layout_collections_page == 'full' %} bd-full{% endif %}">
+  <div class="container">
+
+    {% section 'collection-header' %}
+
+    {% include 'breadcrumb' %}
+
+    <div class="row collection-container">
+
+      {% if settings.display_sidebar_cat_page %}
+      <aside class="sidebar collection-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'sidebar-filter' %}
+      </aside>
+      {% endif %}
+
+      <div class="block-row col-main col-12 col-md-12 {% if settings.display_sidebar_cat_page == false %}col-lg-12 {% else %}col-lg-9 {% endif %}">
+        
+        {% section 'collection-list-template' %}
+        
+      </div>
+
+    </div>
+
+    {% if settings.display_sidebar_cat_page %}
+    <div class="close-filter hide">
+      <a href="javascript:void(0)" title="Close">{% include 'icon-close' %}</a>
+    </div>
+    {% endif %}
+
+  </div>
+</div>

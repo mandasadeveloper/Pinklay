@@ -1,0 +1,50 @@
+<section class="custom-block" id="section-{{ section.id }}" style="margin-bottom: 30px;">
+  <div class="imageblock">    
+        <a href="{{ section.settings.img_url }}" title="">
+         <img class="lazyload" data-src="{{ section.settings.img | img_url : '1720x' }}" style="width: 100%;">
+        </a>      
+  </div>
+</section>
+
+{% schema %}
+  {
+      "name": "home covid banner",
+      "settings": [
+   {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        },
+		{ "type": "header",
+          "content": "banner tab"
+    	},
+        {
+            "type": "image_picker",
+          	"id": "img",
+          	"label": "Image banner"			
+    	},	
+		{
+            "type": "url",
+          	"id": "img_url",
+          	"label": "Img URL "			
+    }
+      ],     
+      "presets": [{
+        "name": "home covid banner",
+        "category": "images"
+      }]
+  }
+{% endschema %}

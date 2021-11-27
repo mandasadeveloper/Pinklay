@@ -1,0 +1,58 @@
+<!--<div class="bg-breadcrumb {% if section.settings.layout == 'full'%}bd-full{% endif %}">
+  <div class="container">
+    {% include 'breadcrumb' %}
+  </div>
+</div>-->
+<style>
+  .wishlist-content .product-vendor{
+    display:none !important;
+  }
+  .wishlist-page .wishlist-content .grid-item .price-box {
+    text-transform: none;
+  }
+</style>
+<div class="wishlist-page {% if section.settings.layout == 'full'%}bd-full{% endif %} page-wishlist">
+  <div class="container">
+    <header class="page-header">
+      <h2>
+        {% include 'multilang' with page.title   %}
+      </h2>
+    </header>
+    <div class="wishlist-header">
+      <div class="row">
+        <div class="col-md-2 item">
+          <span data-translate="wishlist.general.product_image"><!--{{ 'wishlist.general.product_image' | t }}-->IMAGE</span>
+        </div>
+        <div class="col-md-4 item">
+          <span data-translate="wishlist.general.product_name">{{ 'wishlist.general.product_name' | t }}</span>
+        </div> 
+        <div class="col-md-2 item text-center">
+          <span data-translate="wishlist.general.unit_price"> {{ 'wishlist.general.unit_price' | t }}</span>
+        </div>
+        <div class="col-md-3 item text-center" data-translate="wishlist.general.add_to_wishlist">
+          <span data-translate="wishlist.general.add_to_wishlist"><!--{{ 'wishlist.general.add_to_wishlist' | t }}-->ADD TO CART</span>
+        </div>
+        <div class="col-md-1 item text-right">
+          <span data-translate="cart.general.remove">{{ 'cart.general.remove' | t }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="wishlist-content">
+    </div>
+    <div class="wishlist-footer">
+      <p>
+        <!--<a href="https://api.whatsapp.com/send?text=https://pink-lay.myshopify.com/pages/wish-list" target="_blank" style="color:#646464;">
+          <i class="fa fa-whatsapp" aria-hidden="true" style="font-size: 38px;"></i>
+          Share my wish list via WhatsApp
+        </a>-->
+      
+     <a class="share" href="mailto:?subject={{ subject }}&amp;body={{ body | remove: ' ' | replace: '"',"'" | strip_newlines}}" {% if settings.enable_multilang %}data-translate="wishlist.general.share_wishlist"{% endif %}>
+        <i class="fa fa-envelope-o" aria-hidden="true" style="font-size: 34px;"></i>
+        {{ 'wishlist.general.share_wishlist' | t }}
+      </a>
+      </p> 
+      <ul id="pagin">
+      </ul>
+    </div>
+  </div>
+</div>

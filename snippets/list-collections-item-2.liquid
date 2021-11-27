@@ -1,0 +1,61 @@
+{% if collection == empty %}
+	{% capture collection_title %}collection name{% endcapture %}
+{% else %}
+	{% capture collection_title %}{{ collection.title | escape }}{% endcapture %}
+{% endif %}
+
+{% if collection.image %}
+	{% assign no_collection_image = false %}
+	{% assign collection_image = collection.image %}
+{% elsif collection.products.first and collection.products.first.images != empty %}
+	{% assign collection_image = collection.products.first.featured_image %}
+{% else %} 
+	{% assign collection_image = blank %}
+{% endif %}
+
+<div class="grid-item col-12{% if block.settings.size_image == "normal" %} col-md-4{% elsif block.settings.size_image == "large" %} col-md-8{% endif%}">
+  <div class="collection-images">
+    <a href="{{ collection.url }}" title="{{ collection_title }}">
+      {% unless collection_image == blank %}
+        {% if collection.image %}
+          {{ collection.image.src | collection_img_url: 'original' | img_tag: collection_title }}
+        {% else %}
+          {{ collection.products.first.featured_image | product_img_url: 'original' | img_tag: collection_title }}
+        {% endif %}
+      
+      {% else %}
+      
+        {% if collection == empty %}
+          {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+        {% else %}
+          {% if collection.image %}
+              {{ collection.image.src | collection_img_url: 'original' | img_tag: collection_title }}
+          {% else %}
+          	{{ collection.products.first.featured_image | product_img_url: 'original' | img_tag: collection_title }}
+          {% endif %}
+      	{% endif %}
+      {% endunless %}
+    </a>
+  </div>
+  
+  <div class="collections-content">    
+    <h3 class="collections-title">
+      {% if collection.title != blank %}
+      <a href="{{ collection.url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" {% if settings.enable_multilang %}data-translate="collections.general.link_title|title:{{collection_title}}" translate-item="title"{% endif %}>
+        {% include 'multilang' with collection.title %}
+      </a>
+      {% else %}
+      <a href="{{ collection.url }}">
+        {{ collection_title }}
+      </a>
+      {% endif %}
+    </h3>
+    
+    <div class="products-count" {% if settings.enable_multilang %}data-translate="collections.general.items_with_count|count:{{collection.all_products_count}}"{% endif %}>
+      <span>
+        {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+      </span>
+    </div>
+  </div>
+</div>

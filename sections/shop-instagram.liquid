@@ -1,0 +1,102 @@
+<section class="shop-instagram">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        {% if section.settings.img_ins != blank %}
+        <div class="image-instagram">
+          <img src="{{ section.settings.img_ins | img_url:'master' }}">
+          <div class="caption">
+            {% if section.settings.header != blank %}
+            <h3>
+              <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+              {% include 'multilang' with  section.settings.header %}
+            </h3>
+            {% endif %}
+            {% if section.settings.des != blank %}
+            <div class="des des-desktop">
+              {% include 'multilang' with  section.settings.des %}
+            </div>
+            {% endif %}
+          </div>
+          {% else %}
+          <span class="not_img">1170 x 270Px</span>
+          {% endif %}
+        </div>
+        {% if section.settings.des != blank %}
+        <div class="des des-mobile">
+          {% include 'multilang' with  section.settings.des %}
+        </div>
+        {% endif %}
+        <div class="caption-instagram">
+          {{ section.settings.embed_code }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Shop Instagram",
+    "settings": [
+		{	
+          "type" : "image_picker",
+          "id" : "img_ins",
+          "label" : "Select Image"
+		},
+		{
+            "type" : "text",
+            "id" : "header",
+            "label" : "Header",
+            "default" : "Shop Instagram"
+        },
+        {
+          "type" : "text",
+          "id" : "fs_header",
+          "label" : "Header Font Size",
+          "default" : "20px"
+        },
+        {
+          "type" : "textarea",
+          "id" : "des",
+          "label" : "Description"
+        },
+        {
+          "type" : "text",
+          "id" : "fs_des",
+          "label" : "Description Font Size",
+          "default" : "12px"
+        },
+		{
+          "type" : "color",
+          "id" : "text_color",
+          "label" : "Text color",
+          "default" : "#fff"
+      	},
+		{
+          "type" : "header",
+          "content" : "Embed code"
+     	},
+		{
+		  "type" : "textarea",
+		  "id" : "embed_code",
+		  "label" : "Embed javascript Code"
+		}
+
+	]
+  }
+{% endschema %}
+<style>
+  .shop-instagram .des,
+  .shop-instagram .caption h3{
+    color:{{section.settings.text_color}}
+  }
+  .shop-instagram .caption h3{
+  	font-size:{{section.settings.fs_header}};
+  }
+  
+  .shop-instagram .des{
+  	font-size:{{section.settings.fs_des}};
+  }
+  
+</style>

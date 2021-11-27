@@ -1,0 +1,215 @@
+<div class="collections-content-product">
+{% if section.settings.collection_results_per_page_order_form != blank %}
+{% assign product_per_page = section.settings.collection_results_per_page_order_form %}
+{% else %}
+{% assign product_per_page = 12 %}
+{% endif %}
+
+{% paginate collection.products by product_per_page %}
+
+{% include 'toolbar' %}
+<div class="product-collection products-grid product_order">
+  <div class="product-header">
+    <div class="col-img">
+      <div class="pro-img">&nbsp;</div>
+    </div>
+    <div class="col-del">
+      <div class="pro-item">{% include 'multilang' with section.settings.input_the_text_1 %}</div>
+      <div class="pro-price">{% include 'multilang' with section.settings.input_the_text_2 %}</div>
+      <div class="pro-qty">{% include 'multilang' with section.settings.input_the_text_3 %}</div>
+      <div class="pro-option">{% include 'multilang' with section.settings.input_the_text_4 %}</div>
+    </div>
+  </div>
+  {% if collection.products_count > 0 %}    
+  {% for product in collection.products %}
+  <div class="grid-item">
+    {% include 'product-order-form' %}
+  </div>       	  
+  {% endfor %}
+  {% else %}
+  <p class="text-center" {% if settings.enable_multilang %}data-translate="collections.general.no_matches"{% endif %}>{{ 'collections.general.no_matches' | t }}</p>
+  {% endif %}
+</div>
+{% if paginate.pages > 1 %}
+<div class="padding">
+  {% include 'pagination-page' %}
+</div>
+{% endif %}
+
+{% endpaginate %}    
+
+</div>
+
+{% schema %}
+  {
+    "name": "Collection Express Order",
+    "settings": [
+      {
+        "type": "text",
+        "id": "collection_results_per_page_order_form",
+        "label": "Products per page  (grid only) ",
+        "default": "12"
+      },
+      {
+		"type" : "text",
+		"id" : "input_the_text_1",
+		"label" : "Input the text",
+		"default" : "Item"
+      },      
+	  {
+		"type" : "text",
+		"id" : "input_the_text_2",
+		"label" : "Input the text",
+		"default" : "Price"
+      },      
+	  {
+		"type" : "text",
+		"id" : "input_the_text_3",
+		"label" : "Input the text",
+		"default" : "Qty"
+      },      
+	  {
+		"type" : "text",
+		"id" : "input_the_text_4",
+		"label" : "Input the text",
+		"default" : "Options"
+      },      
+      {
+        "type": "header",
+        "content": "Primary Button"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color",
+        "label": "Button Background Color",
+        "default": "#E95144",
+        "info": "Default Value: #E95144"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color",
+        "label": "Button Border Color",
+        "default": "#E95144",
+        "info": "Default Value: #E95144"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button Text Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+	 {
+        "type": "header",
+        "content": "Primary Button Hover"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color_hover",
+        "label": "Button Background Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color_hover",
+        "label": "Button Border Color",
+        "default": "#E95144",
+        "info": "Default Value: #E95144"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color_hover",
+        "label": "Button Text Color",
+        "default": "#E95144",
+        "info": "Default Value: #E95144"
+      },
+	  {
+        "type": "header",
+        "content": "Primary Button 2"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color_2",
+        "label": "Primary Button 2 Background Color",
+        "default": "#000",
+        "info": "Default Value: #00"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color_2",
+        "label": "Primary Button 2 Border Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color_2",
+        "label": "Primary Button 2 Text Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+	{
+        "type": "header",
+        "content": "Primary Button Hover 2"
+      },
+      {
+        "type": "color",
+        "id": "button_bg_color_hover_2",
+        "label": "Primary Button 2 Background Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+      {
+        "type": "color",
+        "id": "button_border_color_hover_2",
+        "label": "Primary Button 2 Border Color",
+        "default": "#000",
+        "info": "Default Value: #000"
+      },
+      {
+        "type": "color",
+        "id": "button_text_color_hover_2",
+        "label": "Primary Button 2 Text Color",
+        "default": "#000",
+        "info": "Default Value: #000"
+      }
+    ]
+  }
+{% endschema %}
+
+
+
+<style>
+  .collection-template-order  .product-des-order .btn.show-options{
+    background-color: {{ section.settings.button_bg_color }};
+   border-color:{{ section.settings.button_border_color }}; 
+    color: {{ section.settings.button_text_color }}; 
+  }
+  .collection-template-order  .product-des-order .btn.hide_options,
+   .collection-template-order .product-des-order .btn.show-options:hover{
+    background-color: {{ section.settings.button_bg_color_hover }};
+   border-color:{{ section.settings.button_border_color_hover }}; 
+    color: {{ section.settings.button_text_color_hover }}; 
+  }
+  .options-action .btn,
+  .collection-template-order  .btn{
+      outline: none;
+  }
+  
+  
+  .action .btn.order-add-to-cart-btn,
+  .options-action .form-add-to-cart{
+   background-color: {{ section.settings.button_bg_color_2 }};
+   border-color:{{ section.settings.button_border_color_2 }}; 
+    color: {{ section.settings.button_text_color_2 }}; 
+  }
+ .action .btn.order-add-to-cart-btn:hover,
+  .options-action .form-add-to-cart.add_more,
+  .action .btn.order-add-to-cart-btn.add_more,
+  .options-action .form-add-to-cart:hover{
+   background-color: {{ section.settings.button_bg_color_hover_2 }};
+   border-color:{{ section.settings.button_border_color_hover_2 }}; 
+    color: {{ section.settings.button_text_color_hover_2 }}; 
+  }
+</style>

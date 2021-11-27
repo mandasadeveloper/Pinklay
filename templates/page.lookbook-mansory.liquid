@@ -1,0 +1,22 @@
+<div class="bg-breadcrumb">
+  <div class="container">
+  	{% include 'breadcrumb' %}
+  </div>
+</div>
+
+{% comment %}
+  Regular page content goes here.
+{% endcomment %}
+
+<div class="rte">
+  <div class="container">
+    <header class="page-header">
+      <h2>
+        {% include 'multilang' with page.title   %}
+      </h2>
+    </header>
+
+    {% section 'lookbook-mansory'%}
+
+  </div>
+</div>

@@ -1,0 +1,407 @@
+<section class="two-block-image four-block four-{{section.id}}">
+  <div class="{% if section.settings.layout == 'full' %}container-full {% else %}container {% endif %}">
+    <div class="row">
+      <div class="column-left col-12 col-md-6">
+        <div class="row">
+          <figure class="items-block col-12 item-1">
+            <a href="{{ section.settings.link }}" title="{{ section.settings.title_1 }}">
+              {% if section.settings.img != blank %}
+              <img src="{{ section.settings.img | img_url: '100x' }}" alt="{{ section.settings.title_1  | escape }}"
+                   class="lazyload"
+                   data-src="{{ section.settings.img | img_url : '1024x' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.img | img_url : '1024x' }}"
+                   data-sizes="auto">
+              {% else %}
+              <span class="not_img">570 x 370px</span>
+              {% endif %}
+              <div class="caption">
+                {% if section.settings.text != blank %}<h4>{% include 'multilang' with section.settings.text %}</h4> {% endif %}
+                {% if section.settings.title_1 != blank %}<h3>{% include 'multilang' with section.settings.title_1 %}</h3> {% endif %}
+                {% if section.settings.des!= blank %}<div class="des">{% include 'multilang' with section.settings.des %}</div> {% endif %}
+              </div>
+            </a>
+          </figure>
+          <figure class="items-block col-12 item-2">
+            <a href="{{ section.settings.link_3 }}" title="{{ section.settings.title_3 }}">
+
+              {% if section.settings.img_3 != blank %}
+              <img src="{{ section.settings.img_3 | img_url: '100x' }}" alt="{{ section.settings.title_3  | escape }}"
+                   class="lazyload"
+                   data-src="{{ section.settings.img_3 | img_url : '1024x' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.img_3 | img_url : '1024x' }}"
+                   data-sizes="auto">
+              {% else %}
+              <span class="not_img">570 x 370px</span>
+              {% endif %}
+              <div class="caption">
+                {% if section.settings.text_3 != blank %}<h4>{% include 'multilang' with section.settings.text_3 %}</h4> {% endif %}
+                {% if section.settings.title_3 != blank %}<h3>{% include 'multilang' with section.settings.title_3 %}</h3> {% endif %}
+                {% if section.settings.des_3 != blank %}<div class="des">{% include 'multilang' with section.settings.des_3 %}</div> {% endif %}
+              </div>
+            </a>
+          </figure>
+        </div>
+      </div>
+
+      <div class="column-right col-12 col-md-6">
+        <div class="row">
+          <figure class="items-block col-12 item-3">
+            <a href="{{ section.settings.link_2 }}" title="{{ section.settings.title_2 }}">
+
+              {% if section.settings.img_2 != blank %}
+              <img src="{{ section.settings.img_2 | img_url: '100x' }}" alt="{{ section.settings.title_2  | escape }}"
+                   class="lazyload"
+                   data-src="{{ section.settings.img_2 | img_url : '1024x' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.img_2 | img_url : '1024x' }}"
+                   data-sizes="auto">
+              {% else %}
+              <span class="not_img">570 x 370px</span>
+              {% endif %}
+              <div class="caption">
+                {% if section.settings.text_2 != blank %}<h4>{% include 'multilang' with section.settings.text_2 %}</h4> {% endif %}
+                {% if section.settings.title_2 != blank %}<h3>{% include 'multilang' with section.settings.title_2 %}</h3> {% endif %}
+                {% if section.settings.des_2 != blank %}<div class="des">{% include 'multilang' with section.settings.des_2 %}</div> {% endif %}
+              </div>
+            </a>
+          </figure>
+
+          <figure class="items-block col-12 item-4">
+            <a href="{{ section.settings.link_4 }}" title="{{ section.settings.title_4 }}">
+              {% if section.settings.img_4 != blank %}
+              <img src="{{ section.settings.img_4 | img_url: '100x' }}" alt="{{ section.settings.title_4  | escape }}"
+                   class="lazyload"
+                   data-src="{{ section.settings.img_4 | img_url : '1024x' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ section.settings.img_4 | img_url : '1024x' }}"
+                   data-sizes="auto">
+              {% else %}
+              <span class="not_img">570 x 370px</span>
+              {% endif %}
+              <div class="caption">
+                {% if section.settings.text_4 != blank %}<h4>{% include 'multilang' with section.settings.text_4 %}</h4> {% endif %}
+                {% if section.settings.title_4 != blank %}<h3>{% include 'multilang' with section.settings.title_4 %}</h3> {% endif %}
+                {% if section.settings.des_4 != blank %}<div class="des">{% include 'multilang' with section.settings.des_4 %}</div> {% endif %}
+              </div>
+            </a>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .four-{{section.id}} .item-1 .caption{
+    color:{{section.settings.color }};
+  }
+  .four-{{section.id}} .item-1 .caption h4{     
+    font-size: {{section.settings.font_size_1}};
+  }
+  .four-{{section.id}} .item-1 .caption h3{     
+    font-size: {{section.settings.font_size_2}};
+  }
+  .four-{{section.id}} .item-1 .caption .des{
+    font-size: {{section.settings.font_size_3}};
+  }
+/*    */
+  .four-{{section.id}} .item-2 .caption{
+    color:{{section.settings.color }};
+  }
+  .four-{{section.id}} .item-2 .caption h4{     
+    font-size: {{ section.settings.font_size_1_3 }};
+  }
+  .four-{{section.id}} .item-2 .caption h3{     
+    font-size: {{ section.settings.font_size_2_3 }};
+  }
+  .four-{{section.id}} .item-2 .caption .des{
+    font-size: {{ section.settings.font_size_3_3 }};
+  }
+/*    */
+  .four-{{section.id}} .item-3 .caption{
+    color:{{section.settings.color }};
+  }
+  .four-{{section.id}} .item-3 .caption h4{     
+    font-size: {{ section.settings.font_size_1_2 }};
+  }
+  .four-{{section.id}} .item-3 .caption h3{     
+    font-size: {{ section.settings.font_size_2_2 }};
+  }
+  .four-{{section.id}} .item-3 .caption .des{
+    font-size: {{ section.settings.font_size_3_2 }};
+  }
+  
+  /*    */
+  .four-{{section.id}} .item-4 .caption{
+    color:{{ section.settings.color }};
+  }
+
+  .four-{{section.id}} .item-4 .caption h4{     
+    font-size: {{ section.settings.font_size_1_4 }};
+  }
+  .four-{{section.id}} .item-4 .caption h3{     
+    font-size: {{ section.settings.font_size_2_4 }};
+  }
+  .four-{{section.id}} .item-4 .caption .des{
+    font-size: {{ section.settings.font_size_3_4 }};
+  }
+  
+</style>
+{% schema %}
+  {
+      "name": "Four Images block",
+      "settings": [
+            {
+              "type" : "radio",
+              "id" : "layout",
+              "label" : "Layouts",       
+              "options": [
+                {
+                  "value": "default",
+                  "label": "Default"
+                },
+                {
+                  "value": "full",
+                  "label": "Full Width"
+                }
+              ],
+              "default": "default"
+            },
+			{
+			   "type" : "header",
+			   "content" : "Images 1"
+			},
+            {
+              "type" : "image_picker",
+              "id" : "img",
+              "label" : "Select Image",
+              "info": "( 570 x 370 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title_1",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "url",
+              "id" : "link",
+              "label" : "Link"
+            },
+            {
+              "type" : "color",
+              "id": "color",
+              "label" : "Text Color",
+              "default" : "#fff"
+            },
+			{
+			   "type" : "header",
+			   "content" : "Images 2"
+			},
+            {
+              "type" : "image_picker",
+              "id" : "img_2",
+              "label" : "Select Image",
+              "info": "( 570 x 370 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text_2",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1_2",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title_2",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2_2",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des_2",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3_2",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "url",
+              "id" : "link_2",
+              "label" : "Link"
+            },
+            {
+              "type" : "color",
+              "id": "color_2",
+              "label" : "Text Color",
+              "default" : "#fff"
+            },
+			{
+			   "type" : "header",
+			   "content" : "Images 3"
+			},
+            {
+              "type" : "image_picker",
+              "id" : "img_3",
+              "label" : "Select Image",
+              "info": "( 570 x 370 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text_3",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1_3",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title_3",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2_3",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des_3",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3_3",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "url",
+              "id" : "link_3",
+              "label" : "Link"
+            },
+            {
+              "type" : "color",
+              "id": "color_3",
+              "label" : "Text Color",
+              "default" : "#fff"
+            },
+			{
+			   "type" : "header",
+			   "content" : "Images 4"
+			},
+            {
+              "type" : "image_picker",
+              "id" : "img_4",
+              "label" : "Select Image",
+              "info": "( 570 x 370 )Px"
+            },
+            {
+              "type" : "text",
+              "id" : "text_4",
+              "label" : "Title",
+              "default" : "New Collection"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_1_4",
+              "label" : "Font size Title",
+              "default" : "13px"
+            },
+            {
+              "type" : "text",
+              "id" : "title_4",
+              "label" : "Header",
+              "default" : "Silk Scarves"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_2_4",
+              "label" : "Font size Header",
+              "default" : "40px"
+            },
+            {
+              "type" : "textarea",
+              "id" : "des_4",
+              "label" : "Description",
+              "default" : "Phasellus lorem malesuada ligula pulvinar commodo maecenas"
+            },
+            {
+              "type" : "text",
+              "id": "font_size_3_4",
+              "label" : "Font size Description",
+              "default" : "12px"
+            },
+            {
+              "type" : "url",
+              "id" : "link_4",
+              "label" : "Link"
+            },
+            {
+              "type" : "color",
+              "id": "color_4",
+              "label" : "Text Color",
+              "default" : "#fff"
+            }
+		
+      ],
+      "presets": [{
+        "name": "Four Images block",
+        "category": "block images"
+      }]
+  }
+{% endschema %}

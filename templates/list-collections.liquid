@@ -1,0 +1,65 @@
+
+{% comment %}
+  This page represents the /collections and /products pages.
+  It is an optional, but highly recommended, template for your theme.
+  The contents of the list-collection.liquid template can be found in /sections/list-collection.liquid
+
+  More info:
+    - http://docs.shopify.com/manual/configuration/store-customization/taking-control-of-collections-listing
+{% endcomment %}
+
+<header class="page-header{% unless settings.layout_list_coll == "default_1" %} margin-bt-6{% endunless %}">
+  <div class="container">
+  	<h1 {% if settings.enable_multilang %}data-translate="collections.general.title"{%endif%}>
+      {{ 'collections.general.title' | t }}
+    </h1>
+  </div>
+</header>
+
+{% if settings.layout_list_coll == "default_1" %} 
+  <div class="container">
+    {% section 'list-collection' %}
+  </div>	
+{% elsif settings.layout_list_coll == "default_2" %}
+  <div class="container">
+    {% section 'list-collection-2' %}
+  </div>	
+{% elsif settings.layout_list_coll == "mansory" %}
+  <div class="container">
+    {% section 'list-collection-3' %}
+  </div>
+{% elsif settings.layout_list_coll == "full" %} 
+<div class="bd-full">
+  <div class="container"> 
+    
+    {% include 'breadcrumb' %}
+    
+    <a class="halo-fillter sidebar-label" href="javascript:void(0)">
+      {% include 'icon_filter' %}
+      <span class="sidebar_more" {% if settings.enable_multilang %}data-translate="blogs.sidebar.sidebar_more_blog"{% endif %}>
+        {{ 'blogs.sidebar.sidebar_more_blog' | t }}
+      </span>
+    </a>
+    
+    <div class="close-filter hide">       
+      <a href="javascript:void(0)" title="Close">
+        {% include 'icon-close' %}
+      </a>
+    </div>
+    
+    <div class="row flex-direction">
+      {% if settings.display_sidebar_collections_list %}
+      <aside class="sidebar blog-sidebar col-12 col-md-12 col-lg-3">
+        {% section 'sidebar' %}
+      </aside>
+	  {% endif %}
+      <div class="block-row col-main col-12 col-md-12 {% if settings.display_sidebar_collections_list %} col-lg-9{% else %} col-lg-12 {% endif %}">
+        {% section 'list-collection-4' %}
+      </div>
+    </div>
+  </div>	
+</div>
+{% endif %}
+
+
+

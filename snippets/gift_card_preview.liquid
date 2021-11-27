@@ -1,0 +1,325 @@
+<style>
+@-webkit-keyframes slideIn{0%{opacity:0;-moz-transform:translateY(-100%);-o-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}100%{opacity:1;-moz-transform:translateY(0);-o-transform:translateY(0);-ms-transform:translateY(0);-webkit-transform:translateY(0);transform:translateY(0)}}@-moz-keyframes slideIn{0%{opacity:0;-moz-transform:translateY(-100%);-o-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}100%{opacity:1;-moz-transform:translateY(0);-o-transform:translateY(0);-ms-transform:translateY(0);-webkit-transform:translateY(0);transform:translateY(0)}}@-o-keyframes slideIn{0%{opacity:0;-moz-transform:translateY(-100%);-o-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}100%{opacity:1;-moz-transform:translateY(0);-o-transform:translateY(0);-ms-transform:translateY(0);-webkit-transform:translateY(0);transform:translateY(0)}}@keyframes slideIn{0%{opacity:0;-moz-transform:translateY(-100%);-o-transform:translateY(-100%);-ms-transform:translateY(-100%);-webkit-transform:translateY(-100%);transform:translateY(-100%)}100%{opacity:1;-moz-transform:translateY(0);-o-transform:translateY(0);-ms-transform:translateY(0);-webkit-transform:translateY(0);transform:translateY(0)}}
+  
+  .gift-card-popup-main {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation-delay: 0;
+    -webkit-animation-duration: .5s;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-fill-mode: fowards;
+    -webkit-animation-direction: ease;
+    -moz-animation-delay: 0;
+    -moz-animation-duration: .5s;
+    -moz-animation-name: slideIn;
+    -moz-animation-fill-mode: fowards;
+    -moz-animation-direction: ease;
+    animation-delay: 0;
+    animation-duration: .5s;
+    animation-name: slideIn;
+    animation-fill-mode: fowards;
+    animation-direction: ease;
+  }
+  .gift-card-popup-main .gift-card-popup-inner {
+    background: #fff;
+    width: 650px;
+    height: max-content;
+    padding: 25px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -webkit-animation-delay: 0;
+    -webkit-animation-duration: .7s;
+    -webkit-animation-name: animatebottom;
+    -webkit-animation-fill-mode: fowards;
+    -webkit-animation-direction: ease;
+    -moz-animation-delay: 0;
+    -moz-animation-duration: .7s;
+    -moz-animation-name: animatebottom;
+    -moz-animation-fill-mode: fowards;
+    -moz-animation-direction: ease;
+    animation-delay: 0;
+    animation-duration: .7s;
+    animation-name: animatebottom;
+    animation-fill-mode: fowards;
+    animation-direction: ease;
+  }
+
+   
+  .gift-card-popup-main .gift-card-popup-inner .close-me {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    cursor: pointer;
+    z-index:9;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .close-me:before {
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .gift-card-popup-main .gift-card-popup-inner .close-me:after {
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform:rotate(-45deg);
+  }
+  .gift-card-popup-main .gift-card-popup-inner .close-me:after, .gift-card-popup-main .gift-card-popup-inner .close-me:before {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 1.5px;
+    background-color: #9ea5ad;
+  }
+  
+  .gift-card-popup-main .gift-card-popup-inner .left-col {
+    width: 320px;
+    box-shadow: 0 3px 4px rgb(0 0 0 / 40%);
+    text-align: center;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col, .gift-card-popup-main .gift-card-popup-inner .right-col {
+    width: 50%;
+    display: inline-block;
+    margin-left: -4px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .logo-wrap {
+    text-align: center;
+    padding: 7px;
+  }
+
+  .gift-card-popup-main .gift-card-popup-inner .left-col * {
+    color: #707070;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col * {
+    color: #707070;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gc-vals {
+    text-align: center;
+    margin: 30px 0;
+    font-size: 10px;
+    padding: 0 15px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-code:not(.gift-card-code), .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-price:not(.gift-card-code) {
+    margin-bottom: 5px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gc-vals .value-field {
+    word-break: break-word;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-footer-note {
+    margin:20px auto 20px auto;
+    width: 160px;
+    font-size: 6px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-code .title, .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-price .title {
+    margin-bottom: 0;
+    font-size: 9px;
+  }
+
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-code p, .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-price p {
+    margin: 5px 0;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-code .code-inner, .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-code .price-inner, .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-price .code-inner, .gift-card-popup-main .gift-card-popup-inner .left-col .text-content-wrap .gift-card-price .price-inner {
+    line-height: 20px;
+  }
+  
+  .gift-card-popup-main .gift-card-popup-inner .right-col {
+    display: inline-block;
+    width: 305px;
+    height: 275px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap {
+    padding: 30px 40px;
+    width: 100%;
+    height: 100%;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .title {
+    font-size: 16px;
+    line-height: 21px;
+    font-style: italic;
+    color: #1a1f28;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .btn {
+    display: block;
+    width: 100%;
+    outline: 0;
+    cursor: pointer;
+    border: 1px solid #292929;
+    background: 0 0;
+    font-size: 12px;
+    letter-spacing: .96px;
+    color: #292929;
+    border-radius: 0;
+    padding: 10px;
+    text-transform: uppercase;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .separator-text {
+    display: block;
+    margin: 20px auto;
+    color: #292929;
+    letter-spacing: 1.12px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .btn:hover {
+    background: #1a1f28;
+    color: #fff;
+  }
+  .gift-card-popup-main  p {
+    margin-bottom: 5px;
+    line-height: 2;
+  }
+
+  @media screen and (max-width: 767px){
+    .gift-card-popup-main .gift-card-popup-inner .close-me:after, .gift-card-popup-main .gift-card-popup-inner .close-me:before {
+      height: 20px;
+    }
+    .gift-card-popup-main {
+      overflow-y: scroll;
+      -webkit-animation-delay: 0;
+      -webkit-animation-duration: 0.5s;
+      -webkit-animation-name: slideIn;
+      -webkit-animation-fill-mode: fowards;
+      -webkit-animation-direction: ease;
+      -moz-animation-delay: 0;
+      -moz-animation-duration: 0.5s;
+      -moz-animation-name: slideIn;
+      -moz-animation-fill-mode: fowards;
+      -moz-animation-direction: ease;
+      animation-delay: 0;
+      animation-duration: 0.5s;
+      animation-name: slideIn;
+      animation-fill-mode: fowards;
+      animation-direction: ease;
+    }
+    .gift-card-popup-main .gift-card-popup-inner {
+      width: calc(100% - 20px);
+      bottom: auto;
+      top: 10px;
+      margin-bottom: 10px;
+      padding: 45px 35px;
+      -moz-transform: translate(-50%,0);
+      -o-transform: translate(-50%,0);
+      -ms-transform: translate(-50%,0);
+      -webkit-transform: translate(-50%,0);
+      transform: translate(-50%,0);
+    }
+    .gift-card-popup-main .gift-card-popup-inner .close-me {
+      top: 15px;
+    }
+    .gift-card-popup-main .gift-card-popup-inner .left-col {
+      width: 100%;
+      margin-left: 0;
+      box-shadow: 1px 2px 6px rgb(0 0 0 / 40%);
+    }
+    .gift-card-popup-main .gift-card-popup-inner .logo-wrap {
+      padding: 18px 0!important;
+    }
+    .gift-card-popup-main .gift-card-popup-inner .right-col {
+      width: 100%;
+      margin-left: 0;
+      position: relative;
+      right: inherit;
+      height: auto;
+      top: inherit;
+      bottom: inherit;
+    }
+    .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap {
+      padding: 20px 30px;
+    }
+    .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .title {
+      display: none;
+    }
+    .gift-card-popup-main .gift-card-popup-inner .right-col .right-inner-wrap .separator-text {
+      margin: 10px auto;
+    }
+
+  }
+  .translucent-black-bg {
+    display: none;
+    background: rgba(112,112,112,.4);
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .image img{
+       max-width: 400px;
+  }
+  .gift-card-popup-main .gift-card-popup-inner .left-col .logo-wrap img {
+    width: 70px;
+    vertical-align: middle;
+  }
+</style>
+<div class="translucent-black-bg"></div>
+<div class="gift-card-popup-main">
+  <div class="gift-card-popup-inner">
+  
+  <span class="close-me"></span>
+  <div class="left-col">
+    <div class="logo-wrap">
+     <img src="//cdn.shopify.com/s/files/1/0249/5099/7070/files/pinklay_logo_buy_7328d254-bdc5-4896-a93f-a0b03da3f129.png?v=1578463089">
+    </div>
+    <div class="image">
+      
+<img alt="" src="{{ product.featured_image.src | product_img_url: '200x' }}">
+    </div>
+    <div class="text-content-wrap">
+      <div class="gc-vals">
+        <p class="reciever value-field"></p>
+        <p class="message value-field"></p>
+        <p class="sender value-field">From: <span class="sender-name"></span></p>
+      </div>
+      <div class="gift-card-price">
+        <p class="title">Gift Card Value</p>
+        <p class="price-inner"></p>
+      </div>
+<!--       <div class="gift-card-code">
+        <p class="title">Code</p>
+        <p class="code-inner">NBIxxxxxxxxxx</p>
+      </div> -->
+      <div class="gift-card-footer-note">
+        <p>Fine Print: Valid for 1-year from the date of issue.<br>Cannot be returned for its monetary value.</p>
+        <p></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="right-col">
+    <div class="right-inner-wrap">
+      <p class="title">Here’s a preview of how your gift card will look.</p>
+      <span class="edit-btn btn">Edit Details</span>
+      <span class="separator-text">Or</span>
+      <span class="add-btn btn">Add To Cart</span>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
+

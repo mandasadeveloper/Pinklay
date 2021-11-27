@@ -1,0 +1,759 @@
+<footer class="footer footer-3">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-col">
+        <div class="row">
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_1 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_1 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_1 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_2 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_2 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_2 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_3 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_3 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_3 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+                    
+          <div class="col-12 col-md-12 col-lg-6 col-xl-6 column-footer">                         
+            <ul class="infor row">
+              {% if section.settings.info_text_1 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                
+                {% if section.settings.info_icon_1 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_1 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_1}}">
+                    {% include 'multilang' with section.settings.info_text_1 %}
+                  </a>
+                </div>
+                
+              </li>
+              {% endif %}
+
+              {% if section.settings.info_text_2 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                {% if section.settings.info_icon_2 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_2 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_2}}">
+                  {% include 'multilang' with section.settings.info_text_2 %}
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+              
+              {% if section.settings.info_text_3 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                {% if section.settings.info_icon_3 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_3 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_3}}">
+                  {% include 'multilang' with section.settings.info_text_3 %}
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+              
+              {% if section.settings.info_text_4 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                {% if section.settings.info_icon_4 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_4 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_4}}">
+                  {% include 'multilang' with section.settings.info_text_4 %}
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+              
+              {% if section.settings.info_text_5 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                {% if section.settings.info_icon_5 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_5 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_5}}">
+                  {% include 'multilang' with section.settings.info_text_5 %}
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+              
+              {% if section.settings.info_text_6 != blank %}
+              <li class="text col-12 col-sm-6 col-md-4 col-lg-6">
+                {% if section.settings.info_icon_6 != blank %}
+                <span class="info-icon">
+                  {{ section.settings.info_icon_6 }}
+                </span>
+                {% endif %}
+
+                <div class="info-text">
+                  <a href="{{section.settings.link_6}}">
+                  {% include 'multilang' with section.settings.info_text_6 %}
+                  </a>
+                </div>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>      
+      </div>            
+    </div>
+  </div>
+  
+  {% if section.settings.display_ft_middle %}
+  <div class="footer-middle">
+    <div class="container">
+      {% if section.settings.footer_newsletter_text != blank %}
+      <h3>
+        {% include 'multilang' with section.settings.footer_newsletter_text %}
+      </h3>
+      {% endif %}
+      
+      <div class="row">
+        {% if section.settings.footer_social_enable %} 
+        <div class="col-12 col-xl-4 column-social">
+          <div class="footer-social">
+            {% include 'social-media' %}           
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.footer_newsletter_enable %}
+        <div class="col-12 col-xl-4 column-newsletter">
+          <div class="footer-newsletter">
+            {% include 'homepage-block-newsletter' %}
+          </div>
+        </div>
+        {% endif %}
+        
+        {% if section.settings.footer_typography_label %}
+        <div class="col-12 col-xl-4 column-typography">
+          {% if section.settings.img_1 != blank %}
+          <a href="javascript:void(0)">
+            <img src="{{ section.settings.img_1 | img_url: 'x42' }}">
+          </a>
+          {% endif %}
+          
+          {% if section.settings.img_2 != blank %}
+          <a href="javascript:void(0)">
+            <img src="{{ section.settings.img_2 | img_url: 'x42' }}">
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+        
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.display_ft_bt %}
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="footer_address column-left col-12 col-lg-7 col-xl-6">
+            {% include'multilang' with section.settings.ft_address %}
+          </div>
+          
+          <div class="footer_address column-right col-12 col-lg-5 col-xl-6">
+            <ul>
+              {% if section.settings.dpl_ico_1 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-visa'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_2 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-amex'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_3 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_4 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-paypal'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_5 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-google-wallet" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_6 %}
+              <li>
+                <a href="javascript:void(0)">
+                  {% include 'payment-apple'%}
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_7 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-discover" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_8 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_9 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-diners-club" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_10 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-credit-card-alt" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_11 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-stripe" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_12 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <i class="fa fa-cc-jcb" aria-hidden="true"></i>
+                </a>
+              </li>
+              {% endif %}            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer 3",
+    "settings": [
+		{
+			"type" : "color",
+			"id" : "bg_ft",
+			"label" : "Background Footer",
+			"default" : "#fff"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_text",
+			"label" : "Color Text",
+			"default" : "#505050"
+		},
+		{
+			"type" : "color",
+			"id" : "border_color_ft",
+			"label" : "Border Color Footer",
+			"default" : "#e5e5e5"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_header",
+			"label" : "Color Header",
+			"default" : "#323232"
+		},
+		{
+			"type" : "header",
+			"content" : "Footer Column"
+		},  
+	    {
+          "type": "text",
+          "id": "footer_title_1",
+          "label": "Footer 1 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_1",
+          "label": "Footer Column 1"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_2",
+          "label": "Footer 2 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_2",
+          "label": "Footer Column 2"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_3",
+          "label": "Footer 3 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_3",
+          "label": "Footer Column 3"
+        },
+		{
+          "type" : "header",
+          "content" : "Footer Column 4"
+        },
+        
+        {
+          "type" : "text",
+          "id": "info_icon_1",
+          "label" : "Icon 1",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_1",
+          "label" : "Text 1"
+        },
+		{
+		"type": "url",
+		"id": "link_1",
+		"label": "link 1"
+	  	},
+        {
+          "type" : "text",
+          "id": "info_icon_2",
+          "label" : "Icon 2",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_2",
+          "label" : "Text 2"
+        },
+		{
+		"type": "url",
+		"id": "link_2",
+		"label": "link 2"
+	  	},
+	    {
+          "type" : "text",
+          "id": "info_icon_3",
+          "label" : "Icon 3",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_3",
+          "label" : "Text 3"
+        },
+		{
+		"type": "url",
+		"id": "link_3",
+		"label": "link 3"
+	  	},
+        {
+          "type" : "text",
+          "id": "info_icon_4",
+          "label" : "Icon 4",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_4",
+          "label" : "Text 4"
+        },
+		{
+		"type": "url",
+		"id": "link_4",
+		"label": "link 4"
+	  	},
+		{
+          "type" : "text",
+          "id": "info_icon_5",
+          "label" : "Icon 5",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_5",
+          "label" : "Text 5"
+        },
+		{
+		"type": "url",
+		"id": "link_5",
+		"label": "link 5"
+	  	},
+        {
+          "type" : "text",
+          "id": "info_icon_6",
+          "label" : "Icon 6",
+          "info": "[Find your Icon](https://fontawesome.com/v4.7.0/icons/)."
+        },
+        {
+          "type" : "textarea",
+          "id" : "info_text_6",
+          "label" : "Text 6"
+        },
+		{
+		"type": "url",
+		"id": "link_6",
+		"label": "link 6"
+	  	},
+		{
+          "type" : "header",
+          "content" : "Footer Middle"
+        },
+        {
+          "type" : "checkbox",
+          "id" : "display_ft_middle",
+          "label" : "Display Footer Middle",
+          "default" : true
+        },
+		{
+          "type": "color",
+          "id": "bg_ft_middle_color",
+          "label": "Footer Middle Background Color",
+          "default": "#f7f5f5"
+        },
+        {
+          "type": "color",
+          "id": "ft_middle_color",
+          "label": "Footer Middle Color",
+          "default": "#464646"
+        },
+		{
+          "type": "header",
+          "content": "Social"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_social_enable",
+          "label": "Show social media links?",
+          "default": false
+        },
+
+	    {
+          "type": "header",
+          "content": "Newsletter"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_newsletter_enable",
+          "label": "Show newsletter signup?",
+          "default": true
+        },
+        {
+          "type": "textarea",
+          "id": "footer_newsletter_text",
+          "label": "Footer Newsletter Text"
+        },        
+	    {
+          "type": "color",
+          "id": "bg_newsletter_color",
+          "label": "Newsletter Input Background Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_color",
+          "label": "Newsletter Input Color",
+          "default": "#c4c4c4"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_border_color",
+          "label": "Newsletter Input Border Color with Opacity 10%",
+          "default": "#e4e2e2"
+        },
+        {
+          "type": "color",
+          "id": "bg_newsletter_button_color",
+          "label": "Background and Border Newsletter Button Color",
+          "default": "#323232"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_button_color",
+          "label": "Newsletter Button Color",
+          "default": "#fff"
+        },
+		{
+           "type" : "header",
+           "content" : "Typography Label"
+		},
+		{
+			"type" : "checkbox",
+			"id" : "footer_typography_label",
+			"label" : "Display Typography Label",
+			"default" : true
+		},
+	    {
+          "type": "image_picker",
+          "id": "img_1",
+          "label": "Image 1"
+        },
+		{
+          "type": "image_picker",
+          "id": "img_2",
+          "label": "Image 2"
+        },
+		                	    
+        {
+          "type" : "header",
+          "content" : "Footer Bottom"
+        },
+        {
+          "type" : "checkbox",
+          "id" : "display_ft_bt",
+          "label" : "Display Footer Bottom",
+          "default" : true
+        },
+        
+        {
+          "type" : "textarea",
+          "id" : "ft_address",
+          "label" : "Footer Address"
+        },
+		{
+           "type" : "header",
+           "content" : "DISPLAY PAYMENT ICONS FOR"
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_1",
+			"label" : "Display Icon Visa",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_2",
+			"label" : "Display Icon Amex",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_3",
+			"label" : "Display Icon Mastercard",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_4",
+			"label" : "Display Icon Paypal",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_5",
+			"label" : "Display Icon Google Wallet",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_6",
+			"label" : "Display Icon Apple pay",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_7",
+			"label" : "Display Icon Discover",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_8",
+			"label" : "Display Icon Credit Card",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_9",
+			"label" : "Display Icon Diners club",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_10",
+			"label" : "Display Icon Credit card alt",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_11",
+			"label" : "Display Icon Stripe",
+			"default" : true
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_12",
+			"label" : "Display Icon JCB",
+			"default" : true
+		}
+	]
+  }
+{% endschema %}
+
+<style>
+  .footer-3 {
+  	border-top: 1px solid {{ section.settings.border_color_ft }};
+  }
+  
+  .footer {
+    background:{{ section.settings.bg_ft }};
+    color: {{ section.settings.color_ft_text }};
+  }
+
+  .footer .footer-top .column-footer ul li a,
+  .footer-bottom a  {
+    color: {{ section.settings.color_ft_text }};
+  }
+
+  .footer h3 {
+    color: {{ section.settings.color_ft_header }};
+  }
+  
+  .footer-3 .footer-middle {
+  	background:{{ section.settings.bg_ft_middle_color }};
+  }
+  
+  .footer-3 .footer-middle a {
+  	color: {{ section.settings.ft_middle_color }};
+  }
+  
+  .footer-3 .newsletter .input-group-field {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-3 .newsletter .input-group {
+    background-color: {{ section.settings.bg_newsletter_color }};
+  	border-bottom-color: {{ section.settings.newsletter_border_color }};
+  }
+  
+  .footer-3 .newsletter ::-webkit-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-3 .newsletter ::-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-3 .newsletter :-ms-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-3 .newsletter :-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-3 .newsletter .btn {
+  	background-color: {{ section.settings.bg_newsletter_button_color }};
+    color: {{ section.settings.newsletter_button_color }};
+  }
+  
+  .footer-3 .newsletter .btn:hover,
+  .footer-3 .newsletter .btn:focus {
+  	background-color: {{ section.settings.bg_ft_middle_color }};
+    color: {{ section.settings.ft_middle_color }};
+  }
+
+</style>

@@ -1,0 +1,96 @@
+{% if settings.display_breadcrumb %}
+{% comment %}
+  Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% unless template == 'index' or template contains 'shop-instagram' %}
+<div class="breadcrumb">
+  <a href="/" data-translate="general.breadcrumbs.home">
+    {{ 'general.breadcrumbs.home' | t }}
+  </a>  
+  
+  {% if template contains 'product' %} 
+    {% if collection %}
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>  
+  
+      {% if collection.handle %}
+      	{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+  		{% include 'multilang' with collection.title | link_to: url %}
+      {% endif %}
+    {% endif %}
+  
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>
+  
+  	{% include 'multilang' with product.title %}
+  
+  {% elsif template contains 'collection' and collection.handle %}  
+    {% if current_tags %}
+      <span class="arrow">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </span>
+  
+      {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+	  <span class="bd-title">
+        {% include 'multilang' with collection.title | link_to: url %}
+        
+        <span class="arrow">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </span>
+        
+        {% assign bd_tags = current_tags | join: " + " %}
+        {% include 'multilang' with  bd_tags %}
+	  </span>
+  
+    {% else %}
+  
+      <span class="arrow">
+        <i class="fa fa-angle-right" aria-hidden="true"></i>
+      </span>
+  
+      <span class="bd-title">
+        {% include 'multilang' with collection.title | link_to: url %}
+      </span>
+  	{% endif %}
+  
+  {% elsif template == 'cart' %}
+  	<span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>  	
+    <span {% if settings.enable_multilang %}data-translate="general.breadcrumbs.cart"{% endif %}>
+      {{ 'general.breadcrumbs.cart' | t }}
+  	</span>
+  
+  {% elsif template == 'article' %}
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>
+  
+  	{% include 'multilang' with blog.title | link_to: blog.url %}
+  	
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>
+  
+  	{% include 'multilang' with article.title %}	
+
+  {% elsif template contains 'page' %}
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>
+  
+    {% include 'multilang' with page.title %}		
+
+  {% else %}
+    <span class="arrow">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+  	</span>
+  
+  	{% include 'multilang' with page_title %}
+  {% endif %}
+</div>
+{% endunless %}
+{% endif %}

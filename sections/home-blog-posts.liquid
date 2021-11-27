@@ -1,0 +1,192 @@
+<section class="blog-post" id="section-{{ section.id }}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <div class="widget-title">
+      <h3>
+        {% include 'multilang' with section.settings.title %}
+      </h3>
+      <div class="des">
+        {% include 'multilang' with section.settings.des %}
+        
+        {% if section.settings.view_all != blank %}
+        <a class="view_all" href="{{ section.settings.link_view_all }}" title="{{section.settings.view_all}}">
+          {% include 'multilang' with section.settings.view_all %}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+    
+    {% case section.settings.post_row %}
+    {% when 2 %}
+      {%- assign grid_item_width = 'col-12 col-md-6' -%}
+    {% when 3 %}
+      {%- assign grid_item_width = 'col-12 col-md-4' -%}
+    {% when 4 %}
+      {%- assign grid_item_width = 'col-12 col-md-3' -%}
+    {% when 5 %}
+      {%- assign grid_item_width = 'col-12 col5' -%}
+    {% endcase %}
+    
+    {% unless blog.articles_count == 0 %}
+    <div class="blog-content">
+      <div class="row grid-blog">    
+        {%- assign blog = blogs[section.settings.blog] -%}
+        {% for article in blog.articles limit: section.settings.post_limit %}     
+        <div class="grid-item {{grid_item_width}}">
+          <div class="article-image">
+            <a href="{{ article.url }}" class="article-link">
+              <img class="lazyload"
+                   src="{{ article.image | img_url: '570x' }}"
+                   data-src="{{ article.image | img_url: '570x' }}"
+                   data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                   data-aspectratio="{{ article.image.aspect_ratio }}"
+                   data-sizes="auto"
+                   alt="">          
+            </a>
+
+            {% if article.tags.size > 0 %}
+            <div class="article-tags">
+              <ul class="list--inline" aria-label="{{ 'blogs.article.tags' | t }}">
+                {% for tag in article.tags limit: 1 %}
+                <li>
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="grid-tag">{{ tag }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}     
+          </div>                
+          <h3 class="article-title">
+            <a href="{{ article.url }}">{% include 'multilang' with article.title %}</a>
+          </h3>
+
+          <div class="grid-meta">
+            {% if section.settings.blog_show_author %}
+            <span class="article-author">By {{ article.author }}</span>
+            {% endif %}
+
+            {% if section.settings.blog_show_date %}
+            <span class="article-date">
+              {{ article.published_at | time_tag: format: 'month_day_year' }}
+            </span>
+            {% endif %}
+          </div>
+
+          <div class="rte article-excerpt">
+            {% if article.excerpt.size > 0 %}
+            <span>{{ article.excerpt }}</span>
+            {% else %}
+            <span>{{ article.content | strip_html | truncate: 153 }}</span>
+            {% endif %}
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endunless %}
+  </div>
+</section>
+
+<style>
+  #section-{{ section.id }}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Blog posts",
+    "settings": [
+      {
+        "type": "range",
+        "id": "space_on",
+        "label": "Space on",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "space_below",
+        "label": "Space below",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 25
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Latest Posts"
+      },
+      {
+        "type": "textarea",
+        "id": "des",
+        "label": "Description",
+        "default": "Phasellus lorem malesuada de pulvinar commodo"
+      },
+	  {
+  		"type" : "text",
+  		"id" : "view_all",
+  		"label" : "Text view all",
+  		"default" : "Read Full Story"
+  	  },
+  	  {
+  		"type" : "url",
+  		"label" : "Link view all",
+  		"id" : "link_view_all"
+  	  },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },      
+      {
+        "type": "range",
+        "id": "post_limit",
+        "label": "Posts",
+        "min": 2,
+        "max": 12,
+        "step": 1,
+        "default": 3
+      },
+      {
+        "type": "range",
+        "id": "post_row",
+        "label": "Row",
+        "min": 2, 
+        "max": 5,
+        "step": 1,
+        "default": 3 
+      },  
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show author",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show date",
+        "default": true
+      }
+  	  	
+    ],
+    "presets": [
+      {
+        "name": "Blog posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News",
+          "post_limit": 3
+        }
+      }
+    ]
+  }
+{% endschema %}

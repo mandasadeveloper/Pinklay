@@ -1,0 +1,134 @@
+<style>
+  .giftcard-section {
+    padding: 30px 0 10px 0;
+  }
+  .giftcard-section .giftcard-wrapper {
+    width: 100%;
+  }
+  
+  .giftcard-section .giftcard-wrapper .text-wrapper {
+    text-align: center;
+  }
+  .giftcard-section .giftcard-wrapper .giftcard-product-block {
+    text-align: left;
+  }
+  .giftcard-section .giftcard-wrapper .giftcard-product-block {
+    margin-top: 30px;
+    text-align: center;
+  }
+  .giftcard-section .giftcard-wrapper .giftcard-product-block .gitcard-block {
+    padding: 0 30px;
+    margin-bottom: 50px;
+    display: inline-block;
+    width: 33%;
+  }
+  .giftcard-section .giftcard-wrapper .giftcard-product-block .gitcard-block .block-box .block-box-wrap {
+    display: block;
+  }
+  .giftcard-section .giftcard-wrapper .giftcard-product-block .gitcard-block .block-box .block-box-wrap .prod-title {
+    font-size: 12px;
+    line-height: 36px;
+    width: 100%;
+    text-align: center;
+    white-space: nowrap;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    font-weight: 500;
+    color: #36454f;
+    transition-duration:0.2s;
+  }
+  .prod-title:hover{
+    color: #5ac4be!important; 
+  }
+
+  .giftcard-section .giftcard-wrapper .text-wrapper .giftcard-desc {
+    font-size: 14px;
+    color: #282b2f;
+    line-height: 26px;
+    text-align: center;
+    font-weight: 200;
+    width: 670px;
+    display: block;
+    margin: 0 auto 40px;
+  }
+  @media screen and (max-width: 767px){
+    .giftcard-section .giftcard-wrapper .text-wrapper {
+      padding: 0 20px;
+    }
+    .giftcard-section .giftcard-wrapper .text-wrapper .giftcard-desc {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 1024px){
+    .giftcard-section .giftcard-wrapper .giftcard-product-block .gitcard-block {
+      width: 50%;
+      padding: 0 10px;
+      margin: 0 -2px 35px;
+    }
+  }
+  @media screen and (min-width: 1200px){
+  .giftcard-section .giftcard-wrapper {
+    max-width: 1085px;
+    margin: 0 auto;
+  }
+  }
+  .img_blur {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+
+</style>
+
+
+    <div class="text-wrapper">
+      <h4 class="title">Pinklay E-Gift Cards</h4>
+      {% if section.settings.gift_disc %}
+      <p class="giftcard-desc">{{section.settings.gift_disc}}</p>
+      {% endif %}
+    </div>
+    <div class="giftcard-product-block">
+        {% for block in section.blocks %}
+      {% assign gift_product = all_products[block.settings.gift_product] %}
+            <div class="gitcard-block">
+              <div class="block-box">
+                <a href="{{gift_product.url}}" tabindex="0" title="{{gift_product.title}}" class="block-box-wrap">
+                  <div class="img">
+                    <img src="{{ gift_product.featured_image.src | img_url: '1024x' }}" alt="{{ gift_product.featured_image.alt | escape }}"
+                         class="img_blur">                  
+                  </div>
+                  <p class="prod-title">{{gift_product.title}}</p>
+                </a>
+              </div>
+            </div>
+        {% endfor %}
+    
+    </div>
+{% schema %}
+  {
+    "name": "Gift Card Products",
+    "settings": [
+       {
+         "type" : "text",
+         "id" : "gift_disc",
+         "label" : "Gift Card Discription",
+         "default" : "Shopping for someone else, but not sure what to gift? Give them the gift of choice with a Pinklay e-gift card - perfect for any occasion and a great way to express your appreciation!"
+       } 
+    ],
+    "blocks" : [
+	  {
+		"type" : "gift_product",
+		"name" : "Gift Products",
+		"settings" : [		
+		  {
+			"type" : "product",
+			"id" : "gift_product",
+			"label" : "Select gift product"
+		  }	
+		]
+	  }
+    ]
+  }
+{% endschema %}

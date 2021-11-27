@@ -1,0 +1,110 @@
+{% if section.settings.display_brand %}
+<div class="logo-brands">
+  <div class="slide-logo row" data-row="{{section.settings.brand_per_row}}">
+    {% for block in section.blocks %}
+    <div class="item col-sm-3">
+      <a title="{{ block.settings.title }}" href="/collections/vendors?q={{ block.settings.title | replace: ' ', '%20'}}">
+        {% if block.settings.image != blank %}       
+        {%- assign img_url = block.settings.image | img_url: '600x' -%}
+        <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}"/>
+        {% else %}
+        <span class="not_img">210 x 50px</span>
+        {% endif %}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<ul class="azbrandstable stuck">
+  <li class="all-brand">
+    <a class="active readonly" href="javascript:void(0)">All</a>
+  </li>
+  {% assign array = "A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|#" | split: "|" %}
+
+  {% for item in array %} 
+  <li class="vendor-letter">
+    <a href="javascript:void(0)">{{item}}</a>
+  </li>
+  {% endfor %}
+</ul> 
+
+<div class="brands-list">
+  {% assign curr = "" %}
+  {% for vendor in shop.vendors %}
+  {% assign first = vendor | strip_html | upcase | truncate: 1, '' %}
+  <div class="brand {% unless first == curr %} brand-{{ first }} {% endunless %}" {% if first == curr %} style="display:none" {% endif %}>
+    {% unless first == curr %}
+   
+    <div class="azbrands-title">
+      {% if first == '1' or first == '2' or first == '3' or first == '4' or first == '5' or first == '6' or first == '7' or first == '8' or first == '9' or first == '0' %}
+      <h3>#</h3>
+      {% else %}
+      <h3>{{ first }}</h3>
+      {% endif %}
+    </div>
+    {% endunless %}
+    {% assign curr = first %}
+    <ul class='brandgrid row'>
+      <li class='col-6 col-md-4 col-lg-4 col-xl-3'>{{ vendor | link_to_vendor }}</li>
+    </ul>
+  </div>
+  {% endfor %}
+  
+</div>
+
+
+{% schema %}
+  {
+    "name": "Brands Page",
+	"max_blocks": 15,
+    "settings": [
+        {
+          "type": "header",
+          "content": "Brands Page"
+        },
+ 		{
+          "type": "checkbox",
+          "id": "display_brand",
+          "label": "Display Brands Slider?",
+          "default": true
+      },
+	{
+		"type" : "select",
+		"id" : "brand_per_row",
+		"label" : "Brand Per Row",
+		"default" : "5",
+        "options": [
+                    { "value": "3", "label": "3" },
+                    { "value": "4", "label": "4" },
+                    { "value": "5", "label": "5" },
+                    { "value": "6", "label": "6" }
+                  ]
+	  }
+   ],
+	"blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Your Brands",
+            "default": "Benjamin Button"
+          }
+		  
+		]
+	  }
+	]
+  }
+{% endschema %}
+
+
+

@@ -1,0 +1,321 @@
+<section class="home-custom-block">
+  <div class="container">
+    <div class="row">
+
+      {% for block in section.blocks %}
+
+      {% if block.type == 'Oneimage' %}
+      <div class="Oneimage column col column-{{block.id}}">
+        <div class="row">
+          <div class="col-12 custom-item">
+            <a href="{{block.settings.ct_link_1}}" title="{{block.settings.ct_hd_1}}">
+              {% if block.settings.ct_img_1 != blank %}
+              <img src="{{ block.settings.ct_img_1 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_1}}">
+              {% else %}
+              <span class="not_img">570 x 570px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_1 }};color: {{ block.settings.color_header_1 }}">{% include 'multilang' with  block.settings.ct_hd_1 %}</div>
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if block.type == 'Twoimage' %}
+      <div class="Twoimage column col column-{{block.id}}">
+        <div class="row">
+          <div class="col-6 col-md-12 col custom-item">
+            <a href="{{block.settings.ct_link_2}}" title="{{block.settings.ct_hd_2}}">
+              {% if block.settings.ct_img_2 != blank %}
+              <img src="{{ block.settings.ct_img_2 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_2}}">
+              {% else %}
+              <span class="not_img">570 x 570px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_2 }}; color: {{ block.settings.color_header_2 }}">{% include 'multilang' with  block.settings.ct_hd_2 %}</div>
+            </a>
+          </div>
+
+          <div class="col-6 col-md-12 custom-item">
+            <a href="{{block.settings.ct_link_2_1}}" title="{{ block.settings.ct_hd_2_1 }}">
+              {% if block.settings.ct_img_2_1 != blank %}
+              <img src="{{ block.settings.ct_img_2_1 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_2_1}}">
+              {% else %}
+              <span class="not_img">570 x 570px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_2 }}; color: {{ block.settings.color_header_2 }}">{% include 'multilang' with  block.settings.ct_hd_2_1 %}</div>
+            </a>
+          </div> 
+
+        </div>
+      </div>            
+      {% endif %}
+
+      {% if block.type == 'Fourimage' %}
+      <div class="Fourimage column col column-{{block.id}}">
+        <div class="row">
+
+          <div class="col-6 custom-item">
+            <a href="{{block.settings.ct_link_4 }}" title="{{block.settings.ct_hd_4 }}">
+              {% if block.settings.ct_img_4 != blank %}
+              <img src="{{ block.settings.ct_img_4 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_4 }}">
+              {% else %}
+              <span class="not_img" style="height: 270px; line-height:370px;">570 x 570px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_4 }};color: {{ block.settings.color_header_4 }}">{% include 'multilang' with  block.settings.ct_hd_4 %}</div>
+            </a>
+          </div>
+
+          <div class="col-6 custom-item">
+            <a href="{{block.settings.ct_link_4_1}}" title="{{block.settings.ct_hd_4_1}}">
+              {% if block.settings.ct_img_4_1 != blank %}
+              <img src="{{ block.settings.ct_img_4_1 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_4_1}}">
+              {% else %}
+              <span class="not_img" style="height: 270px; line-height:370px;">270 x 270px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_4 }};color: {{ block.settings.color_header_4 }}">{% include 'multilang' with  block.settings.ct_hd_4_1 %}</div>
+            </a>
+          </div>
+
+          <div class="col-6 custom-item">
+            <a href="{{block.settings.ct_link_4_2 }}" title="{{block.settings.ct_hd_4_2 }}">
+              {% if block.settings.ct_img_4_2 != blank %}
+              <img src="{{ block.settings.ct_img_4_2 | img_url: '1024x' }}" alt="{{block.settings.ct_hd_4_2 }}">
+              {% else %}
+              <span class="not_img" style="height: 270px; line-height:370px;">270 x 270px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_4 }};color: {{ block.settings.color_header_4 }}">{% include 'multilang' with  block.settings.ct_hd_4_2 %}</div>
+            </a>
+          </div>
+
+          <div class="col-6 custom-item">
+            <a href="{{ block.settings.ct_link_4_3 }}" title="{{ block.settings.ct_hd_4_3 }}">
+              {% if block.settings.ct_img_4_3 != blank %}
+              <img src="{{ block.settings.ct_img_4_3 | img_url: '1024x' }}" alt="{{ block.settings.ct_hd_4_3 }}">
+              {% else %}
+              <span class="not_img" style="height: 270px; line-height:370px;">270 x 270px</span>
+              {% endif %}
+              <div class="caption" style="font-size: {{ block.settings.font_size_header_4 }};color: {{ block.settings.color_header_4 }}">{% include 'multilang' with  block.settings.ct_hd_4_3 %}</div>
+            </a>
+          </div>
+
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Custom Images block",
+	"max_blocks": 3,
+    "settings": [
+		{
+          "type" : "radio",
+          "id" : "layout",
+          "label" : "Layouts",       
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full",
+              "label": "Full Width"
+            }
+          ],
+          "default": "default"
+        }
+	],
+    "blocks": [
+      {
+        "type": "Oneimage",
+        "name": "One image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "ct_img_1",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_1",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_1",
+            "label" : "Image link"
+          },    
+          {
+            "type" : "text",
+            "id": "font_size_header_1",
+            "label" : "Font size header",
+            "default" : "20px"
+          },
+          {
+            "type" : "color",
+            "id": "color_header_1",
+            "label": "header color",
+            "default" : "#fff"
+          }
+		]
+	  },      
+	  {
+        "type": "Twoimage",
+        "name": "Two image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "ct_img_2",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_2",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_2",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+		  {
+            "type" : "image_picker",
+            "id" : "ct_img_2_1",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_2_1",
+            "label" : "Header 2",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_2_1",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+          {
+            "type" : "text",
+            "id": "font_size_header_2",
+            "label" : "Font size header",
+            "default" : "20px"
+          },
+          {
+            "type" : "color",
+            "id": "color_header_2",
+            "label": "header color",
+            "default" : "#fff"
+          }
+		]
+	  },      
+	  {
+        "type": "Fourimage",
+        "name": "Four image",
+        "settings": [
+          {
+            "type" : "image_picker",
+            "id" : "ct_img_4",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_4",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_4",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+		  {
+            "type" : "image_picker",
+            "id" : "ct_img_4_1",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_4_1",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_4_1",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+		  {
+            "type" : "image_picker",
+            "id" : "ct_img_4_2",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_4_2",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_4_2",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+		  {
+            "type" : "image_picker",
+            "id" : "ct_img_4_3",
+            "label" : "Select image"
+          },
+          {
+            "type" : "text",
+            "id" : "ct_hd_4_3",
+            "label" : "Header",
+            "default" : "Blazer & Suits"
+          },
+          {
+            "type": "url",
+            "id" : "ct_link_4_3",
+            "label" : "Image link",
+			"info" : "=============================================="
+          },
+          {
+            "type" : "text",
+            "id": "font_size_header_4",
+            "label" : "Font size header",
+            "default" : "20px"
+          },
+          {
+            "type" : "color",
+            "id": "color_header_4",
+            "label": "header color",
+            "default" : "#fff"
+          }
+		]
+	  }
+	],
+	"presets": [{
+      "name": "Custom Images block",
+      "category": "block images",
+      "blocks": [
+        {
+          "type": "Oneimage"
+        },
+        {
+          "type": "Fourimage"
+        },        
+		{
+          "type": "Oneimage"
+        }
+      ]
+    }]
+  }
+{% endschema %}

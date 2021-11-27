@@ -1,0 +1,6 @@
+{% if settings.enable_multilang %}
+<span class="lang1">{{ lang | split: '[lang2]' | first }}</span>
+<span class="lang2">{{ lang | split: '[lang2]' | last }}</span>
+{% else %}
+<span>{{ lang | split: '[lang2]' | first }}</span>
+{% endif %}

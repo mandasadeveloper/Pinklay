@@ -1,0 +1,115 @@
+
+<!-- DO NOT REMOVE THE FOLLOWING COMMENT -->
+<!-- (c) Copyright 2014 Caroline Hill. All Rights Reserved. Contact Mlle Caroline Schnapp at mllegeorgesand@gmail.com -->
+<!-- DO NOT REMOVE THE ABOVE COMMENT -->
+
+{% if linklists.paper-gift-wrapping.links.size > 0 and linklists.paper-gift-wrapping.links.first.type == 'product_link' %}
+<style>
+  @media (min-width:768px) {    
+  div#is-a-gift {
+     margin: 30px 0;
+  }
+  }
+  @media (max-width:767px) {    
+  div#is-a-gift {
+     margin: 15px 0;
+  }
+  }
+</style>
+  <div id="is-a-gift" style="clear: left; " class="clearfix rte">
+    <p>
+      <input type="hidden" name="attributes[paper-gift-wrapping]" value="" />
+      <input id="paper-gift-wrapping" type="checkbox" name="attributes[paper-gift-wrapping]" value="yes" {% if cart.attributes.paper-gift-wrapping %} checked="checked"{% endif %} style="float: none" />
+      <label for="paper-gift-wrapping" style="display:inline; padding-left: 5px; float: none;">
+       Add Paper gift wrap for {{ linklists.paper-gift-wrapping.links.first.object.price | money }} per item
+     
+      </label>
+    </p>
+    
+  </div>
+
+{% assign id = linklists.paper-gift-wrapping.links.first.object.variants.first.id %}
+
+{% assign gift_wraps_in_cartc = 0 %}
+{% for item in cart.items %}
+  {% if item.id == id %}
+    {% assign gift_wraps_in_cartc = item.quantity %}
+  {% endif %}
+{% endfor %}
+
+<style>
+ /* #updates_{{ id }} { display: none; }*/
+</style>
+
+<script>
+
+Shopify.Cart = Shopify.Cart || {};
+
+Shopify.Cart.GiftWrapc = {};
+
+Shopify.Cart.GiftWrapc.set = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js', 
+    data: { updates: { {{ id }}: 1 }, attributes: { 'paper-gift-wrapping': true } }, 
+    dataType: 'json',
+    success: function() { location.href = '/cart'; }
+  });
+}
+
+Shopify.Cart.GiftWrapc.remove = function() {
+  jQuery.ajax({
+    type: 'POST',
+    url: '/cart/update.js', 
+    data: { updates: { {{ id }}: 0 }, attributes: { 'paper-gift-wrapping': '' } }, 
+    dataType: 'json',
+    success: function() { location.href = '/cart'; }
+  });
+}
+
+// If we have nothing but gift-wrap items in the cart.
+{% if cart.items.size == 1 and gift_wraps_in_cartc > 0 %}
+jQuery(function() {
+  Shopify.Cart.GiftWrapc.remove();
+});
+// If we have more than one gift-wrap item in the cart.
+{% elsif gift_wraps_in_cartc > 1 %}
+jQuery(function() {
+  Shopify.Cart.GiftWrapc.set();
+});
+// If we have a gift-wrap item in the cart but our gift-wrapping cart attribute has not been set.
+{% elsif gift_wraps_in_cartc > 0 and cart.attributes.paper-gift-wrapping == blank  %}
+jQuery(function() {
+  Shopify.Cart.GiftWrapc.set();
+});
+// If we have no gift-wrap item in the cart but our gift-wrapping cart attribute has been set.
+{% elsif gift_wraps_in_cartc == 0 and cart.attributes.paper-gift-wrapping != blank  %}
+jQuery(function() {
+  Shopify.Cart.GiftWrapc.set();
+});
+{% endif %}
+
+// When the gift-wrapping checkbox is checked or unchecked.
+jQuery(function() {
+  jQuery('[name="attributes\[paper-gift-wrapping\]"]').change(function() {
+    if (jQuery(this).is(':checked')) {
+      Shopify.Cart.GiftWrapc.set();    
+    }
+    else {
+      Shopify.Cart.GiftWrapc.remove();
+    }
+  });
+});
+ 
+</script>
+
+{% else %}
+
+<p style="clear: left; margin: 30px 0" class="rte">
+  You attempted to add a gift-wrapping script to your shopping cart, but it won't work because you don't have 
+  a link list with handle <code>paper-gift-wrapping</code> which, in turn, contains a link
+  to your gift-wrapping product. Please review the steps outlined 
+  <a href="http://docs.shopify.com/manual/configuration/store-customization/page-specific/cart-page/add-a-gift-wrap-option">here</a>.
+</p>
+
+{% endif %}

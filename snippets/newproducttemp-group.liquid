@@ -1,0 +1,158 @@
+<style>
+div#shopify-section-navigation {   
+    border-bottom: 1px solid #e6e6e6;
+}
+</style>
+<div class="bg-breadcrumb margin-12">
+  <div class="container">
+ <!--	{% include 'breadcrumb' %}  -->
+    
+    {% if collection %}
+<!--    <div class="next-prev-product">   
+      {% if collection.previous_product %}
+      <div class="popup-pro" data-popup-prev>
+        <a class="prev btn" href="{{ collection.previous_product }}">
+          <i class="fa fa-angle-left" aria-hidden="true"></i>
+        </a>
+
+        <div id="prev-product-modal" class="modal-pro">
+          <a class="product-image" href="{{ collection.previous_product }}">
+            <img src="{{ collection.previous_product.images[0] | img_url: '64x90' }}" alt="{{ collection.previous_product.title }}">
+          </a>
+          <div class="column-right">
+            <a class="product-name" href="{{ collection.previous_product }}">
+              {% include 'multilang' with collection.previous_product.title %}
+            </a>
+
+            <div class="price-box">
+              {% if collection.previous_product.compare_at_price_min > collection.previous_product.price_min %}
+              <div class="sale">
+                <span class="old-price">
+                  {{ collection.previous_product.compare_at_price_min | money }}
+                </span>
+                <span class="special-price">
+                  {% if collection.previous_product.price_varies %}
+                  {% include 'varies_from' %}{% endif %}
+                  {{collection.previous_product.price_min | money }}
+                </span>
+              </div>
+              {% else %}
+              <div class="regular-product">
+                {% if product.price_varies %} 
+                <div class="group-prices">
+                  <span class="price-min">
+                    {{ collection.previous_product.price_min | money }}
+                  </span>
+                  <span class="padding">-</span>
+                  <span class="price-max">
+                    {{ collection.previous_product.price_max | money }}
+                  </span>
+                </div>
+
+                {% else %}
+
+                <span>
+                  {{ collection.previous_product.price_min | money }}
+                </span>
+
+                {% endif %}
+
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>      
+      {% endif %}
+
+      {% if collection.next_product and collection %}
+      <div class="popup-pro" data-popup-next>
+        <a class="next btn" href="{{ collection.next_product }}">
+          <i class="fa fa-angle-right" aria-hidden="true"></i>
+        </a>
+
+        <div id="next-product-modal" class="modal-pro">
+          <a class="product-image" href="{{ collection.next_product }}">
+            <img src="{{ collection.next_product.images[0] | img_url: '64x90' }}" alt="{{ collection.next_product.title }}">
+          </a>
+          <div class="column-right">
+            <a class="product-name" href="{{ collection.next_product }}">
+              {% include 'multilang' with collection.next_product.title %}
+            </a>
+
+            <div class="price-box">
+              {% if collection.next_product.compare_at_price_min > collection.next_product.price_min %}
+              <div class="sale">
+                <span class="old-price">
+                  {{ collection.next_product.compare_at_price_min | money }}
+                </span>
+                <span class="special-price">
+                  {% if collection.next_product.price_varies %}
+                  {% include 'varies_from' %}{% endif %}
+                  {{collection.next_product.price_min | money }}
+                </span>
+              </div>
+              {% else %}
+              <div class="regular-product">
+                {% if product.price_varies %} 
+                <div class="group-prices">
+                  <span class="price-min">
+                    {{ collection.next_product.price_min | money }}
+                  </span>
+                  <span class="padding">-</span>
+                  <span class="price-max">
+                    {{ collection.next_product.price_max | money }}
+                  </span>
+                </div>
+
+                {% else %}
+
+                <span>
+                  {{ collection.next_product.price_min | money }}
+                </span>
+
+                {% endif %}
+
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div> -->
+    {% endif %}
+  </div>
+</div>
+
+<style>
+/*  .product-label {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    right: 10px !important;
+    text-align: -webkit-right !important;
+}
+   .product-label.customtags {
+    position: absolute !important;
+    top: 10px !important;
+    z-index: 99 !important;
+    left: 10px !important;
+      right: unset !important;    text-align: -webkit-left !important;
+}
+ */
+</style>
+<div class="halo-product-page">
+  <div class="container">
+    
+    <div class="row product-detail">
+
+      <div class="block-row col-main col-12 col-md-12 col-lg-12"> 
+         {% section 'newproducttemp-group' %}
+        
+    </div>
+      
+    </div>
+    
+  </div>
+</div>

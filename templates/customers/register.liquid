@@ -1,0 +1,98 @@
+<!--{% comment %}
+  This template will be automatically generated for you if the file doesn't exist,
+  but where's the fun in having no control? Define your layout below.
+
+  The 'layout settings.customer_layout' line is inserted at the top of every customer account template.
+  Your theme's settings determine to use the 'default' or 'theme' customer templates.
+  More info:
+    - http://www.tetchi.ca/shopify-theme-from-scratch-part-11/
+{% endcomment %}
+
+{% layout settings.customer_layout %}
+
+<div class="bg-breadcrumb">
+  <div class="container">
+  	{% include 'breadcrumb' %}
+  </div>
+</div>
+
+<div class="create-an-account">
+  <div class="container">
+    <header class="page-header">
+      <h1 {% if settings.enable_multilang %}data-translate="customer.register.title"{%endif%}>
+        {{ 'customer.register.title' | t }}
+      </h1>
+    </header>
+
+    {% if settings.enable_multilang %}
+    <div class="title lang1">
+      {{ settings.register_text_desc | split: '|' | first }}
+    </div>
+    <div class="title lang2">
+      {{ settings.register_text_desc | split: '|' | last }}
+    </div>
+    {% else %}
+    <div class="title">
+      {{ settings.register_text_desc | split: '|' | first }}
+    </div>
+    {% endif %}
+
+    {% comment %}
+    This form must use 'create_customer'
+    {% endcomment %}
+
+    {% form 'create_customer' %}
+
+    {% include 'form-errors-custom' %}
+
+    <div class="form-group" id="first_name">
+      <label for="first_name">
+        <span {% if settings.enable_multilang %}data-translate="customer.register.first_name"{%endif%}>
+          {{ 'customer.register.first_name' | t }}
+        </span>
+      </label>
+      <input type="text" value="" name="customer[first_name]" id="first_name" {% if form.errors contains "first_name" %}class="error"{% endif %} >
+    </div>
+
+    <div class="form-group" id="last_name">
+      <label for="last_name">
+        <span {% if settings.enable_multilang %}data-translate="customer.register.last_name"{%endif%}>
+          {{ 'customer.register.last_name' | t }}
+        </span>
+      </label>      
+      <input type="text" value="" name="customer[last_name]" id="last_name" {% if form.errors contains "last_name" %}class="error"{% endif %} >
+    </div>
+
+    <div class="form-group" id="email">
+      <label for="email">
+        <span {% if settings.enable_multilang %}data-translate="customer.register.email"{%endif%}>
+          {{ 'customer.register.email' | t }}
+        </span>
+        <em>*</em>
+      </label>      
+      <input type="email" value="" name="customer[email]" id="email" {% if form.errors contains "email" %}class="error"{% endif %}  >
+    </div>
+
+    <div class="form-group" id="create_password">
+      <label for="password">
+        <span {% if settings.enable_multilang %}data-translate="customer.register.password"{%endif%}>
+          {{ 'customer.register.password' | t }}
+        </span>
+        <em>*</em>
+      </label>      
+      <input type="password" value="" name="customer[password]" id="create_password" {% if form.errors contains "password" %}class="error"{% endif %}>
+<!-- Loyalty Points Manager-added -->
+<p style="text-align: left">
+    <input style="width: 20px;min-width: 20px;display: inline;" type='checkbox' name='customer[accepts_marketing]' checked='checked' value='true' id='acceptsMarketing' />
+    <span style="display: inline;">Keep me up to date on news and exclusive offers</span>
+</p>
+<!-- /Loyalty Points Manager-added -->
+
+   <!-- </div>
+
+    <div class="action-btn">
+      <input type="submit" {% if settings.enable_multilang %}data-translate="customer.register.submit"{%endif%} value="{{ 'customer.register.submit' | t }}" class="btn">
+    </div>
+    {% endform %}
+  </div>
+</div>-->

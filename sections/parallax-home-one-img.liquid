@@ -1,0 +1,258 @@
+<section class="parallax-one-image" id="section-{{ section.id }}">
+  <div class="figure-image">  
+
+    {% if section.settings.img != blank %}
+
+    {%- assign img_url = section.settings.img | img_url: 'master' -%}
+    {%- assign img_url_mb = section.settings.image_slide_mb | img_url: 'master' -%}
+    {% if section.settings.dpl_parallax %}
+    <div class="parallax-image" style="background-image: url({{img_url}});height:{{section.settings.height_img_dk}};background-attachment: fixed;background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+ 	 <img src="{{img_url}}" alt="{{ section.settings.header_silde | escape }}"
+         class="images-desktop lazyload not-parallax"
+         data-src="{{ img_url }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ img_url.aspect_ratio }}"
+         data-sizes="auto">
+    {% else %}
+    <img src="{{img_url}}" alt="{{ section.settings.header_silde | escape }}"
+         class="images-desktop lazyload"
+         data-src="{{ img_url }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ img_url.aspect_ratio }}"
+         data-sizes="auto">
+    {% endif %}
+    
+    {% if section.settings.image_slide_mb != blank %}
+    <img src="{{section.settings.image_slide_mb | img_url: img_url_mb}}" alt="{{ section.settings.header_silde | escape }}"
+         class="images-mobile lazyload"
+         data-src="{{ img_url_mb }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ img_url_mb.aspect_ratio }}"
+         data-sizes="auto"> 
+    {% else %}
+    <img src="{{section.settings.img | img_url: img_url }}" alt="{{ section.settings.header_silde | escape }}"
+         class="images-mobile lazyload"
+         data-src="{{ img_url }}"
+         data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+         data-aspectratio="{{ img_url.aspect_ratio }}"
+         data-sizes="auto">
+    {% endif %}
+
+    {% else %}
+    <span class="not_img">1880 x 690Px</span>                  
+    {% endif %}
+    
+    <div class="container caption-wrap{% if section.settings.alignment == 'center' %} slide-center{% elsif section.settings.alignment == 'right' %} slide-right {% else %} slide-left{% endif %}">
+      <div class="content">
+        <h2 class="slide-header" style="font-size:{{ section.settings.font_size_header}}; color:{{section.settings.color_header}}">
+          {% include 'multilang' with section.settings.header_silde %}
+        </h2>
+
+        <div class="slide-des" style="font-size:{{section.settings.font_size_des}}; color:{{section.settings.color_des}}"> 
+          {% include 'multilang' with section.settings.image_des %}
+        </div>
+		 {% if section.settings.button_slide!= blank %}
+        <a class="button-slide" href="{{ section.settings.link_button }}"
+           style="font-size:{{section.settings.font_size_button}}; 
+                  color:{{section.settings.color_button}};
+                  background: {{section.settings.bg_button}};
+                  border:1px solid {{section.settings.border_button}}
+                  ">
+          {% include 'multilang' with section.settings.button_slide %}
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+ {% if section.settings.dpl_down_arrow %} <a href="#" class="scroll-down">{% include 'icon-down-arrow' %}</a>{% endif %}
+</section>
+<style>
+  @media (min-width:1367px){
+    .parallax-one-image .not-parallax{
+      display:none;
+    }
+  }
+  @media (max-width:1366px){
+    .parallax-one-image .parallax-image{
+    	display:none;
+    }
+  }
+  #section-{{ section.id }}{
+    margin-top: {{ section.settings.space_on }}px;
+    margin-bottom: {{ section.settings.space_below }}px;
+  }
+  
+  @media (min-width:1367px){
+   #section-{{ section.id }} img{
+     height: {{ section.settings.height_img_dk }};
+     object-fit: cover;
+   }
+  }
+
+  @media (max-width:1023px){
+    #section-{{ section.id }} img{
+      height: {{ section.settings.height_img_mb }};
+      object-fit: cover;
+    }
+  }
+  
+</style>
+{% schema %}
+  {
+    "name": "Parallax One Image Block",
+    "settings": [
+      {
+        "type": "range",
+        "id": "space_on",
+        "label": "Space on",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "space_below",
+        "label": "Space below",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "default": 25
+      },
+	  {
+		"type" : "checkbox",
+		"id" : "dpl_down_arrow",
+		"label" : "Display icon Down arrow",
+		"default" : true
+	  },
+	  {
+		"type" : "checkbox",
+		"id" : "dpl_parallax",
+		"label" : "Display Parallax",
+		"default" : true
+	  },
+      {
+        "type" : "image_picker",
+        "id" : "img",
+        "label" : "Select Image",
+        "info": "( 1880 x 690 )Px"
+      },
+      {
+        "type" : "text",
+        "id" : "height_img_dk",
+        "label" : "Image Height on desktop",
+        "default" : "auto",
+        "info" : "Default auto"
+      },
+      {
+        "type" : "image_picker",
+        "id" : "image_slide_mb",
+        "label" : "Select Image mobile",
+        "info" : "Recommended Image: Width x Height (1770 x 690)PX"
+      },
+      {
+        "type" : "text",
+        "id" : "height_img_mb",
+        "label" : "Image Height on Mobile",
+        "default" : "auto",
+        "info" : "Default auto"
+      },
+      {
+          "type": "select",
+          "id": "alignment",
+          "label": "Text alignment",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+              {
+              "value": "center",
+              "label": "Center"
+              },
+              {
+              "value": "right",
+              "label": "Right"
+              }
+          ]
+        },
+        {
+          "type" : "text",
+          "id" : "header_silde",
+          "label" : "Header",
+          "default" : "Soliquem Duscipitor"
+        },
+        {
+          "type" : "text",
+          "id" : "font_size_header",
+          "label" : "Header Font Size ",
+          "default" : "48px"
+        },
+        {
+          "type" : "color",
+          "id" : "color_header",
+          "label" : "Header Color",
+          "default" : "#000"
+        },
+        {
+          "type" : "textarea",
+          "id" : "image_des",
+          "label" : "Image description"
+        },
+        {
+          "type" : "text",
+          "id" : "font_size_des",
+          "label" : "Description Font Size",
+          "default" : "12px"
+        },
+        {
+          "type" : "color",
+          "id" : "color_des",
+          "label" : "Image description Color",
+          "default" : "#000"
+        },
+        {
+          "type" : "text",
+          "id" : "button_slide",
+          "label" : "Button Slideshow",
+          "default" : "Shop Now"
+        },
+        {
+          "type" : "url",
+          "id" : "link_button",
+          "label" : "Link Button"
+        },
+        {
+          "type" : "text",
+          "id" : "font_size_button",
+          "label" : "Font Size Button",
+          "default" : "14px"
+        },
+        {
+          "type" : "color",
+          "id" : "bg_button",
+          "label" : "Background Button",
+          "default" : "#323232"
+        },
+        {
+          "type" : "color",
+          "id" : "border_button",
+          "label" : "Border Button",
+          "default" : "#323232"
+        },
+        {
+          "type" : "color",
+          "id" : "color_button",
+          "label" : "Button Color",
+          "default" : "#fff"
+        }
+		
+		
+    ],
+    "presets": [{
+      "name": "Parallax One Image Block",
+      "category": "Parallax Section"
+    }]
+  }
+{% endschema %}

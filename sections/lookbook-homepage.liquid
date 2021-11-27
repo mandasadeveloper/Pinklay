@@ -1,0 +1,560 @@
+{% if section.settings.dpl_lookboob_slide %}
+
+<div class="product-lookbook grouped-lb">
+  <div class="widget-title">
+    <h3>
+      <span class="lang1">{{section.settings.section_title}}</span>
+    </h3>
+  </div>
+  <div class="item" id="lb-item"> 
+    <div class="lazy-images-contain image_fullwidth" >
+      {% if section.settings.lb_image_slide != blank %}
+      {%- assign img_url = section.settings.lb_image_slide | img_url: '1024x' -%}
+      <img data-new-src="{{section.settings.lb_image_slide | img_url: '1024x'}}" alt=""
+           class="lazyload"
+           data-src="{{ img_url }}"
+           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+           data-sizes="auto">
+      {% else %}
+      {% capture current %}{% cycle 2 %}{% endcapture %}
+      {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}                 
+      {% endif %}
+
+      {% if section.settings.lb_product_1 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_1 }}%; left:{{ section.settings.left_position_1 }}%;">
+        <span class="glyphicon pr-lb item_1" data-handle="{{ section.settings.lb_product_1 }}">+</span>
+      </div>
+      {% endif %}
+
+      {% if section.settings.lb_product_2 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_2 }}%; left:{{ section.settings.left_position_2 }}%;">
+        <span class="glyphicon pr-lb item_2" data-handle="{{ section.settings.lb_product_2 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_3 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_3 }}%; left:{{ section.settings.left_position_3 }}%;">
+        <span class="glyphicon pr-lb item_3" data-handle="{{ section.settings.lb_product_3 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_4 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_4 }}%; left:{{ section.settings.left_position_4 }}%;">
+        <span class="glyphicon pr-lb item_4" data-handle="{{ section.settings.lb_product_4 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_5 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_5 }}%; left:{{ section.settings.left_position_5 }}%;">
+        <span class="glyphicon pr-lb item_5" data-handle="{{ section.settings.lb_product_5 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_6 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_6 }}%; left:{{ section.settings.left_position_6 }}%;">
+        <span class="glyphicon pr-lb item_6" data-handle="{{ section.settings.lb_product_6 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_7 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_7 }}%; left:{{ section.settings.left_position_7 }}%;">
+        <span class="glyphicon pr-lb item_7" data-handle="{{ section.settings.lb_product_7 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_8 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_8 }}%; left:{{ section.settings.left_position_8 }}%;">
+        <span class="glyphicon pr-lb item_8" data-handle="{{ section.settings.lb_product_8 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_9 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_9 }}%; left:{{ section.settings.left_position_9 }}%;">
+        <span class="glyphicon pr-lb item_9" data-handle="{{ section.settings.lb_product_9 }}">+</span>
+      </div>
+      {% endif %}
+      
+      {% if section.settings.lb_product_10 != blank %}
+      <div class="lookbook-item" style="top:{{ section.settings.top_position_10 }}%; left:{{ section.settings.left_position_10 }}%;">
+        <span class="glyphicon pr-lb item_10" data-handle="{{ section.settings.lb_product_10 }}">+</span>
+      </div>
+      {% endif %}
+
+      <style type="text/css">
+        #lb-item .item_1{
+          color:{{ section.settings.dots_color_1 }};
+          background: {{ section.settings.dots_bg_color_1 }};
+        }
+        #lb-item .item_1:before {
+          color: {{ section.settings.dots_bg_color_1 }};
+        } 
+        #lb-item .item_2{
+          color:{{ section.settings.dots_color_2 }};
+          background: {{ section.settings.dots_bg_color_2 }};
+        }
+        #lb-item .item_2:before{
+          color: {{ section.settings.dots_bg_color_2 }};
+        }
+        #lb-item .item_3{
+          color:{{ section.settings.dots_color_3 }};
+          background: {{ section.settings.dots_bg_color_3 }};
+        }
+        #lb-item .item_3:before{
+          color: {{ section.settings.dots_bg_color_3 }};
+        }
+        #lb-item .item_4{
+          color:{{ section.settings.dots_color_4 }};
+          background: {{ section.settings.dots_bg_color_4 }};
+        }
+        #lb-item .item_4:before{
+          color: {{ section.settings.dots_bg_color_4 }};
+        }
+        #lb-item .item_5{
+          color:{{ section.settings.dots_color_5 }};
+          background: {{ section.settings.dots_bg_color_5 }};
+        }
+        #lb-item .item_5:before{
+          color: {{ section.settings.dots_bg_color_5 }};
+        }
+        #lb-item .item_6{
+          color:{{ section.settings.dots_color_6 }};
+          background: {{ section.settings.dots_bg_color_6 }};
+        }
+        #lb-item .item_6:before{
+          color: {{ section.settings.dots_bg_color_6 }};
+        }
+        #lb-item .item_7{
+          color:{{ section.settings.dots_color_7 }};
+          background: {{ section.settings.dots_bg_color_7 }};
+        }
+        #lb-item .item_7:before{
+          color: {{ section.settings.dots_bg_color_7 }};
+        }
+        #lb-item .item_8{
+          color:{{ section.settings.dots_color_8 }};
+          background: {{ section.settings.dots_bg_color_8 }};
+        }
+        #lb-item .item_8:before{
+          color: {{ section.settings.dots_bg_color_8 }};
+        }
+        #lb-item .item_9{
+          color:{{ section.settings.dots_color_9 }};
+          background: {{ section.settings.dots_bg_color_9 }};
+        }
+        #lb-item .item_9:before{
+          color: {{ section.settings.dots_bg_color_9 }};
+        }
+        #lb-item .item_10{
+          color:{{ section.settings.dots_color_10 }};
+          background: {{ section.settings.dots_bg_color_10 }};
+        }
+        #lb-item .item_10:before{
+          color: {{ section.settings.dots_bg_color_10 }};
+        }
+        .image_fullwidth img{
+          object-fit: contain !important;
+          width: 100% !important;
+          border-radius:0px!important;
+        }
+        .product-lookbook{
+          padding-top:25px;
+        }
+      </style>
+    </div>	
+  </div>
+</div>
+{% endif %}
+  
+{% schema %}
+ {
+  "name": "Heatmap section",
+  "settings": [
+      
+	  {
+		"type": "header",
+        "content": "Lookbook in Product Description"
+      },
+      {
+       "type":"text",
+       "id":"section_title",
+       "label":"Heatmap Title",
+       "default":"SHOP THE COLLECTION"
+      },
+	  {
+        "type" : "checkbox",
+        "id" : "dpl_lookboob_slide",
+        "label" : "Enable",
+        "default" : true
+      },
+      {
+        "type": "image_picker",
+        "id": "lb_image_slide",
+        "label": "Select Image"
+      },
+        {
+        "type" : "header",
+        "content" : "Product 1"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_1",
+        "label" : "Select Product 1"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_1",
+        "label" : "Top Position 1",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_1",
+        "label" : "Left Position 1",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_1",
+        "label" : "Color 1",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_1",
+        "label" : "Dots background color 1",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 2"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_2",
+        "label" : "Select Product 2"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_2",
+        "label" : "Top Position 2",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_2",
+        "label" : "Left Position 2",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_2",
+        "label" : "Color 2",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_2",
+        "label" : "Dots background color 2",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 3"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_3",
+        "label" : "Select Product 3"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_3",
+        "label" : "Top Position 3",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_3",
+        "label" : "Left Position 3",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_3",
+        "label" : "Color 3",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_3",
+        "label" : "Dots background color 3",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 4"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_4",
+        "label" : "Select Product 4"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_4",
+        "label" : "Top Position 4",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_4",
+        "label" : "Left Position 4",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_4",
+        "label" : "Color 4",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_4",
+        "label" : "Dots background color 4",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 5"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_5",
+        "label" : "Select Product 5"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_5",
+        "label" : "Top Position 5",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_5",
+        "label" : "Left Position 5",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_5",
+        "label" : "Color 5",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_5",
+        "label" : "Dots background color 5",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 6"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_6",
+        "label" : "Select Product 6"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_6",
+        "label" : "Top Position 6",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_6",
+        "label" : "Left Position 6",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_6",
+        "label" : "Color 6",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_6",
+        "label" : "Dots background color 6",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 7"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_7",
+        "label" : "Select Product 7"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_7",
+        "label" : "Top Position 7",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_7",
+        "label" : "Left Position 7",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_7",
+        "label" : "Color 7",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_7",
+        "label" : "Dots background color 7",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 8"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_8",
+        "label" : "Select Product 8"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_8",
+        "label" : "Top Position 8",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_8",
+        "label" : "Left Position 8",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_8",
+        "label" : "Color 8",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_8",
+        "label" : "Dots background color 8",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 9"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_9",
+        "label" : "Select Product 9"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_9",
+        "label" : "Top Position 9",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_9",
+        "label" : "Left Position 9",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_9",
+        "label" : "Color 9",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_9",
+        "label" : "Dots background color 9",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        },
+        {
+        "type" : "header",
+        "content" : "Product 10"
+        },
+        {
+        "type" : "product",
+        "id" : "lb_product_10",
+        "label" : "Select Product 10"
+        },
+        {
+        "type" : "text",
+        "id" : "top_position_10",
+        "label" : "Top Position 10",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "text",
+        "id" : "left_position_10",
+        "label" : "Left Position 10",
+        "default" : "10",
+        "info" : "Unit %" 
+        },
+        {
+        "type" : "color",
+        "id" : "dots_color_10",
+        "label" : "Color 10",
+        "default" : "#fff"
+        },
+        {
+        "type" : "color",
+        "id" : "dots_bg_color_10",
+        "label" : "Dots background color 10",
+        "default" : "#5BC3BE",
+        "info" : "======================="
+        }
+  ],
+ "presets": [{
+      "name": "Heatmap section",
+      "category": "Heatmap"
+    }]
+}
+{% endschema %}

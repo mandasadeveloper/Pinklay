@@ -1,0 +1,689 @@
+<footer class="footer footer-parallax">
+  <div class="footer-top">
+    <div class="container">      
+      {% if section.settings.footer_newsletter_enable %}
+      <div class="row">
+        <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+          <div class="footer-newsletter">
+            <h3>
+              {% include 'multilang' with section.settings.footer_newsletter_text %}
+            </h3>
+            
+            {% include 'homepage-block-newsletter' %}
+            
+            {% if section.settings.footer_social_enable %}  
+            <div class="footer-social">
+              {% include 'social-media' %}           
+            </div>
+            {% endif %}
+            
+            <div class="des">
+              {% include 'multilang' with  section.settings.des_newsletter %}
+            </div>
+          </div>
+        </div>
+      </div>     
+      {% endif %}
+      
+      <div class="footer-col">
+        <div class="row">
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_1 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_1 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_1 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_2 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_2 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_2 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_3 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_3 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_3 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-6 col-md-4 col-lg-2 col-xl-2 column-footer"> 
+            {% if section.settings.footer_title_4 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_4 %}
+            </h3>
+            {% endif %}
+
+            {%- assign footer_linklist = section.settings.footer_linklist_4 -%}
+            {% if linklists[footer_linklist].links.size > 0 %}
+            <ul>
+              {% for link in linklists[footer_linklist].links %}
+              <li>
+                <a href="{{ link.url}}">
+                  {% include 'multilang' with link.title %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          
+          <div class="col-12 col-md-8 col-lg-4 col-xl-4 column-footer"> 
+            {% if section.settings.footer_title_5 != blank %}
+            <h3>
+              {% include 'multilang' with section.settings.footer_title_5 %}
+            </h3>
+            {% endif %}
+
+            {% if section.settings.footer_linklist_5 != blank %}
+            <div class="ft-location">
+              {% if settings.enable_multilang %}
+              <div class="lang1">{{ section.settings.footer_linklist_5 | split: '|' | first | strip }}</div>
+              <div class="lang2">{{ section.settings.footer_linklist_5 | split: '|' | last | strip }}</div>
+              {% else %}
+              <div>{{ section.settings.footer_linklist_5 | split: '|' | first }}</div>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>
+      
+  {% if section.settings.display_ft_bt %}
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-content">
+        <div class="row">
+          <div class="footer_address column-right col-12">
+            <ul>
+              {% if section.settings.dpl_ico_1 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_visa | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_2 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_amex | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_3 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_mastercard | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_4 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_paypal | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_5 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_wallet | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_6 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_apple | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_7 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_discover | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_8 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_credit_card | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_9 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_diners_club | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_10 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_credit_card_alt | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_11 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_stripe | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}
+
+              {% if section.settings.dpl_ico_12 %}
+              <li>
+                <a href="javascript:void(0)">
+                  <img src="{{ section.settings.icon_jcb | img_url: 'x30' }}">
+                </a>
+              </li>
+              {% endif %}            
+            </ul>
+          </div>
+          
+          <div class="footer_address column-left col-12">
+            {% include'multilang' with section.settings.ft_address %}
+          </div>
+        </div>
+      </div>            
+    </div>
+  </div>
+  {% endif %}
+  
+  {% if section.settings.display_top_message %}
+  <div class="top-message">
+    <div class="container">
+      {% if section.settings.mess_text_1 != blank %}
+      	<span class="mess-text">
+          {% include 'multilang' with section.settings.mess_text_1 %}
+        </span>
+      {% endif %}
+      
+      {% if section.settings.countdown != blank %}
+      	<div class="clock"></div>
+      {% endif %}
+      
+      {% if section.settings.mess_text_2 != blank %}
+      	<span class="mess-text">
+          {% include 'multilang' with section.settings.mess_text_2 %}
+        </span>
+      {% endif %}
+    </div>        
+  </div>
+  
+  <script>
+    $(document).ready(function() {
+        var clock = $('.top-message .clock');
+
+        clock.countdown('{{ section.settings.countdown }}', function(event) {
+                        $(this).html(event.strftime(''
+                                                    + '<span>%dD</span>    '
+                                                    + '<span>%HH</span>    '
+                                                    + '<span>%MM</span>    '
+                                                    + '<span>%SS</span>'));
+        });
+    });
+  </script>
+  {% endif %}
+</footer>
+
+
+{% schema %}
+  {
+    "name": "Footer Parallax",
+    "settings": [
+		{
+			"type" : "color",
+			"id" : "bg_ft",
+			"label" : "Background Footer",
+			"default" : "#fff"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_text",
+			"label" : "Color Text",
+			"default" : "#3c3c3c"
+		},
+		{
+			"type" : "color",
+			"id" : "border_color_ft",
+			"label" : "Border Color Footer",
+			"default" : "#eeeeee"
+		},
+		{
+			"type" : "color",
+			"id" : "color_ft_header",
+			"label" : "Color Header",
+			"default" : "#000000"
+		},
+	    {
+          "type": "header",
+          "content": "Newsletter"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_newsletter_enable",
+          "label": "Show newsletter signup?",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "footer_newsletter_text",
+          "label": "Footer Newsletter Text"
+        },
+        {
+          "type" : "textarea",
+          "id" : "des_newsletter",
+          "label" : "Description newsletter"
+        },
+	    {
+          "type": "color",
+          "id": "bg_newsletter_color",
+          "label": "Newsletter Input Background Color",
+          "default": "#fff"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_color",
+          "label": "Newsletter Input Color",
+          "default": "#3c3c3c"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_border_color",
+          "label": "Newsletter Input Border Color with Opacity 10%",
+          "default": "#323232"
+        },
+        {
+          "type": "color",
+          "id": "bg_newsletter_button_color",
+          "label": "Background and Border Newsletter Button Color",
+          "default": "#323232"
+        },
+        {
+          "type": "color",
+          "id": "newsletter_button_color",
+          "label": "Newsletter Button Color",
+          "default": "#fff"
+        },
+		{
+			"type" : "header",
+			"content" : "Footer Column"
+		},  
+	    {
+          "type": "text",
+          "id": "footer_title_1",
+          "label": "Footer 1 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_1",
+          "label": "Footer Column 1"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_2",
+          "label": "Footer 2 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_2",
+          "label": "Footer Column 2"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_3",
+          "label": "Footer 3 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_3",
+          "label": "Footer Column 3"
+        },
+        {
+          "type": "text",
+          "id": "footer_title_4",
+          "label": "Footer 4 Title"
+        },
+        {
+          "type": "link_list",
+          "id": "footer_linklist_4",
+          "label": "Footer Column 4"
+        },
+	    {
+          "type": "text",
+          "id": "footer_title_5",
+          "label": "Footer 5 Title"
+        },
+        {
+          "type": "textarea",
+          "id": "footer_linklist_5",
+          "label": "Footer Column 5"
+        },        
+        {
+          "type": "header",
+          "content": "Social"
+        },
+        {
+          "type": "checkbox",
+          "id": "footer_social_enable",
+          "label": "Show social media links?",
+          "default": false
+        },	 
+		{
+          "type" : "color",
+          "id" : "color_social",
+          "label" : "Color Social",
+          "default" : "#323232"
+		},
+        {
+          "type" : "header",
+          "content" : "Footer Bottom"
+        },
+        {
+          "type" : "checkbox",
+          "id" : "display_ft_bt",
+          "label" : "Display Footer Bottom",
+          "default" : true
+        },
+        
+        {
+          "type" : "textarea",
+          "id" : "ft_address",
+          "label" : "Footer Address"
+        },
+		{
+           "type" : "header",
+           "content" : "DISPLAY PAYMENT ICONS FOR"
+		},
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_1",
+			"label" : "Display Icon Visa",
+			"default" : true
+		},
+	    {
+          "type": "image_picker",
+          "id": "icon_visa",
+          "label": "Visa image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_2",
+			"label" : "Display Icon Amex",
+			"default" : true
+		},
+	    {
+          "type": "image_picker",
+          "id": "icon_amex",
+          "label": "Amex image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_3",
+			"label" : "Display Icon Mastercard",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_mastercard",
+          "label": "Mastercard image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_4",
+			"label" : "Display Icon Paypal",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_paypal",
+          "label": "Paypal image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_5",
+			"label" : "Display Icon Google Wallet",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_wallet",
+          "label": "Google Wallet image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_6",
+			"label" : "Display Icon Apple pay",
+			"default" : true
+		},
+	    {
+          "type": "image_picker",
+          "id": "icon_apple",
+          "label": "Apple pay image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_7",
+			"label" : "Display Icon Discover",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_discover",
+          "label": "Discover image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_8",
+			"label" : "Display Icon Credit Card",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_credit_card",
+          "label": "Credit Card image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_9",
+			"label" : "Display Icon Diners club",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_diners_club",
+          "label": "Diners Club image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_10",
+			"label" : "Display Icon Credit card alt",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_credit_card_alt",
+          "label": "Credit card alt image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_11",
+			"label" : "Display Icon Stripe",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_stripe",
+          "label": "Stripe image"
+        },
+		{
+			"type" : "checkbox",
+			"id" : "dpl_ico_12",
+			"label" : "Display Icon JCB",
+			"default" : true
+		},
+		{
+          "type": "image_picker",
+          "id": "icon_jcb",
+          "label": "JCB image"
+        },
+	    {
+			"type": "header",
+			"content": "Top Message"
+		},
+	    {
+			"type" : "checkbox",
+			"id" : "display_top_message",
+			"label" : "Display Top Message",
+			"default" : true
+		},
+		{
+          "type" : "textarea",
+          "id" : "mess_text_1",
+          "label" : "Message 1",
+		  "default" : "Limited-Time Offer: Sale up to 60% off - End ins:"
+        },
+	    {
+          "type" : "textarea",
+          "id" : "mess_text_2",
+          "label" : "Message 2",
+		  "default" : "Use code 'Sale60'"
+        },
+	    {
+          "type" : "text",
+          "id" : "countdown",
+          "label" : "Countdown",
+          "default" : "2019/12/4 0:0:00",
+		  "info": "Please use this exact format: yyyy/mm/dd hour/minute/second. Examle: 2019/12/04 10:20:00."
+        },
+	    {
+          "type": "color",
+          "id": "bg_mess",
+          "label": "Top Message Background Color",
+          "default": "#323232"
+        },
+        {
+          "type": "color",
+          "id": "mess_color",
+          "label": "Top Message Color",
+          "default": "#fff"
+        }
+	]
+  }
+{% endschema %}
+
+<style>  
+  .footer-parallax {
+  	border-top: 1px solid {{ section.settings.border_color_ft }};
+  }
+  
+  .footer {
+    background:{{ section.settings.bg_ft }};
+    color: {{ section.settings.color_ft_text }};
+  }
+
+  .footer .footer-top .column-footer ul li a,
+  .footer-bottom a  {
+    color: {{ section.settings.color_ft_text }};
+  }
+
+  .footer h3 {
+    color: {{ section.settings.color_ft_header }};
+  }
+  
+  .footer-parallax .footer-social ul li a {
+  	color: {{ section.settings.color_social }};
+  }
+  
+  .footer-parallax .newsletter .input-group-field {
+  	background-color: {{ section.settings.bg_newsletter_color }};
+    color: {{ section.settings.newsletter_color }};
+    border: 1px solid {{ section.settings.newsletter_border_color }};
+  }
+  
+  .footer-parallax .newsletter ::-webkit-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-parallax .newsletter ::-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-parallax .newsletter :-ms-input-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-parallax .newsletter :-moz-placeholder {
+    color: {{ section.settings.newsletter_color }};
+  }
+  
+  .footer-parallax .newsletter .btn {
+  	background-color: {{ section.settings.bg_newsletter_button_color }};
+    color: {{ section.settings.newsletter_button_color }};
+  }
+  
+  .footer-parallax .top-message {
+  	background-color: {{ section.settings.bg_mess }};
+    color: {{ section.settings.mess_color }};
+  }
+
+</style>

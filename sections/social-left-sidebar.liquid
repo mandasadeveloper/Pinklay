@@ -1,0 +1,147 @@
+{% if section.settings.dl_social %}
+<div class="icon-social footer-social">
+  {% include 'social-media' %}
+</div>
+{% endif %}
+{% if section.settings.dl_secure %}
+<div class="secure_shopping">
+  
+  <h4>
+    {% include 'multilang' with section.settings.secure_text %}
+  </h4>
+  
+  <div class="secure-icon">
+    <ul>
+    {% for block in section.blocks %}
+      <li>
+        <a  href="{{ block.settings.link }}">
+          {% if block.settings.image != blank %}       
+          {%- assign img_url = block.settings.image | img_url: '600x' -%}
+          <img src="{{ img_url }}" alt="{{ block.settings.image.alt }}"/>
+          {% else %}
+          <span class="not_img">120 x 65px</span>
+          {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Social Media",
+	"max_blocks": 10,
+    "settings": [
+	 {
+        "type" : "header",
+        "content" : "Social Media"
+      },
+      {
+        "type" : "checkbox",
+        "id" : "dl_social",
+        "label" : "Display Social Media",
+        "default" : true
+      },
+	  {
+        "type" : "color",
+        "id" : "social_Text",
+        "label" : "Text color",
+        "default" : "#fff"
+      },
+	  {
+        "type" : "color",
+        "id" : "social_bg",
+        "label" : "Background color",
+        "default" : "#313131"
+      },
+	  {
+        "type" : "header",
+        "content" : "Secure Shopping"
+      },
+	  {
+        "type" : "checkbox",
+        "id" : "dl_secure",
+        "label" : "Display Secure Shopping",
+        "default" : true
+      },
+	   {
+        "type" : "text",
+        "id" : "secure_text",
+        "label" : "Secure Shopping Text",
+        "default" : "Secure Shopping Guarantee"
+      },
+	  {
+        "type" : "color",
+        "id" : "secure_text_color",
+        "label" : "Text color",
+        "default" : "#fff"
+      }
+		
+	],
+  "blocks": [
+        {
+          "type": "image",
+          "name": "Image",
+          "settings": [
+            {
+              "type": "image_picker",
+              "id": "image",
+              "label": "Image"
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": "Link",
+              "info": "Optional"
+            }
+          ]
+        }
+      ]
+  }
+{% endschema %}
+
+<style>  
+  @media (min-width:1025px){
+    .navi-left-sidebar .icon-social a{
+      color:{{section.settings.social_Text}};
+    }
+    
+    .navigation .hd-option h5,
+    .navi-left-sidebar .icon-social{
+      background:{{section.settings.social_bg}};
+      color:{{section.settings.social_Text}};
+    }
+    
+    .navigation .hd-option ul li a{
+      color:{{section.settings.social_Text}};
+    }
+  }
+  
+  .navi-left-sidebar .secure_shopping{
+    color:{{section.settings.secure_text_color}};
+  }
+  .navi-left-sidebar .secure_shopping svg{
+    fill:{{section.settings.secure_text_color}};
+  }
+</style>
+
+<script>
+
+{% if section.settings.dl_secure %}
+  $( document ).ready(function() {
+    $('.secure-icon ul').slick({
+      infinite: true,
+      slidesToShow: 1,
+      arrows: true,
+      slidesToScroll: 1,
+      autoplay: 2000,
+      nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 17 33" xml:space="preserve"><title>svg-arrow-next</title><g id="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="_x38_e584754-6657-46f1-a9d8-2cfd6623b552"><g><polygon points="14.9,14.5 0,0 0,3.7 11.1,14.5 13.2,16.5 11.1,18.5 0,29.3 0,33 14.9,18.5 17,16.5 "/></g></g></g></svg></button>',
+      prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 33"><title>svg-arrow-prev</title><g id="7f9a1925-e8c7-4614-8787-3c6095a9f6e1" data-name="Layer 2"><g id="c9b7920a-81fa-4bfe-ad13-4da717c6854b" data-name="Layer 1"><g id="c2d982ff-0cf6-4220-b365-47f30d708fea" data-name="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="f51d455e-6b9c-4c4e-96db-a5004582beda" data-name="8e584754-6657-46f1-a9d8-2cfd6623b552"><polygon points="0 16.5 2.1 18.5 17 33 17 29.3 5.9 18.5 3.8 16.5 5.9 14.5 17 3.7 17 0 2.1 14.5 0 16.5"/></g></g></g></g></svg></button>',
+      speed : 1000,  
+    });
+  });
+  {% endif %}
+
+</script>

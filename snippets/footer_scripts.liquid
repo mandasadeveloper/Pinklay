@@ -1,0 +1,287 @@
+<!-- Footer scripts -->
+<script src=" {{ 'api.jquery.js' | shopify_asset_url }} " defer="defer"></script>
+<script src=" {{ 'option_selection.js' | shopify_asset_url }} " defer="defer"></script>
+
+<script src="{{ 'jquery.countdown.min.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'jquery.history.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'lazysizes.js' | asset_url }}" defer="defer"></script>
+
+<script src=" {{ '//cdn.polyfill.io/v2/polyfill.min.js' }} " defer="defer"></script>
+<script src=" {{ 'shuffle.js' | asset_url }} " defer="defer"></script>
+
+<script src="{{ 'jquery.zoom.min.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'jquery.fancybox.pack.js' | asset_url }}"defer="defer"></script>
+
+<script src="{{ 'stuck.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'popper.min.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'bootstrap.min.js' | asset_url }}" defer="defer"></script>
+
+<script src="{{ 'lynkco.js' | asset_url }}" defer="defer"></script>
+  <script src="https://vjs.zencdn.net/6.4.0/video.min.js"></script>
+<script>
+$(document).on("click", ".cst-mute-btn" , function (){
+ 
+  var vp = videojs('my-video').player();
+    if(vp.muted()) {
+          vp.muted(false); 
+      $(this).find("span").attr("class","vjs-icon-volume-high");
+    } else {
+       vp.muted(true); 
+      $(this).find("span").attr("class","vjs-icon-volume-mute");
+    }
+  });
+</script>
+<script src="//cdn.codeblackbelt.com/js/modules/frequently-bought-together/main.min.js?shop=pink-lay.myshopify.com" defer></script>
+
+<!-- google dynamic remarketing tag for theme.liquid -->
+{% if template contains 'product' %}
+<script type="text/javascript">
+  var json_product = {{ product | json }};
+</script>
+<script>
+  var ecomm_prodid=[];
+  for(var i=0;i<json_product.variants.length;i++)
+    ecomm_prodid.push('shopify_IN_{{product.id}}_'+json_product.variants[i].id);
+</script>
+<script type="text/javascript">
+  var google_tag_params = {
+    ecomm_prodid: ecomm_prodid,
+    ecomm_pagetype: 'product',
+    ecomm_totalvalue: parseFloat('{{ product.price | money_without_currency | remove: ","}}')
+  };
+</script>
+{% elsif template contains 'collection' %}
+<script type="text/javascript">
+  var google_tag_params = {
+    ecomm_pagetype: 'category'
+  };
+</script>
+{% elsif template contains 'cart' %}
+<script type="text/javascript">
+  var id = new Array();
+  {% for item in cart.items %}
+  id.push('shopify_IN_{{item.product.id}}_{{item.variant.id}}');
+   {% endfor %}
+
+   var google_tag_params = {
+     ecomm_prodid: id,
+     ecomm_pagetype: 'cart',
+     ecomm_totalvalue: parseFloat('{{ cart.total_price | money_without_currency | remove: ","}}')
+   };
+</script>
+{% elsif template contains 'search' %}
+<script type="text/javascript">
+  var google_tag_params = {
+    ecomm_pagetype: 'searchresults'
+  };
+</script>
+{% elsif template contains 'index' %}
+<script type="text/javascript">
+  var google_tag_params = {
+    ecomm_pagetype: 'home'
+  };
+</script>
+{% else %}
+<script type="text/javascript">
+  var google_tag_params = {
+    ecomm_pagetype: 'other'
+  };
+</script>
+{% endif %}
+<script>
+  gtag('event', 'page_view', {'send_to': 'AW-859061801',
+                              'ecomm_prodid':window.google_tag_params.ecomm_prodid,
+                              'ecomm_pagetype': window.google_tag_params.ecomm_pagetype,
+                              'ecomm_totalvalue':window.google_tag_params.ecomm_totalvalue
+                             });
+</script>
+  
+<script>
+$(document).ready(function() {
+  $(window).scroll(function() {
+     $(".toolbar_fixed").removeClass("toolbar_fix_section");
+    if ($(document).scrollTop() > 0) {
+      $(".toolbar_fixed").addClass("toolbar_fix_section");
+    } else {
+      $(".toolbar_fixed").removeClass("toolbar_fix_section");
+    }
+  });
+});
+</script>
+{% comment %}    
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5d33052c9b94cd38bbe86a11/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+{% endcomment %}  
+<!-- modal -->    
+<script>
+  $(function() {
+    $.get("https://ipinfo.io", function(data) {
+      var countryname=data.country;
+      console.log(countryname);  
+      if (countryname != "IN")
+      {
+        $('#modalintlsiteredirect').modal();
+      }        
+    }, "jsonp");
+  });
+
+</script>
+<!--modal -->
+<script>
+  $(function() { 
+    setInterval(function() {
+   var valueprice =  $('div.summary p.total span.price span.money').html();
+           valueprice = valueprice.replace('Rs.','');
+       valueprice = valueprice.replace(',','');      
+      valueprice = parseInt(valueprice) ;
+   var totalbarwidth = parseInt(valueprice) / 30;
+      totalbarwidth = totalbarwidth + '%';
+    var calremainmoney = parseInt(2999) - parseInt(valueprice);
+   calremainmoney = (calremainmoney).toFixed(2);
+      
+    $('div.progress-bar.progress-bar-info').attr('aria-valuenow',valueprice);
+    
+    if( valueprice < 2999 ) {      
+    	$('div.progress.freeshipping div.shipping_msg_text').html('Spend <strong>Rs. '+calremainmoney+'</strong> more to reach <strong>FREE SHIPPING!</strong>');
+    	$('div.progress-bar.progress-bar-info').css('width',totalbarwidth); 
+      $('.progress.freeshipping .shipping_icon').removeClass('ship_congrats');
+    } else {
+      $('div.progress.freeshipping div.shipping_msg_text').html("Congratulations! You've got free shipping!");
+    $('div.progress-bar.progress-bar-info').css('width','100%'); 
+      $('.progress.freeshipping .shipping_icon').addClass('ship_congrats'); 
+    }
+       }, 100);
+  });
+</script>
+
+{% if template contains 'product' %}
+{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
+{{ 'jquery.products.min.js' | asset_url | script_tag }}
+{{ 'slick.min.js' | asset_url | script_tag }}
+
+<script>
+ 
+ Shopify.Products.showRecentlyViewed({ 
+    howManyToShow:8,
+    wrapperId: 'recently-viewed-products-grid', 
+    templateId: 'recently-viewed-product-grid-template',
+    onComplete: function() {
+    	var recentlyViewBlock = $('.recently-viewed-products');
+        var recentlyGrid = recentlyViewBlock.find('#recently-viewed-products-grid');
+        var productGrid = recentlyGrid.children();
+        var productImage = recentlyViewBlock.find('.products-grid .product-image');
+    
+      
+      if(recentlyGrid.children().length > 0) {
+          recentlyViewBlock.show();
+
+          if(recentlyViewBlock.is(':visible')) {
+
+            {% if settings.enable_multilang %}
+            if (translator.current_lang == 2)
+              translator.doTranslate('.recently-viewed-products');
+            {% endif %}
+
+            var timer;
+
+            clearTimeout(timer);
+    
+            timer = setTimeout(function() {
+              if(recentlyGrid.hasClass('slick-initialized')) {
+                  recentlyGrid.slick('unslick');
+                  recentlyGrid.find('.slick-track').removeAttr('style');
+                  recentlyGrid.find('.slick-slide').removeAttr('style');
+                  recentlyGrid.find('button.slick-arrow').remove();
+                  recentlyGrid.find('.slick-list').removeAttr('style');
+              };
+
+              if(!recentlyGrid.hasClass('slick-initialized')) {
+                  recentlyGrid.slick({
+                    {% if settings.layout_product == 'vertical_tab_fullwidth' or product.template_suffix == "vertical-tab-fullwidth"  %} 
+                    slidesToShow: 6,
+                    slidesToScroll: 4,
+                    {% else %}
+                    slidesToShow: 5,
+                    {% endif %}
+                    speed: 500,
+                    dots: false,
+                    slidesToScroll: 5,
+            		nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 17 33" xml:space="preserve"><title>svg-arrow-next</title><g id="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="_x38_e584754-6657-46f1-a9d8-2cfd6623b552"><g><polygon points="14.9,14.5 0,0 0,3.7 11.1,14.5 13.2,16.5 11.1,18.5 0,29.3 0,33 14.9,18.5 17,16.5 "/></g></g></g></svg></button>',
+            		prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 33"><title>svg-arrow-prev</title><g id="7f9a1925-e8c7-4614-8787-3c6095a9f6e1" data-name="Layer 2"><g id="c9b7920a-81fa-4bfe-ad13-4da717c6854b" data-name="Layer 1"><g id="c2d982ff-0cf6-4220-b365-47f30d708fea" data-name="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="f51d455e-6b9c-4c4e-96db-a5004582beda" data-name="8e584754-6657-46f1-a9d8-2cfd6623b552"><polygon points="0 16.5 2.1 18.5 17 33 17 29.3 5.9 18.5 3.8 16.5 5.9 14.5 17 3.7 17 0 2.1 14.5 0 16.5"/></g></g></g></g></svg></button>',       
+                    responsive: [
+                      {
+                        breakpoint: 1200,
+                        settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 3
+                        }
+                      },
+                      {
+                        breakpoint: 992,
+                        settings: {
+                          slidesToShow: 3,
+                          slidesToScroll: 3
+                        }
+                      },
+                      {
+                        breakpoint: 768,
+                        settings: {
+                          slidesToShow: 2,
+                          slidesToScroll: 2,
+                          dots: true,
+                          arrows: false
+                        }
+                      }
+                    ]
+                });
+              };
+            }, 100);      
+  
+  			if (window.show_multiple_currencies) {
+               //Currency.convertAll(window.shop_currency, jQuery('#currencies').val(), 'span.money', 'money_format');
+            };
+          }; 
+        };    
+    }
+  }); 
+</script>
+
+
+<script>
+  Shopify.Products.recordRecentlyViewed(); 
+</script>
+
+{% endif %}
+
+{% unless template contains 'list-collection' %}
+<script>
+  $(function() {
+
+    if (!jQuery.cookie('shopify_recently_viewed')) {
+
+      $('.recently-viewed-products div.widget-title').css('display','none');
+    }
+  });
+  Shopify.Products.recordRecentlyViewed();
+</script>
+<script>
+  $('.infinite-scrolling a').first('a').append('<span style="text-transform: capitalize;">more products loading</span>');
+</script>
+{% endunless %}

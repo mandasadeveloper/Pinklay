@@ -1,0 +1,160 @@
+{% if section.blocks.size == 1%}
+{%- assign lookbook_item_width = 'col-md-12' -%}
+{% elsif section.blocks.size == 2 %}
+{%- assign lookbook_item_width = 'col-md-6' -%}
+{% elsif section.blocks.size == 3 %}
+{%- assign lookbook_item_width = 'col-md-4' -%}
+{% elsif section.blocks.size == 4 %}
+{%- assign lookbook_item_width = 'col-md-3' -%}
+{% endif %}
+
+<div class="product-lookbook">
+  {% if section.blocks.size > 0 %}
+  <div class="row">
+    {% for block in section.blocks %}
+    <div class="col-12{% if section.settings.show_tab == 'horizontal' or section.settings.show_tab == 'horizontal_center' %} {{lookbook_item_width}}{% elsif section.settings.show_tab == 'vertical' %} col-sm-4 col-md-12 col-xl-4{% endif %}">
+      {% if block.settings.dpl_lookboob_slide %}
+      <div class="item" id="lb-item{{ block.id }}"> 
+        <div class="lazy-images-contain" >
+          {% if block.settings.lb_image_slide != blank %}
+          {%- assign img_url = block.settings.lb_image_slide | img_url: 'master' -%}
+          <a class="fancybox" rel="gallery" href="{{ block.settings.lb_image_slide | img_url: 'master' }}"  data-fancybox="image">
+            <img src="{{block.settings.lb_image_slide | img_url: 'master'}}" alt=""
+                 class="lazyload"
+                 data-src="{{ img_url }}"
+                 data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                 data-sizes="auto">
+          </a>          
+          {% else %}
+          {% capture current %}{% cycle 2 %}{% endcapture %}
+          {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}                 
+          {% endif %}
+          
+          {% if block.settings.cms_text_1 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_1 }}%; left:{{ block.settings.left_position_1 }}%;">
+            <span class="glyphicon item_1_{{ block.id }}" data-text="{{ block.settings.cms_text_1 }}">+</span>
+          </div>
+          {% endif %}
+          
+          {% if block.settings.cms_text_2 != blank %}
+          <div class="lookbook-item" style="top:{{ block.settings.top_position_2 }}%; left:{{ block.settings.left_position_2 }}%;">
+            <span class="glyphicon item_2_{{ block.id }}" data-text="{{ block.settings.cms_text_2 }}">+</span>
+          </div>
+          {% endif %}
+          
+          <style type="text/css">
+            #lb-item{{ block.id }} .item_1_{{ block.id }}{
+              color:{{ block.settings.dots_color_1 }};
+              background: {{ block.settings.dots_bg_color_1 }};
+            }
+            #lb-item{{ block.id }} .item_1_{{ block.id }}:before {
+              color: {{ block.settings.dots_bg_color_1 }};
+            } 
+            #lb-item{{ block.id }} .item_2_{{ block.id }}{
+              color:{{ block.settings.dots_color_2 }};
+              background: {{ block.settings.dots_bg_color_2 }};
+            }
+            #lb-item{{ block.id }} .item_2_{{ block.id }}:before{
+              color: {{ block.settings.dots_bg_color_2 }};
+            }            
+          </style>
+        </div>	
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+  
+  {% if section.settings.quote_title != blank or section.settings.quote_title_2 != blank or section.settings.quote_des != blank or section.settings.quote_des_2 != blank %}
+  <div class="quote-detail rte">
+    {% if section.settings.quote_title != blank %}
+    <h5>
+      {% include 'multilang' with section.settings.quote_title %}
+    </h5>
+    {% endif %}
+
+    {% if section.settings.quote_des != blank %}
+    <blockquote>
+      {% include 'multilang' with section.settings.quote_des %}
+    </blockquote>
+    {% endif %}
+
+    {% if section.settings.quote_title_2 != blank %}
+    <h5>
+      {% include 'multilang' with section.settings.quote_title_2 %}
+    </h5>
+    {% endif %}
+
+    {% if section.settings.quote_des_2 != blank %}
+    {% if settings.enable_multilang %}
+    <div class="lang1">
+      {{ section.settings.quote_des_2 | split: '|' | first | strip }}
+    </div>
+    <div class="lang2">
+      {{ section.settings.quote_des_2  | split: '|' | last | strip }}
+    </div>
+    {% else %}
+    <div>
+      {{ section.settings.quote_des_2  | split: '|' | first }}
+    </div>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+
+<script>
+  $( document ).ready(function() {
+    var productLookbook = $('.product-lookbook .row');
+    
+    if(productLookbook.length) {
+      $('.product-lookbook .row').slick({
+        infinite: true,
+        slidesToShow: {{section.blocks.size}},
+        arrows: false,
+        slidesToScroll: 1,
+        autoplay: 2000,
+        speed : 1000,
+        dots: false,
+        responsive: [
+              {% if section.blocks.size == 4 %}
+               {
+                breakpoint: 1200,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                }
+              },
+             {%endif %}
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 1
+                }
+              },                          
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
+                  dots: true,
+                }
+              },
+
+              {
+                breakpoint: 576,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                  dots: true,
+                }
+              }
+
+          ]
+      });
+    };       
+  });
+
+</script>

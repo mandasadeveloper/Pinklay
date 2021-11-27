@@ -1,0 +1,389 @@
+<!--pop up start-->
+<div class="bts-popup" role="alert" >
+    <div class="bts-popup-container">
+      
+      <h2 class="title" style="font-size: 85px;line-height: 70px;color:#ec2b89;padding: 20px 20px 0px;margin: 0px;font-family: 'Corinthum ';">
+        <span>Always <br/> First!</span>
+      </h2>
+      <p class="sub-title" style="font-size: 16px;line-height:20px;color:#2d2d32;font-weight: 400; margin-bottom: 5px;">
+        <span>Sign up for exclusive updates, new arrivals, and insider-only discounts.</span>
+      </p>
+				<!--<div class="bts-popup-button">
+		       <a href="#0">Enter</a>
+         </div>-->
+        <a href="#0" class="bts-popup-close img-replace">Close</a>
+      
+      <!--newsletter code start-->
+      
+              <!--<div id="mailchimp-email-subscibe">
+                <div id="mc_embed_signup">-->
+      <div id="mobnewsmsg" >
+                  <form id="mobnewsletter" action="https://pinklay.us12.list-manage.com/subscribe/post-json?u=0c33bdb7dc26607a0590e19b9&id=b98be0c9b0&c=?" method="get" name="mc-embedded-subscribe-form" target="_blank" class="input-group" style="padding: 5px 10px 14px;  ">
+                    <input type="email" value="" placeholder="Your email address" name="EMAIL" class="input-group-field form-control" aria-label="Email Address" style="border: 1px solid #36454f !important;font-size: 12px;line-height: 24px;text-align: left;">
+                    <span class="input-group-btn">
+
+                      <input type="submit" class="btn sub" value="Subscribe" name="subscribe" style="
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 36px;
+    padding: 0px 13px;
+    cursor: pointer;
+    background: #36454f;
+    color: #ffffff;
+    border: 1px solid #36454f;    ">
+                    </span>                    
+                  </form>
+      
+        <!--<p >We don't spam!</p>-->
+        </div>
+
+                <!--</div>
+              </div>-->
+     
+     
+     <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay-Newsletter-Mobile_61a3d606-681d-491c-8ffe-d2d3a8db3eb2.jpg?v=1578462817" alt="" width="100%" style="padding: 0px;"/>
+              
+      <!--newsletter code end-->
+      
+    </div>
+</div>
+
+<!--pop up end-->
+  
+<script>
+
+       $(function() {
+        var $form = $('form#desktopnewsletter');
+        //var $newslength = $('input.input-group-field.form-control');
+
+    if ( $form.length > 0 ) {
+        $('form#desktopnewsletter input[type="submit"]').bind('click', function ( event ) {
+            if ( event ) event.preventDefault();
+                   //registers($form);
+          
+          if($('form#desktopnewsletter input[name=EMAIL]').val() != '') {
+            registers($form);
+          } 
+            else {
+              if($('#checkblank').val() != ''){
+              $('#mc_embed_signup #desktopnewsmsg').append('<span id="checkblank" style="color:#ec048a;font-size:12px;">Please enter your email id</span>');
+              }
+              else{
+              $('#mc_embed_signup #desktopnewsmsg').append('');
+              }
+            }  	
+        });
+      
+      
+    }
+});
+
+function registers($form) {
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        cache       : false,
+        dataType    : 'json',
+        contentType: "application/json; charset=utf-8",
+        error       : function(err) { 
+          $('#mc_embed_signup #desktopnewsmsg').prepend('<p>You Could not subscribed to Pinklay Newsletter. Please try again later</p>');
+           },
+        success     : function(data) {
+            if (data.result != "success") {                            
+              $('#mc_embed_signup #desktopnewsmsg').html('<p style="color: #ec2b89; font-size: 12px;padding: 10px 0px;">Thank you! You are already subscribed.</p>');               
+           		
+            } else {                
+               $('#mc_embed_signup #desktopnewsmsg').html('<p style="color: #ec2b89;font-size: 12px;    padding: 10px 0px;">Thank You! You have successfully subscribed.</p>');
+             
+            }
+          
+          setTimeout(function() {     
+            jQuery('#email-modal .modal-window').fadeOut(600, function() {
+              jQuery('#email-modal .modal-overlay').fadeOut(600, function() {
+                jQuery('#email-modal').hide();
+                var exprietime = new Date();
+                exprietime.setTime(exprietime.getTime() + (60 * 60 * 1000));
+                jQuery.cookie('emailSubcribeModal', 'closed', {expires: exprietime, path:'/'});
+              });
+            })
+            
+           // $('#desktopnewsletter input[name=subscribe]').click(function(){
+             // closeEmailModalWindow();
+            //});
+                }, 1000);
+        }
+    });
+}
+</script>
+  <script>
+
+    $(function() {
+      var $form = $('form#footernewsletter');
+
+      if ( $form.length > 0 ) {
+        $('form#footernewsletter input[type="submit"]').bind('click', function ( event ) {
+          if ( event ) event.preventDefault();
+          registersfoot($form);
+          console.log('none');
+        });
+      }
+    });
+
+    function registersfoot($form) {
+      $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        cache       : false,
+        dataType    : 'json',
+        contentType: "application/json; charset=utf-8",
+        error       : function(err) { 
+          $('.block-content.fornewsletter #footernewsform').prepend('<p>We were unable to subscribe you. Please try again.</p>');
+        },
+        success     : function(data) {
+          if (data.result != "success") {                            
+            $('.block-content.fornewsletter #footernewsform').html('<p style="color: #ec2b89; font-size: 12px;padding: 10px 0px;">Thank you! You are already subscribed.</p>');               
+
+          } else {                
+            $('.block-content.fornewsletter #footernewsform').html('<p style="color: #ec2b89;font-size: 12px;padding: 10px 0px;">Thank You! You have successfully subscribed.</p>');
+
+          }
+
+        }
+      });
+    }
+  </script>
+  <script>
+
+
+    $(function() {
+      var texts = ["Free Shipping On Orders Above INR 2999","<span>New Launch: Chaand Festive Clothing</span>"];
+      count = 0;
+      function changeText() {
+        $("#example").html(texts[count]);
+        if(count == 0)
+          count++;
+        else
+          count = 0;
+
+
+        //animation script start
+        var textWrapper = document.querySelector('#example');
+        //textWrapper.innerHTML = textWrapper.textContent.replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>");
+
+        anime.timeline({loop: true})
+        .add({
+          targets: '#example',
+          opacity: [0,1],
+          easing: "easeInOutQuad",
+          duration: 1000,
+          delay: function(el, i) {
+            return 150 * (i+1)
+          }
+        }).add({
+          targets: '#example',
+          opacity: 0,
+          duration: 1000,
+          easing: "easeOutExpo",
+          delay: 1000
+        });
+        //animation script end
+
+      }
+      setInterval(changeText, 3000);
+
+
+
+    });
+  </script>
+  
+<!--popup script start-->
+<script>
+
+       $(function() {
+        var $form = $('form#mobnewsletter');
+
+    if ( $form.length > 0 ) {
+        $('form#mobnewsletter input[type="submit"]').bind('click', function ( event ) {
+            if ( event ) event.preventDefault();
+                   register($form);
+        });
+    }
+});
+
+function register($form) {
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        cache       : false,
+        dataType    : 'json',
+        contentType: "application/json; charset=utf-8",
+        error       : function(err) { 
+          $('#mobnewsmsg').prepend('<p>We were unable to subscribe you. Please try again.</p>');
+           },
+        success     : function(data) {
+            if (data.result != "success") {                            
+              $('#mobnewsmsg').html('<p style="color: #ec2b89; font-size: 12px;padding: 10px 20px;">Thank you! You are already subscribed.</p>');               
+           		setTimeout(function() {     
+              		$('.bts-popup').trigger("click");
+                }, 2500);
+            } else {                
+               $('#mobnewsmsg').html('<p style="color: #ec2b89;font-size: 12px;    padding: 10px 20px;">Thank You! You have successfully subscribed.</p>');
+              setTimeout(function() {     
+              	$('.bts-popup').trigger("click");
+                }, 2500);
+            }
+        }
+    });
+}
+     
+  
+
+  $(function() {
+  
+  if (jQuery.cookie('mobilenew') != 'toclosed') {
+    window.onload = function (){
+      
+       setTimeout(function(){
+    $(".bts-popup").addClass('is-visible');
+         },30000);
+	}
+  } 
+  
+	//open popup
+  if (jQuery.cookie('mobilenew') != 'toclosed') {
+	$('.bts-popup-trigger').on('click', function(event){
+		event.preventDefault();
+		$('.bts-popup').addClass('is-visible');
+	});
+  }
+	
+	//close popup
+	$('.bts-popup').on('click', function(event){
+		if( $(event.target).is('.bts-popup-close') || $(event.target).is('.bts-popup') ) {
+			event.preventDefault();
+			$(this).removeClass('is-visible');
+          var exprietime = new Date();
+  			exprietime.setTime(exprietime.getTime() + (60 * 60 * 1000));
+          	$.cookie('mobilenew', 'toclosed', {expires: exprietime, path:'/'});
+		}
+	});
+	//close popup when clicking the esc keyboard button
+	$(document).keyup(function(event){
+    	if(event.which=='27'){
+    		$('.bts-popup').removeClass('is-visible');
+          
+	    }
+    });
+});
+</script>
+<!--pop up script end-->  
+  <style>
+     @media (min-width:1024px)
+    {
+     #modalshow .modal {
+    left: 1028px;
+
+    }
+     #modalshow button.close {
+    position: relative;
+    bottom: 15px;
+    left: 9px;
+}
+      
+     #modalshow .modal-content {
+        display: inline-block;
+        opacity: .9;
+      }
+    }
+    
+   #modalshow .modal-body {
+    /*color: #ec048a;*/
+      color:#ffff;
+    background: #898989;
+}
+   #modalshow button.close {
+    /*color: #ec048a;*/
+       color:#ffff;
+}
+   #modalshow .modal-content {
+    border: 1px solid  #898989;
+    }
+    
+    @media (min-width: 576px)
+      {
+#modalshow .modal-dialog {
+    max-width: 324px;
+}
+      }
+ 
+  </style>
+  <!--popup start-->         
+    <div class="container" id="modalshow">
+      <!-- Trigger the modal with a button -->
+      <!--<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open</button>-->
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <!--<div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>-->
+
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <p>When you change currency, the prices
+                mentioned are as per the currency-specific
+                catalogue and not the prevailing
+                currency conversion rate.
+              </p>
+            </div>
+            <!--<div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+            
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!--popup end--> 
+  <script>
+   $(function() {
+       
+    $("a#mobileredir").click(function(){
+     
+      setTimeout( function(){ 
+          $.cookie('stopredirect', '0', { domain: '.pinklay.com' });
+     window.location.replace("https://world.pinklay.com/");        
+    }, 1500);
+});
+    
+    });
+    
+    $(function() {
+       
+    $("a#redir").click(function(){
+       
+      $('#myModal').modal('show'); 
+      
+      setTimeout( function(){ 
+          $.cookie('stopredirect', '0', { domain: '.pinklay.com' });
+     window.location.replace("https://world.pinklay.com/");        
+    }, 3000);
+})
+    $("button.close").click(function(){
+      $('#myModal').modal('hide');
+      $.cookie('stopredirect', '0', { domain: '.pinklay.com' });
+      window.location.replace("https://world.pinklay.com/");
+    })
+    });
+  </script>

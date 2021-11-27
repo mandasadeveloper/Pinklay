@@ -1,0 +1,59 @@
+{% if product.metafields.custom_fields["product_video"] != blank %}
+<div class="video-open-popup {% if settings.layout_product == 'vertical_tab_fullwidth' or product.template_suffix == "vertical-tab-fullwidth" %}video_tab-fullwidth{% endif %}">
+  <a data-fancybox="" href="#video_product">
+ <svg class="Icon Icon--play" role="presentation" viewBox="0 0 24 24">
+      <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zm-2 15.5V9l4.5 3.25L10 15.5z" fill="currentColor"></path>
+    </svg>
+  </a>
+  <style>
+  
+  @media screen and (max-width: 1099px) {
+    #provideo {
+      max-width:90%
+    }
+  }
+    @media screen and (min-width: 1100px) {
+    #provideo {
+      max-width:600px;
+      height:550px;
+    }
+  }
+  
+  </style>
+  <div id="video_product" style="display: none;margin: 0;">
+    <div class="videoWrapper">
+      <center>
+      <video autoplay loop id="provideo">
+     <source src="{{ product.metafields.custom_fields["product_video"] }}" type="video/mp4"> 
+   
+  Pinklay
+
+</video>
+      </center>
+    </div>
+  </div>
+</div>
+<script>
+
+  $('.video-open-popup a').click(function(){
+     document.getElementById('provideo').play();
+  }); 
+
+  window.setInterval(function(){
+  if($('#video_product:visible').length == 0)
+    {
+    document.getElementById('provideo').pause();
+    } 
+}, 1000);
+
+   
+</script>
+{% endif %}
+
+  <div class="custom-field custom-field__product-video custom-field__type--text">
+
+    <div class="custom-field--value">
+      
+    </div>
+  </div>
+

@@ -1,0 +1,27 @@
+{% if section.settings.display_size_chart %}
+<a data-toggle="modal" data-target="#myModal_sizechar" class="size-chart-open-popup">
+  {% include 'multilang' with section.settings.custom_size_chart_title %}
+</a>
+
+<div id="myModal_sizechar"class="size-chart modal fade" role="dialog">
+  <div class="content-size-char modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a data-dismiss="modal" href="javascript:void(0)" class="close-size-chart" title="{{ 'cart.ajax_cart.close' | t }}">
+          {% include 'icon-close' %}
+        </a>
+        {% if section.settings.custom_size_chart_content != blank %}
+        <div class="custom_size_chart_des">
+          {{ section.settings.custom_size_chart_content }}
+        </div>
+        {% endif %}
+      </div>
+      <div class="modal-body">
+        <div class="img-size-chart">
+          <img src="{{ section.settings.custom_size_chart | img_url: "master" }}" alt="{{ section.settings.custom_size_chart_title }}"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}

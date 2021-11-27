@@ -1,0 +1,32 @@
+<style>
+.shippingpage ul, .shippingpage ol {
+  	list-style: revert;     margin: auto 15px;
+}
+  .shippingpage ul {
+    margin: auto 30px;
+  }
+  .shippingpage ul li, .shippingpage ol li {
+    padding-left: 5px; margin-bottom: 10px;
+  }
+@media screen and (max-width: 768px) {
+ .shippingpage .page-header {
+   margin-bottom: 12px;
+ }
+}
+   .shippingpage .page-header img {
+ width : 100%;
+   }
+</style>
+<div class="container shippingpage">
+  <header class="page-header text-center" style="border-bottom: none;">
+    <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Pinklay_Shipping_Returns_Banner_1.jpg?v=1599482627">
+  </header>
+
+  {% if settings.enable_multilang %}
+  <div class="rte lang1">{{ page.content | split: '[lang2]' | first }}</div>
+  <div class="rte lang2">{{ page.content | split: '[lang2]' | last }}</div>
+  {% else %}
+  <div class="rte">{{ page.content | split: '[lang2]' | first }}</div>
+  {% endif %}
+</div>
+

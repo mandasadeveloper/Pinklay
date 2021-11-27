@@ -1,0 +1,294 @@
+<script src="{{ 'instafeed.min.js' | asset_url }} " defer></script>
+{% if section.settings.show_instagram %}
+<section class="home-instagram">
+  <div class="{% if section.settings.layout == 'default' %}container{% endif %}">
+   <!-- <div class="widget-title">   
+      {% if section.settings.instagram_title != blank %}
+      	<h3>{% include 'multilang' with section.settings.instagram_title %}</h3>
+      {% endif %}
+      
+      {% if section.settings.instagram_des != blank %}
+      <div class="des">
+      	{% include 'multilang' with section.settings.instagram_des %}
+      </div>
+       {% endif %}
+    </div>
+    -->
+    <div id="instafeed"></div> 
+  </div>
+</section>
+{% if section.settings.user-id == blank or section.settings.accessToken == blank %}
+{% else %}
+<script>
+  jQuery(document).ready(function(){
+    var feed = new Instafeed({
+       get: "user",   
+      {% if section.settings.instagram_tag != blank %} tagName: "{{ section.settings.instagram_tag }}", {% endif %}
+      {% if settings.locationId != blank %} locationId: "{{ section.settings.instagram_locationId }}", {% endif %}
+      {% if section.settings.user-id != blank %} userId: {{ section.settings.user-id }}, {% endif %}
+      {% if section.settings.accessToken != blank %}accessToken: '{{ section.settings.accessToken }}', {% endif %}
+      resolution: "{{ section.settings.resolution_images }}",
+      clientId: "c6e4c736e82345a3898a0e299daa00fb",
+      limit: "{{ section.settings.limit }}",
+      after: function() {
+        jQuery("#instafeed a").attr("target","_blank");
+        jQuery("#instafeed").not('.slick-initialized').slick({
+      		slidesToShow: {{section.settings.images_per_row}},
+            slidesToScroll: {{section.settings.images_per_row}},
+      		autoplay:true,
+  			autoplaySpeed:3000,
+            arrows: true,
+            nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 17 33" xml:space="preserve"><title>svg-arrow-next</title><g id="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="_x38_e584754-6657-46f1-a9d8-2cfd6623b552"><g><polygon points="14.9,14.5 0,0 0,3.7 11.1,14.5 13.2,16.5 11.1,18.5 0,29.3 0,33 14.9,18.5 17,16.5 "/></g></g></g></svg></button>',
+            prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 33"><title>svg-arrow-prev</title><g id="7f9a1925-e8c7-4614-8787-3c6095a9f6e1" data-name="Layer 2"><g id="c9b7920a-81fa-4bfe-ad13-4da717c6854b" data-name="Layer 1"><g id="c2d982ff-0cf6-4220-b365-47f30d708fea" data-name="e4eb89a6-f885-43b8-9259-0d6b1516fab0"><g id="f51d455e-6b9c-4c4e-96db-a5004582beda" data-name="8e584754-6657-46f1-a9d8-2cfd6623b552"><polygon points="0 16.5 2.1 18.5 17 33 17 29.3 5.9 18.5 3.8 16.5 5.9 14.5 17 3.7 17 0 2.1 14.5 0 16.5"/></g></g></g></g></svg></button>',
+      		speed : 1000,   
+            dots: false,
+      		{% if section.settings.slide_ins == 'centermode' %}
+            centerMode: true,
+      		centerPadding: '100px',
+       		{% endif %}
+            responsive: [
+              {
+                breakpoint: 1025,
+                settings: {
+                  slidesToShow: 6,
+                  slidesToScroll: 6      
+                }
+              },
+              {
+                breakpoint: 1024,
+                settings: {
+                  slidesToShow: 5,
+                  slidesToScroll: 5,
+                  dots: false,
+                  arrows: true
+                }
+              },
+              {
+                breakpoint: 767,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                  dots: false,
+                  arrows: true
+                }
+              },
+              {
+                breakpoint: 480,
+                settings: {
+                  {% if section.settings.slide_ins == 'centermode' %}
+                  slidesToShow: 1,
+                  {% else %}
+                  slidesToShow: 2,          
+                  {% endif %}
+                  slidesToScroll: 1,
+                  dots: false,
+                  arrows: true
+                }
+              }
+            ]
+          });
+      }
+    });
+    feed.run();
+  });
+</script>
+{% endif %}
+{% endif %}
+
+{% if section.settings.slide_ins == 'default_ins' %}
+<style>
+    div#instafeed button {
+    background: #fff;
+}
+    section.home-instagram {
+    border-color: transparent;
+    padding-top: 0px !important;
+}
+  .home-instagram #instafeed a{
+    border: none;
+    padding: 15px;
+  }
+  .home-instagram{
+    padding:0px 0 50px 0;
+  }
+  .home-instagram .slick-arrow svg{
+    width: 25px;
+    height: 25px;
+    margin: auto;
+    fill: #6b686b;
+    padding:0;
+  }
+  .home-instagram .slick-arrow {
+    width: 55px;
+    height: 55px;
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .home-instagram .slick-next{
+    right:-4%;
+  }
+  .home-instagram .slick-prev{
+    left:-4%;
+  }
+</style>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Instagram",
+	"class": "index-section",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_instagram",
+        "label": "Enable",
+        "default": true
+      },
+	  {
+          "type" : "radio",
+          "id" : "layout",
+          "label" : "Layouts",       
+          "options": [
+            {
+              "value": "default",
+              "label": "Default"
+            },
+            {
+              "value": "full",
+              "label": "Full Width"
+            }
+          ],
+          "default": "full"
+      },
+	  {
+          "type" : "radio",
+          "id" : "slide_ins",
+          "label" : "Slider Instagram",       
+          "options": [
+            {
+              "value": "centermode",
+              "label": "Center Mode"
+            },
+            {
+              "value": "default_ins",
+              "label": "Default"
+            }
+          ],
+          "default": "centermode"
+      },
+      {
+        "type": "color",
+        "id": "instagram_bg_color",
+        "label": "Background color",
+        "default": "#fff"
+      },
+      {
+        "type": "color",
+        "id": "instagram_border_color",
+        "label": "Border color",
+        "default": "#E6E6E6"
+      },
+      {
+        "type": "text",
+        "id": "instagram_title",
+        "label": "Title",
+        "default": "Follow us On Instagram"
+      },
+      {
+        "type": "text",
+        "id": "instagram_des",
+        "label": "Instagram Description",
+        "default": "Phasellus lorem malesuada ligula pulvinar commodo maecenas suscipit auctom."
+      },
+      {
+        "type": "text",
+        "id": "user-id",
+        "label": "User Id",
+        "default": "1599696966",
+      "info": "Use when Get Image from: 'User'. [Where do I find User ID?](https:\/\/smashballoon.com\/instagram-feed\/find-instagram-user-id/)"
+      },
+      {
+        "type": "text",
+        "id": "accessToken",
+        "label": "Access Token",
+        "default": "1599696966.467ede5.0995bcf2188e4607bd092f5b29edaf99",
+        "info": "Required to use when Get Image from: 'User'.[Where do I find Access Token?](http:\/\/instagram.pixelunion.net/)"
+      },
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Limit the number of images to show",
+        "default": "15"
+      },
+      {
+        "type": "select",
+        "id": "images_per_row",
+        "label": "Images per row",
+		"default" : "7",
+        "options": [
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          },
+          {
+            "value": "6",
+            "label": "6"
+          },
+          {
+            "value": "7",
+            "label": "7"
+          },
+          {
+            "value": "8",
+            "label": "8"
+          },
+          {
+            "value": "9",
+            "label": "9"
+          },
+          {
+            "value": "10",
+            "label": "10"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "resolution_images",
+        "label": "Resolution of images",
+		"default" : "low_resolution",
+        "options": [
+          {
+            "value": "thumbnail",
+            "label": "Thumbnail"
+          },
+          {
+            "value": "low_resolution",
+            "label": "Low Resolution"
+          },
+          {
+            "value": "standard_resolution",
+            "label": "Standard Resolution"
+          }
+        ]
+      }
+	],
+	"presets": [
+          {
+            "name": "Instagram",
+            "category": "Instagram"
+          }
+        ]
+  }
+{% endschema %}
+<style>
+.home-instagram { background-color: {{ section.settings.instagram_bg_color }};border-color:{{ section.settings.instagram_border_color }} }
+</style>

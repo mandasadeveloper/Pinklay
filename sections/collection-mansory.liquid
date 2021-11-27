@@ -1,0 +1,89 @@
+<div class="collections-content-product">
+{% if section.settings.collection_results_per_page != blank %}
+  {% assign product_per_page = section.settings.collection_results_per_page %}
+{% else %}
+  {% assign product_per_page = 12 %}
+{% endif %}
+    
+  {% paginate collection.products by product_per_page %}
+  {% include 'toolbar' %}
+  
+    {% case section.settings.collection_results_per_row %}
+      {% when '2' %}
+       {%- assign grid_item_width = 'col-md-6 col-lg-6 col-xl-6' -%}
+      {% when '3' %}
+       {%- assign grid_item_width = 'col-md-4 col-lg-4 col-xl-4' -%}
+      {% when '4' %}
+       {%- assign grid_item_width = 'col-md-4 col-lg-4 col-xl-3' -%}
+      {% when '5' %}
+       {%- assign grid_item_width = 'col-md-4 col-lg-4 col5' -%}
+    {% endcase %}
+
+  <div class="product-collection products-grid row collections-mansory">
+    {% if collection.products_count > 0 %}    
+    {% for product in collection.products %}
+    
+    <div class="grid-item col-6 {{ grid_item_width }}">
+      {% include 'product-grid-item' %}
+    </div>
+    
+    {% endfor %}
+    
+    <div class="grid-item col-6 {{ grid_item_width }} my-sizer-element"></div>
+    
+    {% else %}
+    <p class="text-center col-12" {% if settings.enable_multilang %}data-translate="collections.general.no_matches"{% endif %}>
+      {{ 'collections.general.no_matches' | t }}
+    </p>
+    {% endif %}
+  </div>
+  
+  {% if paginate.pages > 1 %}
+  <div class="padding">
+    {% include 'pagination-page' %}
+  </div>
+  {% endif %}
+  {% endpaginate %}    
+</div>
+
+{% schema %}
+  {
+    "name": "Collection Mansory",
+    "settings": [
+      {
+        "type": "select",
+        "id": "collection_results_per_row",
+        "label": "Products per row (grid only)",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "range",
+        "id": "collection_results_per_page",
+        "label": "Products per page",
+        "min": 1, 
+        "max": 50,
+        "step": 1,
+        "default": 12
+      }
+    ]
+  }
+{% endschema %}
+

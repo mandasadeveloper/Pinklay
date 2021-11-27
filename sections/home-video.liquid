@@ -1,0 +1,60 @@
+<style>
+  .videoWrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.videoWrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+  
+</style>
+<section class="custom-video-block" id="section-{{ section.id }}" >
+  <div class="container videoWrapper">    
+     <!--  <iframe width="560" height="349" src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Quilts_Washcare_Guide.mp4?v=1598894305"  frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; loop" allowfullscreen title=" Wash Care Guide for Your Favorite Quilts by Pinklay"></iframe>-->
+     <video width="560" height="349" controls>
+    <source src="https://cdn.shopify.com/s/files/1/0249/5099/7070/files/Quilts_Washcare_Guide.mp4?v=1598894305" type="video/mp4" title=" Wash Care Guide for Your Favorite Quilts by Pinklay">
+    </video>
+  </div>
+ 
+ 
+</section>
+
+{% schema %}
+  {
+      "name": "home video",
+      "settings": [
+   {
+          "type": "range",
+          "id": "space_on",
+          "label": "Space on",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "space_below",
+          "label": "Space below",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 25
+        },
+		{ "type": "header",
+          "content": "Video section"
+    	}
+		
+      ],     
+      "presets": [{
+        "name": "home video",
+        "category": "video"
+      }]
+  }
+{% endschema %}
