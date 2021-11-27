@@ -99,7 +99,20 @@
     top: 50vh;
     width: 90%;
 }
-
+.upsell-item {
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
 
 </style>
 {% assign upsell1 = settings.product_1 %}
@@ -116,7 +129,17 @@
               <h3 class="upsell-title">Celebrate Month of Giving With Pinklay</h3>
             <p>At Pinklay, we celebrate December as the month of giving (learn more here). This year, we have tied up with two NGOs – a portion of our sales from every order goes to their sustenance.</p>
             <div class="upsell-head">
-              <div class="upsell-item" ddts={{upsell1.id}}>
+              <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">{{upsell1.title}}</div>
+                <div class="upsell_price">{{upsell1.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" type="button">
+                   Add to Cart
+                  </button>
+                </div>
               </div>
                <div class="upsell-item">
               </div>
