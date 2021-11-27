@@ -136,7 +136,17 @@
                   </button>
                 </div>
               </div>
-               <div class="upsell-item">
+               <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">{{upsell2.title}}</div>
+                <div class="upsell_price">{{upsell2.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" type="button">
+                   Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           </div>
