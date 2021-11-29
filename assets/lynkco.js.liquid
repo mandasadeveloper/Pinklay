@@ -875,6 +875,23 @@
           productId = productId.match(/\d+/g);
           Shopify.removeItem(productId, function(cart) {
             lynkco.doUpdateDropdownCart(cart);
+            console.log(cart.items[0].handle);
+            if(cart.item_count == 1){
+              if(cart.items[0].handle == "plant-a-tree" || cart.items[0].handle == "feed-a-stray"){
+                $.ajax({
+                  type: "POST",
+                  url: '/cart/clear.js',
+                  data: '',
+                  dataType: 'json',
+                  success: function(data) { 
+                    lynkco.doUpdateDropdownCart(data);
+                  },
+                  error: function(XMLHttpRequest, textStatus) {
+                    /* error code */
+                  }
+                });
+              }
+            }
           });
         });
 
@@ -3126,8 +3143,27 @@
                 if (!quantity) {
                   quantity = 1;
                 }
-
+                
                 lynkco.doAjaxAddToCart(variant_id, quantity, handle);
+                var upsell_popup = true;
+                Shopify.getCart(function(cart) {
+                    
+                  cart.items.forEach(function(item) {
+                    if(item.handle == "plant-a-tree" || item.handle == "feed-a-stray"){
+                       upsell_popup = false;
+                       console.log(upsell_popup);
+                    }
+                    
+                  });
+                  if(upsell_popup){
+                    jQuery('#upsell-modal').fadeIn(600, function() {
+                      jQuery('#upsell-modal .modal-window').fadeIn(600);
+                      jQuery('#upsell-modal .modal-overlay').fadeIn(600);
+                    });
+                  }
+                });
+              
+                
               }
             }
             return false;
@@ -3136,6 +3172,19 @@
         };
 
         Shopify.moveAlong();
+      });
+      
+      $('.upsell-add-to-cart').on('click', function(e) {
+        var id_varaint = $(this).attr("variant_id");
+        setTimeout(function() {
+        lynkco.doAjaxAddToCart(id_varaint, 1);
+          $('.cartToggle').click();
+        }, 1000);
+        jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
+          jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
+            jQuery('#upsell-modal').hide();
+          });
+        })
       });
 
     },

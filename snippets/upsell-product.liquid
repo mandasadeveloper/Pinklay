@@ -1,0 +1,200 @@
+<style>
+  @media (max-width:768px)
+  {
+    div#email-modal{
+     display:block !important;
+    }
+    
+    .modal-window{
+      display:block !important;
+    }
+  }
+</style>
+
+{% if settings.display_popup_newsletter %}
+<script type="text/javascript">
+  $(function() {       
+
+    $('#upsell-modal .modal-overlay').on('click', function(){
+      closeupsellModalWindow ();
+    }),
+    jQuery('#upsell-modal .btn.close').click(function(e) {
+      e.preventDefault();
+      if ($('input[name=dismiss]').is(':checked')) {
+        closeupsellwrapperModalWindow();
+      } else {
+        closeupsellModalWindow();
+      }
+    });
+
+    jQuery('body').keydown(function(e) {
+      if( e.which == 27) {
+        closeupsellModalWindow();
+        jQuery('body').unbind('keydown');
+      }
+    });
+
+    function closeupsellwrapperModalWindow () {
+      jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
+        jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
+          jQuery('#upsell-modal').hide();
+//           var exprietime = new Date();
+//   			exprietime.setTime(exprietime.getTime() + (60 * 60 * 1000));
+//           jQuery.cookie('emailSubcribeModal', 'closed', {expires: exprietime, path:'/'});
+        });
+      })
+    }
+
+    function closeupsellModalWindow () {
+      jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
+        jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
+          jQuery('#upsell-modal').hide();
+//            var exprietime = new Date();
+//   			exprietime.setTime(exprietime.getTime() + (60 * 60 * 1000));
+//           jQuery.cookie('emailSubcribeModal', 'closed', {expires: exprietime, path:'/'});
+        });
+      })
+    }
+    
+//$('#desktopnewsletter input[name=subscribe]').click(function(){
+    // closeEmailModalWindow();
+     // });
+  });
+  
+</script>
+<style>
+  #upsell-modal .content-popup{
+    padding:30px;
+    display:block;
+  }
+  .upsell-title {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    line-height: 20px;
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+    color: #5ac4be !important;
+    text-align:center;
+  }
+  @media (max-width: 767px){
+    .upsell-title{
+      font-size: 16px;
+    }
+  }
+  .upsellproductwrapper .modal-window {
+    background: #fff;
+    position: absolute;
+    -moz-transform: translate(-50%,-50%);
+    -o-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    left: 50%;
+    right: 0;
+    max-width: 814px;
+    min-height: 300px;
+    margin: auto;
+    top: 50vh;
+    width: 90%;
+    height:auto;
+}
+.upsell-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom:10px;
+}
+.upsell-item img {
+    height: 75px;
+    width: auto;
+    object-fit: cover;
+}
+  .upsell-item .upsell_title {
+      width: 30%;
+  }
+ #upsell-modal button {
+    min-width: 200px;
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: 13px;
+    height: 42px;
+    padding: 0 15px;
+    text-transform: uppercase;
+    line-height: 42px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    background: #5ac4be;
+    color: #fff;
+    border: 1px solid #5ac4be;
+    fill: #ffffff;
+}
+  @media (max-width: 676px){
+    .upsell-item {
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .upsell-item .upsell_title {
+      text-align: center;
+    }
+    .upsell-item .upsell_title p{
+      margin-bottom: 0;
+    }
+    .upsell_price{
+      margin-bottom: 10px;
+    }
+  }
+</style>
+{% assign upsell1 = settings.product_1 %}
+{% assign upsell2 = settings.product_2 %}
+<div class="upsellproductwrapper">
+  <div id="upsell-modal" style="display: none;">
+    <div class="modal-overlay"></div>
+    <div class="modal-window" style="display: none;">
+      <div class="window-window">
+        <div class="window-content">
+          <a href="javascript:void(0)" class="btn close" title="{{ 'cart.ajax_cart.close' | t }}">{% include 'icon-close' %}</a>
+          <div class="content-popup">
+
+              <h3 class="upsell-title">Celebrate Month of Giving With Pinklay</h3>
+            <p>At Pinklay, we celebrate December as the month of giving (learn more here). This year, we have tied up with two NGOs – a portion of our sales from every order goes to their sustenance.</p>
+            <div class="upsell-head">
+              <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">
+                  <b>{{upsell1.title}} </b>
+                  <p>NGO: Grow-Trees</p>
+                </div>
+                <div class="upsell_price">{{upsell1.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
+                   Add to Cart
+                  </button>
+                </div>
+              </div>
+               <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">
+                  <b>{{upsell2.title}} </b>
+                  <p>NGO: Dogs of Shiv Nadar University</p>
+                 </div>
+                <div class="upsell_price">{{upsell2.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell2.selected_or_first_available_variant.id}}" type="button">
+                   Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
