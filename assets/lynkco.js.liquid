@@ -3141,6 +3141,16 @@
 
         Shopify.moveAlong();
       });
+      
+      $('.upsell-add-to-cart').on('click', function(e) {
+        var id_varaint = $(this).attr("variant_id");
+        lynkco.doAjaxAddToCart(id_varaint, 1);
+        jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
+          jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
+            jQuery('#upsell-modal').hide();
+          });
+        })
+      });
 
     },
 
