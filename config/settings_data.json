@@ -2381,6 +2381,7 @@
         "blocks": {
           "1598104889733": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Pinklay_Black_Friday_Sale_Desktop_Banner.jpg",
