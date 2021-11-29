@@ -877,8 +877,9 @@
             lynkco.doUpdateDropdownCart(cart);
          
             if(cart.item_count == 1){
-                 console.log(cart.items[0].handle);
+               
               if(cart.items[0].handle == "plant-a-tree"){
+                  console.log(cart.items[0].handle);
                 $.ajax({
                   type: "POST",
                   url: '/cart/clear.js',
