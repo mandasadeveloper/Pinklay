@@ -3145,16 +3145,22 @@
                 }
                 
                 lynkco.doAjaxAddToCart(variant_id, quantity, handle);
+                var upsell_popup = true;
                 Shopify.getCart(function(cart) {
                     
                   cart.items.forEach(function(item) {
-                    console.log(item);
+                    if(item.handle == "plant-a-tree" || item.handle == "feed-a-stray"){
+                       upsell_popup = false;
+                    }
+                    
                   });
                 });
+                if(upsell_popup){
                 jQuery('#upsell-modal').fadeIn(600, function() {
                   jQuery('#upsell-modal .modal-window').fadeIn(600);
                   jQuery('#upsell-modal .modal-overlay').fadeIn(600);
                 });
+                }
               }
             }
             return false;
