@@ -154,7 +154,7 @@
                 </div>
                 <div class="upsell_price">{{upsell1.price | money}}</div>
                 <div class="upsell_addtocart">
-                 <button class="btn upsell-add-to-cart" type="button">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
                    Add to Cart
                   </button>
                 </div>
@@ -169,7 +169,7 @@
                  </div>
                 <div class="upsell_price">{{upsell2.price | money}}</div>
                 <div class="upsell_addtocart">
-                 <button class="btn upsell-add-to-cart" type="button">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell2.selected_or_first_available_variant.id}}" type="button">
                    Add to Cart
                   </button>
                 </div>
