@@ -3146,7 +3146,10 @@
                 
                 lynkco.doAjaxAddToCart(variant_id, quantity, handle);
                 Shopify.getCart(function(cart) {
-                    console.log(cart);
+                    
+                  cart.items.forEach(function(item) {
+                    console.log(item);
+                  });
                 });
                 jQuery('#upsell-modal').fadeIn(600, function() {
                   jQuery('#upsell-modal .modal-window').fadeIn(600);
