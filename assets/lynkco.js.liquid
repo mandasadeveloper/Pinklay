@@ -883,8 +883,8 @@
                   url: '/cart/clear.js',
                   data: '',
                   dataType: 'json',
-                  success: function() { 
-                    lynkco.doUpdateDropdownCart(cart);
+                  success: function(data) { 
+                    lynkco.doUpdateDropdownCart(data);
                   },
                   error: function(XMLHttpRequest, textStatus) {
                     /* error code */
