@@ -130,6 +130,21 @@
     border: 1px solid #5ac4be;
     fill: #ffffff;
 }
+  @media (max-width: 676px){
+    .upsell-item {
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+    .upsell-item .upsell_title {
+      text-align: center;
+    }
+    .upsell-item .upsell_title p{
+      margin-bottom: 0;
+    }
+    .upsell_price{
+      margin-bottom: 10px;
+    }
+  }
 </style>
 {% assign upsell1 = settings.product_1 %}
 {% assign upsell2 = settings.product_2 %}
