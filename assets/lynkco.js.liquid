@@ -875,6 +875,7 @@
           productId = productId.match(/\d+/g);
           Shopify.removeItem(productId, function(cart) {
             lynkco.doUpdateDropdownCart(cart);
+            console.log(cart);
           });
         });
 
