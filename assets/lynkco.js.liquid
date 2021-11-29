@@ -3148,8 +3148,9 @@
                 Shopify.getCart(function(cart) {
                     console.log(cart.items);
                   $(cart.items).each(function( index ) {
-                    console.log( index);
+                    console.log(index);
                 });
+                }
                 jQuery('#upsell-modal').fadeIn(600, function() {
                   jQuery('#upsell-modal .modal-window').fadeIn(600);
                   jQuery('#upsell-modal .modal-overlay').fadeIn(600);
