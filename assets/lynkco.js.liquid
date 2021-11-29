@@ -876,6 +876,23 @@
           Shopify.removeItem(productId, function(cart) {
             lynkco.doUpdateDropdownCart(cart);
             console.log(cart);
+            if(cart.item_count == 1){
+              if(cart.items[0].handle == "plant-a-tree" || cart.items[0].handle == "feed-a-stray"){
+                $.ajax({
+                  type: "POST",
+                  url: '/cart/clear.js',
+                  data: '',
+                  success: success,
+                  dataType: 'json',
+                  success: function() { 
+                    lynkco.doUpdateDropdownCart(cart);
+                  },
+                  error: function(XMLHttpRequest, textStatus) {
+                    /* error code */
+                  }
+                });
+              }
+            }
           });
         });
 
