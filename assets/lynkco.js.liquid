@@ -3180,11 +3180,9 @@
         lynkco.doAjaxAddToCart(id_varaint, 1);
           $('.cartToggle').click();
         }, 1000);
-        jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
-          jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
-            jQuery('#upsell-modal').hide();
-          });
-        })
+        jQuery('#upsell-modal .modal-window').fadeOut(600);
+          jQuery('#upsell-modal .modal-overlay').fadeOut(600);
+         jQuery('#upsell-modal').hide();
       });
 
     },
