@@ -5410,6 +5410,12 @@
           "dpl_group_product": true,
           "dpl_free_size": true
         }
+      },
+      "month_of_giving_mt": {
+        "type": "month_of_giving_mt",
+        "settings": {
+          "background_image": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px.jpg"
+        }
       }
     },
     "content_for_index": [
