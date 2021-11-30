@@ -19,12 +19,12 @@
       {%- case block.type -%}
       {%- when 'image-with-text' -%}
        		<div class="our-story-section-content">
-	<div class="left-content"  style="order:{{block.settings.layout}};">
-      <h3 class="our-story-section-content-h3">
+              <h3 class="our-story-section-content-h3">
           {% if block.settings.heading != blank %}
             {{ block.settings.heading | escape }}
           {% endif %}
         </h3>
+	<div class="left-content"  style="order:{{block.settings.layout}};">
     <div class="left-content-section">
         <p class="our-story-section-content-p">
            {% if block.settings.para != blank %}
