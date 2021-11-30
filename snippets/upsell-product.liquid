@@ -141,7 +141,7 @@
     .upsell-item .upsell_title p{
       margin-bottom: 0;
     }
-    .upsell_price{
+    .upsell-item .upsell_price{
       margin-bottom: 10px;
     }
     .upsellproductwrapper .modal-window {
@@ -155,6 +155,36 @@
   .content-popup .learn_more{
     color: #5ac4be !important;
     border-bottom: 1px solid;
+  }
+  .upsell-item-mobile{
+    
+  }
+  .upsell-item-mobile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom:10px;
+  }
+  .upsell-item-mobile img {
+    height: 75px;
+    width: auto;
+    object-fit: cover;
+  }
+  .upsell-item-mobile .upsell_title {
+    width: 30%;
+  }
+  .upsell-item-mobile {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .upsell-item-mobile .upsell_title {
+    text-align: center;
+  }
+  .upsell-item-mobile .upsell_title p{
+    margin-bottom: 0;
+  }
+  .upsell-item .upsell_price{
+    margin-bottom: 10px;
   }
 </style>
 {% assign upsell1 = settings.product_1 %}
@@ -202,8 +232,8 @@
                 </div>
               </div>
             </div>
-            <div class="upsell-head mobile-only">
-              <div class="upsell-item" >
+            <div class="upsell-head-mobile mobile-only">
+              <div class="upsell-item-mobile" >
                 <div class="upsell_image">
                 <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
                 </div>
@@ -218,7 +248,7 @@
                   </button>
                 </div>
               </div>
-               <div class="upsell-item" >
+               <div class="upsell-item-mobile" >
                 <div class="upsell_image">
                 <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
                 </div>
