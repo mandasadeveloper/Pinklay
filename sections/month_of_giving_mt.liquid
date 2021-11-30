@@ -4,8 +4,15 @@
       <div class="background_image" style="background-image:url('{{ section.settings.background_image | img_url : 'master' }}')">
       </div>
     </div>
-    
-	</div>
+
+  </div>
+  <div class="section_second_mt">
+    <div class="Background_image_wrapper_mt">
+      <div class="background_image" style="background-image:url('{{ section.settings.background_image | img_url : 'master' }}')">
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
@@ -52,5 +59,11 @@
 	min-height : 1px;
 	background-size : cover;
 	background-position : center center;
+}
+.section_second_mt
+{
+	display : block;
+	width : 100%:
+	max-width : 100%;
 }
 {% endstyle %}
