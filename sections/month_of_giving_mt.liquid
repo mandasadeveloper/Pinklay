@@ -12,7 +12,10 @@
      {{ section.settings.title }}
     </div>
   </div>
-  <div class="our-story-section-content">
+      {%- for block in section.blocks -%}
+      {%- case block.type -%}
+      {%- when 'image-with-text' -%}
+       		<div class="our-story-section-content">
 	<div class="left-content"  style="order:{{block.settings.layout}};">
     <div class="left-content-section">
         <h3 class="our-story-section-content-h3">
@@ -34,6 +37,9 @@
           </div>
      </div> 
 </div>
+      {%- endcase -%}
+   {%- endfor -%}
+  
   </div>
 </div>
 
