@@ -156,32 +156,37 @@
     color: #5ac4be !important;
     border-bottom: 1px solid;
   }
+  
   .upsell-item-mobile{
-    
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    padding: 15px 0;
   }
-  .upsell-item-mobile{
-    margin-bottom:10px;
+  .upsell-item-mobile .upsell-image {
+    width: 80px;
+    margin-right: 15px;
+    margin-top: 7px;
   }
-  .upsell-item-mobile img {
-    height: 75px;
-    width: auto;
-    object-fit: cover;
+   .upsell-item-mobile .product-details {
+    position: relative;
+    width: -moz-calc(100% - 80px);
+    width: -webkit-calc(100% - 80px);
+    width: calc(100% - 80px);
   }
-  .upsell-item-mobile .upsell_title {
-    width: 30%;
-  }
-  .upsell-item-mobile {
-    margin-bottom: 20px;
-  }
-  .upsell-item-mobile .upsell_title {
-    text-align: center;
-  }
-  .upsell-item-mobile .upsell_title p{
-    margin-bottom: 0;
-  }
-  .upsell-item .upsell_price{
+  .upsell-item-mobile .product-details .product-name {
     margin-bottom: 10px;
+    line-height: 22px;
+    padding-right: 25px;
   }
+  .upsell-item-mobile .product-details .upsell-collateral {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+  }
+
 </style>
 {% assign upsell1 = settings.product_1 %}
 {% assign upsell2 = settings.product_2 %}
@@ -230,14 +235,18 @@
             </div>
             <div class="upsell-head-mobile mobile-only">
               <div class="upsell-item-mobile" >
-                <div class="upsell_image">
-                <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
+                <a href="javascript:;" class="upsell-image">
+                  <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
+                </a>
+                <div class="product-details">
+                  <p class="product-name">
+                    <a href="javascript;">{{upsell1.title}}</a>
+                  </p>
+                  <div class="upsell-collateral">
+                    <span class="price">{{upsell1.price | money}}
+                    </span>
+                  </div>
                 </div>
-                <div class="upsell_title">
-                  <b>{{upsell1.title}} </b>
-                  <p>NGO: Grow-Trees</p>
-                </div>
-                <div class="upsell_price">{{upsell1.price | money}}</div>
                 <div class="upsell_addtocart">
                  <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
                    Add to Cart
@@ -245,14 +254,18 @@
                 </div>
               </div>
                <div class="upsell-item-mobile" >
-                <div class="upsell_image">
-                <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
+                <a href="javascript:;" class="upsell-image">
+                  <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
+                </a>
+                <div class="product-details">
+                  <p class="product-name">
+                    <a href="javascript;">{{upsell2.title}}</a>
+                  </p>
+                  <div class="upsell-collateral">
+                    <span class="price">{{upsell2.price | money}}
+                    </span>
+                  </div>
                 </div>
-                <div class="upsell_title">
-                  <b>{{upsell2.title}} </b>
-                  <p>NGO: Dogs of Shiv Nadar University</p>
-                 </div>
-                <div class="upsell_price">{{upsell2.price | money}}</div>
                 <div class="upsell_addtocart">
                  <button class="btn upsell-add-to-cart" variant_id="{{upsell2.selected_or_first_available_variant.id}}" type="button">
                    Add to Cart
