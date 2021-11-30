@@ -170,7 +170,7 @@
 
               <h3 class="upsell-title">Celebrate Month of Giving With Pinklay</h3>
             <p>At Pinklay, we celebrate December as the month of giving (<a href="#" class="learn_more">learn more here</a>). This year, we have tied up with two NGOs – a portion of our sales from every order goes to their sustenance.</p>
-            <div class="upsell-head">
+            <div class="upsell-head desktop-only">
               <div class="upsell-item" >
                 <div class="upsell_image">
                 <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
@@ -202,6 +202,40 @@
                 </div>
               </div>
             </div>
+            <div class="upsell-head mobile-only">
+              <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell1.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">
+                  <b>{{upsell1.title}} </b>
+                  <p>NGO: Grow-Trees</p>
+                </div>
+                <div class="upsell_price">{{upsell1.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
+                   Add to Cart
+                  </button>
+                </div>
+              </div>
+               <div class="upsell-item" >
+                <div class="upsell_image">
+                <img src="{{ upsell2.featured_image.src | product_img_url: 'original' }}">
+                </div>
+                <div class="upsell_title">
+                  <b>{{upsell2.title}} </b>
+                  <p>NGO: Dogs of Shiv Nadar University</p>
+                 </div>
+                <div class="upsell_price">{{upsell2.price | money}}</div>
+                <div class="upsell_addtocart">
+                 <button class="btn upsell-add-to-cart" variant_id="{{upsell2.selected_or_first_available_variant.id}}" type="button">
+                   Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            
           </div>
         </div>
       </div>
