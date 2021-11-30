@@ -20,7 +20,7 @@
       {%- case block.type -%}
       {%- when 'image-with-text' -%}
     <div class="wrapper_blocks">
-      <h3 class="our-story-section-content-h3">
+      <h3 class="our-story-section-content-h3 h3_{{ forloop.index }}">
           {% if block.settings.heading != blank %}
             {{ block.settings.heading | escape }}
           {% endif %}
