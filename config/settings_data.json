@@ -5413,6 +5413,32 @@
       },
       "month_of_giving_mt": {
         "type": "month_of_giving_mt",
+        "blocks": {
+          "956f4fc1-9752-4ad7-9063-25b165e4c45c": {
+            "type": "image-with-text",
+            "settings": {
+              "heading": "Dogs of Shiv Nadar University",
+              "para": "<p>This<br\/>year we have joined hands with Dogs of Shiv Nadar University, an organization<br\/>started by Nandini, that feeds, sterilizes and rescues strays in the NCR area.<br\/>I am so inspired by Nandini’s journey, she personifies where there is a will,<br\/>there is a way and if you do something with a good heart, it becomes a movement<br\/>in no time. Being a college student, taking up a responsibility for the<br\/>voiceless with no expectation in return is not just noble but brave. We will be<br\/>funding 1500 meals for strays through her.<\/p>",
+              "image": "shopify:\/\/shop_images\/Dogs_of_Shiv_Nadar_University_1.jpg",
+              "layout": "1",
+              "content-align": "520px"
+            }
+          },
+          "60feffb5-7bbd-4efe-a1a9-1d68ca0e88d1": {
+            "type": "image-with-text",
+            "settings": {
+              "heading": "Grow-Trees Foundation",
+              "para": "<p>The<br\/>second foundation we have tied up is Grow Trees. So far, they have planted 9.2<br\/>million trees in 23 states. We will be contributing to their project: <em>Trees<br\/>for Hanguls<\/em>.<br\/>Trees will be grown in the periphery of Dachigam<br\/>National Park, Kashmir – home of Hanguls,<br\/>a critically endangered species. Today, less than 200 of them survive, and<br\/>their only viable population is in Kashmir’s Dachigam<br\/>National Park. An increase in the green cover is expected to help restore their<br\/>habitat.<\/p>",
+              "image": "shopify:\/\/shop_images\/Grow-Trees_Foundation_1.jpg",
+              "layout": "0",
+              "content-align": "520px"
+            }
+          }
+        },
+        "block_order": [
+          "956f4fc1-9752-4ad7-9063-25b165e4c45c",
+          "60feffb5-7bbd-4efe-a1a9-1d68ca0e88d1"
+        ],
         "settings": {
           "background_image": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px.jpg",
           "title": "<p>As a child, I often heard my father say…may you always find peace in giving and<br\/>helping. That was his eternal wish for me and my brothers. And, I am forever<br\/>grateful to my parents for showing us the joy that giving and gratitude holds.<br\/>Giving is an act of kindness we do to ourselves. It’s self-love in many ways<br\/>because I haven’t known anyone who has done an act of kindness – said a polite<br\/>‘thank you’ to a stranger, rescued a stray, planted a tree, helped a needy in<br\/>distress – unhappy or grudged with the help they offered. Instead, I have often<br\/>experienced that giving gives back happiness, contentment, and peace.<\/p><p><\/p><p>Soon after we started Pinklay in December 2015, we decided to put a small fund aside<br\/>for animal welfare. A cause very close to my heart. On Pinklay’s first<br\/>anniversary, we formalized this little initiative and called it ‘the month of<br\/>giving’. Since then, every December, we celebrate <em>#monthofgiving<\/em><br\/>with much love and enthusiasm. A month where we mindfully practice gratitude<br\/>and the sentiment of giving back because there isn’t a greater joy than that of<br\/>giving.<\/p><p><\/p><p>So, this December for every order placed with us, you get a choice to feed a stray<br\/>or plant a tree through your purchase. A part of the revenue from your order<br\/>will be directly donated to the organizations we have partnered with for this<br\/>year’s ‘month of giving’. Then there is more, we have a few chats lined up with<br\/>very interesting people across the month. Follow us on our pages to know more.<br\/>I promise you a lovely December filled with gifts, conversations, and offers.<\/p>"
