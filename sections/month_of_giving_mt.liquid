@@ -1,9 +1,9 @@
 <div class="full_width_container_mt">
   <div class="section_first_mt">
     <div class="Background_image_wrapper_mt">
-      <div class="background_image" style="background-image:url('{{ section.settings.background_image | img_url : 'master' }}')">
+      <div class="background_image mobile_hide" style="background-image:url('{{ section.settings.background_image | img_url : 'master' }}')">
       </div>
-      <div class="background_image" style="background-image:url('{{ section.settings.background_image_mobile | img_url : 'master' }}')">
+      <div class="background_image desktop_hide" style="background-image:url('{{ section.settings.background_image_mobile | img_url : 'master' }}')">
       </div>
     </div>
 
@@ -247,5 +247,20 @@ h3.our-story-section-content-h3 {
     background-repeat: no-repeat;
     background-size: cover;
   	background-position: top;
+}
+.mobile_hide
+{
+	display : none;
+}
+@media (max-width : 768px)
+{
+	.desktop_hide
+	{
+			display : none;
+	}
+	.mobile_hide
+	{
+			display : block;
+	}
 }
 {% endstyle %}
