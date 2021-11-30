@@ -181,6 +181,9 @@
     line-height: 22px;
     padding-right: 25px;
   }
+  .upsell-item-mobile .product-details .product-name a{
+   color:#000;
+  }
   .upsell-item-mobile .product-details .upsell-collateral {
     font-size: 13px;
     font-weight: 500;
@@ -241,17 +244,19 @@
                 <div class="product-details">
                   <p class="product-name">
                     <a href="javascript;">{{upsell1.title}}</a>
+                    <dd>NGO: Grow-Trees</dd>
                   </p>
                   <div class="upsell-collateral">
                     <span class="price">{{upsell1.price | money}}
                     </span>
                   </div>
+                  <div class="upsell_addtocart">
+                    <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
-                <div class="upsell_addtocart">
-                 <button class="btn upsell-add-to-cart" variant_id="{{upsell1.selected_or_first_available_variant.id}}" type="button">
-                   Add to Cart
-                  </button>
-                </div>
+                
               </div>
                <div class="upsell-item-mobile" >
                 <a href="javascript:;" class="upsell-image">
@@ -260,17 +265,19 @@
                 <div class="product-details">
                   <p class="product-name">
                     <a href="javascript;">{{upsell2.title}}</a>
+                    <dd>NGO: Dogs of Shiv Nadar University</dd>
                   </p>
                   <div class="upsell-collateral">
                     <span class="price">{{upsell2.price | money}}
                     </span>
                   </div>
-                </div>
-                <div class="upsell_addtocart">
+                  <div class="upsell_addtocart">
                  <button class="btn upsell-add-to-cart" variant_id="{{upsell2.selected_or_first_available_variant.id}}" type="button">
                    Add to Cart
                   </button>
                 </div>
+                </div>
+                
               </div>
             </div>
             
