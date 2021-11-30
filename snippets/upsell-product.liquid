@@ -35,14 +35,9 @@
     });
 
     function closeupsellwrapperModalWindow () {
-      jQuery('#upsell-modal .modal-window').fadeOut(600, function() {
-        jQuery('#upsell-modal .modal-overlay').fadeOut(600, function() {
+      jQuery('#upsell-modal .modal-window').hide();
+        jQuery('#upsell-modal .modal-overlay').hide();
           jQuery('#upsell-modal').hide();
-//           var exprietime = new Date();
-//   			exprietime.setTime(exprietime.getTime() + (60 * 60 * 1000));
-//           jQuery.cookie('emailSubcribeModal', 'closed', {expires: exprietime, path:'/'});
-        });
-      })
     }
 
     function closeupsellModalWindow () {
