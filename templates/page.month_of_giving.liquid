@@ -1,9 +1,4 @@
 <div class="container">
-  <header class="page-header">
-    <h1>
-      {% include 'multilang' with  page.title %}
-    </h1>
-  </header>
 
   {% comment %}
   Regular page content goes here.
@@ -15,5 +10,7 @@
   {% else %}
   <div class="rte">{{ page.content | split: '[lang2]' | first }}</div>
   {% endif %}
+  
+  {% section 'month_of_giving_mt' %}
 </div>
 
