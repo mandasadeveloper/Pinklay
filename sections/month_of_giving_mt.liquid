@@ -54,9 +54,24 @@
      </div> 
 </div>
     </div>
+      {%- endcase -%}
+   {%- endfor -%}
+    </div>
+  </div>
+</div>
+
       <script>
 $(document).ready(function(){
-    $('.slick_slider_image_change_{{ forloop.index }}').slick({
+    $('.slick_slider_image_change_1').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  dots : false,
+  arrows: false,     
+}); 
+  
+  $('.slick_slider_image_change_2').slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
@@ -64,14 +79,8 @@ $(document).ready(function(){
   dots : false,
   arrows: false,     
 });
-});  
+}); 
 </script>
-      {%- endcase -%}
-   {%- endfor -%}
-    </div>
-  </div>
-</div>
-
 
 
 {% schema %}
