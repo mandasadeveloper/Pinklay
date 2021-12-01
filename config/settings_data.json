@@ -4542,6 +4542,7 @@
       },
       "1590046106696": {
         "type": "home-covid-banner",
+        "disabled": true,
         "settings": {
           "space_on": 0,
           "space_below": 25,
