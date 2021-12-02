@@ -23,15 +23,21 @@
                 <div class="radio-boxes">
                 </div>
                       <div class="bottom-rows-wrap">
-                        <div class="table-inner-row row-0" data-value="size">
-                          <p class="content" style="height: 64.6px;">Pinklay</p>
-                          <p class="content" style="height: 64.6px;">us</p>
-                          <p class="content" style="height: 64.6px;">uk</p>
-                          <p class="content" style="height: 64.6px;">waist</p>
-                          <p class="content" style="height: 64.6px;">shoulder</p>
-                          <p class="content" style="height: 64.6px;">chest</p>
-                          <p class="content" style="height: 64.6px;">hip</p>
-                        </div>
+                        {% for option in product.options %}`
+                        {% if option.name == "Size" %}
+                        {% endif %}
+                        {% endfor %}
+                          <div class="table-inner-row row-0" data-value="size">
+                            <p class="content" style="height: 64.6px;">Pinklay</p>
+                            <p class="content" style="height: 64.6px;">us</p>
+                            <p class="content" style="height: 64.6px;">uk</p>
+                            <p class="content" style="height: 64.6px;">waist</p>
+                            <p class="content" style="height: 64.6px;">shoulder</p>
+                            <p class="content" style="height: 64.6px;">chest</p>
+                            <p class="content" style="height: 64.6px;">hip</p>
+                          </div>
+                          
+                        
                         <div class="table-inner-row row-1" data-value="xs" style="width: 59px;">
                           <p class="content" data-value="XS" data-value-handle="xs" style="height: 64.6px;">XS</p>
                           <p class="content" style="height: 64.6px;">0-2</p>
