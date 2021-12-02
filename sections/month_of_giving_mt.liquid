@@ -3,10 +3,13 @@
   <div class="section_second_mt">
     <div class="content_mt">
      {{ section.settings.title }}
-      <div class="div_content_pinklay">
+      <div class="div_content_pinklay mobile_hide">
       <p>Wishing you a happy and healthy December,</p>
       <p>Daisy Tanwani</p>
       <p>Founder - Pinklay </p>
+      </div>
+       <div class="div_content_pinklay desktop_hide pinkley_content_name_mt">
+      <p>Wishing you a happy and healthy December - Daisy Tanwani, Founder - Pinklay</p>
       </div>
     </div>
   </div>
@@ -421,6 +424,21 @@ h3.our-story-section-content-h3
 	h3.our-story-section-content-h3
 {
 	font-size : 17px;
+}
+}
+@media (max-width : 420px)
+{
+	.pinkley_content_name_mt p
+	{
+		font-size : 15px;
+	}
+}
+
+@media (max-width: 360px)
+{
+.pinkley_content_name_mt p {
+    font-size: 13px;
+    text-align: initial;
 }
 }
 {% endstyle %}
