@@ -8587,8 +8587,10 @@
                     var n = this.value;
                     $(".product-shop #product-selectors-option-0").val(n).trigger('change');
                   
-                  console.log($(".product-shop .groups-btn div:first-child").html());
-//                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
+                 var btn_html = $(".product-shop .groups-btn div:first-child").html();
+                  
+                   e.find('.size-guide-button .btn-div').html(btn_html);
+                   //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
 //                     "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
 //                     e.find(".ProductForm__AddToCart").hide()),
