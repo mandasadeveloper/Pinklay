@@ -16,10 +16,11 @@
           </label><span>CMS</span>
         </div>
         <div class="size-chart-inner-wrap">
-          {% for option in product.options %}`
+          {% for option in product.options %}
+          {{option.name}}
                         {% if option.name == "Size" %}
                             {% for value in option.values %}
-                               {{value}}
+                               
                             {% endfor %}
                         {% endif %}
                         {% endfor %}
