@@ -41,7 +41,7 @@
                           {% assign values = values | split: ',' %}
                           {% if value == 'S-M' %}
                           <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">0-6</p>
                             <p class="content" style="height: 64.6px;">4-8</p>
                             <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-27</p>
@@ -52,7 +52,7 @@
                           {% endif %}
                           {% if value == 'XS' %}
                           <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">0-2</p>
                             <p class="content" style="height: 64.6px;">4</p>
                             <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-25</p>
@@ -63,7 +63,7 @@
                           {% endif %}
                           {% if value == 'S' %}
                           <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">04-06</p>
                             <p class="content" style="height: 64.6px;">06-08</p>
                             <p class="content" data-size="64.77-68.58" style="height: 64.6px;">25.5-27</p>
@@ -74,7 +74,7 @@
                           {% endif %}
                          {% if value == 'M' %}
                             <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                               <p class="content" style="height: 64.6px;">08-10</p><p class="content" style="height: 64.6px;">10-12</p>
                               <p class="content" data-size="69.85-73.66" style="height: 64.6px;" cms="69.85-73.66" inches="27.5-29">27.5-29</p>
                               <p class="content" data-size="39.37-40.64" style="height: 64.6px;" cms="39.37-40.64" inches="15.5-16">15.5-16</p>
@@ -84,7 +84,7 @@
                           {% endif %}
                           {% if value == 'L-XL' %}
                           <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">12-16</p>
                             <p class="content" style="height: 64.6px;">14-18</p>
                             <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-33</p>
@@ -95,7 +95,7 @@
                           {% endif %}
                           {% if value == 'L' %}
                           <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">12-14</p>
                             <p class="content" style="height: 64.6px;">14-16</p>
                             <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-31</p>
@@ -106,7 +106,7 @@
                           {% endif %}
                           {% if value == 'XL' %}
                           <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">16</p>
                             <p class="content" style="height: 64.6px;">18</p>
                             <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
@@ -117,7 +117,7 @@
                           {% endif %}
                           {% if value == 'L-XXL' %}
                           <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
-                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">16</p>
                             <p class="content" style="height: 64.6px;">18</p>
                             <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
@@ -128,7 +128,7 @@
                           {% endif %}
                         {% if value == 'XXL-XXXL' %}
                         <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
-                          <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          <p class="content" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                           <p class="content" style="height: 64.6px;">16</p>
                           <p class="content" style="height: 64.6px;">18</p>
                           <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
@@ -166,7 +166,7 @@
                            
                             {% if value == 'S-M' %}
                               <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                                <p class="content" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                                 <p class="content" data-size="116.332" style="height: 64.6px;">45.8</p>
                                 <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
                                 <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
@@ -176,7 +176,7 @@
                             {% endif %}
                             {% if value == 'XS' %}
                               <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                                <p class="content" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                                 <p class="content" data-size="115.062" style="height: 64.6px;">45.3</p>
                                 <p class="content" data-size="109.22" style="height: 64.6px;">43</p>
                                 <p class="content" data-size="127.0" style="height: 64.6px;">50</p>
@@ -186,7 +186,7 @@
                             {% endif %}
                             {% if value == 'S' %}
                               <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                                <p class="content" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                                 <p class="content" data-size="116.332" style="height: 64.6px;">45.8</p>
                                 <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
                                 <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
@@ -196,7 +196,7 @@
                             {% endif %}
                             {% if value == 'M' %}
                               <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                                <p class="content" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                                 <p class="content" data-size="117.602" style="height: 64.6px;">46.3</p>
                                 <p class="content" data-size="119.38" style="height: 64.6px;">47</p>
                                 <p class="content" data-size="137.16" style="height: 64.6px;">54</p>
@@ -206,7 +206,7 @@
                             {% endif %}
                             {% if value == 'L-XL' %}
                               <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                                <p class="content" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                                 <p class="content" data-size="120.142" style="height: 64.6px;">47.3</p>
                                 <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
                                 <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
@@ -216,7 +216,7 @@
                             {% endif %}
                             {% if value == 'L' %}
                             <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                               <p class="content" data-size="118.872" style="height: 64.6px;">46.8</p>
                               <p class="content" data-size="124.46" style="height: 64.6px;">49</p>
                               <p class="content" data-size="142.24" style="height: 64.6px;">56</p>
@@ -226,7 +226,7 @@
                             {% endif %}
                             {% if value == 'XL' %}
                             <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                               <p class="content" data-size="120.142" style="height: 64.6px;">47.3</p>
                               <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
                               <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
@@ -236,7 +236,7 @@
                             {% endif %}
                             {% if value == 'L-XXL' %}
                             <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                               <p class="content" data-size="120.142" style="height: 64.6px;">47.3</p>
                               <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
                               <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
@@ -246,7 +246,7 @@
                             {% endif %}
                             {% if value == 'XXL-XXXL' %}
                            <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                               <p class="content" data-size="120.142" style="height: 64.6px;">47.3</p>
                               <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
                               <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
