@@ -767,3 +767,21 @@ body.size-popup-open::before {
     background: none;
     pointer-events: none;
 }
+
+.pdp-size-popup .main-size-container .size-guide-button .btn-div .ProductForm__AddToCart:not(:disabled) {
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    -webkit-transition: none;
+    transition: none;
+    border: none;
+}
+
+.ProductForm__AddToCart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Button--full {
+    width: 100%;
+}
