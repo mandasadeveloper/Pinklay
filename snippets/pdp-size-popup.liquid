@@ -17,10 +17,9 @@
         </div>
         <div class="size-chart-inner-wrap" ddts="{{product.handle}}">
           {% for option in product.options_with_values %}
-          {{option.name}}
           {% if option.name == "Size" %}
           {% for value in option.values %}
-
+              {{value}}
           {% endfor %}
           {% endif %}
           {% endfor %}
