@@ -4820,12 +4820,6 @@
       "gift_card_section": {
         "type": "gift_card_section",
         "blocks": {
-          "a8534a39-4e41-4406-bfa7-a4d12180c62f": {
-            "type": "gift_product",
-            "settings": {
-              "gift_product": "happy-diwali-gift-card"
-            }
-          },
           "32e79457-6b2a-4620-b40f-2f2bc090ebf9": {
             "type": "gift_product",
             "settings": {
@@ -4891,10 +4885,15 @@
             "settings": {
               "gift_product": "wedding-gift-card"
             }
+          },
+          "a8534a39-4e41-4406-bfa7-a4d12180c62f": {
+            "type": "gift_product",
+            "settings": {
+              "gift_product": "happy-diwali-gift-card"
+            }
           }
         },
         "block_order": [
-          "a8534a39-4e41-4406-bfa7-a4d12180c62f",
           "32e79457-6b2a-4620-b40f-2f2bc090ebf9",
           "c835ef58-886a-4c4d-abbd-575f746ecec3",
           "cfd6e7ba-155b-4bd6-accc-fe1a6baf34f1",
@@ -4905,7 +4904,8 @@
           "4f2ddcf3-3607-4fc0-872d-1fcb4342dc55",
           "0fc97f8e-ec1a-44c9-95d3-3535bfd925a5",
           "d49e3d6c-0cc1-4718-8832-02b4bcf84a6d",
-          "bd854460-47ca-4ca5-b76b-8e27dfcfe061"
+          "bd854460-47ca-4ca5-b76b-8e27dfcfe061",
+          "a8534a39-4e41-4406-bfa7-a4d12180c62f"
         ],
         "settings": {
           "gift_disc": "Shopping for someone else, but not sure what to gift? Give them the gift of choice with a Pinklay e-gift card - perfect for any occasion and a great way to express your appreciation!"
