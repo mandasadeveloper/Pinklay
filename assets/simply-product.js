@@ -8585,7 +8585,7 @@
                 var e = $(".pdp-size-popup");
                 if (e.length > 0) {
                     var n = this.value;
-                    $(".product-shop #product-selectors-option-0 [value='" + n + "']").click();
+                    $(".product-shop #product-selectors-option-0").val(n).trigger('change');
                     var r = $(".ProductForm .ProductForm__AddToCart span:not(.hover-text)").text()
                       , i = document.querySelector(".ProductForm__AddToCart");
                     "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
