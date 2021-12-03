@@ -8579,9 +8579,9 @@
         u(this, "sizeCartOnInput", (function() {
             $(".first-table-wrap input").change((function() {
                 $(".pdp-size-popup .main-size-container .size-guide-button").css("display", "block"),
-                $(".bottom-rows-wrap .table-inner-row").removeClass("active");
+//                 $(".bottom-rows-wrap .table-inner-row").removeClass("active");
                 var t = $(this).closest("p").index();
-                $(".bottom-rows-wrap .row-" + t).addClass("active");
+//                 $(".bottom-rows-wrap .row-" + t).addClass("active");
                 var e = $(".pdp-size-popup");
                 if (e.length > 0) {
                     var n = this.value;
