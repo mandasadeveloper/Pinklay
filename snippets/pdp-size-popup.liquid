@@ -15,15 +15,15 @@
           <span class="slider-toogle-bx round active"></span>
           </label><span>CMS</span>
         </div>
-        <div class="size-chart-inner-wrap">
+        <div class="size-chart-inner-wrap" ddts="{{product.handle}}">
           {% for option in product.options %}
           {{option.name}}
-                        {% if option.name == "Size" %}
-                            {% for value in option.values %}
-                               
-                            {% endfor %}
-                        {% endif %}
-                        {% endfor %}
+          {% if option.name == "Size" %}
+          {% for value in option.values %}
+
+          {% endfor %}
+          {% endif %}
+          {% endfor %}
 <div class="size-table first-table-wrap" data-rows-count="6">
               <p class="table-title">Body Measurements</p>
               <div class="table-inner-wrap">
