@@ -8586,12 +8586,16 @@
                 if (e.length > 0) {
                     var n = this.value;
                     $(".product-shop #product-selectors-option-0").val(n).trigger('change');
-                    var r = $(".ProductForm .ProductForm__AddToCart span:not(.hover-text)").text()
-                      , i = document.querySelector(".ProductForm__AddToCart");
-                    "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
-                    e.find(".ProductForm__AddToCart").hide()),
-                    e.find(".ProductForm__AddToCart span").text(r),
-                    r.toLowerCase() === window.languages.productFormSoldOut.toLowerCase() ? e.find(".ProductForm__AddToCart").attr("disabled", "disabled").removeAttr("data-action").addClass("Button--secondary") : e.find(".ProductForm__AddToCart").removeAttr("disabled").attr("data-action", "add-to-cart").addClass("Button--primary").removeClass("Button--secondary"),
+                  
+                  console.log($(".product-shop div:first-child").html());
+//                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
+//                       , i = document.querySelector(".ProductForm__AddToCart");
+//                     "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
+//                     e.find(".ProductForm__AddToCart").hide()),
+//                     e.find(".ProductForm__AddToCart span").text(r),
+                      
+//                     r.toLowerCase() === window.languages.productFormSoldOut.toLowerCase() ? e.find(".ProductForm__AddToCart").attr("disabled", "disabled").removeAttr("data-action").addClass("Button--secondary") : e.find(".ProductForm__AddToCart").removeAttr("disabled").attr("data-action", "add-to-cart").addClass("Button--primary").removeClass("Button--secondary"),
+                      
                     e.find(".size-guide-button .ProductForm__AddToCart").click((function() {
                         e.find(".popup-close").trigger("click")
                     }
