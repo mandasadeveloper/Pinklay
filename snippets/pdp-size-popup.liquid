@@ -51,8 +51,8 @@
                             <p class="content" data-size="86.36-90.17" style="height: 64.6px;">34-35.5</p>
                           </div>
                           {% endif %}
-                          {% if value == 'M' %}
-                          <div class="table-inner-row row-2 soldout" data-value="{{value | handleize}}" style="width: 59px;">
+                          {% if value == 'S' %}
+                          <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             <p class="content" style="height: 64.6px;">04-06</p>
                             <p class="content" style="height: 64.6px;">06-08</p>
@@ -61,6 +61,16 @@
                             <p class="content" data-size="85.09-88.9" style="height: 64.6px;">33.5-35</p>
                             <p class="content" data-size="91.44-95.25" style="height: 64.6px;">36-37.5</p>
                           </div>
+                          {% endif %}
+                         {% if value == 'M' %}
+                            <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
+                              <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                              <p class="content" style="height: 64.6px;">08-10</p><p class="content" style="height: 64.6px;">10-12</p>
+                              <p class="content" data-size="69.85-73.66" style="height: 64.6px;" cms="69.85-73.66" inches="27.5-29">27.5-29</p>
+                              <p class="content" data-size="39.37-40.64" style="height: 64.6px;" cms="39.37-40.64" inches="15.5-16">15.5-16</p>
+                              <p class="content" data-size="90.17-93.98" style="height: 64.6px;" cms="90.17-93.98" inches="35.5-37">35.5-37</p>
+                              <p class="content" data-size="96.52-100.33" style="height: 64.6px;" cms="96.52-100.33" inches="38-39.5">38-39.5</p>
+                            </div>
                           {% endif %}
                           {% if value == 'L' %}
                           <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
