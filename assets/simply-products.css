@@ -785,3 +785,31 @@ body.size-popup-open::before {
 .Button--full {
     width: 100%;
 }
+
+.pdp-size-popup .main-size-container .size-guide-button .btn-div .ProductForm__AddToCart:not(:disabled):before {
+    -moz-transition: none;
+    -o-transition: none;
+    -ms-transition: none;
+    -webkit-transition: none;
+    transition: none;
+}
+.pdp-size-popup .main-size-container .size-guide-button .btn-div .ProductForm__AddToCart:before {
+    background: #1a1f29;
+}
+.Button--primary::before{
+    background-color: #292929;
+}
+.Button::before{
+    position: absolute;
+    content: '';
+    display: block;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(1,1);
+    transform-origin: left center;
+    z-index: -1;
+}
