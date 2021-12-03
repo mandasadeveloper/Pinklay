@@ -15,14 +15,8 @@
           <span class="slider-toogle-bx round active"></span>
           </label><span>CMS</span>
         </div>
-        <div class="size-chart-inner-wrap" ddts="{{product.handle}}">
-          {% for option in product.options_with_values %}
-          {% if option.name == "Size" %}
-          {% for value in option.values %}
-              {{value}}
-          {% endfor %}
-          {% endif %}
-          {% endfor %}
+        <div class="size-chart-inner-wrap">
+        
 <div class="size-table first-table-wrap" data-rows-count="6">
               <p class="table-title">Body Measurements</p>
               <div class="table-inner-wrap">
@@ -38,55 +32,63 @@
                           <p class="content" style="height: 64.6px;">chest</p>
                           <p class="content" style="height: 64.6px;">hip</p>
                         </div>
+                        {% assign values = '' %}
+                        {% for variant in product.variants %}
+                          {% assign value = variant.options[0] %}
+                          {% unless values contains value %}
+                          {% assign values = values | join: ',' %}	
+                          {% assign values = values | append: ',' | append: value %} 
+                          {% assign values = values | split: ',' %}
+
+                          {% if value == 'XS' %}
+                          <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" style="height: 64.6px;">0-2</p>
+                            <p class="content" style="height: 64.6px;">4</p>
+                            <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-25</p>
+                            <p class="content" data-size="34.29-35.56" style="height: 64.6px;">13.5-14</p>
+                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
+                            <p class="content" data-size="86.36-90.17" style="height: 64.6px;">34-35.5</p>
+                          </div>
+                          {% endif %}
+                          {% if value == 'M' %}
+                          <div class="table-inner-row row-2 soldout" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" style="height: 64.6px;">04-06</p>
+                            <p class="content" style="height: 64.6px;">06-08</p>
+                            <p class="content" data-size="64.77-68.58" style="height: 64.6px;">25.5-27</p>
+                            <p class="content" data-size="36.83-38.1" style="height: 64.6px;">14.5-15</p>
+                            <p class="content" data-size="85.09-88.9" style="height: 64.6px;">33.5-35</p>
+                            <p class="content" data-size="91.44-95.25" style="height: 64.6px;">36-37.5</p>
+                          </div>
+                          {% endif %}
+                          {% if value == 'L' %}
+                          <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" style="height: 64.6px;">12-14</p>
+                            <p class="content" style="height: 64.6px;">14-16</p>
+                            <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-31</p>
+                            <p class="content" data-size="41.91-43.18" style="height: 64.6px;">16.5-17</p>
+                            <p class="content" data-size="95.25-99.06" style="height: 64.6px;">37.5-39</p>
+                            <p class="content" data-size="101.6-105.41" style="height: 64.6px;">40-41.5</p>
+                          </div>
+                          {% endif %}
+                          {% if value == 'XL' %}
+                          <div class="table-inner-row row-5 soldout" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content" data-value="{{value}}" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            <p class="content" style="height: 64.6px;">16</p>
+                            <p class="content" style="height: 64.6px;">18</p>
+                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
+                            <p class="content" data-size="44.45-45.72" style="height: 64.6px;">17.5-18</p>
+                            <p class="content" data-size="100.33-104.14" style="height: 64.6px;">39.5-41</p>
+                            <p class="content" data-size="106.68-110.49" style="height: 64.6px;">42-43.5</p>
+                          </div>
+                          {% endif %}
                         
-                          
-                          
                         
-                        <div class="table-inner-row row-1" data-value="xs" style="width: 59px;">
-                          <p class="content" data-value="XS" data-value-handle="xs" style="height: 64.6px;">XS</p>
-                          <p class="content" style="height: 64.6px;">0-2</p>
-                          <p class="content" style="height: 64.6px;">4</p>
-                          <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-25</p>
-                          <p class="content" data-size="34.29-35.56" style="height: 64.6px;">13.5-14</p>
-                          <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
-                          <p class="content" data-size="86.36-90.17" style="height: 64.6px;">34-35.5</p>
-                        </div>
-                        <div class="table-inner-row row-2 soldout" data-value="s" style="width: 59px;">
-                        <p class="content" data-value="S" data-value-handle="s" style="height: 64.6px;">S</p>
-                        <p class="content" style="height: 64.6px;">04-06</p>
-                        <p class="content" style="height: 64.6px;">06-08</p>
-                        <p class="content" data-size="64.77-68.58" style="height: 64.6px;">25.5-27</p>
-                        <p class="content" data-size="36.83-38.1" style="height: 64.6px;">14.5-15</p>
-                        <p class="content" data-size="85.09-88.9" style="height: 64.6px;">33.5-35</p>
-                        <p class="content" data-size="91.44-95.25" style="height: 64.6px;">36-37.5</p>
-                        </div>
-                        <div class="table-inner-row row-3" data-value="m" style="width: 59px;">
-                        <p class="content" data-value="M" data-value-handle="m" style="height: 64.6px;">M</p>
-                        <p class="content" style="height: 64.6px;">08-10</p>
-                        <p class="content" style="height: 64.6px;">10-12</p>
-                        <p class="content" data-size="69.85-73.66" style="height: 64.6px;">27.5-29</p>
-                        <p class="content" data-size="39.37-40.64" style="height: 64.6px;">15.5-16</p>
-                        <p class="content" data-size="90.17-93.98" style="height: 64.6px;">35.5-37</p>
-                        <p class="content" data-size="96.52-100.33" style="height: 64.6px;">38-39.5</p>
-                        </div>
-                        <div class="table-inner-row row-4" data-value="l" style="width: 59px;">
-                          <p class="content" data-value="L" data-value-handle="l" style="height: 64.6px;">L</p>
-                          <p class="content" style="height: 64.6px;">12-14</p>
-                          <p class="content" style="height: 64.6px;">14-16</p>
-                          <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-31</p>
-                          <p class="content" data-size="41.91-43.18" style="height: 64.6px;">16.5-17</p>
-                          <p class="content" data-size="95.25-99.06" style="height: 64.6px;">37.5-39</p>
-                          <p class="content" data-size="101.6-105.41" style="height: 64.6px;">40-41.5</p>
-                        </div>
-                        <div class="table-inner-row row-5 soldout" data-value="xl" style="width: 59px;">
-                          <p class="content" data-value="XL" data-value-handle="xl" style="height: 64.6px;">XL</p>
-                          <p class="content" style="height: 64.6px;">16</p>
-                          <p class="content" style="height: 64.6px;">18</p>
-                          <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
-                          <p class="content" data-size="44.45-45.72" style="height: 64.6px;">17.5-18</p>
-                          <p class="content" data-size="100.33-104.14" style="height: 64.6px;">39.5-41</p>
-                          <p class="content" data-size="106.68-110.49" style="height: 64.6px;">42-43.5</p>
-                        </div>
+                         {% endunless %}
+                        {% endfor %}
+                      
                 </div>
                 </div>
             </div>
