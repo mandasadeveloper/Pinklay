@@ -299,19 +299,21 @@
       <div class="size-guide-button">
         <div class="btn-div">
           <input type="submit" name="add" class="btn" >
-<!--           <div class="notify-wrap">
-            <a href="#" class="notify-disable notifyme-button Button Button--full Button--primary" data-customer-email="">Notify Me</a>
-
-            <div class="notify-email-input">
-              <div class="notifyFormData">
-                <input type="email" name="email_customer" id="email_customer" class="Form__Input" placeholder="Email, Please">
-                <a href="#" class="getNotifyButton Button Button--primary" id="getNotifyButton"><span>Notify Me</span></a>
-              </div>
-              <span class="notify-error">Please add a valid email address</span>
-            </div>
-            <span class="notify-success">Thank You! We'll notify you once we have it back in stock.</span>
-            <span class="notify-success-error">You have already registered for a notification for that item.</span>
-          </div> -->
+        </div>
+        <div class="btn-div2">
+        <div class="iStock-wrapper" style="display:none;" handle="{{ product.handle }}">
+          <h2>Out Of Stock!</h2>
+          <p class="iStock-notifyTxt">We'll notify you when it becomes available.</p>
+          <div class="iStock-availability" style="display:none;">
+            <label>Available on: </label>
+            <span></span>
+          </div>
+          <div class="iStock-fields">
+            <input type="email" class="iStock-email-id" name="iStock-email-id" placeholder="Email Address" value="{% if customer %}{{ customer.email }}{% endif %}" />
+            <input type="button" class="iStock-notify-btn" value="Notify Me" />
+          </div>
+          <div class="iStock-msg"></div>
+        </div>
         </div>
       </div>
   </div>
