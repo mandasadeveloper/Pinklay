@@ -8590,7 +8590,7 @@
                  var btn_html = $(".product-shop .groups-btn div:first-child").html();
                   
                    e.find('.size-guide-button .btn-div').html(btn_html);
-                  e.find('.size-guide-button .btn-div input').attr('id','');
+                  e.find('.size-guide-button .btn-div input').attr('id','trigger_submit');
                    //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
 //                     "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
