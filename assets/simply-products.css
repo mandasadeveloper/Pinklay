@@ -27,7 +27,7 @@
   color:
   margin-top: 0;
 }
-.size-guide-button input{
+.size-guide-button input[type='button']{
   width:100%;
   cursor:pointer;
   background:#5ac4be;
