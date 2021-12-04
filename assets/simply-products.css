@@ -27,7 +27,10 @@
   color:
   margin-top: 0;
 }
-
+.size-guide-button input{
+  width:100%;
+  cursor:pointer;
+}
 .product-size-guide .size-guide-title svg a {
     fill: none;
     stroke-width: 0
