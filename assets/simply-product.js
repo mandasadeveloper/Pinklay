@@ -8594,7 +8594,7 @@
                   e.find('.size-guide-button .btn-div input').attr('id','trigger_submit');
                   e.find('.size-guide-button .btn-div input').attr('type','button');
                   e.find('.size-guide-button .btn-div2').hide();
-                  e.find('.size-guide-button .btn-div2').show();
+                  e.find('.size-guide-button .btn-div').show();
                   if(e.find('.size-guide-button .btn-div input').hasClass('disabled')){
                     e.find('.size-guide-button .btn-div').hide();
                     e.find('.size-guide-button .btn-div2').show();
