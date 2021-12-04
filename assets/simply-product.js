@@ -8600,7 +8600,8 @@
 //                     r.toLowerCase() === window.languages.productFormSoldOut.toLowerCase() ? e.find(".ProductForm__AddToCart").attr("disabled", "disabled").removeAttr("data-action").addClass("Button--secondary") : e.find(".ProductForm__AddToCart").removeAttr("disabled").attr("data-action", "add-to-cart").addClass("Button--primary").removeClass("Button--secondary"),
                       
                     e.find(".size-guide-button .trigger_submit").click((function() {
-                        e.find(".popup-close").trigger("click")
+                      $("#grouped-add-to-cart").trigger("click");
+                        e.find(".popup-close").trigger("click");
                     }
                     ))
                 }
