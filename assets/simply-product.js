@@ -8593,9 +8593,9 @@
                   
                   e.find('.size-guide-button .btn-div input').attr('id','trigger_submit');
                   e.find('.size-guide-button .btn-div input').attr('type','button');
+                  e.find('.size-guide-button .btn-div2').hide();
                   if(e.find('.size-guide-button .btn-div input').hasClass('disabled')){
-                   var notify_html = $(".product-shop .iStock-wrapper").clone().show();
-                    e.find('.size-guide-button .btn-div').html(notify_html);
+                    e.find('.size-guide-button .btn-div2').show();
                   }
                    //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
