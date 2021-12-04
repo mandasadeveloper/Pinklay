@@ -301,19 +301,7 @@
           <input type="submit" name="add" class="btn" >
         </div>
         <div class="btn-div2">
-        <div class="iStock-wrapper" style="display:block;" handle="{{ product.handle }}">
-          <h2>Out Of Stock!</h2>
-          <p class="iStock-notifyTxt">We'll notify you when it becomes available.</p>
-          <div class="iStock-availability" style="display:none;">
-            <label>Available on: </label>
-            <span></span>
-          </div>
-          <div class="iStock-fields">
-            <input type="email" class="iStock-email-id" name="iStock-email-id" placeholder="Email Address" value="{% if customer %}{{ customer.email }}{% endif %}" />
-            <input type="button" class="iStock-notify-btn" value="Notify Me" />
-          </div>
-          <div class="iStock-msg"></div>
-        </div>
+        {% include 'iStock-notify-me' %}
         </div>
       </div>
   </div>
