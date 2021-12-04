@@ -8590,13 +8590,13 @@
                  var btn_html = $(".product-shop .groups-btn div:first-child").html();
                   
                    e.find('.size-guide-button .btn-div').html(btn_html);
-                  if(e.find('.size-guide-button .btn-div input').hasClass('disabled')){
-                   var notify_html = $(".product-shop .iStock-wrapper").clone();
-                    console.log(notify_html);
-                  }
                   
                   e.find('.size-guide-button .btn-div input').attr('id','trigger_submit');
                   e.find('.size-guide-button .btn-div input').attr('type','button');
+                  if(e.find('.size-guide-button .btn-div input').hasClass('disabled')){
+                   var notify_html = $(".product-shop .iStock-wrapper").clone();
+                    e.find('.size-guide-button .btn-div').html(notify_html);
+                  }
                    //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
 //                     "none" === window.getComputedStyle(i).display && (e.find(".notify-wrap").show(),
