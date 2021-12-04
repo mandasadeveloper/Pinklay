@@ -8594,8 +8594,10 @@
                   e.find('.size-guide-button .btn-div input').attr('id','trigger_submit');
                   e.find('.size-guide-button .btn-div input').attr('type','button');
                   e.find('.size-guide-button .btn-div2').hide();
+                  e.find('.size-guide-button .btn-div2').show();
                   if(e.find('.size-guide-button .btn-div input').hasClass('disabled')){
                     e.find('.size-guide-button .btn-div2').show();
+                    e.find('.size-guide-button .btn-div2').hide();
                   }
                    //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
