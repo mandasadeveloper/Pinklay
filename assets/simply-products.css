@@ -30,6 +30,8 @@
 .size-guide-button input{
   width:100%;
   cursor:pointer;
+  background:#5ac4be;
+  color: #ffffff;
 }
 .product-size-guide .size-guide-title svg a {
     fill: none;
