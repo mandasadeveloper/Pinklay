@@ -864,9 +864,14 @@ body.size-popup-open::before {
 }
 .size-and-fit-wrapper .inner-title {
     margin-bottom: 0;
-    font-family: var(--main-body-font-bold);
+    font-weight:bold;
     letter-spacing: 1px;
 }
 .size-and-fit-wrapper .inner-details {
     list-style-type: square;
+}
+.size-and-fit-wrapper ul{
+  list-style-position: inside;
+  margin:0;
+  padding:0;
 }
