@@ -4,10 +4,14 @@
     </svg></div>
   <div class="main-size-container">
       <div class="size-popup-header">
-        <h1 class="ProductMeta__Title Heading u-h2">Long Shirt Kurta  - Black &amp; Ivory</h1><div class="size-and-fit-wrapper">
-            <ul>
-              <p class="inner-title">Size &amp; Fit</p><li class="inner-details">Model Height: 5'7"</li><li class="inner-details">Size: S</li><li class="inner-details">Fit: Loose</li></ul>
-          </div></div>
+        <h1 class="ProductMeta__Title Heading u-h2">{{product.title}}</h1>
+        <div class="size-and-fit-wrapper">
+          <ul>
+            <p class="inner-title">Size &amp; Fit</p>
+           {{product.metafields.my_fields.size_chart_text}}
+          </ul>
+        </div>
+    </div>
 
       <div class="size-popup-body">
         <div class="pdp-size-measure-toggle hide">
