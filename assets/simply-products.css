@@ -851,3 +851,22 @@ body.size-popup-open::before {
     transition: none;
     border: none;
 }
+.size-and-fit-wrapper {
+    padding: 15px 0 0 0;
+}
+.size-and-fit-wrapper * {
+    color: #565e6a;
+}
+.size-and-fit-wrapper .inner-title,
+.size-and-fit-wrapper .inner-details {
+    font-size: 13px;
+    line-height: 24px;
+}
+.size-and-fit-wrapper .inner-title {
+    margin-bottom: 0;
+    font-family: var(--main-body-font-bold);
+    letter-spacing: 1px;
+}
+.size-and-fit-wrapper .inner-details {
+    list-style-type: square;
+}
