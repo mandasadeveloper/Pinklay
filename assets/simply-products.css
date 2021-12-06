@@ -882,7 +882,7 @@ body.size-popup-open::before {
   padding:0;
 }
 
-.size-pdp-footer{
+.size-pdp-footer ul{
   list-style-position: inside;
   padding:0;
 }
