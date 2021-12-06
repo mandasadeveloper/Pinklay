@@ -881,3 +881,8 @@ body.size-popup-open::before {
   margin:0;
   padding:0;
 }
+
+.size-pdp-footer{
+  list-style-position: inside;
+  padding:0;
+}
