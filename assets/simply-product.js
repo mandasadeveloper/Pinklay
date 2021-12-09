@@ -1,15 +1,3 @@
-handleGetJson(){
-  console.log("inside handleGetJson");
-  fetch(`./fr.json`, {
-      headers : { 
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-       }
-
-    })
-    .then((response) => response.json())
-    .then((messages) => {console.log("messages");});
-}
 !function(t) {
     var e = {};
     function n(r) {
