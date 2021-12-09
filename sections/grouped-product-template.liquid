@@ -567,14 +567,14 @@
           </div>
         
         
-        {% if product.options.size > 1 %}
+        {% if product.tags contains 'show chart' %}
         <div class="product-size-guide">
           <div class="size-guide-title">
             <img src="https://cdn.shopify.com/s/files/1/0270/5129/4854/files/Group_560.png?v=1602488803">
             <a href="#">Size Guide</a>
           </div>
         </div>
-         {% endif %}
+        {% endif %}
         <!--short description end-->
     <div {% if product.available %} class="varview1" {% else%} class="varview1 tab"{% endif%} >
        {% assign variantCount = product.variants | size %}
