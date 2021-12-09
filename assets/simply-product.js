@@ -8582,6 +8582,7 @@
                 $(".bottom-rows-wrap .table-inner-row").removeClass("active");
                 var t = $(this).data('index');
                 $(".bottom-rows-wrap .row-" + t).addClass("active");
+              console.log(".bottom-rows-wrap .row-" + t);
                 var e = $(".pdp-size-popup");
                 if (e.length > 0) {
                     var n = this.value;
