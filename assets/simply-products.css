@@ -891,5 +891,5 @@ body.size-popup-open::before {
 }
 
 .size-guide-button .iStock-notify-btn, .size-guide-button .iStock-email-id{
-      width: unset;
+      width: unset!important;
 }
