@@ -8600,6 +8600,13 @@
                     e.find('.size-guide-button .btn-div').hide();
                     e.find('.size-guide-button .btn-div2').show();
                     e.find('.size-guide-button .btn-div2 .iStock-wrapper').show();
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.myshopapps.com/istock/iStock-notify.js';
+                    script.addEventListener('load', function() {
+                      // The script is loaded completely
+                      // Do something
+                    });
+
                   }
                    //                     var r = $(".product-shop .ProductForm__AddToCart span:not(.hover-text)").text()
 //                       , i = document.querySelector(".ProductForm__AddToCart");
