@@ -2383,8 +2383,8 @@
             "type": "image",
             "settings": {
               "dpl_slide_img": true,
-              "image_slide": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Desktop_Banner.jpg",
-              "image_slide_mb": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Mobile_Banner.jpg",
+              "image_slide": "shopify:\/\/shop_images\/Simple_Winter_Celebration_Facebook_Cover_2.jpg",
+              "image_slide_mb": "shopify:\/\/shop_images\/Simple_Winter_Celebration_Facebook_Cover_800_x_720_px_2.jpg",
               "alignment": "left",
               "header_silde": "",
               "font_size_header": "48px",
@@ -2393,7 +2393,7 @@
               "font_size_des": "12px",
               "color_des": "#000000",
               "button_slide": "",
-              "link_button": "shopify:\/\/collections\/chaand-womens-collection",
+              "link_button": "",
               "font_size_button": "14px",
               "bg_button": "#ffffff",
               "border_button": "#ffffff",
@@ -2402,6 +2402,7 @@
           },
           "1600151389700": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Pinklay_Women_Cotton_Kaftans_Caftans_Desktop_Banner.jpg",
@@ -2423,6 +2424,7 @@
           },
           "1598104889733": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_02749dc7-b745-49aa-8fa7-fe86e08df60f.jpg",
@@ -2444,6 +2446,7 @@
           },
           "1597250750565": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Pinklay_Dine_In_Style_Wooden_Ceramic_Tableware_Desktop_Banner.jpg",
@@ -2465,6 +2468,7 @@
           },
           "1599848882790": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Pinklay_Artisanal_Bath_Linen_Desktop_Banner.jpg",
@@ -2486,6 +2490,7 @@
           },
           "1598342300310": {
             "type": "image",
+            "disabled": true,
             "settings": {
               "dpl_slide_img": true,
               "image_slide": "shopify:\/\/shop_images\/Pinklay_Sawariya_Women_Clothing_Collection_Desktop_Banner.jpg",
