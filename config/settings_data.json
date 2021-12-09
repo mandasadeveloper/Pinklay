@@ -2379,12 +2379,12 @@
       "1533611901227": {
         "type": "home-slideshow",
         "blocks": {
-          "1598104889733": {
+          "1599052784961": {
             "type": "image",
             "settings": {
               "dpl_slide_img": true,
-              "image_slide": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_02749dc7-b745-49aa-8fa7-fe86e08df60f.jpg",
-              "image_slide_mb": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_800_x_720_px_ea3756bf-278f-4518-a13e-456bbb8306ad.jpg",
+              "image_slide": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Desktop_Banner.jpg",
+              "image_slide_mb": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Mobile_Banner.jpg",
               "alignment": "left",
               "header_silde": "",
               "font_size_header": "48px",
@@ -2393,7 +2393,7 @@
               "font_size_des": "12px",
               "color_des": "#000000",
               "button_slide": "",
-              "link_button": "shopify:\/\/pages\/month-of-giving",
+              "link_button": "shopify:\/\/collections\/chaand-womens-collection",
               "font_size_button": "14px",
               "bg_button": "#ffffff",
               "border_button": "#ffffff",
@@ -2421,12 +2421,12 @@
               "color_button": "#000000"
             }
           },
-          "1599052784961": {
+          "1598104889733": {
             "type": "image",
             "settings": {
               "dpl_slide_img": true,
-              "image_slide": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Desktop_Banner.jpg",
-              "image_slide_mb": "shopify:\/\/shop_images\/Pinklay_Chaand_Women_Clothing_Festive_Mobile_Banner.jpg",
+              "image_slide": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_02749dc7-b745-49aa-8fa7-fe86e08df60f.jpg",
+              "image_slide_mb": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_800_x_720_px_ea3756bf-278f-4518-a13e-456bbb8306ad.jpg",
               "alignment": "left",
               "header_silde": "",
               "font_size_header": "48px",
@@ -2435,7 +2435,7 @@
               "font_size_des": "12px",
               "color_des": "#000000",
               "button_slide": "",
-              "link_button": "shopify:\/\/collections\/chaand-womens-collection",
+              "link_button": "shopify:\/\/pages\/month-of-giving",
               "font_size_button": "14px",
               "bg_button": "#ffffff",
               "border_button": "#ffffff",
@@ -2507,9 +2507,9 @@
           }
         },
         "block_order": [
-          "1598104889733",
-          "1600151389700",
           "1599052784961",
+          "1600151389700",
+          "1598104889733",
           "1597250750565",
           "1599848882790",
           "1598342300310"
