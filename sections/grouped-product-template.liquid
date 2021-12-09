@@ -566,15 +566,6 @@
             {% endif %}
           </div>
         
-        
-        {% if product.tags contains 'show chart' %}
-        <div class="product-size-guide">
-          <div class="size-guide-title">
-            <img src="https://cdn.shopify.com/s/files/1/0270/5129/4854/files/Group_560.png?v=1602488803">
-            <a href="#">Size Guide</a>
-          </div>
-        </div>
-        {% endif %}
         <!--short description end-->
     <div {% if product.available %} class="varview1" {% else%} class="varview1 tab"{% endif%} >
        {% assign variantCount = product.variants | size %}
@@ -766,13 +757,20 @@
 }
           
         </style>    
-        <div data-app="eastsideco_sizeGuides"
+<!--         <div data-app="eastsideco_sizeGuides"
      data-shop="{{ shop.permanent_domain }}"
      data-tags="{{ product.tags | join:',' | escape }}"
      data-metafields="{{ product.metafields.esc-size-matters.tag }}"
      data-popup="link" id="sizechart" class="size-chart-open-popup">
-</div>
-        
+</div> -->
+        {% if product.tags contains 'show chart' %}
+        <div class="product-size-guide">
+          <div class="size-guide-title">
+            <img src="https://cdn.shopify.com/s/files/1/0249/5099/7070/t/104/assets/icon_sizechar.png">
+            <a href="#">Size Guide</a>
+          </div>
+        </div>
+        {% endif %}
         
         {% endform %}
         
