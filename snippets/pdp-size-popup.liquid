@@ -341,7 +341,9 @@
           <input type="submit" name="add" class="btn" >
         </div>
         <div class="btn-div2">
+          {% form 'product', product, id: "add-to-cart-form" %}
         {% include 'iStock-notify-me' %}
+          {% endform %}
         </div>
       </div>
   </div>
