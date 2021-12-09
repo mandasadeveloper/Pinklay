@@ -889,3 +889,7 @@ body.size-popup-open::before {
   list-style-position: inside;
   padding:0;
 }
+
+.size-guide-button .iStock-notify-btn, .size-guide-button .iStock-email-id{
+      width: unset;
+}
