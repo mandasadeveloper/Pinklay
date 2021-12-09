@@ -43,7 +43,42 @@
   };    
           
   window.multi_lang = {{settings.enable_multilang}};
-  
+  window.languages = {
+    cartAddNote: "Add Order Note",
+    cartEditNote: "Edit Order Note",
+    productImageLoadingError: "This image could not be loaded. Please try to reload the page.",
+    productFormAddToCart: "Add to Bag",
+    productFormUnavailable: "Unavailable",
+    productFormSoldOut: "Sold Out",
+    shippingEstimatorOneResult: "1 option available:",
+    shippingEstimatorMoreResults: "{{count}} options available:",
+    shippingEstimatorNoResults: "No shipping could be found"
+  };
+  window.simply = window.simply || {};
+  window.cn = function (o) { return "undefined" == typeof o || null == o || "" == o.toString().trim() };
+  window.cb = function (o) { if (o == 'true') { return true } else { return false } };
+  simply.money_format = " <span class=money>₹ {{amount_no_decimals}}</span>";
+  simply.money_format_with_currency = "<span class=money>₹ {{amount_no_decimals}}</span>";
+  simply.processing = true;
+  simply.logged = false;
+  /* ===== Express Shipping settings start ===== */
+  simply.enableExpressShipping =false;
+  simply.shippingTimePeriods = {
+    'express_shipping': 1,
+    'non_express_shipping': 5
+  }
+  /* ===== Express Shipping settings end ===== */
+  simply.jsToDelay = [];
+  simply.isVoyagerEnable = true;
+  simply.isVoyagerCustomer = false;
+  simply.EOSSEnable = false;
+  simply.enableEarlyAccessVoyager = false;
+  simply.early_access_tag = "Product_early-access";
+  simply.voyagerExclusiveProduct = false;
+  simply.exclusiveProductFeature = false;
+  simply.shippingThreshold = '500000';
+  simply.is_staging_store = true;
+  simply.is_staging_store = false;
 </script>
 
 {% if settings.enable_multilang %}
