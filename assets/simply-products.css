@@ -893,3 +893,6 @@ body.size-popup-open::before {
 .size-guide-button .iStock-notify-btn, .size-guide-button .iStock-email-id{
       width: unset!important;
 }
+.option_name{
+  margin-right:10px;
+}
