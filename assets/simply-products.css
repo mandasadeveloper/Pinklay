@@ -899,5 +899,5 @@ body.size-popup-open::before {
   margin-right:10px;
 }
 .hide_line{
-  display:none;
+  display:none!important;
 }
