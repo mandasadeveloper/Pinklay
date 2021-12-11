@@ -8536,7 +8536,7 @@
                 var i = "size-radio";
                 r || ($('.bottom-rows-wrap .table-inner-row[data-value="' + $(this).data("value-handle") + '"]').addClass("soldout"),
                 i += " soldout"),
-                t += "<p><span class='option_name'>"$(this).data("value")"</span>" + '<input type="radio" data-index="'+$(this).data("index")+'" name="size option" id="'.concat($(this).data("value"), '" value="').concat($(this).data("value"), '" class="').concat(i, '">') + '<label for="'.concat($(this).data("value"), '" class="size-btn"></label>') + "</p>"
+                t += "<p><span class='option_name'>"+$(this).data("value")+"</span>" + '<input type="radio" data-index="'+$(this).data("index")+'" name="size option" id="'.concat($(this).data("value"), '" value="').concat($(this).data("value"), '" class="').concat(i, '">') + '<label for="'.concat($(this).data("value"), '" class="size-btn"></label>') + "</p>"
             }
             )),
             $(t).appendTo(".radio-boxes"),
