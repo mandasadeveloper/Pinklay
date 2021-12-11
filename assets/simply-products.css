@@ -901,3 +901,12 @@ body.size-popup-open::before {
 .hide_line{
   display:none!important;
 }
+
+@media screen and (max-width: 1024px) {
+  .pdp-size-popup .main-size-container .size-popup-body .table-inner-wrap .radio-boxes p{
+    font-size:10px;
+  }
+  .pdp-size-popup .main-size-container .size-popup-body .table-inner-wrap div.table-inner-row .content{
+    font-size:10px;
+  }
+}
