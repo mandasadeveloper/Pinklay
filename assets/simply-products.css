@@ -898,3 +898,6 @@ body.size-popup-open::before {
 .option_name{
   margin-right:10px;
 }
+.hide_line{
+  display:none;
+}
