@@ -8583,7 +8583,9 @@
               $('.radio-boxes p').removeClass("active");
                 var t = $(this).data('index');
                 $(".bottom-rows-wrap .row-" + t).addClass("active");
-              $('.radio-boxes p').eq(t).addClass("active");
+              
+              var p_index = $(this).parent().index();
+              $('.radio-boxes p').eq(p_index).addClass("active");
               console.log(".bottom-rows-wrap .row-" + t);
                 var e = $(".pdp-size-popup");
                 if (e.length > 0) {
