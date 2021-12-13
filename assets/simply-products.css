@@ -929,3 +929,24 @@ body.size-popup-open::before {
     border-right: none;
 }
 
+.pdp-size-popup .main-size-container .size-popup-body .table-inner-wrap .radio-boxes .active label::after {
+    content: ""!important;
+    width: 12px!important;
+    height: 12px!important;
+    background: #6a6a6a!important;
+    position: absolute!important;
+    top: 1.1px!important;
+    left: 50%!important;
+    border-radius: 100%!important;
+    opacity: 1!important;
+    -moz-transition: all .2s ease!important;
+    -o-transition: all .2s ease!important;
+    -ms-transition: all .2s ease!important;
+    -webkit-transition: all .2s ease!important;
+    transition: all .2s ease!important;
+    -moz-transform: translateX(-50%) scale(1)!important;
+    -o-transform: translateX(-50%) scale(1)!important;
+    -ms-transform: translateX(-50%) scale(1)!important;
+    -webkit-transform: translateX(-50%) scale(1)!important;
+    transform: translateX(-50%) scale(1)!important;
+}
