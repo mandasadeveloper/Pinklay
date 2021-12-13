@@ -446,7 +446,7 @@
     border-bottom: none
 }
 
-.pdp-size-popup .main-size-container .size-popup-body .first-table-wrap~.second-table-wrap {
+.pdp-size-popup .main-size-container .size-popup-body .first-table-wrap~.second-table-wrap, .pdp-size-popup .main-size-container .size-popup-body .first-table-wrap~.third-table-wrap {
     padding-top: 1px
 }
 
@@ -493,7 +493,21 @@
 .pdp-size-popup .main-size-container .size-popup-body .second-table-wrap .table-inner-row.active.soldout .content:after {
     background: rgba(211, 214, 216, 0.3)
 }
+.pdp-size-popup .main-size-container .size-popup-body .third-table-wrap .table-inner-row .content:first-child {
+    background: #f5f9fa
+}
 
+.pdp-size-popup .main-size-container .size-popup-body .third-table-wrap .table-inner-row.active .content {
+    background: #d3d6d8
+}
+
+.pdp-size-popup .main-size-container .size-popup-body .third-table-wrap .table-inner-row.active.soldout .content {
+    background: rgba(211, 214, 216, 0.3)
+}
+
+.pdp-size-popup .main-size-container .size-popup-body .third-table-wrap .table-inner-row.active.soldout .content:after {
+    background: rgba(211, 214, 216, 0.3)
+}
 .pdp-size-popup .main-size-container .size-popup-body .how-to-measure {
     margin: 25px 0 10px;
     font-size: 12px;
