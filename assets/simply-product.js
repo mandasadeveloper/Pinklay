@@ -8529,9 +8529,7 @@
                 $("body").removeClass("size-popup-open")
             }
             ));
-          var t = '<p class="empty-cell">Pinklay</p>';
-          var t2 = '<p class="empty-cell">Pinklay</p>';
-          var t3 = '<p class="empty-cell">Pinklay</p>';
+            var t = '<p class="empty-cell">Pinklay</p>';
             $(".first-table-wrap .content[data-value]").each((function(e, n) {
                 var r = !0;
                 $('.SizeSwatchList input[data-handle="' + $(this).data("value-handle") + '"]').closest(".HorizontalList__Item").hasClass("soldout") && (r = !1);
@@ -8541,28 +8539,7 @@
                 t += "<p><span class='option_name'>"+$(this).data("value")+"</span>" + '<input type="radio" data-index="'+$(this).data("index")+'" name="size option" id="'.concat($(this).data("value"), '" value="').concat($(this).data("value"), '" class="').concat(i, '">') + '<label for="'.concat($(this).data("value"), '" class="size-btn"></label>') + "</p>"
             }
             )),
-             $(".second-table-wrap .content[data-value]").each((function(e, n) {
-                var r = !0;
-                $('.SizeSwatchList input[data-handle="' + $(this).data("value-handle") + '"]').closest(".HorizontalList__Item").hasClass("soldout") && (r = !1);
-                var i = "size-radio";
-                r || ($('.bottom-rows-wrap .table-inner-row[data-value="' + $(this).data("value-handle") + '"]').addClass("soldout"),
-                i += " soldout"),
-                t2 += "<p><span class='option_name'>"+$(this).data("value")+"</span>" + '<input type="radio" data-index="'+$(this).data("index")+'" name="size option" id="'.concat($(this).data("value"), '" value="').concat($(this).data("value"), '" class="').concat(i, '">') + '<label for="'.concat($(this).data("value"), '" class="size-btn"></label>') + "</p>"
-            }
-            )),
-               $(".third-table-wrap .content[data-value]").each((function(e, n) {
-                var r = !0;
-                $('.SizeSwatchList input[data-handle="' + $(this).data("value-handle") + '"]').closest(".HorizontalList__Item").hasClass("soldout") && (r = !1);
-                var i = "size-radio";
-                r || ($('.bottom-rows-wrap .table-inner-row[data-value="' + $(this).data("value-handle") + '"]').addClass("soldout"),
-                i += " soldout"),
-                t3 += "<p><span class='option_name'>"+$(this).data("value")+"</span>" + '<input type="radio" data-index="'+$(this).data("index")+'" name="size option" id="'.concat($(this).data("value"), '" value="').concat($(this).data("value"), '" class="').concat(i, '">') + '<label for="'.concat($(this).data("value"), '" class="size-btn"></label>') + "</p>"
-            }
-            )),
-              $(t).appendTo(".radio-boxes1"),
-              $(t3).appendTo(".radio-boxes3"),
-              $(t2).appendTo(".radio-boxes2"),
-              
+            $(t).appendTo(".radio-boxes"),
             e.adjustSizeTableWidth()
         }
         )),
