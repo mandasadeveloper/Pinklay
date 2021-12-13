@@ -8580,8 +8580,10 @@
             $(".first-table-wrap input").change((function() {
                 $(".pdp-size-popup .main-size-container .size-guide-button").css("display", "block"),
                 $(".bottom-rows-wrap .table-inner-row").removeClass("active");
+              $('.radio-boxes p').removeClass("active");
                 var t = $(this).data('index');
                 $(".bottom-rows-wrap .row-" + t).addClass("active");
+              $('.radio-boxes p').eq(t).addClass("active");
               console.log(".bottom-rows-wrap .row-" + t);
                 var e = $(".pdp-size-popup");
                 if (e.length > 0) {
