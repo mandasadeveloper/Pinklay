@@ -8585,7 +8585,7 @@
                 $(".bottom-rows-wrap .row-" + t).addClass("active");
               
               var p_index = $(this).parent().index();
-              $(".radio-boxes").each((function(e, n) {
+              $(".radio-boxes").each(function(e, n) {
                 $(this).find('p').eq(p_index).addClass("active");
               });
               console.log(".bottom-rows-wrap .row-" + t);
