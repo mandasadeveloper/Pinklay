@@ -8512,7 +8512,7 @@
             $('.table-inner-row:not(".row-0")').css("width", t+20),
             $('.radio-boxes p:not(".empty-cell")').css("width", t+20);
             var n = $(".table-inner-row.row-0").outerWidth(!0)
-              , r = (($(".first-table-wrap .table-inner-row").length - 1) * t + n + 3).toFixed(2);
+              , r = (($(".first-table-wrap .table-inner-row").length - 1) * t + 20 + n + 3).toFixed(2);
             r > $(".size-popup-body").width() ? ($(".table-inner-wrap").addClass("no-max-width"),
             $(".table-inner-wrap").css("width", r)) : $(".table-inner-wrap").removeClass("no-max-width")
         }
