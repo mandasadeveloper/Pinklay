@@ -8514,7 +8514,7 @@
             var n = $(".table-inner-row.row-0").outerWidth(!0)
               , r = (($(".first-table-wrap .table-inner-row").length - 1) * t + n + 3).toFixed(2);
             r > $(".size-popup-body").width() ? ($(".table-inner-wrap").addClass("no-max-width"),
-            $(".table-inner-wrap").css("width", r)) : $(".table-inner-wrap").removeClass("no-max-width")
+            $(".table-inner-wrap").css("width", r+100)) : $(".table-inner-wrap").removeClass("no-max-width")
         }
         )),
         u(this, "pdpSizePopup", (function() {
