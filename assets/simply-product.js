@@ -8560,8 +8560,9 @@
             }
             )),
               $(t).appendTo(".radio-boxes1"),
-              $(t2).appendTo(".radio-boxes2"),
               $(t3).appendTo(".radio-boxes3"),
+              $(t2).appendTo(".radio-boxes2"),
+              
             e.adjustSizeTableWidth()
         }
         )),
