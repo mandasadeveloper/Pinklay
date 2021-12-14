@@ -959,11 +959,11 @@ body.size-popup-open::before {
 }
 
 .size-table::-webkit-scrollbar:vertical {
-    width: 11px;
+    width: 9px;
 }
 
 .size-table::-webkit-scrollbar:horizontal {
-    height: 11px;
+    height: 9px;
 }
 
 .size-table::-webkit-scrollbar-thumb {
