@@ -455,7 +455,8 @@
 }
 
 .pdp-size-popup .main-size-container .size-popup-body .first-table-wrap .table-inner-row.active .content {
-    background: #d3d6d8;
+    background: #5ac4be;
+    color: #fff;
     position: relative
 }
 
