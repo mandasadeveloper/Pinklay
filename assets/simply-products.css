@@ -203,9 +203,9 @@
     width: 100%
 }
 
-.pdp-size-popup .main-size-container .size-popup-body .size-chart-inner-wrap .size-table {
+/* .pdp-size-popup .main-size-container .size-popup-body .size-chart-inner-wrap .size-table {
     overflow-x: auto
-}
+} */
 
 .pdp-size-popup .main-size-container .size-popup-body .table-title {
     margin: 13px 0 10px;
@@ -954,7 +954,9 @@ body.size-popup-open::before {
 
 
 
-
+.size-table .table-inner-wrap{
+  overflow-x:auto;
+}
 .size-table .table-inner-wrap::-webkit-scrollbar {
     -webkit-appearance: none;
 }
