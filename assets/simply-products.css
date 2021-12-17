@@ -203,9 +203,9 @@
     width: 100%
 }
 
-/* .pdp-size-popup .main-size-container .size-popup-body .size-chart-inner-wrap .size-table {
+.pdp-size-popup .main-size-container .size-popup-body .size-chart-inner-wrap .size-table {
     overflow-x: auto
-} */
+}
 
 .pdp-size-popup .main-size-container .size-popup-body .table-title {
     margin: 13px 0 10px;
@@ -954,22 +954,20 @@ body.size-popup-open::before {
 
 
 
-.size-table .table-inner-wrap{
-  overflow-x:auto;
-}
-.size-table .table-inner-wrap::-webkit-scrollbar {
+
+.size-table::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-.size-table .table-inner-wrap::-webkit-scrollbar:vertical {
+.size-table::-webkit-scrollbar:vertical {
     width: 9px;
 }
 
-.size-table .table-inner-wrap::-webkit-scrollbar:horizontal {
+.size-table::-webkit-scrollbar:horizontal {
     height: 9px;
 }
 
-.size-table .table-inner-wrap::-webkit-scrollbar-thumb {
+.size-table::-webkit-scrollbar-thumb {
     border-radius: 8px;
     border: 2px solid white; /* should match background, can't be transparent */
     background-color: rgba(0, 0, 0, .3);
