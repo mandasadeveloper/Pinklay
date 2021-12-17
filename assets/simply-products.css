@@ -455,9 +455,8 @@
 }
 
 .pdp-size-popup .main-size-container .size-popup-body .first-table-wrap .table-inner-row.active .content {
-    background: #5ac4be;
-    color: #fff;
-    position: relative;
+    background: #d3d6d8;
+    position: relative
 }
 
 .pdp-size-popup .main-size-container .size-popup-body .first-table-wrap .table-inner-row.active .content:after {
@@ -484,7 +483,8 @@
 }
 
 .pdp-size-popup .main-size-container .size-popup-body .second-table-wrap .table-inner-row.active .content {
-    background: #d3d6d8
+   background: #5ac4be;
+    color: #fff;
 }
 
 .pdp-size-popup .main-size-container .size-popup-body .second-table-wrap .table-inner-row.active.soldout .content {
