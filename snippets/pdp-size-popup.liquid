@@ -32,7 +32,7 @@
        
          
         <div class="size-chart-inner-wrap">
- {% if product.metafields.my_fields.body_measurements == false %}
+ {% if product.metafields.my_fields.body_measurements %}
         <p class="table-title">Body Measurements</p>
 <div class="size-table first-table-wrap" data-rows-count="6" >
              
@@ -142,7 +142,7 @@
                 </div>
             </div>
           {% endif %}
-          {% if product.metafields.my_fields.garment_measurements == false %}
+          {% if product.metafields.my_fields.garment_measurements %}
           <p class="table-title">Garment Measurements</p>
             <div class="size-table second-table-wrap" data-rows-count="6" >
                 
