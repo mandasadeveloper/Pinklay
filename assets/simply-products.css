@@ -105,7 +105,8 @@
     line-height: 24px;
     color: #282b30;
     font-family: var(--main-body-font);
-    font-weight: bold
+    font-weight: bold;
+    line-height: 1.3;
 }
 
 .pdp-size-popup .main-size-container .size-popup-header .ProductMeta__Description {
