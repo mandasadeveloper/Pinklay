@@ -601,11 +601,12 @@
 }
 
 .pdp-size-popup .main-size-container .size-pdp-footer h2 {
-    font-size: 22px;
-    line-height: inherit;
-    margin-bottom: 5px;
-    color: #191E28;
-    font-family: var(--main-headline-font)
+  font-size: 12px;
+  line-height: 13px;
+  text-transform: uppercase;
+  color: #565e6a;
+  font-family: var(--main-body-font);
+  font-weight: 500;
 }
 
 .pdp-size-popup .main-size-container .size-pdp-footer h4 {
