@@ -978,5 +978,4 @@ body.size-popup-open::before {
 
 .pdp-size-popup .main-size-container .size-popup-body .table-inner-wrap div.table-inner-row[data-value="size"] p{
   justify-content: flex-start;
-  padding-left: 5px;
 }
