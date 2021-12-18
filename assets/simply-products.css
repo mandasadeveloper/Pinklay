@@ -974,3 +974,8 @@ body.size-popup-open::before {
     border: 2px solid white; /* should match background, can't be transparent */
     background-color: rgba(0, 0, 0, .3);
 }
+
+
+.pdp-size-popup .main-size-container .size-popup-body .table-inner-wrap div.table-inner-row[data-value="size"]{
+  text-align:left;
+}
