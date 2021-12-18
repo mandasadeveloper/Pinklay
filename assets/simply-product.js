@@ -8529,7 +8529,7 @@
                 $("body").removeClass("size-popup-open")
             }
             ));
-            var t = '<p class="empty-cell">Pinklay</p>';
+            var t = '<p class="empty-cell">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>';
             $(".first-table-wrap .content[data-value]").each((function(e, n) {
                 var r = !0;
                 $('.SizeSwatchList input[data-handle="' + $(this).data("value-handle") + '"]').closest(".HorizontalList__Item").hasClass("soldout") && (r = !1);
