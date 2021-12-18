@@ -608,6 +608,9 @@
   font-family: var(--main-body-font);
   font-weight: 500;
 }
+.pdp-size-popup .main-size-container .size-pdp-footer ul{
+ margin-bottom:0px;
+}
 
 .pdp-size-popup .main-size-container .size-pdp-footer h4 {
     font-size: 12px;
