@@ -72,7 +72,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -84,7 +84,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -95,7 +95,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -107,7 +107,7 @@
                               {% assign valuesplit = vbvalue | split:"-" %}
                               {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                               {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                              <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                               {% endfor %}   
                             </div>
                           {% endif %}
@@ -119,7 +119,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -131,7 +131,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -143,7 +143,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -155,7 +155,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -167,7 +167,7 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
@@ -179,7 +179,7 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
@@ -231,7 +231,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -243,7 +243,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -254,7 +254,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -266,7 +266,7 @@
                               {% assign valuesplit = vbvalue | split:"-" %}
                               {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                               {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                              <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                               {% endfor %}   
                             </div>
                           {% endif %}
@@ -278,7 +278,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -290,7 +290,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -302,7 +302,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -314,7 +314,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -326,7 +326,7 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
@@ -338,7 +338,7 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
@@ -390,7 +390,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -402,7 +402,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -413,7 +413,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -425,7 +425,7 @@
                               {% assign valuesplit = vbvalue | split:"-" %}
                               {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                               {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                              <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                               {% endfor %}   
                             </div>
                           {% endif %}
@@ -437,7 +437,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -449,7 +449,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -461,7 +461,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -473,7 +473,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
@@ -485,7 +485,7 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
@@ -497,7 +497,8 @@
                           {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
-                          <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                          
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
                           {% endfor %}
                         </div>
                         {% endif %}
