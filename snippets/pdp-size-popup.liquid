@@ -33,6 +33,8 @@
          
         <div class="size-chart-inner-wrap">
  {% if product.metafields.my_fields.body_measurements %}
+          {% assign bodycolumns = block.settings.body_column | split:"," %}
+          {% assign bodyraws = block.settings.body_rows | split:"," %}
         <p class="table-title">Body Measurements</p>
 <div class="size-table first-table-wrap" data-rows-count="6" >
              
@@ -40,11 +42,11 @@
                 <div class="radio-boxes radio-boxes1">
                 </div>
                       <div class="bottom-rows-wrap">
-                        <div class="table-inner-row row-0" data-value="size">
+                        <div class="table-inner-row row-0" data-value="size" factory="{{bodyraws[0]}}">
                           <p class="content hide_line" style="height: 64.6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                          <p class="content" style="height: 64.6px;">waist</p>
-                          <p class="content" style="height: 64.6px;">shoulder</p>
-                          <p class="content" style="height: 64.6px;">chest</p>
+                            {% for column in bodycolumns %}
+                              <p class="content" style="height: 64.6px;">{{column}}</p>
+                            {% endfor %}
                         </div>
                         {% assign values = '' %}
                         {% for variant in product.variants %}
