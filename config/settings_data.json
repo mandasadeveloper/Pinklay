@@ -5449,6 +5449,48 @@
       "pdp-size-popup": {
         "type": "pdp-size-popup",
         "blocks": {
+          "f4ab07d5-b231-4808-97ae-6c220db1e558": {
+            "type": "size_chart",
+            "settings": {
+              "title": "Default chart",
+              "body_rows": "S,M,L,XL,XXL",
+              "body_column": "WAIST,SHOULDER ,CHEST",
+              "bvalue_1": "25.5-27,14.5-15,33.5-35",
+              "bvalue_2": "15.5-16,35.5-37,38-39.5",
+              "bvalue_3": "29.5-31,16.5-17,37.5-39",
+              "bvalue_4": "31.5-33,17.5-18,39.5-41",
+              "bvalue_5": "31.5-33,17.5-18,39.5-41",
+              "bvalue_6": "31.5-33,17.5-18,39.5-41",
+              "bvalue_7": "31.5-33,17.5-18,39.5-41",
+              "bvalue_8": "31.5-33,17.5-18,39.5-41",
+              "bvalue_9": "31.5-33,17.5-18,39.5-41",
+              "bvalue_10": "31.5-33,17.5-18,39.5-41",
+              "garment_rows": "S,M,L,XL,XXL",
+              "garment_column": "WAIST,SHOULDER ,CHEST",
+              "gvalue_1": "45,52,15",
+              "gvalue_2": "47,54,15.5",
+              "gvalue_3": "49,56,16",
+              "gvalue_4": "51,58,16.5",
+              "gvalue_5": "51,58,16.5",
+              "gvalue_6": "51,58,16.5",
+              "gvalue_7": "51,58,16.5",
+              "gvalue_8": "51,58,16.5",
+              "gvalue_9": "51,58,16.5",
+              "gvalue_10": "51,58,16.5",
+              "intl_rows": "S,M,L,XL,XXL",
+              "intl_column": "US,UK",
+              "mvalue_1": "45,52",
+              "mvalue_2": "47,54",
+              "mvalue_3": "49,56",
+              "mvalue_4": "51,58",
+              "mvalue_5": "51,58",
+              "mvalue_6": "51,58",
+              "mvalue_7": "51,58",
+              "mvalue_8": "51,58",
+              "mvalue_9": "51,58",
+              "mvalue_10": "51,58"
+            }
+          },
           "da746721-2972-4762-a75e-7c6ce73320c8": {
             "type": "size_chart",
             "settings": {
@@ -5493,6 +5535,7 @@
           }
         },
         "block_order": [
+          "f4ab07d5-b231-4808-97ae-6c220db1e558",
           "da746721-2972-4762-a75e-7c6ce73320c8"
         ],
         "settings": {
