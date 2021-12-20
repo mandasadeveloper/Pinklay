@@ -52,7 +52,7 @@
                 <div class="radio-boxes radio-boxes1">
                 </div>
                       <div class="bottom-rows-wrap">
-                        <div class="table-inner-row row-0" data-value="size" factory="{{bodyraws[0]}}">
+                        <div class="table-inner-row row-0" data-value="size" >
                           <p class="content hide_line" style="height: 64.6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                             {% for column in bodycolumns %}
                               <p class="content" style="height: 64.6px;">{{column}}</p>
@@ -72,7 +72,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" factory="{{valuesplit}}" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
