@@ -5496,6 +5496,7 @@
             "type": "size_chart",
             "settings": {
               "title": "sizechart_kurta",
+              "chart_image": "shopify:\/\/shop_images\/size_chart.png",
               "body_rows": "S,M,L,XL",
               "body_column": "WAIST,SHOULDER ,CHEST",
               "bvalue_1": "25.5-27,14.5-15,33.5-35",
