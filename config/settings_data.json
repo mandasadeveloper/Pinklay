@@ -5452,7 +5452,7 @@
           "da746721-2972-4762-a75e-7c6ce73320c8": {
             "type": "size_chart",
             "settings": {
-              "size_tag": "sizechart_kurta",
+              "title": "sizechart_kurta",
               "body_rows": "S,M,L,XL",
               "body_column": "WAIST,SHOULDER ,CHEST",
               "bvalue_1": "25.5-27,14.5-15,33.5-35",
