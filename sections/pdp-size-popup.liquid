@@ -11,6 +11,7 @@
 {% endfor %}
 
 {% for block in section.blocks %}
+{% assign sizetag = block.settings.title %}
    {% if is_tag %}
       {% if sizetag == 'Default chart' %}
       {% include 'default-size-popup', product:product, block:block %}
