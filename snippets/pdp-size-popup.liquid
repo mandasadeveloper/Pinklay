@@ -69,7 +69,7 @@
                           <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             {% for vbvalue in bvalue_1 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -81,7 +81,7 @@
                             <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             
                             {% for vbvalue in bvalue_2 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -92,7 +92,7 @@
                           <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             {% for vbvalue in bvalue_3 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -104,7 +104,7 @@
                               <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                              
                               {% for vbvalue in bvalue_4 %}
-                              {% assign valuesplit = vbvalue | split:"," %}
+                              {% assign valuesplit = vbvalue | split:"-" %}
                               {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                               {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                               <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -116,7 +116,7 @@
                             <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
                             {% for vbvalue in bvalue_5 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -128,7 +128,7 @@
                             <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
                             {% for vbvalue in bvalue_6 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -140,7 +140,7 @@
                             <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             
                             {% for vbvalue in bvalue_7 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -152,7 +152,7 @@
                             <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
                             {% for vbvalue in bvalue_8 %}
-                            {% assign valuesplit = vbvalue | split:"," %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                             <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -164,7 +164,7 @@
                           <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                           
                           {% for vbvalue in bvalue_9 %}
-                          {% assign valuesplit = vbvalue | split:"," %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                           <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
@@ -176,7 +176,7 @@
                           <p class="content hide_line" data-value="{{value}}" data-index="10" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                           
                           {% for vbvalue in bvalue_10 %}
-                          {% assign valuesplit = vbvalue | split:"," %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
                           {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                           {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
                           <p class="content" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
