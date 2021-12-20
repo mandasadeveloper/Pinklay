@@ -4,7 +4,7 @@
     </svg></div>
   <div class="main-size-container">
       <div class="size-popup-header">
-        <h1 class="ProductMeta__Title Heading u-h2">default-{{product.title}}</h1>
+        <h1 class="ProductMeta__Title Heading u-h2">{{product.title}}</h1>
         <div class="size-and-fit-wrapper">
           <ul>
             {% if product.metafields.my_fields.garment_style_fit %}
@@ -33,6 +33,18 @@
          
         <div class="size-chart-inner-wrap">
  {% if product.metafields.my_fields.body_measurements %}
+          {% assign bodycolumns = block.settings.body_column | split:"," %}
+          {% assign bodyraws = block.settings.body_rows | split:"," %}
+          {% assign bvalue_1 = block.settings.bvalue_1 | split:"," %}
+          {% assign bvalue_2 = block.settings.bvalue_2 | split:"," %}
+          {% assign bvalue_3 = block.settings.bvalue_3 | split:"," %}
+          {% assign bvalue_4 = block.settings.bvalue_4 | split:"," %}
+          {% assign bvalue_5 = block.settings.bvalue_5 | split:"," %}
+          {% assign bvalue_6 = block.settings.bvalue_6 | split:"," %}
+          {% assign bvalue_7 = block.settings.bvalue_7 | split:"," %}
+          {% assign bvalue_8 = block.settings.bvalue_8 | split:"," %}
+          {% assign bvalue_9 = block.settings.bvalue_9 | split:"," %}
+          {% assign bvalue_10 = block.settings.bvalue_10 | split:"," %}
         <p class="table-title">Body Measurements</p>
 <div class="size-table first-table-wrap" data-rows-count="6" >
              
@@ -40,11 +52,11 @@
                 <div class="radio-boxes radio-boxes1">
                 </div>
                       <div class="bottom-rows-wrap">
-                        <div class="table-inner-row row-0" data-value="size">
+                        <div class="table-inner-row row-0" data-value="size" >
                           <p class="content hide_line" style="height: 64.6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                          <p class="content" style="height: 64.6px;">waist</p>
-                          <p class="content" style="height: 64.6px;">shoulder</p>
-                          <p class="content" style="height: 64.6px;">chest</p>
+                            {% for column in bodycolumns %}
+                              <p class="content" style="height: 64.6px;">{{column}}</p>
+                            {% endfor %}
                         </div>
                         {% assign values = '' %}
                         {% for variant in product.variants %}
@@ -53,85 +65,122 @@
                           {% assign values = values | join: ',' %}	
                           {% assign values = values | append: ',' | append: value %} 
                           {% assign values = values | split: ',' %}
-                          {% if value == 'S-M' %}
+                          {% if value == bodyraws[0] %}
                           <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                           
-                            <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-27</p>
-                            <p class="content" data-size="34.29-35.56" style="height: 64.6px;">13.5-15</p>
-                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-35</p>
+                            {% for vbvalue in bvalue_1 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                          {% if value == 'XS' %}
+                          {% if value == bodyraws[1] %}
                           <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             
-                            <p class="content" data-size="59.69-63.5" style="height: 64.6px;">23.5-25</p>
-                            <p class="content" data-size="34.29-35.56" style="height: 64.6px;">13.5-14</p>
-                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
+                            {% for vbvalue in bvalue_2 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                          {% if value == 'S' %}
+                          {% if value == bodyraws[2] %}
                           <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                            
-                            <p class="content" data-size="64.77-68.58" style="height: 64.6px;">25.5-27</p>
-                            <p class="content" data-size="36.83-38.1" style="height: 64.6px;">14.5-15</p>
-                            <p class="content" data-size="85.09-88.9" style="height: 64.6px;">33.5-35</p>
+                            {% for vbvalue in bvalue_3 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                         {% if value == 'M' %}
+                         {% if value == bodyraws[3] %}
                             <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
                               <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                              
-                              <p class="content" data-size="39.37-40.64" style="height: 64.6px;" cms="39.37-40.64" inches="15.5-16">15.5-16</p>
-                              <p class="content" data-size="90.17-93.98" style="height: 64.6px;" cms="90.17-93.98" inches="35.5-37">35.5-37</p>
-                              <p class="content" data-size="96.52-100.33" style="height: 64.6px;" cms="96.52-100.33" inches="38-39.5">38-39.5</p>
+                              {% for vbvalue in bvalue_4 %}
+                              {% assign valuesplit = vbvalue | split:"-" %}
+                              {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                              {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                              {% endfor %}   
                             </div>
                           {% endif %}
-                          {% if value == 'L-XL' %}
+                          {% if value == bodyraws[4] %}
                           <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
-                            <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-33</p>
-                            <p class="content" data-size="41.91-43.18" style="height: 64.6px;">16.5-18</p>
-                            <p class="content" data-size="95.25-99.06" style="height: 64.6px;">37.5-41</p>
+                            {% for vbvalue in bvalue_5 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                          {% if value == 'L' %}
+                          {% if value == bodyraws[5] %}
                           <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
-                            <p class="content" data-size="74.93-78.74" style="height: 64.6px;">29.5-31</p>
-                            <p class="content" data-size="41.91-43.18" style="height: 64.6px;">16.5-17</p>
-                            <p class="content" data-size="95.25-99.06" style="height: 64.6px;">37.5-39</p>
+                            {% for vbvalue in bvalue_6 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                          {% if value == 'XL' %}
+                          {% if value == bodyraws[6] %}
                           <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                             
-                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
-                            <p class="content" data-size="44.45-45.72" style="height: 64.6px;">17.5-18</p>
-                            <p class="content" data-size="100.33-104.14" style="height: 64.6px;">39.5-41</p>
+                            {% for vbvalue in bvalue_7 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                          {% if value == 'L-XXL' %}
+                          {% if value == bodyraws[7] %}
                           <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
                             <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
-                            <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
-                            <p class="content" data-size="44.45-45.72" style="height: 64.6px;">17.5-18</p>
-                            <p class="content" data-size="100.33-104.14" style="height: 64.6px;">39.5-41</p>
+                            {% for vbvalue in bvalue_8 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
                           </div>
                           {% endif %}
-                        {% if value == 'XXL-XXXL' %}
+                        {% if value == bodyraws[8] %}
                         <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
                           <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                           
-                          <p class="content" data-size="80.01-83.82" style="height: 64.6px;">31.5-33</p>
-                          <p class="content" data-size="44.45-45.72" style="height: 64.6px;">17.5-18</p>
-                          <p class="content" data-size="100.33-104.14" style="height: 64.6px;">39.5-41</p>
+                          {% for vbvalue in bvalue_9 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                         {% if value == bodyraws[9] %}
+                        <div class="table-inner-row row-10" data-value="{{value | handleize}}" style="width: 59px;">
+                          <p class="content hide_line" data-value="{{value}}" data-index="10" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          
+                          {% for vbvalue in bvalue_10 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
                         </div>
                         {% endif %}
                         
@@ -143,6 +192,18 @@
             </div>
           {% endif %}
           {% if product.metafields.my_fields.garment_measurements %}
+          {% assign garmentcolumns = block.settings.garment_column | split:"," %}
+          {% assign garmentraws = block.settings.garment_rows | split:"," %}
+          {% assign gvalue_1 = block.settings.gvalue_1 | split:"," %}
+          {% assign gvalue_2 = block.settings.gvalue_2 | split:"," %}
+          {% assign gvalue_3 = block.settings.gvalue_3 | split:"," %}
+          {% assign gvalue_4 = block.settings.gvalue_4 | split:"," %}
+          {% assign gvalue_5 = block.settings.gvalue_5 | split:"," %}
+          {% assign gvalue_6 = block.settings.gvalue_6 | split:"," %}
+          {% assign gvalue_7 = block.settings.gvalue_7 | split:"," %}
+          {% assign gvalue_8 = block.settings.gvalue_8 | split:"," %}
+          {% assign gvalue_9 = block.settings.gvalue_9 | split:"," %}
+          {% assign gvalue_10 = block.settings.gvalue_10 | split:"," %}
           <p class="table-title">Garment Measurements</p>
             <div class="size-table second-table-wrap" data-rows-count="6" >
                 
@@ -152,91 +213,137 @@
                     <div class="bottom-rows-wrap">
                         <div class="table-inner-row row-0" data-value="size">
                            <p class="content hide_line" style="height: 64.6px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                            <p class="content" style="height: 64.6px;">chest</p>
-                            <p class="content" style="height: 64.6px;">waist</p>
-                            <p class="content" style="height: 64.6px;">shoulder</p>
+                          {% for column in garmentcolumns %}
+                          <p class="content" style="height: 64.6px;">{{column}}</p>
+                          {% endfor %}
                         </div>
-                      {% assign values = '' %}
+                       {% assign values = '' %}
                         {% for variant in product.variants %}
                           {% assign value = variant.options[0] %}
                           {% unless values contains value %}
                           {% assign values = values | join: ',' %}	
                           {% assign values = values | append: ',' | append: value %} 
                           {% assign values = values | split: ',' %}
+                          {% if value == garmentraws[0] %}
+                          <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            {% for vbvalue in gvalue_1 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == garmentraws[1] %}
+                          <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            
+                            {% for vbvalue in gvalue_2 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == garmentraws[2] %}
+                          <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            {% for vbvalue in gvalue_3 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                         {% if value == garmentraws[3] %}
+                            <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
+                              <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                             
+                              {% for vbvalue in gvalue_4 %}
+                              {% assign valuesplit = vbvalue | split:"-" %}
+                              {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                              {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                              {% endfor %}   
+                            </div>
+                          {% endif %}
+                          {% if value == garmentraws[4] %}
+                          <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
-                            {% if value == 'S-M' %}
-                              <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
-                                <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
-                                <p class="content" data-size="38.1" style="height: 64.6px;">15</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'XS' %}
-                              <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="109.22" style="height: 64.6px;">43</p>
-                                <p class="content" data-size="127.0" style="height: 64.6px;">50</p>
-                                <p class="content" data-size="36.83" style="height: 64.6px;">14.5</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'S' %}
-                              <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
-                                <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
-                                <p class="content" data-size="38.1" style="height: 64.6px;">15</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'M' %}
-                              <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="119.38" style="height: 64.6px;">47</p>
-                                <p class="content" data-size="137.16" style="height: 64.6px;">54</p>
-                                <p class="content" data-size="39.37" style="height: 64.6px;">15.5</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'L-XL' %}
-                              <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                                <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                                <p class="content" data-size="41.91" style="height: 64.6px;">16.5</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'L' %}
-                            <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="124.46" style="height: 64.6px;">49</p>
-                              <p class="content" data-size="142.24" style="height: 64.6px;">56</p>
-                              <p class="content" data-size="40.64" style="height: 64.6px;">16</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'XL' %}
-                            <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                              <p class="content" data-size="41.91" style="height: 64.6px;">16.5</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'L-XXL' %}
-                            <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                              <p class="content" data-size="41.91" style="height: 64.6px;">16.5</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'XXL-XXXL' %}
-                           <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                              <p class="content" data-size="41.91" style="height: 64.6px;">16.5</p>
-                            </div>
-                            {% endif %}
-                            {% endunless %}
+                            {% for vbvalue in gvalue_5 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == garmentraws[5] %}
+                          <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                           
+                            {% for vbvalue in gvalue_6 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == garmentraws[6] %}
+                          <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            
+                            {% for vbvalue in gvalue_7 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == garmentraws[7] %}
+                          <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                           
+                            {% for vbvalue in gvalue_8 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                        {% if value == garmentraws[8] %}
+                        <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
+                          <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          
+                          {% for vbvalue in gvalue_9 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                         {% if value == garmentraws[9] %}
+                        <div class="table-inner-row row-10" data-value="{{value | handleize}}" style="width: 59px;">
+                          <p class="content hide_line" data-value="{{value}}" data-index="10" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          
+                          {% for vbvalue in gvalue_10 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                         {% endunless %}
                         {% endfor %}
                       
                     </div>
@@ -244,6 +351,18 @@
             </div>
           {% endif %}
           {% if product.metafields.my_fields.international_sizes %}
+          {% assign intlcolumns = block.settings.intl_column | split:"," %}
+          {% assign intlraws = block.settings.intl_rows | split:"," %}
+          {% assign mvalue_1 = block.settings.mvalue_1 | split:"," %}
+          {% assign mvalue_2 = block.settings.mvalue_2 | split:"," %}
+          {% assign mvalue_3 = block.settings.mvalue_3 | split:"," %}
+          {% assign mvalue_4 = block.settings.mvalue_4 | split:"," %}
+          {% assign mvalue_5 = block.settings.mvalue_5 | split:"," %}
+          {% assign mvalue_6 = block.settings.mvalue_6 | split:"," %}
+          {% assign mvalue_7 = block.settings.mvalue_7 | split:"," %}
+          {% assign mvalue_8 = block.settings.mvalue_8 | split:"," %}
+          {% assign mvalue_9 = block.settings.mvalue_9 | split:"," %}
+          {% assign mvalue_10 = block.settings.mvalue_10 | split:"," %}
 <p class="table-title">International Sizes</p>
           <div class="size-table second-table-wrap" data-rows-count="6">
                 
@@ -253,81 +372,138 @@
                     <div class="bottom-rows-wrap">
                         <div class="table-inner-row row-0" data-value="size">
                            <p class="content hide_line" style="height: 64.6px;">Pinklay</p>
-                            <p class="content" style="height: 64.6px;">US</p>
-                            <p class="content" style="height: 64.6px;">UK</p>
+                          {% for column in intlcolumns %}
+                          <p class="content" style="height: 64.6px;">{{column}}</p>
+                          {% endfor %}
                         </div>
-                      {% assign values = '' %}
+                     {% assign values = '' %}
                         {% for variant in product.variants %}
                           {% assign value = variant.options[0] %}
                           {% unless values contains value %}
                           {% assign values = values | join: ',' %}	
                           {% assign values = values | append: ',' | append: value %} 
                           {% assign values = values | split: ',' %}
+                          {% if value == intlraws[0] %}
+                          <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            {% for vbvalue in mvalue_1 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == intlraws[1] %}
+                          <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            
+                            {% for vbvalue in mvalue_2 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == intlraws[2] %}
+                          <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            {% for vbvalue in mvalue_3 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                         {% if value == intlraws[3] %}
+                            <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
+                              <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                             
+                              {% for vbvalue in mvalue_4 %}
+                              {% assign valuesplit = vbvalue | split:"-" %}
+                              {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                              {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                              <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                              {% endfor %}   
+                            </div>
+                          {% endif %}
+                          {% if value == intlraws[4] %}
+                          <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
                            
-                            {% if value == 'S-M' %}
-                              <div class="table-inner-row row-1" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="1" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
-                                <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'XS' %}
-                              <div class="table-inner-row row-2" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="2" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="109.22" style="height: 64.6px;">43</p>
-                                <p class="content" data-size="127.0" style="height: 64.6px;">50</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'S' %}
-                              <div class="table-inner-row row-3" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="3" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="114.3" style="height: 64.6px;">45</p>
-                                <p class="content" data-size="132.08" style="height: 64.6px;">52</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'M' %}
-                              <div class="table-inner-row row-4" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="4" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="119.38" style="height: 64.6px;">47</p>
-                                <p class="content" data-size="137.16" style="height: 64.6px;">54</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'L-XL' %}
-                              <div class="table-inner-row row-5" data-value="{{value | handleize}}" style="width: 59px;">
-                                <p class="content hide_line" data-value="{{value}}" data-index="5" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                                <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                                <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                              </div>
-                            {% endif %}
-                            {% if value == 'L' %}
-                            <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="124.46" style="height: 64.6px;">49</p>
-                              <p class="content" data-size="142.24" style="height: 64.6px;">56</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'XL' %}
-                            <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'L-XXL' %}
-                            <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                            </div>
-                            {% endif %}
-                            {% if value == 'XXL-XXXL' %}
-                           <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
-                              <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
-                              <p class="content" data-size="129.54" style="height: 64.6px;">51</p>
-                              <p class="content" data-size="147.32" style="height: 64.6px;">58</p>
-                            </div>
-                            {% endif %}
-                            {% endunless %}
+                            {% for vbvalue in mvalue_5 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == intlraws[5] %}
+                          <div class="table-inner-row row-6" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="6" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                           
+                            {% for vbvalue in mvalue_6 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == intlraws[6] %}
+                          <div class="table-inner-row row-7" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="7" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                            
+                            {% for vbvalue in mvalue_7 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                          {% if value == intlraws[7] %}
+                          <div class="table-inner-row row-8" data-value="{{value | handleize}}" style="width: 59px;">
+                            <p class="content hide_line" data-value="{{value}}" data-index="8" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                           
+                            {% for vbvalue in mvalue_8 %}
+                            {% assign valuesplit = vbvalue | split:"-" %}
+                            {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                            {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                            <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                            {% endfor %}
+                          </div>
+                          {% endif %}
+                        {% if value == intlraws[8] %}
+                        <div class="table-inner-row row-9" data-value="{{value | handleize}}" style="width: 59px;">
+                          <p class="content hide_line" data-value="{{value}}" data-index="9" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          
+                          {% for vbvalue in mvalue_9 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                         {% if value == intlraws[9] %}
+                        <div class="table-inner-row row-10" data-value="{{value | handleize}}" style="width: 59px;">
+                          <p class="content hide_line" data-value="{{value}}" data-index="10" data-value-handle="{{value | handleize}}" style="height: 64.6px;">{{value}}</p>
+                          
+                          {% for vbvalue in mvalue_10 %}
+                          {% assign valuesplit = vbvalue | split:"-" %}
+                          {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
+                          {% assign mincent1 = valuesplit[1] | plus:0 | times:2.54 %}
+                          
+                          <p class="content" data-size="{{mincent0}}{% if mincent1 != 0 %}-{{mincent1}}{% endif %}" style="height: 64.6px;">{{vbvalue}}</p>
+                          {% endfor %}
+                        </div>
+                        {% endif %}
+                        
+                         {% endunless %}
                         {% endfor %}
                       
                     </div>
