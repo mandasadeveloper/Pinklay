@@ -5445,6 +5445,58 @@
           "background_image_mobile": "shopify:\/\/shop_images\/Photographic_Time_To_Give_Thanks_Instagram_Story_1230_x_600_px_800_x_720_px.jpg",
           "title": "<p>As a child, I often heard my father say…may you always find peace in giving and helping. That was his eternal wish for me and my brothers. And, I am forever grateful to my parents for showing us the joy that giving and gratitude holds. Giving is an act of kindness we do to ourselves. It’s self-love in many ways because I haven’t known anyone who has done an act of kindness – said a polite ‘thank you’ to a stranger, rescued a stray, planted a tree, helped a needy in distress – unhappy or grudged with the help they offered. Instead, I have often experienced that giving gives back happiness, contentment, and peace.<\/p><p><\/p><p>Soon after we started Pinklay in December 2015, we decided to put a small fund aside for animal welfare. A cause very close to my heart. On Pinklay’s first anniversary, we formalized this little initiative and called it ‘the month of giving’. Since then, every December, we celebrate <em>#monthofgiving <\/em>with much love and enthusiasm. A month where we mindfully practice gratitude and the sentiment of giving back because there isn’t a greater joy than that of giving.<\/p><p><\/p><p>So, this December for every order placed with us, you get a choice to feed a stray or plant a tree through your purchase. A part of the revenue from your order will be directly donated to the organizations we have partnered with for this year’s ‘month of giving’. Then there is more, we have a few chats lined up with very interesting people across the month. Follow us on our pages to know more. I promise you a lovely December filled with gifts, conversations, and offers.<\/p>"
         }
+      },
+      "pdp-size-popup": {
+        "type": "pdp-size-popup",
+        "blocks": {
+          "da746721-2972-4762-a75e-7c6ce73320c8": {
+            "type": "size_chart",
+            "settings": {
+              "size_tag": "sizechart_kurta",
+              "body_rows": "S,M,L,XL",
+              "body_column": "WAIST,SHOULDER ,CHEST",
+              "bvalue_1": "25.5-27,14.5-15,33.5-35",
+              "bvalue_2": "15.5-16,35.5-37,38-39.5",
+              "bvalue_3": "29.5-31,16.5-17,37.5-39",
+              "bvalue_4": "31.5-33,17.5-18,39.5-41",
+              "bvalue_5": "",
+              "bvalue_6": "",
+              "bvalue_7": "",
+              "bvalue_8": "",
+              "bvalue_9": "",
+              "bvalue_10": "",
+              "garment_rows": "S,M,L,XL",
+              "garment_column": "WAIST,SHOULDER ,CHEST",
+              "gvalue_1": "45,52,15",
+              "gvalue_2": "47,54,15.5",
+              "gvalue_3": "49,56,16",
+              "gvalue_4": "51,58,16.5",
+              "gvalue_5": "",
+              "gvalue_6": "",
+              "gvalue_7": "",
+              "gvalue_8": "",
+              "gvalue_9": "",
+              "gvalue_10": "",
+              "intl_rows": "",
+              "intl_column": "",
+              "mvalue_1": "",
+              "mvalue_2": "",
+              "mvalue_3": "",
+              "mvalue_4": "",
+              "mvalue_5": "",
+              "mvalue_6": "",
+              "mvalue_7": "",
+              "mvalue_8": "",
+              "mvalue_9": "",
+              "mvalue_10": ""
+            }
+          }
+        },
+        "block_order": [
+          "da746721-2972-4762-a75e-7c6ce73320c8"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
