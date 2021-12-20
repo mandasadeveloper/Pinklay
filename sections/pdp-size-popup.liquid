@@ -1,4 +1,25 @@
-{% include 'pdp-size-popup', product:product, section:section %}
+
+
+{% for block in section.blocks %}
+   {% assign sizetag = block.settings.size_tag %}
+    {% assign is_tag = true %}
+
+
+    {% if product.tags contains sizetag %}
+      {% assign is_tag = false %}
+      {% include 'pdp-size-popup', product:product, block:block %}
+      {% break %}
+    {% endif %}
+
+
+    {% if is_tag %}
+     {% include 'default-size-popup', product:product, block:block %}
+     {% break %}
+    {% endif %}
+{% endfor %}
+
+
+
   
   {% schema %}
 {
