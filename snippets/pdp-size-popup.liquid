@@ -72,7 +72,7 @@
                             {% assign valuesplit = vbvalue | split:"-" %}
                             {% assign mincent0 = valuesplit[0] | plus:0 | times:2.54 %}
                             {% assign mincenti1 = valuesplit[1] | plus:0 | times:2.54 %}
-                            <p class="content" factory="{{bvalue_1}}" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
+                            <p class="content" factory="{{mincent0}}" data-size="{{mincent0}}-{{mincent1}}" style="height: 64.6px;">{{vbvalue}}</p>
                             {% endfor %}
                           </div>
                           {% endif %}
