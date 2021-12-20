@@ -8,18 +8,16 @@
       {% include 'pdp-size-popup', product:product, block:block %}
       {% break %}
     {% endif %}
+{% endfor %}
 
-
-    {% if is_tag %}
+{% for block in section.blocks %}
+   {% if is_tag %}
       {% if sizetag == 'Default chart' %}
       {% include 'default-size-popup', product:product, block:block %}
       {% break %}
       {% endif %}
     {% endif %}
 {% endfor %}
-
-
-
   
   {% schema %}
 {
