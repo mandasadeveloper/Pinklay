@@ -5534,11 +5534,54 @@
               "mvalue_9": "",
               "mvalue_10": ""
             }
+          },
+          "8c2a265a-5b92-445c-b31f-5b624cc3d5c7": {
+            "type": "size_chart",
+            "settings": {
+              "title": "size_chart_WPJS013",
+              "body_rows": "",
+              "body_column": "",
+              "bvalue_1": "",
+              "bvalue_2": "",
+              "bvalue_3": "",
+              "bvalue_4": "",
+              "bvalue_5": "",
+              "bvalue_6": "",
+              "bvalue_7": "",
+              "bvalue_8": "",
+              "bvalue_9": "",
+              "bvalue_10": "",
+              "garment_rows": "",
+              "garment_column": "",
+              "gvalue_1": "",
+              "gvalue_2": "",
+              "gvalue_3": "",
+              "gvalue_4": "",
+              "gvalue_5": "",
+              "gvalue_6": "",
+              "gvalue_7": "",
+              "gvalue_8": "",
+              "gvalue_9": "",
+              "gvalue_10": "",
+              "intl_rows": "",
+              "intl_column": "",
+              "mvalue_1": "",
+              "mvalue_2": "",
+              "mvalue_3": "",
+              "mvalue_4": "",
+              "mvalue_5": "",
+              "mvalue_6": "",
+              "mvalue_7": "",
+              "mvalue_8": "",
+              "mvalue_9": "",
+              "mvalue_10": ""
+            }
           }
         },
         "block_order": [
           "f4ab07d5-b231-4808-97ae-6c220db1e558",
-          "da746721-2972-4762-a75e-7c6ce73320c8"
+          "da746721-2972-4762-a75e-7c6ce73320c8",
+          "8c2a265a-5b92-445c-b31f-5b624cc3d5c7"
         ],
         "settings": {
         }
