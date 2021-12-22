@@ -5540,8 +5540,8 @@
             "settings": {
               "title": "size_chart_WPJS013",
               "chart_image": "shopify:\/\/shop_images\/size_chart.png",
-              "body_rows": "XS,S,M,L,XL",
-              "body_column": "Chest,Waist",
+              "body_rows": "Chest,Waist",
+              "body_column": "XS,S,M,L,XL",
               "bvalue_1": "23,25,27,29,31",
               "bvalue_2": "34,36,38,40,42",
               "bvalue_3": "",
